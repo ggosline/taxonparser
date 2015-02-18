@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8ecdf216-463f-49ec-8758-ebbdbdb16f09}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>src\floras-nltk\floras_nltk.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="desktop.ini" />
+    <Content Include="src\floras-nltk\notingloss.txt" />
+    <Content Include="src\floras-nltk\resources\glossarycp.csv" />
+    <Content Include="src\floras-nltk\resources\vfgglossary.csv" />
+    <Content Include="src\floras-nltk\wordlist.txt" />
+    <Content Include="src\TaxonNameParser\headers.txt" />
+    <Content Include="UpgradeLog.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\floras-nltk\floracorpus\ADO.py" />
+    <Compile Include="src\floras-nltk\floracorpus\reader.py" />
+    <Compile Include="src\floras-nltk\floracorpus\__init__.py" />
+    <Compile Include="src\floras-nltk\floraparser\bits.py" />
+    <Compile Include="src\floras-nltk\floraparser\glossaryreader.py" />
+    <Compile Include="src\floras-nltk\floraparser\pos.py" />
+    <Compile Include="src\floras-nltk\floraparser\splitter.py" />
+    <Compile Include="src\floras-nltk\floraparser\__init__.py" />
+    <Compile Include="src\floras-nltk\floras_nltk.py" />
+    <Compile Include="src\floras-nltk\Snobol\Snobol.py" />
+    <Compile Include="src\floras-nltk\Snobol\Snoboltest.py" />
+    <Compile Include="src\floras-nltk\Snobol\__init__.py" />
+    <Compile Include="src\floras-nltk\__init__.py" />
+    <Compile Include="src\TaxonNameParser\ADO.py" />
+    <Compile Include="src\TaxonNameParser\EasyExcel.py" />
+    <Compile Include="src\TaxonNameParser\FTEADistClassifier.py" />
+    <Compile Include="src\TaxonNameParser\FTEAParaClassifier.py" />
+    <Compile Include="src\TaxonNameParser\FTEAreader.py" />
+    <Compile Include="src\TaxonNameParser\FTWAHeaders.py" />
+    <Compile Include="src\TaxonNameParser\getBits.py" />
+    <Compile Include="src\TaxonNameParser\IPWord.py" />
+    <Compile Include="src\TaxonNameParser\nltktest.py" />
+    <Compile Include="src\TaxonNameParser\ParseFamily.py" />
+    <Compile Include="src\TaxonNameParser\RBParaClassifier.py" />
+    <Compile Include="src\TaxonNameParser\RBreader.py" />
+    <Compile Include="src\TaxonNameParser\recordtype.py" />
+    <Compile Include="src\TaxonNameParser\SISDump.py" />
+    <Compile Include="src\TaxonNameParser\Snobol.py" />
+    <Compile Include="src\TaxonNameParser\Snoboltest.py" />
+    <Compile Include="src\TaxonNameParser\SortedCollection.py" />
+    <Compile Include="src\TaxonNameParser\TaxonNameParser.py" />
+    <Compile Include="src\TaxonNameParser\test.py" />
+    <Compile Include="src\TaxonNameParser\ucsv.py" />
+    <Compile Include="src\TaxonNameParser\wordreader.py" />
+    <Compile Include="src\TaxonNameParser\XMLTreeBuilder.py" />
+    <Compile Include="src\TaxonNameParser\__init__.py" />
+    <Compile Include="testpywin.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\floras-nltk" />
+    <Folder Include="src\floras-nltk\floracorpus" />
+    <Folder Include="src\floras-nltk\floraparser" />
+    <Folder Include="src\floras-nltk\resources\" />
+    <Folder Include="src\floras-nltk\Snobol" />
+    <Folder Include="src\TaxonNameParser" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
