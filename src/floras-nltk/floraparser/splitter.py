@@ -14,3 +14,4 @@ class FlSentenceTokenizer(SentenceTokenizer):
 
     def sent_phrase_split(self,text):
         return ((phrase_split(l) for l in sent_split(text)))
+

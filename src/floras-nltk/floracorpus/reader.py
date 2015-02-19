@@ -6,7 +6,7 @@ from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktWo
 # from nltk.util import AbstractLazySequence, LazyMap, LazyConcatenation
 
 from floracorpus.SQLitedb import SQLitedb
-from floraparser.fltoken import FlToken
+from floraparser.fltoken import FlToken, FlTokenizer
 
 # from floracorpus.ADO import ADOdb
 #  class AccessDBSequence(AbstractLazySequence):
@@ -31,7 +31,7 @@ class AbstractFloraCorpusReader(object):
                  sent_tokenizer=LazyLoader(r'..\resources\FloraPunkt.pickle')):
 
         self._reader = reader   # file reader
-        self._word_tokenize = PunktWordTokenizer().tokenize
+        self._word_tokenize = FlTokenizer().word_tokenize
         #punkt_param = PunktParameters()
         # punkt_param.abbrev_types = set(['cm', 'mm', 'km', 'c', 'diam', 'fig'])
         # self._sent_tokenize = PunktSentenceTokenizer(punkt_param).tokenize
@@ -124,4 +124,7 @@ if __name__ == "__main__":
     mywords = myds.words()
     mytokens = myds.tokens()
 
+    s = mysents[5][1][0]
+    w = myds._word_tokenize(s)
     del myds
+
