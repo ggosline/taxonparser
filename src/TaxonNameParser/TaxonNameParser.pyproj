@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>7ab5fdc8-c507-4492-96d0-2f51edc81c94</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>IPWord.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>TaxonNameParser</Name>
+    <RootNamespace>TaxonNameParser</RootNamespace>
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>3.3</InterpreterVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ADO.py" />
+    <Compile Include="floracorpus\reader.py" />
+    <Compile Include="FTWAHeaders.py" />
+    <Compile Include="EasyExcel.py" />
+    <Compile Include="FTEAParaClassifier.py" />
+    <Compile Include="FTEADistClassifier.py" />
+    <Compile Include="IPWord.py" />
+    <Compile Include="ucsv.py" />
+    <Compile Include="SortedCollection.py" />
+    <Compile Include="recordtype.py" />
+    <Compile Include="ParseFamily.py" />
+    <Compile Include="Snobol.py" />
+    <Compile Include="TaxonNameParser.py" />
+    <Compile Include="Snoboltest.py" />
+    <Compile Include="FTEAreader.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.3" />
+    <InterpreterReference Include="{80659ab7-4d53-4e0c-8588-a766116cbd46}\2.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="floracorpus\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>

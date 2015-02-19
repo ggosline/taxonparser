@@ -1,0 +1,32 @@
+Range[from=?f, to = ?t, unit = ?u, class=adj, type=1d] -> onedimension[from=?f, to = ?t, unit = ?u]
+Range[from=?f, to = ?t, unit = ?u, class=adj, type=count] -> count[from=?f, to = ?t, unit=count]
+onedimension[from=?f, to=?t, unit=?u] -> upto numrange[from=?f, to=?t] dimunit[unit=?u] dot dimdirection
+count[from=?f, to=?t, unit=count] -> minimum[from=?f] '-' maximum[to=?t] | minimum[from=?f]
+dimunit[unit=m] -> 'm'
+dimunit[unit=cm] -> 'cm'
+dimunit[unit=mm] -> 'mm'
+dimunit[unit=dm] -> 'dm'
+dot -> '.'
+dot ->
+upto -> 'to'
+upto -> 'up' 'to'
+dimdirection -> 'high'
+dimdirection -> 'wide'
+dimdirection -> 'long'
+dimdirection -> 'tall'
+dimdirection -> 'thick'
+dimdirection -> 'diam.'
+dimdirection -> 'in' dimdir2
+dimdir2 -> 'diam.'
+dimdir2 -> 'diameter'
+dimdir2 -> 'height'
+dimdir2 -> 'length'
+dimdir2 -> 'width'
+numrange[from=?f, to=?t] -> minimum[from=?f] '-' maximum[to=?t]
+numrange[from=?f] -> minimum[from=?f]
+minimum[from=?val] -> number[val=?val]
+maximum[to=?val] -> number[val=?val]
+number[val=15] -> '15'
+number[val=23] -> '23'
+number ->[val=27] '27'
+dash -> '-'
