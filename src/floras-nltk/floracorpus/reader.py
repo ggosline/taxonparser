@@ -6,7 +6,7 @@ from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktWo
 # from nltk.util import AbstractLazySequence, LazyMap, LazyConcatenation
 
 from floracorpus.SQLitedb import SQLitedb
-from floraparser.fltoken import FlToken, FlTokenizer
+from floraparser.fltoken import FlToken, FlTokenizer, FlTaxon, FlPhrase
 
 # from floracorpus.ADO import ADOdb
 #  class AccessDBSequence(AbstractLazySequence):
@@ -31,17 +31,15 @@ class AbstractFloraCorpusReader(object):
                  sent_tokenizer=LazyLoader(r'..\resources\FloraPunkt.pickle')):
 
         self._reader = reader   # file reader
-        self._word_tokenize = FlTokenizer().word_tokenize
+        self._word_tokenize = FlTokenizer().span_tokenize
         #punkt_param = PunktParameters()
         # punkt_param.abbrev_types = set(['cm', 'mm', 'km', 'c', 'diam', 'fig'])
         # self._sent_tokenize = PunktSentenceTokenizer(punkt_param).tokenize
-        self._sent_tokenize = sent_tokenizer.tokenize
+        self._sent_tokenize = sent_tokenizer.span_tokenize
         PunktLanguageVars.sent_end_chars = ('.',)  # don't break on question marks !
-        self._taxa = [(f['taxonNo'], f['description']) for f in self._reader]
-        self._words = None
-        self._sents = None
-        self._tokens = None
+        self._taxa = [FlTaxon(f, sentence_tokenizer=self._sent_tokenize) for f in self._reader]
 
+    @property
     def taxa(self, taxonids=None):
         """
         :return: the given file(s) as a single string.
@@ -49,82 +47,85 @@ class AbstractFloraCorpusReader(object):
         """
         return self._taxa
 
-    def words(self, taxonids=None):
-        """
-        :return: the given taxa as a list of
-            taxonNos + each encoded as a list of sentences, which are
-            in turn encoded as lists of word strings.
-        :rtype: list(int, list(list(list(str)))
-        """
-        if self._word_tokenize is None:
-            raise ValueError('No sentence tokenizer for this corpus')
-        if not self._words:
-            self._words = [(tid, [self._word_tokenize(sentence) for sentence in sentences]) for tid, sentences in
-                           self.sents()]
-            # remove the final full-stop which Punkt leaves with the last word.
-            for _, sentences in self._words:
-                for words in sentences:
-                    if words[-1].endswith('.'):
-                        words[-1] = words[-1][:-1]  # trim the full-stop
-        return self._words
-
-    def sents(self, taxonids=None):
-        """
-        :return: the given file(s) as a list of
-            sentences or utterances, each encoded as a list of word
-            strings.
-        :rtype: list(list(str))
-        """
-        if self._sent_tokenize is None:
-            raise ValueError('No sentence tokenizer for this corpus')
-        if not self._sents:
-            self._sents = [(tid, self._sent_tokenize(desc)) for tid, desc in self._taxa if desc]
-        return self._sents
-
-    def tokens(self, taxonids=None):
-        """
-        :return: the given taxa as a list of
-            taxonNos + each encoded as a list of sentences, which are
-            in turn encoded as lists of tokens.
-        :rtype: list(int, list(list(list(FlToken)))
-        """
-        return [(tid, [[FlToken(word, tid) for word in wlist] for wlist in slist]) for tid, slist in self.words()]
+        # def words(self, taxonids=None):
+        # """
+        #     :return: the given taxa as a list of
+        #         taxonNos + each encoded as a list of sentences, which are
+        #         in turn encoded as lists of word strings.
+        #     :rtype: list(int, list(list(list(str)))
+        #     """
+        #     if self._word_tokenize is None:
+        #         raise ValueError('No sentence tokenizer for this corpus')
+        #     if not self._words:
+        #         self._words = [(tid, [self._word_tokenize(sentence) for sentence in sentences]) for tid, sentences in
+        #                        self.sents()]
+        #         # remove the final full-stop which Punkt leaves with the last word.
+        #         for _, sentences in self._words:
+        #             for words in sentences:
+        #                 if words[-1][0].endswith('.'):
+        #                     words[-1] = (words[-1][0][:-1], words[-1][1], words[-1][2]-1)   # trim the full-stop
+        #     return self._words
+        #
+        # def sents(self, taxonids=None):
+        #     """
+        #     :return: the given file(s) as a list of
+        #         sentences or utterances, each encoded as a list of word
+        #         strings.
+        #     :rtype: list(list(str))
+        #     """
+        #     if self._sent_tokenize is None:
+        #         raise ValueError('No sentence tokenizer for this corpus')
+        #     if not self._sents:
+        #         self._sents = [(tid, self._sent_tokenize(desc)) for tid, desc in self._taxa if desc]
+        #     return self._sents
+        #
+        # def tokens(self, taxonids=None):
+        #     """
+        #     :return: the given taxa as a list of
+        #         taxonNos + each encoded as a list of sentences, which are
+        #         in turn encoded as lists of tokens.
+        #     :rtype: list(int, list(list(list(FlToken)))
+        #     """
+        #     return [(tid, [[FlToken(word, tid) for word in wlist] for wlist in slist]) for tid, slist in self.words()]
 
 
 class FloraCorpusReader(AbstractFloraCorpusReader):
-
-    def __init__(self, db='', query='', fieldlst='', **kwargs):
+    def __init__(self, db=r'..\resources\efloras.db3', query='Select * from Taxa;', fieldlst=None, **kwargs):
         # self._seq = list(AccessDBSequence(**kwargs))
+        if not fieldlst:
+            fieldlst = ['taxonNo', 'flora_name', 'rank', 'family', 'genus', 'species', 'infrarank', 'infraepi',
+                        'description', ]
         self.dbr = SQLitedb(db)
         self.rdr = self.dbr.OpenTable(query, fieldlst)
         super().__init__(reader=self.rdr, **kwargs)
-        # self._sents = list(chain.from_iterable(list(map(self._sent_tokenize, self.text()))))
 
 
-
-# class LazyFloraCorpusReader(AbstractFloraCorpusReader):
-#
-#   def __init__(self, **kwargs):
-#     self._seq = AccessDBSequence(**kwargs)
-#     super().__init__(self, **kwargs)
-#
-#   def text(self):
-#     return self._seq
-#   def words(self):
-#     return LazyConcatenation(LazyMap(self._word_tokenize, self.text()))
-#   def sents(self):
-#     return LazyConcatenation(LazyMap(self._sent_tokenize, self.text()))
 
 if __name__ == "__main__":
 
-    myds = FloraCorpusReader(db=r'..\resources\efloras.db3', query="Select * from Taxa where family = 'Celastraceae';", fieldlst=('taxonNo', 'description', ))
+    myds = FloraCorpusReader(db=r'..\resources\efloras.db3',
+                             query="Select * from Taxa where family = 'Celastraceae';", )
     # myds.OpenTable("SELECT APD.* FROM [APD] WHERE (((APD.[family])='agavaceae'));")
-    mytext = myds.taxa()
-    mysents = myds.sents()
-    mywords = myds.words()
-    mytokens = myds.tokens()
+    taxa = myds.taxa
+    for t in taxa:
+        for s in t.sentences:
+            if len(s.phrases) > 1:
+                print(s.phrases)
 
-    s = mysents[5][1][0]
-    w = myds._word_tokenize(s)
+    pass
+    # mysents = myds.sents()
+    # mywords = myds.words()
+    # mytokens = myds.tokens()
+
+    # notindict = set()
+    # for taxid, desc in mytokens:
+    # for sent in desc:
+    #         for token in sent:
+    #             if token.flPOS == 'UNK':
+    #                 notindict.add(token._text)
+    # with open('notindict.txt','w', encoding='utf-8') as nidf:
+    #     for wd in sorted(notindict):
+    #         print(wd, file=nidf, )
+
     del myds
 

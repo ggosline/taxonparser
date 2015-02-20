@@ -40,7 +40,7 @@ LITNUMBERS = "zero|one|ones|first|two|second|three|third|thirds|four|fourth|four
 
 ORDNUMBERS = "primary|secondary|tertiary".split('|')
 
-NUMBERS = re.compile(r'\b[0-9–—.·()×]+\b')
+NUMBERS = re.compile(r'^[0-9–—\-.·()]+$')
 
 ACCURACY = "c|about|more or less|±|very|a little|not much|all|rather|up to|less than|exactly".split('|')
 

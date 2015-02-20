@@ -4,12 +4,120 @@ import re
 from floraparser import glossaryreader, pos
 
 
+class FlTaxon():
+    '''
+    Flora taxon
+    '''
+    _sent_tokenizer = None
+
+    def __init__(self, trec,
+                 sentence_tokenizer=None):
+        self.flora = trec['flora_name']
+        self.taxonNO = trec['taxonNo']
+        self.rank = trec['rank']
+        self.family = trec['family']
+        self.genus = trec['genus']
+        self.species = trec['species']
+        self.infrarank = trec['infrarank']
+        self.infraepi = trec['infraepi']
+        self.description = trec['description']
+        self.sentences = [FlSentence(self, sl[0], sl[1]) for sl in
+                          sentence_tokenizer(self.description)] if self.description else []
+        pass
+
+
+class FlSentence():
+    def __init__(self, taxon, fromchar, tochar):
+        self.taxon = taxon
+        self.slice = slice(fromchar, tochar)
+        self.fromchar = fromchar
+        self.tochar = tochar
+        self._words = None
+        self._tokens = None
+        self._phrases = None
+
+    def __repr__(self):
+        return self.taxon.description[self.slice]
+
+    @property
+    def text(self):
+        return self.taxon.description[self.slice]
+
+    @property
+    def words(self):
+        if not self._words:
+            self._words = [FlWord(self, sl) for sl in FlTokenizer().span_tokenize(self.text)]
+            if self._words[-1].text.endswith('.'):  # Punkt leaves the full-stop attached to last word
+                ts = self._words[-1].slice
+                self._words[-1].slice = slice(ts.start, ts.stop - 1)
+        return self._words
+
+    @property
+    def tokens(self):
+        if not self._tokens:
+            self._tokens = [FlToken(self, word) for word in self.words]
+        return self._tokens
+
+    @property
+    def phrases(self):
+        if not self._phrases:
+            self._phrases = FlPhrase(self).split(';')
+        return self._phrases
+
+
+class FlWord():
+    def __init__(self, sentence, slice):
+        self.sentence = sentence
+        self.slice = slice
+
+    @property
+    def text(self):
+        return self.sentence.text[self.slice]
+
+    def __repr__(self):
+        return self.text
+
+
+class FlToken():
+    mybotg = glossaryreader.botglossary()
+    fltagger = pos.FlTagger()
+
+    def __init__(self, sentence: FlSentence, word: FlWord):
+        self.sentence = sentence
+        self.word = word
+        self.flDictEntry = None
+        self.flPOS = None
+        self.slice = word.slice
+        self.flRoot, self.flPOS, self.flDictEntry = FlToken.fltagger.tag_word(self.word.text)
+
+    @property
+    def text(self):
+        return self.word.text
+
+    def __repr__(self):
+        return self.word.text + '<' + self.flPOS + '>'
+
+
+class FlPhrase():
+    def __init__(self, sentence, slice=slice(0)):
+        self.sentence = sentence
+        self.slice = slice
+        self.children = []
+        self.tokens = self.sentence.tokens
+        self.parent = None
+
+    def split(self, separator: str):
+        locations = [i for i, val in enumerate(self.tokens) if val.text == separator]
+        locations.insert(0, -1)
+        locations.append(None)
+        return [self.tokens[locations[i] + 1:locations[i + 1]] for i in range(0, len(locations) - 1)]
+
 class FlTokenizer():
     '''
     Taken from Punkttokenizer
     '''
 
-    _re_number_range = r'''(?:\(\d+(?:[.·]\d+)\))?
+    _re_number_range = r'''(?:\(\d+(?:[.·]\d+)?\))?
                             \d+(?:[.·]\d)?
                             (?:[--–]\d+(?:[.·]\d+)?)?
                             (?:\(\d+(?:[.·]\d+)?\))?
@@ -63,23 +171,26 @@ class FlTokenizer():
         """Tokenize a string to split off punctuation other than periods"""
         return self._word_tokenizer_re().findall(s)
 
-class FlToken():
+    def tokenize(self, text):
+        return self.word_tokenize(text)
 
-    mybotg = glossaryreader.botglossary()
-    fltagger = pos.FlTagger()
+    def span_tokenize(self, text):
+        """
+        Given a text, returns a list of the slices (start, end) spans of words
+        in the text.
+        """
+        return [sl for sl in self._slices_from_text(text)]
 
-    def __init__(self, text : str, taxonno : int , fromc : int = 0, toc : int = 0):
-        self._text = text
-        self.floraDb = None
-        self.taxonNo = taxonno
-        self.flDictEntry = None
-        self.flPOS = None
-        self.fromc = fromc
-        self.toc = toc
-        self.flRoot, self.flPOS, self.flDictEntry = FlToken.fltagger.tag_word(text)
+    def _slices_from_text(self, text):
+        last_break = 0
+        contains_no_words = True
+        for match in self._word_tokenizer_re().finditer(text):
+            contains_no_words = False
+            context = match.group()
+            yield slice(match.start(), match.end())
+        if contains_no_words:
+            yield slice(0, 0)  # matches PunktSentenceTokenizer's functionality
 
-    def __str__(self):
-        return self._text + '<' + self.flPOS + '>'
 
 if __name__ == '__main__':
     tryme = FlTokenizer().word_tokenize('c. (0.5)1·5-2·3(4) × 1·5-2·7 cm.')
