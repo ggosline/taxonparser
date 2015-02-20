@@ -57,7 +57,7 @@ if __name__ == "__main__":
         notinlist = []
         mysents = myds.sents()
         initialwords = [s.split(' ')[0] for s in mysents]
-        wrds = nltk.Text(myds.words())
+        wrds = nltk.Text(myds.words)
         btagger = nltk.pos_tag
         tagger = nltk.UnigramTagger(model=myglossary.glossary())
         poss = btagger(mysents[1][0])
