@@ -20,39 +20,49 @@ NOT = 'not'
 
 PREPOSITION = 'above|across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
               'during|for|from|in|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
-              'towards|up|upward|with|without'.split('|')
+              'towards|up|upward|with|without|when'.split('|')
 
 CLUSTERSTRINGS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
                  "pairs|pair|rows|number|numbers".split('|')
 
-PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|de|dis|di|dodeca|endo|end|e|hemi|hetero|hexa|homo|infra|inter|ir|'
+# PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|de|dis|di|dodeca|endo|end|e|hemi|hetero|hexa|homo|infra|inter|ir|'
+# r'macro|mega|meso|micro|'
+#                     r'mid|mono|multi|ob|octo|over|penta|poly|postero|post|ptero|pseudo|quadri|quinque|semi|sub|sur|syn|'
+#                     r'tetra|tri|uni|un|xero)(?P<root>.*)\b')
+PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
                     r'mid|mono|multi|ob|octo|over|penta|poly|postero|post|ptero|pseudo|quadri|quinque|semi|sub|sur|syn|'
-                    r'tetra|tri|uni|un|xero)(?P<root>.*)\b')
+                    r'tetra|tri|uni|xero)(?P<root>.+)\b')
 
-SUFFIX = re.compile(r"\b(?P<root>\w*)(?P<suffix>er|est|fid|form|ish|less|like|ly|merous|most|shaped)\b")
+# SUFFIX = re.compile(r"\b(?P<root>\w*)(?P<suffix>er|est|fid|form|ish|less|like|ly|merous|most|shaped)\b")
+SUFFIX = re.compile(r"\b(?P<root>\w+)(?P<suffix>form|ish|merous|most|shaped)\b")
 
 PLENDINGS = re.compile(r"(?:[^aeiou]ies|i|ia|(x|ch|sh)es|ves|ices|ae|s)$")
 
-LITNUMBERS = "zero|one|ones|first|two|second|three|third|thirds|four|fourth|fourths|quarter|" \
+LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
              "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
-             "nine|ninths|ninth|tenths|tenth".split('|')
+             "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5".split('|')
 
 ORDNUMBERS = "primary|secondary|tertiary".split('|')
 
-NUMBERS = re.compile(r'^[0-9–—\-.·()]+$')
+NUMBERS = re.compile(r'^[0-9–—.·()]+$')
 
-ACCURACY = "c|about|more or less|±|very|a little|not much|all|rather|up to|less than|exactly".split('|')
+UNITS = "mm.|cm.|dm.|m.|km.".split('|')
+
+DIMENSION = "high|tall|long|wide|diam.|diameter".split('|')
+
+ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|up_to|less_than|exactly".split('|')
 
 FREQUENCY = "sometimes|often|usually|rarely|generally|never|always".split('|')
 
-DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly".split('|')
+DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly".split('|')
+
+COMPARISON = "paler|darker|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter".split('|')
 
 TO = ['to']
 
 
-class FlTagger(TaggerI, BaseTagger):
-
+class FlTagger():
     def rootword(self, word):
         # hyphenated word
         if '-' in word:
@@ -106,6 +116,14 @@ class FlTagger(TaggerI, BaseTagger):
             return word, 'NOT', None
         if word in ORDNUMBERS:
             return word, 'NUMO', None
+        if word in LITNUMBERS:
+            return word, 'NUML', None
+        if word in UNITS:
+            return word, 'UNIT', None
+        if word in DIMENSION:
+            return word, 'DIM', None
+        if word in COMPARISON:
+            return word, 'JJC', None
 
         if word in fnaglossary:
             if fnaglossary[word].category in ('structure','FEATURE','substance''life-style','PLANT'):
@@ -120,8 +138,11 @@ class FlTagger(TaggerI, BaseTagger):
                 return ws, 'NNS', fnaglossary[ws]
         else:
             root = self.rootword(word)
-            if root and root[0] in fnaglossary:
-                return root, 'JJ', fnaglossary[root[0]]
+            if root:
+                if root[0] in fnaglossary:
+                    return root, 'JJ', fnaglossary[root[0]]
+                if '_' + root[0] in fnaglossary:
+                    return root, 'JJ', fnaglossary['_' + root[0]]
 
         if word.endswith('ly'):
             return word, 'RB', None
@@ -133,12 +154,12 @@ class FlTagger(TaggerI, BaseTagger):
 
         return word, 'UNK', None
 
-    def tag(self, blob):
-        return [self.tag_word(word) for word in blob.words]
+    # def tag(self, blob):
+        # return [self.tag_word(word) for word in blob.words]
 
 
 if __name__ == "__main__":
     tagger = FlTagger()
-    testword = "elliptic-oblong"
-    print(tag(word))
+    testword = "3-locular"
+    print(tagger.tag_word(testword))
     # print(posfromglossary(word))

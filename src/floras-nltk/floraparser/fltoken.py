@@ -2,7 +2,7 @@ __author__ = 'gg12kg'
 
 import re
 from floraparser import glossaryreader, pos
-
+from nltk import Tree
 
 class FlTaxon():
     '''
@@ -23,8 +23,11 @@ class FlTaxon():
         self.description = trec['description']
         self.sentences = [FlSentence(self, sl[0], sl[1]) for sl in
                           sentence_tokenizer(self.description)] if self.description else []
-        pass
 
+    def __repr__(self):
+        return ' '.join(
+            [f for f in (self.flora, self.rank, self.family, self.genus, self.species, self.infrarank, self.infraepi) if
+             f])
 
 class FlSentence():
     def __init__(self, taxon, fromchar, tochar):
@@ -98,7 +101,7 @@ class FlToken():
         return self.word.text + '<' + self.flPOS + '>'
 
 
-class FlPhrase():
+class FlPhrase(Tree):
     def __init__(self, sentence, slice=slice(0)):
         self.sentence = sentence
         self.slice = slice
@@ -107,6 +110,10 @@ class FlPhrase():
         self.parent = None
 
     def split(self, separator: str):
+        '''
+        Split a phrase based on a character string
+        Returns slices for the substring with the separator omitted
+        '''
         locations = [i for i, val in enumerate(self.tokens) if val.text == separator]
         locations.insert(0, -1)
         locations.append(None)
@@ -123,7 +130,7 @@ class FlTokenizer():
                             (?:\(\d+(?:[.·]\d+)?\))?
                         '''
 
-    _re_word_start = r"[^\(\"\`{\[:;&\#\*@\)}\]\-,]"
+    _re_word_start = r"[^\(\"\`{\[:;&\#\*@\)}\],]"
     """Excludes some characters from starting word tokens"""
 
     _re_non_word_chars = r"(?:[?!)\";}\]\*:@\'\({\[])"
