@@ -4,7 +4,7 @@ __author__ = 'George'
 import re
 from textblob import Word, TextBlob
 from textblob.base import BaseTagger
-from floraparser.glossaryreader import botglossary
+from floraparser.botglossary import botglossary
 from nltk.tag.api import TaggerI
 
 fnaglossary = botglossary().glossary
@@ -51,7 +51,7 @@ UNITS = "mm.|cm.|dm.|m.|km.".split('|')
 
 DIMENSION = "high|tall|long|wide|diam.|diameter".split('|')
 
-ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|up_to|less_than|exactly".split('|')
+ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|up_to|exactly".split('|')
 
 FREQUENCY = "sometimes|often|usually|rarely|generally|never|always".split('|')
 

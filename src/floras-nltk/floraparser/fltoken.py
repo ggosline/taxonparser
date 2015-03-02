@@ -1,7 +1,7 @@
 __author__ = 'gg12kg'
 
 import re
-from floraparser import glossaryreader, pos
+from floraparser import botglossary, pos
 from nltk import Tree
 
 class FlTaxon():
@@ -82,7 +82,7 @@ class FlWord():
 
 
 class FlToken():
-    mybotg = glossaryreader.botglossary()
+    mybotg = botglossary.botglossary()
     fltagger = pos.FlTagger()
 
     def __init__(self, sentence: FlSentence, word: FlWord):
