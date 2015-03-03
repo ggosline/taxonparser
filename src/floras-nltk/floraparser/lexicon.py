@@ -1,5 +1,7 @@
 __author__ = 'gg12kg'
 
+import csv
+
 COORDCONJUNCTION = 'and|or|nor|×'.split('|')
 SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless'.split('|')
 
@@ -38,16 +40,42 @@ TO = ['to']
 
 lexicon = {}
 
+multiwords = {}
+
+
+class LexEntry():
+    def __init__(self, POS:str, wordlist:tuple, category=None, appliesto=None):
+        self.POS = POS
+        self.wordlist = wordlist
+        self.category = category
+        self.appliesto = appliesto
 
 def addlexicon(words: list, POS: str):
     for word in words:
-        ws = word.split('_')
+        addlexentry(word, POS, None, None)
+
+
+def addlexentry(word: str, POS: str, category, appliesto):
+    ws = word.strip('_').split('_')
+    if len(ws) > 1:
         firstword = ws[0]
-        if firstword in lexicon:
-            lexicon[firstword] += (POS, tuple(ws))
+        if firstword in multiwords:
+            multiwords[firstword] += [tuple(ws)]
         else:
-            lexicon[firstword] = [(POS, tuple(ws))]
-    pass
+            multiwords[firstword] = [tuple(ws)]
+    lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
+
+
+def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
+    with open(gfile) as csvfile:
+        mydictreader = csv.DictReader(csvfile)
+        for gentry in mydictreader:
+            term, category, appliesto = gentry['term'], gentry['category'], gentry['appliesto']
+            if category in ('structure', 'FEATURE', 'substance''life-style', 'PLANT'):
+                POS = 'NN'
+            else:
+                POS = 'JJ'
+            addlexentry(term, POS, category, appliesto)
 
 
 addlexicon(PUNCTUATION, 'PUNC')
@@ -77,5 +105,10 @@ addlexicon(UNITS, 'UNIT')
 addlexicon(DIMENSION, 'DIM')
 
 addlexicon(COMPARISON, 'JJC')
+
+readcpglossary()
+
+for wlist in multiwords.values():
+    wlist = sorted(wlist, key=len)
 
 pass

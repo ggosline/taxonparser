@@ -2,7 +2,10 @@ __author__ = 'gg12kg'
 
 import re
 from floraparser import botglossary, pos
+from floraparser.lexicon import lexicon, multiwords
 from nltk import Tree
+
+fltagger = pos.FlTagger()
 
 class FlTaxon():
     '''
@@ -82,23 +85,21 @@ class FlWord():
 
 
 class FlToken():
-    mybotg = botglossary.botglossary()
-    fltagger = pos.FlTagger()
 
     def __init__(self, sentence: FlSentence, word: FlWord):
         self.sentence = sentence
         self.word = word
-        self.flDictEntry = None
-        self.flPOS = None
+        self.lexentry = None
+        self.POS = None
         self.slice = word.slice
-        self.flRoot, self.flPOS, self.flDictEntry = FlToken.fltagger.tag_word(self.word.text)
+        self.flRoot, self.POS, self.lexentry = fltagger.tag_word(self.word)
 
     @property
     def text(self):
         return self.word.text
 
     def __repr__(self):
-        return self.word.text + '<' + self.flPOS + '>'
+        return self.word.text + '<' + self.POS + '>'
 
 
 class FlPhrase(Tree):
@@ -197,7 +198,6 @@ class FlTokenizer():
             yield slice(match.start(), match.end())
         if contains_no_words:
             yield slice(0, 0)  # matches PunktSentenceTokenizer's functionality
-
 
 if __name__ == '__main__':
     tryme = FlTokenizer().word_tokenize('c. (0.5)1·5-2·3(4) × 1·5-2·7 cm.')

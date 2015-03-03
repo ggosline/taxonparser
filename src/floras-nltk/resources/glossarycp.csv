@@ -1,4 +1,4 @@
-ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
+ID,term,category,appliesto,fld5,definition,category2,fld8,fld9,guid
 408,carinal,aestivation,,,Having the petals of the keel (carina) enclosing the others.,aestivation,NULL,1,5668b0d3-5bb8-4e1c-a6f8-c28fa204dda1
 520,cochlear,aestivation,,,"Imbricate with one member larger than and exterior to the others, parallel to one that is internal to all the others, strongly incurved, and enclosing the others.",aestivation,NULL,1,64b02f1d-4344-4ad8-8389-e002fad2ad26
 587,contorted,aestivation,,,"Imbricate and whorled, each member in turn overlapped by that to one side and overlapping that to the other, the whole tightly rolled and appearing as though twisted.",architecture,NULL,1,cb7d8775-2979-4cc0-8a5b-a6cfda62af6b
@@ -1768,7 +1768,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 1984,polygamodioecious,reproduction,taxon,,Basically dioecious but with some plants bearing some bisexual flowers.,reproduction,NULL,1,1246268f-5002-4420-a8c3-4711896e4f62
 1985,polygamomonoecious,reproduction,taxon,,Basically monoecious but with some or all plants bearing some bisexual flowers.,reproduction,NULL,1,276ccef6-f573-49e5-b259-e211d769c3e1
 1986,polygamous,reproduction,taxon,,"Having both bisexual and unisexual flowers, borne on the same or on different plants.",reproduction,NULL,1,73028b80-3371-4218-b8d2-8c1dd2505239
-2016,proliferous,reproduction,"plant, structure",,"Bearing plantlets, as from the leaf margin in some KalanchoÔÇÿ (Crassulaceae).",reproduction,NULL,1,b40e8227-1a95-4520-b764-a9a0db01aeeb
+2016,proliferous,reproduction,"plant, structure",,"Bearing plantlets, as from the leaf margin in some Kalanchoï¿½ï¿½ï¿½ (Crassulaceae).",reproduction,NULL,1,b40e8227-1a95-4520-b764-a9a0db01aeeb
 2278,self-fertilizing,reproduction,taxon,,Having fertilization regularly involving gametes derived from the same plant.,reproduction,NULL,1,ca44ad60-7414-4e72-aeae-515fe3a355ec
 2279,selfing,reproduction,taxon,,Having fertilization regularly involving gametes derived from the same plant.,reproduction,NULL,1,03bd52f1-29b0-4a7c-a244-2ec911a14dee
 2499,sterile,reproduction,"plant, reproductive structure",,"Not producing functional spores, gametes, pollen, ovules, seeds, or other propagules.",reproduction,NULL,1,23bdbb02-1c79-4fdc-9f42-04654c0b9fff
@@ -1814,7 +1814,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 23,acrid,shape,,,"Terminating abruptly in a rigid, relatively short, sharp point composed of both vascular and laminar tissues.",shape,NULL,1,b7716031-3ef9-4077-9a56-7d5f05d9779d
 34,aculeate,shape,,,"Having slender, stiff, sharp projections oriented in the general plane of the structure.",shape,NULL,1,a391f977-717c-410a-a82b-e66259eb902c
 35,acuminate,shape,,,"Gradually diminishing in width or diameter to a slender tip, the sides longitudinally concave.  Corresponds with attenuate for base shape.",shape,NULL,1,acd76ca4-54ae-48a8-abad-30c7aa996bb8
-36,acute,shape,,,"Sharply angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90?í.",shape,NULL,1,e9ccc258-c44c-4b18-88e3-e9cd0169017f
+36,acute,shape,,,"Sharply angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90?ï¿½.",shape,NULL,1,e9ccc258-c44c-4b18-88e3-e9cd0169017f
 86,ampulliform,shape,,,"Generally circular in cross-section, broadest at or below the middle, approximately globose below that and constricted above to a relatively narrow neck; like a flask.",arrangement,NULL,1,20b04210-7d61-4568-b73e-1a432dfa5907
 104,angled,shape,,,Having sides that meet at acute or obtuse angles.,shape,NULL,1,a2370508-2458-4df4-8c18-72e4b213fab1
 106,angular,shape,,,Having sides that meet at acute or obtuse angles.,shape,NULL,1,a488a571-8ed1-4ee5-bf16-0df5a10fcd97
@@ -1847,7 +1847,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 289,bifurcate,shape,,,"Having two terminal, antrorse branches or divisions arising from a common point or level, like the prongs of a fork.",shape,NULL,1,85c293ae-a958-4124-bf4c-e8a88f1bc9b8
 2954,bipyramidal,shape,NULL,NULL,NULL,NULL,NULL,0,71ff3ecf-3c5a-405a-b138-cd9bc6ad5e0c
 294,birettaform,shape,,,Approximately square in cross section and shallowly convex at the top; like a biretta (Roman Catholic cleric's hat).,shape,NULL,1,420d782c-d0e0-4b13-95b0-08d669968f7d
-302,blunt,shape,,,Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90?í or more.,shape,q,1,25a0f940-0995-418f-9b37-466b524a96e8
+302,blunt,shape,,,Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90?ï¿½ or more.,shape,q,1,25a0f940-0995-418f-9b37-466b524a96e8
 304,boat-shaped,shape,,,"Like the generalized form of a boat hull, the walls relatively thin to moderately thick, the interior essentially empty and open along one side.",shape,NULL,1,12c98153-aebb-42ad-a856-a1b79180e0f9
 307,bossed,shape,,,Having an umbo.,shape,NULL,1,5bd4862a-d835-4b78-865c-4a1efeb28ccd
 311,botuliform,shape,,,Arcuately cylindric with rounded ends.,shape,NULL,1,ccb87ed1-a2ba-400c-8f67-3ea7a9305669
@@ -2161,7 +2161,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 1720,obtrulliform,shape,,,"Inversely trulliform (trowel-shaped, trullate).",shape,NULL,1,ed2eddfc-e36b-49ae-b167-2f452039e26f
 1721,obtrulloid,shape,,,Inversely trulloid.,shape,NULL,1,e6126508-8da0-40ca-9c0c-d5531d9479b6
 1722,obturbinate,shape,,,Inversely turbinate (top-shaped).  See also pyriform (pear-shaped).,shape,NULL,1,aa37f6fe-1b78-4ab3-bb7f-b093461d88b1
-1723,obtuse,shape,,,Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90?í or more.,shape,NULL,1,a0e2a732-01ad-44e9-be3c-53c3eb5d7add
+1723,obtuse,shape,,,Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90?ï¿½ or more.,shape,NULL,1,a0e2a732-01ad-44e9-be3c-53c3eb5d7add
 1757,orbicular,shape,,,"Uniformly convex, circular in any median section and in outline when viewed from any angle; like a sphere or globe.",shape,NULL,1,c34634e9-ff69-4b88-b256-282c4bcff399
 1758,orbiculate,shape,,,Circular.,shape,NULL,1,caa31494-e0ec-4560-b77f-5069cb05455e
 1763,oval,shape,,,"Elongate, widest at the middle, and symmetrically convex-attenuate to rounded ends.  See also oblong.",shape,NULL,1,40efe1b3-d617-4db4-b937-027539513aeb
@@ -2217,7 +2217,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 2078,pyriform,shape,,,"Basically circular in transverse section, broadest toward one end, attenuate toward and much narrower at the other, both ends rounded; slenderly turbinate or obturbinate; like a pear.",shape,NULL,1,6f3924cd-5d40-404e-96c9-5df79ed43dbb
 3404,quadrangular,shape,,,,,,,
 3155,raylike,shape,NULL,NULL,NULL,NULL,NULL,0,70b42401-5b47-4e25-a578-a40fd079b0af
-2132,rectangular,shape,,,"Basically four-sided, the sides more or less straight, those of each opposing pair more or less parallel, the generalized angles between adjacent sides approximately 90?í.",shape,NULL,1,17603caa-84cf-400e-9739-de660ef4beb2
+2132,rectangular,shape,,,"Basically four-sided, the sides more or less straight, those of each opposing pair more or less parallel, the generalized angles between adjacent sides approximately 90?ï¿½.",shape,NULL,1,17603caa-84cf-400e-9739-de660ef4beb2
 3156,recurving,shape,NULL,NULL,NULL,NULL,NULL,0,895f390d-06bf-41c8-93d0-11456784fca2
 3442,reddish-glandular-denticulate,shape,margin,,,,,,
 3443,reddish-glandular-fringed,shape,margin,,,,,,
@@ -2274,7 +2274,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 3449,serrulate-crenulate,shape,margin,,,,,,
 2316,setaceous,shape,,,"Elongate, slender, terete, straight, terminating in a fine point, and apparently stiff; like a bristle.",shape,NULL,1,5c14b5a9-de5c-42fd-b7d7-512bfe5809fe
 2317,setiform,shape,,,"Elongate, slender, terete, straight, terminating in a fine point, and apparently stiff; like a bristle.",shape,NULL,1,e7348e1f-a6d2-45ea-8efd-069e4e23935c
-2322,sharp,shape,,,"Acutely angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90?í.",shape,NULL,1,e5dc6951-b248-43ae-8d1e-1559e8dc3418
+2322,sharp,shape,,,"Acutely angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90?ï¿½.",shape,NULL,1,e5dc6951-b248-43ae-8d1e-1559e8dc3418
 2326,sheathing,shape,laminar structure,,Terete or involute and closely enclosing the supporting axis for some distance above the point of insertion.,shape,NULL,1,3904123a-9144-4213-8da1-689697ee3923
 2335,sickle-shaped,shape,,,"Elongate and laterally arcuate with the lateral edges more or less concentric, the degree of curvature decreasing distally or not; like the outline of the face of a sickle blade.",shape,NULL,1,0c125969-e922-4840-939a-f5a36937adbe
 2338,sigmoid,shape,,,"Elongate with more or less constant width or diameter and curved more or less regularly first in one direction and then in the opposite direction, like the letter S.",shape,NULL,1,7b3c1812-1a78-4b4c-8a60-8281da646080
@@ -2935,7 +2935,7 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 1946,placenta,structure,,,"An ovule-bearing zone of the tissue surface bordering an ovary locule; of merely topographic, not histological, significance; may be a part of the ovary wall proper or an extension from it, or a part of the central axis of the ovary or an extension from i",STRUCTURE,NULL,0,47369b15-c794-47ba-859e-44ff4d99c5b8
 1947,placentae,structure,,,"An ovule-bearing zone of the tissue surface bordering an ovary locule; of merely topographic, not histological, significance; may be a part of the ovary wall proper or an extension from it, or a part of the central axis of the ovary or an extension from i",STRUCTURE,NULL,0,2f9cc2ef-9943-4a58-8f0d-01214acd0b4e
 1948,placentas,structure,,,"An ovule-bearing zone of the tissue surface bordering an ovary locule; of merely topographic, not histological, significance; may be a part of the ovary wall proper or an extension from it, or a part of the central axis of the ovary or an extension from i",STRUCTURE,NULL,0,3d86068e-4587-4b88-b73f-5fe663bc4d07
-1957,plantlet,structure,,,"A juvenile, complete plant produced asexually by budding, as from the leaf margin in some KalanchoÔÇÿ (Crassulaceae); this term is usually applied only while such vegetatively produced offspring remain attached to the plant of origin.",STRUCTURE,NULL,0,5b767969-6af8-46ea-90f2-63a80ca1dfee
+1957,plantlet,structure,,,"A juvenile, complete plant produced asexually by budding, as from the leaf margin in some Kalanchoï¿½ï¿½ï¿½ (Crassulaceae); this term is usually applied only while such vegetatively produced offspring remain attached to the plant of origin.",STRUCTURE,NULL,0,5b767969-6af8-46ea-90f2-63a80ca1dfee
 1970,plumule,structure,,,"A distinguishable nascent shoot developed in the embryo in some taxa, consisting of a shoot axis with unexpanded internodes and one or more leaf primordia, being that portion of the embryo above the level of cotyledon insertion; the primordial shoot, when",STRUCTURE,NULL,0,1a78d04d-94d3-4c0d-9a27-17d9ee72f968
 1972,pneumatophore,structure,,,"A structurally and functionally specialized root serving as an aboveground aerating organ; found in some woody taxa of wet habitats, notably some mangroves.",STRUCTURE,NULL,0,949283b0-6c2b-42d9-b770-2ed30fd9c554
 1974,pollen,structure,,,"Collectively, the spores or grains produced within the thecae of anthers, each containing a very small microgametophyte (or its evolutionary homologue); serving as disseminules from which microgametes are released after transport to a receptive micropylar",STRUCTURE,NULL,0,dcb25749-4e0d-404b-b37e-ed341f536788
@@ -3156,10 +3156,10 @@ ID,term,category,appliesTo,fld5,definition,category2,fld8,fld9,guid
 2839,vasculature,structure,,,"The vascular strands of all orders (veins and veinlets) in a particular part or organ, regarded collectively; consisting of conducting tissues (xylem, phloem) and associated supporting and enclosing tissues (e.g., sclerenchyma, collenchyma).",STRUCTURE,NULL,0,caf918bf-f4c4-423c-8008-87c96e5399a0
 2841,vein,structure,,,"A strand belonging to any except the ultimate (least in diameter) order of vasculature in a leaf or other foliaceous structure.  See also lateral vein, primary vein, secondary vein, tertiary vein, veinlet.",STRUCTURE,NULL,0,0ffb8a17-fe6c-494b-869b-5fd407cae83b
 2843,veinlet,structure,,,A strand belonging to the ultimate (least in diameter) order of vasculature in a leaf or other basically laminar structure when that order consists of strands ending freely within areoles and/or connecting distally by pairs across areoles; absent in some,STRUCTURE,NULL,0,e3ab3fff-3015-4b76-af51-fc69ee9396d8
-2847,vela,structure,,,A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in IsoÔÇÿtaceae.,STRUCTURE,NULL,0,a24a9bde-3094-4277-9e76-4a31a0ea34be
+2847,vela,structure,,,A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in Isoï¿½ï¿½ï¿½taceae.,STRUCTURE,NULL,0,a24a9bde-3094-4277-9e76-4a31a0ea34be
 2844,velamen,structure,,,"A thin, often chartaceous (papery, papyraceous) or pergamentaceous (parchment-like), outermost tissue layer of an aerial root; esp. in Orchidaceae.",STRUCTURE,NULL,0,5ad0c920-f1fa-4a41-b6af-c162eca10613
 2845,velamina,structure,,,"A thin, often chartaceous (papery, papyraceous) or pergamentaceous (parchment-like), outermost tissue layer of an aerial root; esp. in Orchidaceae.",STRUCTURE,NULL,0,176b1f82-00fa-4854-8365-28fc0a6e969a
-2846,velum,structure,,,A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in IsoÔÇÿtaceae.,STRUCTURE,NULL,0,150be79d-f48f-41b8-a660-fefbf186e752
+2846,velum,structure,,,A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in Isoï¿½ï¿½ï¿½taceae.,STRUCTURE,NULL,0,150be79d-f48f-41b8-a660-fefbf186e752
 2859,verticil,structure,,,A set of three or more lateral structures that are inserted around an axis at the same level.,STRUCTURE,NULL,0,12607624-3d2a-4113-bd86-0e2557f2f473
 2862,vesicle,structure,,,"A small bladder-like part consisting of an enclosing wall or covering and an empty or fluid-filled interior, sometimes turgid; esp. in citrus fruits (hesperidia).",STRUCTURE,NULL,0,85471d6d-e7ca-40eb-92d7-d5c354850ab2
 2866,vestiture,structure,,,See vesture.,STRUCTURE / SUBSTANCE,NULL,1,d67275c7-6fb8-41dc-88ad-32cf2fda58e1
