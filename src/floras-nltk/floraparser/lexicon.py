@@ -20,7 +20,7 @@ CLUSTERSTRINGS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fa
 
 LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
              "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
-             "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5".split('|')
+             "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5|2/5".split('|')
 
 ORDNUMBERS = "primary|secondary|tertiary".split('|')
 
@@ -71,7 +71,7 @@ def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
         mydictreader = csv.DictReader(csvfile)
         for gentry in mydictreader:
             term, category, appliesto = gentry['term'], gentry['category'], gentry['appliesto']
-            if category in ('structure', 'FEATURE', 'substance''life-style', 'PLANT'):
+            if category in ('structure', 'FEATURE', 'substance''life_style', 'PLANT'):
                 POS = 'NN'
             else:
                 POS = 'JJ'

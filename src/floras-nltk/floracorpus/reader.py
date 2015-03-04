@@ -104,6 +104,7 @@ if __name__ == "__main__":
         for sent in t.sentences:
             for token in sent.tokens:
                 if token.POS == 'UNK':
+                    print(sent.tokens)
                     notindict.add(token.text)
     with open('notindict.txt', 'w', encoding='utf-8') as nidf:
         for wd in sorted(notindict):

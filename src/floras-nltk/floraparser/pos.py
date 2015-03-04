@@ -11,16 +11,17 @@ from floraparser.lexicon import lexicon, multiwords
 PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
                     r'mid|mono|multi|ob|octo|over|penta|poly|postero|post|ptero|pseudo|quadri|quinque|semi|sub|sur|syn|'
-                    r'tetra|tri|uni|xero)(?P<root>.+)\b')
+                    r'tetra|tri|uni|multi|xero)(?P<root>.+)\b')
 
 # SUFFIX = re.compile(r"\b(?P<root>\w*)(?P<suffix>er|est|fid|form|ish|less|like|ly|merous|most|shaped)\b")
-SUFFIX = re.compile(r"\b(?P<root>\w+)(?P<suffix>form|ish|merous|most|shaped)\b")
+SUFFIX = re.compile(r"\b(?P<root>\w+)(?P<suffix>form|ish|merous|most|shaped|like)\b")
 
 PLENDINGS = re.compile(r"(?:[^aeiou]ies|i|ia|(x|ch|sh)es|ves|ices|ae|s)$")
 
 NUMBERS = re.compile(r'^[0-9–—.·()]+$')
 
 class FlTagger():
+
     def rootword(self, word):
         # hyphenated word
         # return list of words with last word first (the root?)
@@ -62,10 +63,12 @@ class FlTagger():
                     break
             if match:
                 flword.slice = slice(words[iword].slice.start, words[windx + iword].slice.stop)
+                for wn in words[iword + 1: windx + iword + 1]:
+                    wn.slice = slice(0, 0)  # mark as null word
                 # need to delete the words here but in the middle of a for loop
                 return wlist
             else:
-                return tuple(word)
+                return (word,)
 
     def tag_word(self, flword):
         """
@@ -80,14 +83,14 @@ class FlTagger():
         if word in multiwords:  # multi word phrase
             ws = self.multiwordtokenize(flword, word)
         else:
-            ws = tuple(word)
+            ws = (word,)
 
         if ws in lexicon:
             return flword, lexicon[ws].POS, lexicon[ws]
 
         ws = FlTagger.singularize(self, word)
         if ws:
-            ws = tuple(ws)
+            ws = (ws,)
             if ws in lexicon:
                 if lexicon[ws].POS == 'NN':
                     POS = 'NNS'
@@ -98,10 +101,12 @@ class FlTagger():
         # Try taking the word apart at dashes
         root = self.rootword(word)
         if root:
-            if tuple(root[0]) in lexicon:
-                return root, lexicon[root[0]].POS, lexicon[root[0]]
-            if tuple('_' + root[0]) in lexicon:  # suffix
-                return root, lexicon[root[0]].POS, lexicon['_' + root[0]]
+            if (root[0],) in lexicon:
+                le = lexicon[(root[0],)]
+                return root, le.POS, le
+            if ('_' + root[0],) in lexicon:  # suffix
+                le = lexicon[('_' + root[0],)]
+                return root, le.POS, le
 
         if word.endswith('ly'):
             return flword, 'RB', None
