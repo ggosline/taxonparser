@@ -1,8 +1,11 @@
 __author__ = 'gg12kg'
 
 import re
-from floraparser import glossaryreader, pos
+from floraparser import botglossary, pos
+from floraparser.lexicon import lexicon, multiwords
+from nltk import Tree
 
+fltagger = pos.FlTagger()
 
 class FlTaxon():
     '''
@@ -23,8 +26,11 @@ class FlTaxon():
         self.description = trec['description']
         self.sentences = [FlSentence(self, sl[0], sl[1]) for sl in
                           sentence_tokenizer(self.description)] if self.description else []
-        pass
 
+    def __repr__(self):
+        return ' '.join(
+            [f for f in (self.flora, self.rank, self.family, self.genus, self.species, self.infrarank, self.infraepi) if
+             f])
 
 class FlSentence():
     def __init__(self, taxon, fromchar, tochar):
@@ -79,26 +85,24 @@ class FlWord():
 
 
 class FlToken():
-    mybotg = glossaryreader.botglossary()
-    fltagger = pos.FlTagger()
 
     def __init__(self, sentence: FlSentence, word: FlWord):
         self.sentence = sentence
         self.word = word
-        self.flDictEntry = None
-        self.flPOS = None
+        self.lexentry = None
+        self.POS = None
         self.slice = word.slice
-        self.flRoot, self.flPOS, self.flDictEntry = FlToken.fltagger.tag_word(self.word.text)
+        self.flRoot, self.POS, self.lexentry = fltagger.tag_word(self.word)
 
     @property
     def text(self):
         return self.word.text
 
     def __repr__(self):
-        return self.word.text + '<' + self.flPOS + '>'
+        return self.word.text + '<' + self.POS + '>'
 
 
-class FlPhrase():
+class FlPhrase(Tree):
     def __init__(self, sentence, slice=slice(0)):
         self.sentence = sentence
         self.slice = slice
@@ -107,6 +111,10 @@ class FlPhrase():
         self.parent = None
 
     def split(self, separator: str):
+        '''
+        Split a phrase based on a character string
+        Returns slices for the substring with the separator omitted
+        '''
         locations = [i for i, val in enumerate(self.tokens) if val.text == separator]
         locations.insert(0, -1)
         locations.append(None)
@@ -123,7 +131,7 @@ class FlTokenizer():
                             (?:\(\d+(?:[.·]\d+)?\))?
                         '''
 
-    _re_word_start = r"[^\(\"\`{\[:;&\#\*@\)}\]\-,]"
+    _re_word_start = r"[^\(\"\`{\[:;&\#\*@\)}\],]"
     """Excludes some characters from starting word tokens"""
 
     _re_non_word_chars = r"(?:[?!)\";}\]\*:@\'\({\[])"
@@ -190,7 +198,6 @@ class FlTokenizer():
             yield slice(match.start(), match.end())
         if contains_no_words:
             yield slice(0, 0)  # matches PunktSentenceTokenizer's functionality
-
 
 if __name__ == '__main__':
     tryme = FlTokenizer().word_tokenize('c. (0.5)1·5-2·3(4) × 1·5-2·7 cm.')

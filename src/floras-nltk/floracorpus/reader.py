@@ -8,22 +8,6 @@ from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktWo
 from floracorpus.SQLitedb import SQLitedb
 from floraparser.fltoken import FlToken, FlTokenizer, FlTaxon, FlPhrase
 
-# from floracorpus.ADO import ADOdb
-#  class AccessDBSequence(AbstractLazySequence):
-#
-#     def __init__(self, db='test', flora='fz', query="Select * from Taxa;", fieldlst=('taxonNo','family','genus','species','infrarank','infraepi','description')):
-#         self.conn = ADOdb(db)
-#         self.conn.OpenTable(query, fieldlst)
-#
-#     def __len__(self):
-#         return self.conn.RecordCount()
-#
-#     def iterate_from(self, start):
-#         # f = lambda d: d.get(self.field, '')
-#         # return iter(LazyMap(f, self.collection.find(fields=[self.field], skip=start)))
-#         self.conn.MoveTo(start)
-#         return iter(self.conn.NextRec, None)
-
 class AbstractFloraCorpusReader(object):
 
     def __init__(self, reader=None,
@@ -45,6 +29,7 @@ class AbstractFloraCorpusReader(object):
         :return: the given file(s) as a single string.
         :rtype: str
         """
+
         return self._taxa
 
         # def words(self, taxonids=None):
@@ -107,25 +92,23 @@ if __name__ == "__main__":
                              query="Select * from Taxa where family = 'Celastraceae';", )
     # myds.OpenTable("SELECT APD.* FROM [APD] WHERE (((APD.[family])='agavaceae'));")
     taxa = myds.taxa
-    for t in taxa:
-        for s in t.sentences:
-            if len(s.phrases) > 1:
-                print(s.phrases)
+    # for t in taxa:
+    # for s in t.sentences:
+    #         if len(s.phrases) > 1:
+    #             print(s.phrases)
 
     pass
-    # mysents = myds.sents()
-    # mywords = myds.words()
-    # mytokens = myds.tokens()
 
-    # notindict = set()
-    # for taxid, desc in mytokens:
-    # for sent in desc:
-    #         for token in sent:
-    #             if token.flPOS == 'UNK':
-    #                 notindict.add(token._text)
-    # with open('notindict.txt','w', encoding='utf-8') as nidf:
-    #     for wd in sorted(notindict):
-    #         print(wd, file=nidf, )
+    notindict = set()
+    for t in taxa:
+        for sent in t.sentences:
+            for token in sent.tokens:
+                if token.POS == 'UNK':
+                    print(sent.tokens)
+                    notindict.add(token.text)
+    with open('notindict.txt', 'w', encoding='utf-8') as nidf:
+        for wd in sorted(notindict):
+            print(wd, file=nidf, )
 
     del myds
 

@@ -2,59 +2,29 @@
 __author__ = 'George'
 
 import re
-from textblob import Word, TextBlob
-from textblob.base import BaseTagger
-from floraparser.glossaryreader import botglossary
-from nltk.tag.api import TaggerI
 
-fnaglossary = botglossary().glossary
+from textblob import Word
 
-COORDCONJUNCTION = 'and|or|nor|×'.split('|')
-SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless'.split('|')
+from floraparser.lexicon import lexicon, multiwords
+# from floraparser.fltoken import FlWord, FlSentence
 
-ARTICLE = 'the|a|an'.split('|')
-
-PUNCTUATION = ',|;|(|)'.split('|')
-
-NOT = 'not'
-
-PREPOSITION = 'above|across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
-              'during|for|from|in|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
-              'towards|up|upward|with|without'.split('|')
-
-CLUSTERSTRINGS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
-                 "pairs|pair|rows|number|numbers".split('|')
-
-PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|de|dis|di|dodeca|endo|end|e|hemi|hetero|hexa|homo|infra|inter|ir|'
+PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
                     r'mid|mono|multi|ob|octo|over|penta|poly|postero|post|ptero|pseudo|quadri|quinque|semi|sub|sur|syn|'
-                    r'tetra|tri|uni|un|xero)(?P<root>.*)\b')
+                    r'tetra|tri|uni|multi|xero)(?P<root>.+)\b')
 
-SUFFIX = re.compile(r"\b(?P<root>\w*)(?P<suffix>er|est|fid|form|ish|less|like|ly|merous|most|shaped)\b")
+# SUFFIX = re.compile(r"\b(?P<root>\w*)(?P<suffix>er|est|fid|form|ish|less|like|ly|merous|most|shaped)\b")
+SUFFIX = re.compile(r"\b(?P<root>\w+)(?P<suffix>form|ish|merous|most|shaped|like)\b")
 
 PLENDINGS = re.compile(r"(?:[^aeiou]ies|i|ia|(x|ch|sh)es|ves|ices|ae|s)$")
 
-LITNUMBERS = "zero|one|ones|first|two|second|three|third|thirds|four|fourth|fourths|quarter|" \
-             "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
-             "nine|ninths|ninth|tenths|tenth".split('|')
+NUMBERS = re.compile(r'^[0-9–—.·()]+$')
 
-ORDNUMBERS = "primary|secondary|tertiary".split('|')
-
-NUMBERS = re.compile(r'^[0-9–—\-.·()]+$')
-
-ACCURACY = "c|about|more or less|±|very|a little|not much|all|rather|up to|less than|exactly".split('|')
-
-FREQUENCY = "sometimes|often|usually|rarely|generally|never|always".split('|')
-
-DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly".split('|')
-
-TO = ['to']
-
-
-class FlTagger(TaggerI, BaseTagger):
+class FlTagger():
 
     def rootword(self, word):
         # hyphenated word
+        # return list of words with last word first (the root?)
         if '-' in word:
             wrds = word.split('-')
             if NUMBERS.match(wrds[0]):
@@ -73,72 +43,87 @@ class FlTagger(TaggerI, BaseTagger):
 
     def singularize(self, word):  # Using textblob Word here
         """
-        :param word: textblob.Word
+        :param word: str
         """
         if PLENDINGS.search(word):
-            return word.singularize()
+            return Word(word).singularize()
 
-
-    def tag_word(self, tbword):
-        """
-        :param word: textblob.Word
-        """
-        word = Word(tbword.lower())
-        if word in PUNCTUATION:
-            return word, 'PUNC', None
-        if word in PREPOSITION:
-            return word, 'PP', None
-        if word in COORDCONJUNCTION:
-            return word, 'CC', None
-        if word in TO:
-            return 'to', 'TO', None
-        if word in ARTICLE:
-            return word, 'ART', None
-        if NUMBERS.match(word):
-            return word, 'NUM', None
-        if word in ACCURACY:
-            return word, 'RBA', None
-        if word in FREQUENCY:
-            return word, 'RBF', None
-        if word in DEGREE:
-            return word, 'RBD', None
-        if word in NOT:
-            return word, 'NOT', None
-        if word in ORDNUMBERS:
-            return word, 'NUMO', None
-
-        if word in fnaglossary:
-            if fnaglossary[word].category in ('structure','FEATURE','substance''life-style','PLANT'):
-                return word, 'NN', fnaglossary[word]
+    def multiwordtokenize(self, flword, word):
+        sent = flword.sentence
+        words = sent.words
+        mwlist = multiwords[word]
+        iword = words.index(flword)
+        for wlist in mwlist:  # Could optimize
+            for windx in range(0, len(wlist)):
+                match = None
+                if iword + windx < len(words) and wlist[windx] == words[iword + windx].text:
+                    match = slice(iword, windx + iword)
+                else:
+                    match = None
+                    break
+            if match:
+                flword.slice = slice(words[iword].slice.start, words[windx + iword].slice.stop)
+                for wn in words[iword + 1: windx + iword + 1]:
+                    wn.slice = slice(0, 0)  # mark as null word
+                # need to delete the words here but in the middle of a for loop
+                return wlist
             else:
-                # print(word, fnaglossary[word].category)
-                return word, 'JJ', fnaglossary[word]
+                return (word,)
+
+    def tag_word(self, flword):
+        """
+        :param flword: fltoken.FlWord
+        """
+
+        word = flword.text.lower()
+
+        if NUMBERS.match(word):
+            return flword, 'NUM', None
+
+        if word in multiwords:  # multi word phrase
+            ws = self.multiwordtokenize(flword, word)
+        else:
+            ws = (word,)
+
+        if ws in lexicon:
+            return flword, lexicon[ws].POS, lexicon[ws]
 
         ws = FlTagger.singularize(self, word)
-        if ws in fnaglossary:
-            if fnaglossary[ws].category in ('structure','FEATURE','substance''life-style','PLANT'):
-                return ws, 'NNS', fnaglossary[ws]
-        else:
-            root = self.rootword(word)
-            if root and root[0] in fnaglossary:
-                return root, 'JJ', fnaglossary[root[0]]
+        if ws:
+            ws = (ws,)
+            if ws in lexicon:
+                if lexicon[ws].POS == 'NN':
+                    POS = 'NNS'
+                else:
+                    POS = lexicon[ws].POS
+                return flword, POS, lexicon[ws]
+
+        # Try taking the word apart at dashes
+        root = self.rootword(word)
+        if root:
+            if (root[0],) in lexicon:
+                le = lexicon[(root[0],)]
+                return root, le.POS, le
+            if ('_' + root[0],) in lexicon:  # suffix
+                le = lexicon[('_' + root[0],)]
+                return root, le.POS, le
 
         if word.endswith('ly'):
-            return word, 'RB', None
+            return flword, 'RB', None
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets
         # for sy in synsets:
         # pass
 
-        return word, 'UNK', None
+        return flword, 'UNK', None
 
-    def tag(self, blob):
-        return [self.tag_word(word) for word in blob.words]
+    # def tag(self, blob):
+        # return [self.tag_word(word) for word in blob.words]
 
 
 if __name__ == "__main__":
     tagger = FlTagger()
-    testword = "elliptic-oblong"
-    print(tag(word))
+    testword = "3-locular"
+    print(tagger.tag_word(testword))
     # print(posfromglossary(word))
