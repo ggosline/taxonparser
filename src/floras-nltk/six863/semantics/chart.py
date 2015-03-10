@@ -3,20 +3,14 @@
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Edward Loper <edloper@gradient.cis.upenn.edu>
 # Steven Bird <sb@csse.unimelb.edu.au>
-#         Jean Mark Gawron <gawron@mail.sdsu.edu>
+# Jean Mark Gawron <gawron@mail.sdsu.edu>
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
 
-try:
-    from .__init__ import *
-    from . import cfg
-except:
-    from __init__ import *
-    import cfg
-
-from nltk import Tree
+from __init__ import *
+from nltk import cfg, Tree
 
 """
 Data classes and parser implementations for \"chart parsers\", which
@@ -169,16 +163,13 @@ class EdgeI(object):
         """
         raise AssertionError('EdgeI is an abstract interface')
 
-    def __next__(self):
+    def next(self):
         """
         @return: The element of this edge's right-hand side that
             immediately follows its dot.
         @rtype: C{Nonterminal} or X{terminal} or C{None}
         """
         raise AssertionError('EdgeI is an abstract interface')
-
-    def next(self):
-        return self.__next__()
 
     def is_complete(self):
         """
@@ -199,7 +190,7 @@ class EdgeI(object):
     #////////////////////////////////////////////////////////////
     # Comparisons
     #////////////////////////////////////////////////////////////
-    def __eq__(self, other):
+    def __cmp__(self, other):
         raise AssertionError('EdgeI is an abstract interface')
 
     def __hash__(self, other):
@@ -302,17 +293,17 @@ class TreeEdge(EdgeI):
     def is_incomplete(self):
         return self._dot != len(self._rhs)
 
-    def __next__(self):
+    def next(self):
         if self._dot >= len(self._rhs):
             return None
         else:
             return self._rhs[self._dot]
 
     # Comparisons & hashing
-    def __eq__(self, other):
+    def __cmp__(self, other):
         if self.__class__ != other.__class__: return -1
-        return ((self._span, self.lhs(), self.rhs(), self._dot) ==
-                (other._span, other.lhs(), other.rhs(), other._dot))
+        return cmp((self._span, self.lhs(), self.rhs(), self._dot),
+                   (other._span, other.lhs(), other.rhs(), other._dot))
 
     def __hash__(self):
         return hash((self.lhs(), self.rhs(), self._span, self._dot))
@@ -379,12 +370,12 @@ class LeafEdge(EdgeI):
 
     def is_incomplete(self): return False
 
-    def __next__(self): return None
+    def next(self): return None
 
     # Comparisons & hashing
-    def __eq__(self, other):
+    def __cmp__(self, other):
         if not isinstance(other, LeafEdge): return -1
-        return ((self._index, self._leaf) == (other._index, other._leaf))
+        return cmp((self._index, self._leaf), (other._index, other._leaf))
 
     def __hash__(self):
         return hash((self._index, self._leaf))
@@ -536,14 +527,13 @@ class Chart(object):
         if restrictions == {}: return iter(self._edges)
 
         # Find the index corresponding to the given restrictions.
-        restr_keys = list(restrictions.keys())
+        restr_keys = restrictions.keys()
         restr_keys.sort()
         restr_keys = tuple(restr_keys)
 
         # If it doesn't exist, then create it.
-        if restr_keys not in self._indexes:
+        if not self._indexes.has_key(restr_keys):
             self._add_index(restr_keys)
-
         vals = [restrictions[k] for k in restr_keys]
         return iter(self._indexes[restr_keys].get(tuple(vals), []))
 
@@ -555,7 +545,7 @@ class Chart(object):
         # Make sure it's a valid index.
         for k in restr_keys:
             if not hasattr(EdgeI, k):
-                raise ValueError('Bad restriction: %s' % k)
+                raise ValueError, 'Bad restriction: %s' % k
 
         # Create the index.
         self._indexes[restr_keys] = {}
@@ -587,12 +577,12 @@ class Chart(object):
             C{child_pointer_list} with C{edge}.
         """
         # Is it a new edge?
-        if edge not in self._edge_to_cpls:
+        if not self._edge_to_cpls.has_key(edge):
             # Add it to the list of edges.
             self._edges.append(edge)
 
             # Register with indexes
-            for (restr_keys, index) in list(self._indexes.items()):
+            for (restr_keys, index) in self._indexes.items():
                 vals = [getattr(edge, k)() for k in restr_keys]
                 index = self._indexes[restr_keys]
                 index.setdefault(tuple(vals), []).append(edge)
@@ -601,7 +591,7 @@ class Chart(object):
         cpls = self._edge_to_cpls.setdefault(edge, {})
         child_pointer_list = tuple(child_pointer_list)
 
-        if child_pointer_list in cpls:
+        if cpls.has_key(child_pointer_list):
             # We've already got this CPL; return false.
             return False
         else:
@@ -619,6 +609,9 @@ class Chart(object):
         the entire chart, and whose root node is C{root}.
         """
         trees = []
+        #for edge in self._edges:
+        #    if edge._start == 0 and edge._end == self._num_leaves
+        #    and str(edge._lhs ==)
         for edge in self.select(span=(0, self._num_leaves), lhs=root):
             trees += self.trees(edge, tree_class=tree_class, complete=True)
         return trees
@@ -648,7 +641,7 @@ class Chart(object):
             than once, we can reuse the same trees.
         """
         # If we've seen this edge before, then reuse our old answer.
-        if edge in memo: return memo[edge]
+        if memo.has_key(edge): return memo[edge]
 
         trees = []
 
@@ -724,7 +717,7 @@ class Chart(object):
             been used to form this edge.
         """
         # Make a copy, in case they modify it.
-        return list(self._edge_to_cpls.get(edge, {}).keys())
+        return self._edge_to_cpls.get(edge, {}).keys()
 
     #////////////////////////////////////////////////////////////
     # Display
@@ -738,8 +731,6 @@ class Chart(object):
             index in the sentence.
         """
         if width is None: width = 50 / (self.num_leaves() + 1)
-        width = int(width)
-
         (start, end) = (edge.start(), edge.end())
 
         str = '|' + ('.' + ' ' * (width - 1)) * start
@@ -770,8 +761,6 @@ class Chart(object):
             for calls to L{pp_edge}.
         """
         if width is None: width = 50 / (self.num_leaves() + 1)
-
-        width = int(width)
 
         if self._tokens is not None and width > 1:
             header = '|.'
@@ -894,7 +883,7 @@ class ChartRuleI(object):
         @rtype: C{list} of L{EdgeI}
         @return: A list of the edges that were added.
         """
-        raise AssertionError('ChartRuleI is an abstract interface')
+        raise AssertionError, 'ChartRuleI is an abstract interface'
 
     def apply_iter(self, chart, grammar, *edges):
         """
@@ -909,7 +898,7 @@ class ChartRuleI(object):
             that should be passed to C{apply} is specified by the
             L{NUM_EDGES} class variable.
         """
-        raise AssertionError('ChartRuleI is an abstract interface')
+        raise AssertionError, 'ChartRuleI is an abstract interface'
 
     def apply_everywhere(self, chart, grammar):
         """
@@ -919,7 +908,7 @@ class ChartRuleI(object):
         @rtype: C{list} of L{EdgeI}
         @return: A list of the edges that were added.
         """
-        raise AssertionError('ChartRuleI is an abstract interface')
+        raise AssertionError, 'ChartRuleI is an abstract interface'
 
     def apply_everywhere_iter(self, chart, grammar):
         """
@@ -930,7 +919,7 @@ class ChartRuleI(object):
             return.
         @rtype: C{iter} of L{EdgeI}
         """
-        raise AssertionError('ChartRuleI is an abstract interface')
+        raise AssertionError, 'ChartRuleI is an abstract interface'
 
 
 class AbstractChartRule(object):
@@ -949,7 +938,7 @@ class AbstractChartRule(object):
 
     # Subclasses must define apply_iter.
     def apply_iter(self, chart, grammar, *edges):
-        raise AssertionError('AbstractChartRule is an abstract class')
+        raise AssertionError, 'AbstractChartRule is an abstract class'
 
     # Default: loop through the given number of edges, and call
     # self.apply() for each set of edges.
@@ -977,7 +966,7 @@ class AbstractChartRule(object):
                             yield new_edge
 
         else:
-            raise AssertionError('NUM_EDGES>3 is not currently supported')
+            raise AssertionError, 'NUM_EDGES>3 is not currently supported'
 
     # Default: delegate to apply_iter.
     def apply(self, chart, grammar, *edges):
@@ -1011,7 +1000,7 @@ class FundamentalRule(AbstractChartRule):
     def apply_iter(self, chart, grammar, left_edge, right_edge):
         # Make sure the rule is applicable.
         if not (left_edge.end() == right_edge.start() and
-                        next(left_edge) == right_edge.lhs() and
+                        left_edge.next() == right_edge.lhs() and
                     left_edge.is_incomplete() and right_edge.is_complete()):
             return
 
@@ -1052,7 +1041,7 @@ class SingleEdgeFundamentalRule(AbstractChartRule):
         if edge1.is_incomplete():
             # edge1 = left_edge; edge2 = right_edge
             for edge2 in chart.select(start=edge1.end(), is_complete=True,
-                                      lhs=next(edge1)):
+                                      lhs=edge1.next()):
                 for new_edge in fr.apply_iter(chart, grammar, edge1, edge2):
                     yield new_edge
         else:
@@ -1118,7 +1107,7 @@ class TopDownExpandRule(AbstractChartRule):
 
     def apply_iter(self, chart, grammar, edge):
         if edge.is_complete(): return
-        for prod in grammar.productions(lhs=next(edge)):
+        for prod in grammar.productions(lhs=edge.next()):
             new_edge = TreeEdge.from_production(prod, edge.end())
             if chart.insert(new_edge, ()):
                 yield new_edge
@@ -1139,7 +1128,7 @@ class TopDownMatchRule(AbstractChartRule):
         if edge.is_complete() or edge.end() >= chart.num_leaves(): return
         index = edge.end()
         leaf = chart.leaf(index)
-        if next(edge) == leaf:
+        if edge.next() == leaf:
             new_edge = LeafEdge(leaf, index)
             if chart.insert(new_edge, ()):
                 yield new_edge
@@ -1192,7 +1181,7 @@ class CachedTopDownExpandRule(TopDownExpandRule):
         # If we've already applied this rule to an edge with the same
         # next & end, and the chart & grammar have not changed, then
         # just return (no new edges to add).
-        done = self._done.get((next(edge), edge.end()), (None, None))
+        done = self._done.get((edge.next(), edge.end()), (None, None))
         if done[0] is chart and done[1] is grammar: return
 
         # Add all the edges indicated by the top down expand rule.
@@ -1200,7 +1189,7 @@ class CachedTopDownExpandRule(TopDownExpandRule):
             yield e
 
         # Record the fact that we've applied this rule.
-        self._done[next(edge), edge.end()] = (chart, grammar)
+        self._done[edge.next(), edge.end()] = (chart, grammar)
 
     def __str__(self):
         return 'Top Down Expand Rule'
@@ -1301,11 +1290,11 @@ class ScannerRule(AbstractChartRule):
         if edge.is_complete() or edge.end() >= chart.num_leaves(): return
         index = edge.end()
         leaf = chart.leaf(index)
-        if next(edge) in self._word_to_pos.get(leaf, []):
+        if edge.next() in self._word_to_pos.get(leaf, []):
             new_leaf_edge = LeafEdge(leaf, index)
             if chart.insert(new_leaf_edge, ()):
                 yield new_leaf_edge
-            new_pos_edge = TreeEdge((index, index + 1), next(edge),
+            new_pos_edge = TreeEdge((index, index + 1), edge.next(),
                                     [leaf], 1)
             if chart.insert(new_pos_edge, (new_leaf_edge,)):
                 yield new_pos_edge
@@ -1369,7 +1358,8 @@ class EarleyChartParse(AbstractParse):
 
         # Width, for printing trace edges.
         w = 50 / (chart.num_leaves() + 1)
-        if self._trace > 0: print(' ', chart.pp_leaves(w))
+        if self._trace > 0: print
+        ' ', chart.pp_leaves(w)
 
         # Initialize the chart with a special "starter" edge.
         root = cfg.Nonterminal('[INIT]')
@@ -1382,20 +1372,24 @@ class EarleyChartParse(AbstractParse):
         scanner = ScannerRule(self._lexicon)
 
         for end in range(chart.num_leaves() + 1):
-            if self._trace > 1: print('Processing queue %d' % end)
+            if self._trace > 1: print
+            'Processing queue %d' % end
             for edge in chart.select(end=end):
                 if edge.is_incomplete():
                     for e in predictor.apply(chart, grammar, edge):
                         if self._trace > 0:
-                            print('Predictor', chart.pp_edge(e, w))
+                            print
+                            'Predictor', chart.pp_edge(e, w)
                 if edge.is_incomplete():
                     for e in scanner.apply(chart, grammar, edge):
                         if self._trace > 0:
-                            print('Scanner  ', chart.pp_edge(e, w))
+                            print
+                            'Scanner  ', chart.pp_edge(e, w)
                 if edge.is_complete():
                     for e in completer.apply(chart, grammar, edge):
                         if self._trace > 0:
-                            print('Completer', chart.pp_edge(e, w))
+                            print
+                            'Completer', chart.pp_edge(e, w)
 
         # Output a list of complete parses.
         return chart.parses(grammar.start(), tree_class=tree_class)
@@ -1450,7 +1444,8 @@ class ChartParse(AbstractParse):
 
         # Width, for printing trace edges.
         w = 50 / (chart.num_leaves() + 1)
-        if self._trace > 0: print(chart.pp_leaves(w))
+        if self._trace > 0: print
+        chart.pp_leaves(w)
 
         edges_added = 1
         while edges_added > 0:
@@ -1459,11 +1454,14 @@ class ChartParse(AbstractParse):
                 edges_added_by_rule = 0
                 for e in rule.apply_everywhere(chart, grammar):
                     if self._trace > 0 and edges_added_by_rule == 0:
-                        print('%s:' % rule)
+                        print
+                        '%s:' % rule
                     edges_added_by_rule += 1
-                    if self._trace > 1: print(chart.pp_edge(e, w))
+                    if self._trace > 1: print
+                    chart.pp_edge(e, w)
                 if self._trace == 1 and edges_added_by_rule > 0:
-                    print('  - Added %d edges' % edges_added_by_rule)
+                    print
+                    '  - Added %d edges' % edges_added_by_rule
                 edges_added += edges_added_by_rule
 
         # Return a list of complete parses.
@@ -1527,14 +1525,16 @@ class SteppingChartParse(ChartParse):
         added with the current strategy and grammar.
         """
         if self._chart is None:
-            raise ValueError('Parser must be initialized first')
+            raise ValueError, 'Parser must be initialized first'
         while 1:
             self._restart = False
             w = 50 / (self._chart.num_leaves() + 1)
 
             for e in self._parse():
-                if self._trace > 1: print(self._current_chartrule)
-                if self._trace > 0: print(self._chart.pp_edge(e, w))
+                if self._trace > 1: print
+                self._current_chartrule
+                if self._trace > 0: print
+                self._chart.pp_edge(e, w)
                 yield e
                 if self._restart: break
             else:
@@ -1669,23 +1669,33 @@ def demo():
 
     # Tokenize a sample sentence.
     sent = 'I saw John with a dog with my cookie'
-    print("Sentence:\n", sent)
+    print
+    "Sentence:\n", sent
+    from nltk import tokenize
 
-    tokens = sent.split()
+    tokens = list(tokenize.whitespace(sent))
 
-    print(tokens)
+    print
+    tokens
 
     # Ask the user which parser to test
-    print('  1: Top-down chart parser')
-    print('  2: Bottom-up chart parser')
-    print('  3: Earley parser')
-    print('  4: Stepping chart parser (alternating top-down & bottom-up)')
-    print('  5: All parsers')
-    print('\nWhich parser (1-5)? ', end=' ')
+    print
+    '  1: Top-down chart parser'
+    print
+    '  2: Bottom-up chart parser'
+    print
+    '  3: Earley parser'
+    print
+    '  4: Stepping chart parser (alternating top-down & bottom-up)'
+    print
+    '  5: All parsers'
+    print
+    '\nWhich parser (1-5)? ',
     choice = sys.stdin.readline().strip()
-    print()
+    print
     if choice not in '12345':
-        print('Bad parser number')
+        print
+        'Bad parser number'
         return
 
     # Keep track of how long each parser takes.
@@ -1698,7 +1708,8 @@ def demo():
         parses = cp.get_parse_list(tokens)
         times['top down'] = time.time() - t
         assert len(parses) == 5, 'Not all parses found'
-        for tree in parses: print(tree)
+        for tree in parses: print
+        tree
 
     # Run the bottom-up parser, if requested.
     if choice in ('2', '5'):
@@ -1707,7 +1718,8 @@ def demo():
         parses = cp.get_parse_list(tokens)
         times['bottom up'] = time.time() - t
         assert len(parses) == 5, 'Not all parses found'
-        for tree in parses: print(tree)
+        for tree in parses: print
+        tree
 
     # Run the earley, if requested.
     if choice in ('3', '5'):
@@ -1716,7 +1728,8 @@ def demo():
         parses = cp.get_parse_list(tokens)
         times['Earley parser'] = time.time() - t
         assert len(parses) == 5, 'Not all parses found'
-        for tree in parses: print(tree)
+        for tree in parses: print
+        tree
 
     # Run the stepping parser, if requested.
     if choice in ('4', '5'):
@@ -1724,25 +1737,29 @@ def demo():
         cp = SteppingChartParse(grammar, trace=1)
         cp.initialize(tokens)
         for i in range(5):
-            print('*** SWITCH TO TOP DOWN')
+            print
+            '*** SWITCH TO TOP DOWN'
             cp.set_strategy(TD_STRATEGY)
             for j, e in enumerate(cp.step()):
                 if j > 20 or e is None: break
-            print('*** SWITCH TO BOTTOM UP')
+            print
+            '*** SWITCH TO BOTTOM UP'
             cp.set_strategy(BU_STRATEGY)
             for j, e in enumerate(cp.step()):
                 if j > 20 or e is None: break
         times['stepping'] = time.time() - t
         assert len(cp.parses()) == 5, 'Not all parses found'
-        for parse in cp.parses(): print(parse)
+        for parse in cp.parses(): print
+        parse
 
     # Print the times of all parsers:
-    maxlen = max(len(key) for key in list(times.keys()))
-    format = '%' + repr(maxlen) + 's parser: %6.3fsec'
-    times_items = list(times.items())
-    times_items.sort()
+    maxlen = max(len(key) for key in times.keys())
+    format = '%' + `maxlen` + 's parser: %6.3fsec'
+    times_items = times.items()
+    times_items.sort(lambda a, b: cmp(a[1], b[1]))
     for (parser, t) in times_items:
-        print(format % (parser, t))
+        print
+        format % (parser, t)
 
 
 if __name__ == '__main__': demo()

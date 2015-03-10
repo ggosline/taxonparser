@@ -13,6 +13,7 @@ Operations are based on Aho, Sethi & Ullman (1986) Chapter 3.
 
 from nltk import tokenize, Tree
 from nltk.parse import pchart
+
 import yaml
 
 epsilon = None
@@ -511,34 +512,36 @@ class FSA(yaml.YAMLObject):
 # the grammar of regular expressions
 # (probabilities ensure that unary operators
 # have stronger associativity than juxtaposition)
+from nltk import PCFG, Nonterminal, ProbabilisticProduction
 
 def grammar(terminals):
-    (S, Expr, Star, Plus, Qmk, Paren) = [cfg.Nonterminal(s) for s in 'SE*+?(']
-    rules = [cfg.WeightedProduction(Expr, [Star], prob=0.2),
-             cfg.WeightedProduction(Expr, [Plus], prob=0.2),
-             cfg.WeightedProduction(Expr, [Qmk], prob=0.2),
-             cfg.WeightedProduction(Expr, [Paren], prob=0.2),
-             cfg.WeightedProduction(S, [Expr], prob=0.5),
-             cfg.WeightedProduction(S, [S, Expr], prob=0.5),
-             cfg.WeightedProduction(Star, [Expr, '*'], prob=1),
-             cfg.WeightedProduction(Plus, [Expr, '+'], prob=1),
-             cfg.WeightedProduction(Qmk, [Expr, '?'], prob=1),
-             cfg.WeightedProduction(Paren, ['(', S, ')'], prob=1)]
+    (S, Expr, Star, Plus, Qmk, Paren) = [Nonterminal(s) for s in 'SE*+?(']
+    rules = [ProbabilisticProduction(Expr, [Star], prob=0.2),
+             ProbabilisticProduction(Expr, [Plus], prob=0.2),
+             ProbabilisticProduction(Expr, [Qmk], prob=0.2),
+             ProbabilisticProduction(Expr, [Paren], prob=0.2),
+             ProbabilisticProduction(S, [Expr], prob=0.5),
+             ProbabilisticProduction(S, [S, Expr], prob=0.5),
+             ProbabilisticProduction(Star, [Expr, '*'], prob=1),
+             ProbabilisticProduction(Plus, [Expr, '+'], prob=1),
+             ProbabilisticProduction(Qmk, [Expr, '?'], prob=1),
+             ProbabilisticProduction(Paren, ['(', S, ')'], prob=1)]
 
     prob_term = 0.2 / len(terminals)  # divide remaining pr. mass
     for terminal in terminals:
-        rules.append(cfg.WeightedProduction(Expr, [terminal], prob=prob_term))
+        rules.append(ProbabilisticProduction(Expr, [terminal], prob=prob_term))
 
-    return cfg.WeightedGrammar(S, rules)
+    return PCFG(S, rules)
 
 
-_parser = pchart.InsideParse(grammar('abcde'))
+_parser = pchart.InsideChartParser(grammar('abcde'))
 
 # create NFA from regexp (Thompson's construction)
 # assumes unique start and final states
 
 def re2nfa(fsa, re):
-    tokens = tokenize.regexp(re, pattern=r'.')
+    # tokens = tokenize.regexp(re, pattern=r'.')
+    tokens = list(re)
     tree = _parser.parse(tokens)
     if tree is None: raise ValueError('Bad Regexp')
     state = re2nfa_build(fsa, fsa.start(), tree)

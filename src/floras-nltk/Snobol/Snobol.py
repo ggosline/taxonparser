@@ -702,7 +702,7 @@ class ALLOF(_Pattern):
 
 
 if __name__ == "__main__":
-    p = BREAK("x") + ALLOF("x").out
+    p = (BREAK("x") + ALLOF("x").out) ^ "[out]*3"
     m = Matcher()
     r = m.match("axxxxyy", p)
     print(r, m.out)

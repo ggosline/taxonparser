@@ -3,20 +3,22 @@
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Edward Loper <edloper@gradient.cis.upenn.edu>
 # Steven Bird <sb@csse.unimelb.edu.au>
-#         Jean Mark Gawron <gawron@mail.sdsu.edu>
+# Jean Mark Gawron <gawron@mail.sdsu.edu>
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
 
-try:
-    from .__init__ import *
-    from . import cfg
-except:
-    from __init__ import *
-    import cfg
+from nltk.tree import Tree
 
-from nltk import Tree
+try:
+    from ..parse import cfg as CFG
+except:
+    import __init__
+    import cfg as CFG
+
+from __init__ import *
+
 
 """
 Data classes and parser implementations for \"chart parsers\", which
@@ -177,9 +179,6 @@ class EdgeI(object):
         """
         raise AssertionError('EdgeI is an abstract interface')
 
-    def next(self):
-        return self.__next__()
-
     def is_complete(self):
         """
         @return: True if this edge's structure is fully consistent
@@ -199,7 +198,7 @@ class EdgeI(object):
     #////////////////////////////////////////////////////////////
     # Comparisons
     #////////////////////////////////////////////////////////////
-    def __eq__(self, other):
+    def __lt__(self, other):
         raise AssertionError('EdgeI is an abstract interface')
 
     def __hash__(self, other):
@@ -309,9 +308,9 @@ class TreeEdge(EdgeI):
             return self._rhs[self._dot]
 
     # Comparisons & hashing
-    def __eq__(self, other):
+    def __lt__(self, other):
         if self.__class__ != other.__class__: return -1
-        return ((self._span, self.lhs(), self.rhs(), self._dot) ==
+        return ((self._span, self.lhs(), self.rhs(), self._dot) <
                 (other._span, other.lhs(), other.rhs(), other._dot))
 
     def __hash__(self):
@@ -324,7 +323,7 @@ class TreeEdge(EdgeI):
 
         for i in range(len(self._rhs)):
             if i == self._dot: str += ' *'
-            if isinstance(self._rhs[i], cfg.Nonterminal):
+            if isinstance(self._rhs[i], CFG.Nonterminal):
                 str += ' %s' % (self._rhs[i].symbol(),)
             else:
                 str += ' %r' % (self._rhs[i],)
@@ -382,9 +381,9 @@ class LeafEdge(EdgeI):
     def __next__(self): return None
 
     # Comparisons & hashing
-    def __eq__(self, other):
+    def __lt__(self, other):
         if not isinstance(other, LeafEdge): return -1
-        return ((self._index, self._leaf) == (other._index, other._leaf))
+        return ((self._index, self._leaf) < (other._index, other._leaf))
 
     def __hash__(self):
         return hash((self._index, self._leaf))
@@ -739,7 +738,6 @@ class Chart(object):
         """
         if width is None: width = 50 / (self.num_leaves() + 1)
         width = int(width)
-
         (start, end) = (edge.start(), edge.end())
 
         str = '|' + ('.' + ' ' * (width - 1)) * start
@@ -769,10 +767,8 @@ class Chart(object):
             chart's leaves.  This string can be used as a header
             for calls to L{pp_edge}.
         """
-        if width is None: width = 50 / (self.num_leaves() + 1)
-
+        if width is None: width = 50 // (self.num_leaves() + 1)
         width = int(width)
-
         if self._tokens is not None and width > 1:
             header = '|.'
             for tok in self._tokens:
@@ -1346,7 +1342,7 @@ class EarleyChartParse(AbstractParse):
         Create a new Earley chart parser, that uses C{grammar} to
         parse texts.
         
-        @type grammar: C{cfg.Grammar}
+        @type grammar: C{CFG.Grammar}
         @param grammar: The grammar used to parse texts.
         @type lexicon: C{dict} from C{string} to (C{list} of C{string})
         @param lexicon: A lexicon of words that records the parts of
@@ -1361,7 +1357,7 @@ class EarleyChartParse(AbstractParse):
         self._grammar = grammar
         self._lexicon = lexicon
         self._trace = trace
-        AbstractParse.__init__(self)
+        super().__init__()
 
     def get_parse_list(self, tokens, tree_class=Tree):
         chart = Chart(list(tokens))
@@ -1372,7 +1368,7 @@ class EarleyChartParse(AbstractParse):
         if self._trace > 0: print(' ', chart.pp_leaves(w))
 
         # Initialize the chart with a special "starter" edge.
-        root = cfg.Nonterminal('[INIT]')
+        root = grammar.Nonterminal('[INIT]')
         edge = TreeEdge((0, 0), root, (grammar.start(),))
         chart.insert(edge, ())
 
@@ -1428,7 +1424,7 @@ class ChartParse(AbstractParse):
         Create a new chart parser, that uses C{grammar} to parse
         texts.
 
-        @type grammar: L{cfg.Grammar}
+        @type grammar: L{CFG.Grammar}
         @param grammar: The grammar used to parse texts.
         @type strategy: C{list} of L{ChartRuleI}
         @param strategy: A list of rules that should be used to decide
@@ -1442,7 +1438,7 @@ class ChartParse(AbstractParse):
         self._grammar = grammar
         self._strategy = strategy
         self._trace = trace
-        AbstractParse.__init__(self)
+        super().__init__()
 
     def get_parse_list(self, tokens, tree_class=Tree):
         chart = Chart(list(tokens))
@@ -1636,24 +1632,24 @@ def demo():
     import sys, time
 
     # Define some nonterminals
-    S, VP, NP, PP = cfg.nonterminals('S, VP, NP, PP')
-    V, N, P, Name, Det = cfg.nonterminals('V, N, P, Name, Det')
+    S, VP, NP, PP = CFG.nonterminals('S, VP, NP, PP')
+    V, N, P, Name, Det = CFG.nonterminals('V, N, P, Name, Det')
 
     # Define some grammatical productions.
     grammatical_productions = [
-        cfg.Production(S, [NP, VP]), cfg.Production(PP, [P, NP]),
-        cfg.Production(NP, [Det, N]), cfg.Production(NP, [NP, PP]),
-        cfg.Production(VP, [VP, PP]), cfg.Production(VP, [V, NP]),
-        cfg.Production(VP, [V]), ]
+        CFG.Production(S, [NP, VP]), CFG.Production(PP, [P, NP]),
+        CFG.Production(NP, [Det, N]), CFG.Production(NP, [NP, PP]),
+        CFG.Production(VP, [VP, PP]), CFG.Production(VP, [V, NP]),
+        CFG.Production(VP, [V]), ]
 
     # Define some lexical productions.
     lexical_productions = [
-        cfg.Production(NP, ['John']), cfg.Production(NP, ['I']),
-        cfg.Production(Det, ['the']), cfg.Production(Det, ['my']),
-        cfg.Production(Det, ['a']),
-        cfg.Production(N, ['dog']), cfg.Production(N, ['cookie']),
-        cfg.Production(V, ['ate']), cfg.Production(V, ['saw']),
-        cfg.Production(P, ['with']), cfg.Production(P, ['under']),
+        CFG.Production(NP, ['John']), CFG.Production(NP, ['I']),
+        CFG.Production(Det, ['the']), CFG.Production(Det, ['my']),
+        CFG.Production(Det, ['a']),
+        CFG.Production(N, ['dog']), CFG.Production(N, ['cookie']),
+        CFG.Production(V, ['ate']), CFG.Production(V, ['saw']),
+        CFG.Production(P, ['with']), CFG.Production(P, ['under']),
     ]
 
     # Convert the grammar productions to an earley-style lexicon.
@@ -1662,15 +1658,16 @@ def demo():
         earley_lexicon.setdefault(prod.rhs()[0], []).append(prod.lhs())
 
     # The grammar for ChartParse and SteppingChartParse:
-    grammar = cfg.Grammar(S, grammatical_productions + lexical_productions)
+    grammar = CFG.Grammar(S, grammatical_productions + lexical_productions)
 
     # The grammar for EarleyChartParse:
-    earley_grammar = cfg.Grammar(S, grammatical_productions)
+    earley_grammar = CFG.Grammar(S, grammatical_productions)
 
     # Tokenize a sample sentence.
     sent = 'I saw John with a dog with my cookie'
     print("Sentence:\n", sent)
-
+    # from nltk import tokenize
+    # tokens = list(tokenize.whitespace(sent))
     tokens = sent.split()
 
     print(tokens)
@@ -1740,6 +1737,7 @@ def demo():
     maxlen = max(len(key) for key in list(times.keys()))
     format = '%' + repr(maxlen) + 's parser: %6.3fsec'
     times_items = list(times.items())
+    # times_items.sort(lambda a,b:cmp(a[1], b[1]))
     times_items.sort()
     for (parser, t) in times_items:
         print(format % (parser, t))

@@ -3,27 +3,19 @@
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Contributed by Rob Speer (NLTK version)
 # Steven Bird <sb@csse.unimelb.edu.au> (NLTK-Lite Port)
-#         Ewan Klein <ewan@inf.ed.ac.uk> (Hooks for semantics)
+# Ewan Klein <ewan@inf.ed.ac.uk> (Hooks for semantics)
 #         Peter Wang <wangp@csse.unimelb.edu.au> (Overhaul)
 # URL: <http://nltk.sourceforge.net>
 # For license information, see LICENSE.TXT
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-# from ..semantics import logic
-# from ..kimmo import kimmo
-from src.six863.kimmo import kimmo
-from src.six863.semantics import logic
+from nltk.sem import logic
+from .cfg import *
+from ..kimmo import kimmo
 
-try:
-    from .featurelite import *
-    from .cfg import *
-except:
-    from featurelite import *
-    from cfg import *
-
+from .featurelite import *
 from copy import deepcopy
-
 import yaml
 # import nltk.yamltags
 
@@ -683,7 +675,7 @@ class GrammarFile(object):
         return lookup
 
     def earley_parser(self, trace=1):
-        from src.six863.parse.featurechart import FeatureEarleyChartParse
+        from .featurechart import FeatureEarleyChartParse
 
         if self.kimmo is None:
             lexicon = self.earley_lexicon()
@@ -708,7 +700,7 @@ class GrammarFile(object):
                     filename = args.strip('"')
                     self.apply_file(filename)
                 elif directive == 'tagger_file':
-                    import yaml
+                    import yaml, nltk.yamltags
 
                     filename = args.strip('"')
                     tagger = yaml.load(filename)
