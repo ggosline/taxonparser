@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Steven Bird <sb@csse.unimelb.edu.au>
-#         Edward Loper <edloper@gradient.cis.upenn.edu>
+# Edward Loper <edloper@gradient.cis.upenn.edu>
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -55,6 +55,7 @@ class ParseI(object):
     structures.
     
     """
+
     def parse(self, sent):
         """
         Derive a parse tree that represents the structure of the given
@@ -110,6 +111,7 @@ class ParseI(object):
         @type sent: L{list} of L{string}
         """
 
+
 ##//////////////////////////////////////////////////////
 ##  Abstract Base Class for Parsers
 ##//////////////////////////////////////////////////////
@@ -125,6 +127,7 @@ class AbstractParse(ParseI):
     Note that subclasses must override either C{get_parse} or
     C{get_parse_list} (or both), to avoid infinite recursion.
     """
+
     def __init__(self):
         """
         Construct a new parser.
@@ -141,19 +144,23 @@ class AbstractParse(ParseI):
 
     def get_parse(self, tokens):
         trees = self.get_parse_list(list(tokens))
-        if len(trees) == 0: return None
-        else: return trees[0]
-    
+        if len(trees) == 0:
+            return None
+        else:
+            return trees[0]
+
     def get_parse_list(self, tokens):
         tree = self.get_parse(tokens)
-        if tree is None: return []
-        else: return [tree]
+        if tree is None:
+            return []
+        else:
+            return [tree]
 
     def batch_test(self, filename):
         f = open(filename)
         for line in f:
             line = line.strip()
-            if not line: continue 
+            if not line: continue
             if line.startswith('#'):
                 print(line)
                 continue
@@ -161,5 +168,6 @@ class AbstractParse(ParseI):
             parses = self.parse(line)
             print("%d parses." % len(parses))
             for tree in parses: print(tree)
+
 
 from nltk.parse import *

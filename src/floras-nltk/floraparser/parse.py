@@ -26,7 +26,7 @@ if __name__ == '__main__':
         for sentence in taxon.sentences:
             # for tg in trigrams([wd.text for wd in sentence.words]):
             # if not ',' in tg and 'than' in tg:
-            #         tgcounter[tg] += 1
+            # tgcounter[tg] += 1
             for tk in sentence.tokens:
                 if tk.flPOS == 'UNK':
                     tgcounter[tk.text] += 1

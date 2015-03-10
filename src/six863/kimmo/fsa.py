@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2001-2006 NLTK Project
 # Authors: Steven Bird <sb@ldc.upenn.edu>
-#          Rob Speer <rspeer@mit.edu>
+# Rob Speer <rspeer@mit.edu>
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 
@@ -27,6 +27,7 @@ class FSA(yaml.YAMLObject):
     nondetermnistic finite state automata, with DFAs being a special case.
     """
     yaml_tag = '!FSA'
+
     def __init__(self, sigma='', transitions=None, start=0, finals=None):
         """Set up the FSA.
 
@@ -46,8 +47,10 @@ class FSA(yaml.YAMLObject):
         self._start = start
         self._reverse = {}
         self._build_reverse_transitions()
-        if finals: self._finals = set(finals)
-        else: self._finals = set([0])
+        if finals:
+            self._finals = set(finals)
+        else:
+            self._finals = set([0])
         self._sigma = set(sigma)
         assert isinstance(self._transitions, dict)
         self._next_state_num = 0
@@ -75,21 +78,22 @@ class FSA(yaml.YAMLObject):
         map = self._transitions.get(s1, {})
         for (symbol, targets) in list(map.items()):
             if s2 in targets: yield symbol
-    
+
     def sigma(self):
         "The alphabet of the FSA."
         return self._sigma
+
     alphabet = sigma
 
     def check_in_sigma(self, label):
         "Check whether a given object is in the alphabet."
         if label and label not in self._sigma:
             raise ValueError('Label "%s" not in alphabet: %s' % (label, str(self._sigma)))
-    
+
     def __len__(self):
         "The number of states in the FSA."
         return len(self._transitions)
-    
+
     def new_state(self):
         """
         Add a new state to the FSA.
@@ -120,7 +124,7 @@ class FSA(yaml.YAMLObject):
         """
         # was a tuple before
         return self._finals
-    
+
     def nonfinals(self):
         """
         @returns: the IDs of all accept states.
@@ -135,7 +139,7 @@ class FSA(yaml.YAMLObject):
         @rtype: list
         """
         return list(self._transitions.keys())
-    
+
     def add_final(self, state):
         """
         Make a state into an accept state.
@@ -147,7 +151,8 @@ class FSA(yaml.YAMLObject):
         Make an accept state no longer be an accept state.
         """
         self._finals = self._finals.difference(set([state]))
-#        del self._finals[state]
+
+    # del self._finals[state]
 
     def set_final(self, states):
         """
@@ -160,7 +165,7 @@ class FSA(yaml.YAMLObject):
         Set the start state of the FSA.
         """
         self._start = start
-    
+
     def in_finals(self, list):
         """
         Check whether a sequence contains any final states.
@@ -185,10 +190,10 @@ class FSA(yaml.YAMLObject):
         """
         if s1 not in self.states():
             raise ValueError("State %s does not exist in %s" % (s1,
-            self.states()))
+                                                                self.states()))
         if s2 not in self.states():
             raise ValueError("State %s does not exist in %s" % (s2,
-            self.states()))
+                                                                self.states()))
         self._add_transition(self._transitions, s1, label, s2)
         self._add_transition(self._reverse, s2, label, s1)
 
@@ -259,8 +264,8 @@ class FSA(yaml.YAMLObject):
                 changes.append((s1, symbol, s2, new, symbol, s2))
             elif s2 == old:
                 changes.append((s1, symbol, s2, s1, symbol, new))
-        for (leftstate, symbol, rightstate, newleft, newsym, newright)\
-        in changes:
+        for (leftstate, symbol, rightstate, newleft, newsym, newright) \
+                in changes:
             print(leftstate, symbol, rightstate, newleft, newsym, newright)
             self.delete(leftstate, symbol, rightstate)
             self.insert_safe(newleft, newsym, newright)
@@ -270,8 +275,9 @@ class FSA(yaml.YAMLObject):
     def next(self, state, symbol):
         "The set of states reached from a certain state via a given symbol."
         return self.e_closure(self._transitions[state].get(symbol, set()))
+
     nextStates = next
-    
+
     def move(self, states, symbol):
         "The set of states reached from a set of states via a given symbol."
         result = set()
@@ -288,7 +294,7 @@ class FSA(yaml.YAMLObject):
             for targets in list(map.values()):
                 if len(targets) > 1: return False
         return True
-    
+
     def nextState(self, state, symbol):
         """
         The single state reached from a state via a given symbol.
@@ -298,8 +304,10 @@ class FSA(yaml.YAMLObject):
         next = self.next(state, symbol)
         if len(next) > 1:
             raise ValueError("This FSA is nondeterministic -- use nextStates instead.")
-        elif len(next) == 1: return list(next)[0]
-        else: return None
+        elif len(next) == 1:
+            return list(next)[0]
+        else:
+            return None
 
     def forward_traverse(self, state):
         "All states reachable by following transitions from a given state."
@@ -315,21 +323,21 @@ class FSA(yaml.YAMLObject):
         for (symbol, targets) in list(self._reverse[state].items()):
             result = result.union(targets)
         return result
-    
+
     def _forward_accessible(self, s1, visited):
         for s2 in self.forward_traverse(s1):
             if not s2 in visited:
                 visited.add(s2)
                 self._forward_accessible(s2, visited)
         return visited
-                
+
     def _reverse_accessible(self, s1, visited):
         for s2 in self.reverse_traverse(s1):
             if not s2 in visited:
                 visited.add(s2)
                 self._reverse_accessible(s2, visited)
         return visited
-        
+
     # delete inaccessible nodes and unused transitions
     def prune(self):
         """
@@ -338,7 +346,7 @@ class FSA(yaml.YAMLObject):
         acc = self.accessible()
         for state in self.states():
             if state not in acc:
-               self.delete_state(state)
+                self.delete_state(state)
             else:
                 self._clean_map(self._transitions[state])
                 self._clean_map(self._reverse[state])
@@ -361,7 +369,7 @@ class FSA(yaml.YAMLObject):
 
         acc = acc.intersection(forward_acc)
         return acc
-    
+
     def e_closure(self, states):
         """
         Given a set of states, return the set of states reachable from
@@ -382,7 +390,7 @@ class FSA(yaml.YAMLObject):
                     closure.append(s2)
                     stack.append(s2)
         return set(closure)
-    
+
     # return the corresponding DFA using subset construction (ASU p118)
     # NB representation of (a*) still isn't minimal; should have 1 state not 2
     def dfa(self):
@@ -405,7 +413,7 @@ class FSA(yaml.YAMLObject):
                 dfa.add_final(dfa_state)
             for label in self.sigma():
                 nfa_next = tuple(self.e_closure(self.move(map[dfa_state],
-                label)))
+                                                          label)))
                 if nfa_next in map:
                     dfa_next = map[nfa_next]
                 else:
@@ -417,7 +425,7 @@ class FSA(yaml.YAMLObject):
                     unmarked.append(dfa_next)
                 dfa.insert(dfa_state, label, dfa_next)
         return dfa
-    
+
     def generate(self, maxlen, state=0, prefix=""):
         "Generate all accepting sequences of length at most maxlen."
         if maxlen > 0:
@@ -425,14 +433,14 @@ class FSA(yaml.YAMLObject):
                 print(prefix)
             for (s1, labels, s2) in self.outgoing_transitions(state):
                 for label in labels():
-                    self.generate(maxlen-1, s2, prefix+label)
+                    self.generate(maxlen - 1, s2, prefix + label)
 
     def pp(self):
         """
         Print a representation of this FSA (in human-readable YAML format).
         """
         print(yaml.dump(self))
-    
+
     @classmethod
     def from_yaml(cls, loader, node):
         map = loader.construct_mapping(node)
@@ -442,7 +450,7 @@ class FSA(yaml.YAMLObject):
                 for s2 in targets:
                     result.insert(s1, symbol, s2)
         return result
-    
+
     @classmethod
     def to_yaml(cls, dumper, data):
         sigma = data.sigma()
@@ -451,17 +459,20 @@ class FSA(yaml.YAMLObject):
             map1 = transitions.setdefault(s1, {})
             map2 = map1.setdefault(symbol, [])
             map2.append(s2)
-        try: sigma = "".join(sigma)
-        except: sigma = list(sigma)
+        try:
+            sigma = "".join(sigma)
+        except:
+            sigma = list(sigma)
         node = dumper.represent_mapping(cls.yaml_tag, dict(
-            sigma = sigma,
-            finals = list(data.finals()),
-            start = data._start,
-            transitions = transitions))
+            sigma=sigma,
+            finals=list(data.finals()),
+            start=data._start,
+            transitions=transitions))
         return node
 
     def show_pygraph(self, title='FSA', outfile=None, labels=True, root=None):
         from pygraph import pygraph, tkgraphview
+
         graph = pygraph.Grapher('directed')
 
         for state in self.states():
@@ -473,24 +484,27 @@ class FSA(yaml.YAMLObject):
             if state == self.start():
                 color = '#afa'
             term = ''
-            if state == self.start(): term = 'start'
-            elif state == 'End': term = 'end'
-            if state in [0, '0', 'reject', 'Reject']: color='#e99'
-            
+            if state == self.start():
+                term = 'start'
+            elif state == 'End':
+                term = 'end'
+            if state in [0, '0', 'reject', 'Reject']: color = '#e99'
+
             graph.addNode(state, state, color, shape, term)
 
         #for source, trans in self._transitions.items():
         for source, label, target in self.generate_transitions():
             if not labels: label = ''
             graph.addEdge(source, target, label, color='black', dup=False)
-        
+
         if outfile is None: outfile = title
-        
+
         return tkgraphview.tkGraphView(graph, title, outfile, root=root,
-        startTk=(not root))
-        
+                                       startTk=(not root))
+
     def __str__(self):
         return yaml.dump(self)
+
 
 ### FUNCTIONS TO BUILD FSA FROM REGEXP
 
@@ -511,11 +525,12 @@ def grammar(terminals):
              cfg.WeightedProduction(Qmk, [Expr, '?'], prob=1),
              cfg.WeightedProduction(Paren, ['(', S, ')'], prob=1)]
 
-    prob_term = 0.2/len(terminals) # divide remaining pr. mass
+    prob_term = 0.2 / len(terminals)  # divide remaining pr. mass
     for terminal in terminals:
         rules.append(cfg.WeightedProduction(Expr, [terminal], prob=prob_term))
 
     return cfg.WeightedGrammar(S, rules)
+
 
 _parser = pchart.InsideParse(grammar('abcde'))
 
@@ -528,6 +543,8 @@ def re2nfa(fsa, re):
     if tree is None: raise ValueError('Bad Regexp')
     state = re2nfa_build(fsa, fsa.start(), tree)
     fsa.set_final([state])
+
+
 #        fsa.minimize()
 
 def re2nfa_build(fsa, node, tree):
@@ -538,17 +555,22 @@ def re2nfa_build(fsa, node, tree):
         return re2nfa_build(fsa, node, tree[0])
     elif tree.node == '(':
         return re2nfa_build(fsa, node, tree[1])
-    elif tree.node == '*': return re2nfa_star(fsa, node, tree[0])
-    elif tree.node == '+': return re2nfa_plus(fsa, node, tree[0])
-    elif tree.node == '?': return re2nfa_qmk(fsa, node, tree[0])
+    elif tree.node == '*':
+        return re2nfa_star(fsa, node, tree[0])
+    elif tree.node == '+':
+        return re2nfa_plus(fsa, node, tree[0])
+    elif tree.node == '?':
+        return re2nfa_qmk(fsa, node, tree[0])
     else:
         node = re2nfa_build(fsa, node, tree[0])
         return re2nfa_build(fsa, node, tree[1])
+
 
 def re2nfa_char(fsa, node, char):
     new = fsa.new_state()
     fsa.insert(node, char, new)
     return new
+
 
 def re2nfa_qmk(fsa, node, tree):
     node1 = fsa.new_state()
@@ -559,10 +581,12 @@ def re2nfa_qmk(fsa, node, tree):
     fsa.insert(node2, epsilon, node3)
     return node3
 
+
 def re2nfa_plus(fsa, node, tree):
     node1 = re2nfa_build(fsa, node, tree[0])
     fsa.insert(node1, epsilon, node)
     return node1
+
 
 def re2nfa_star(fsa, node, tree):
     node1 = fsa.new_state()
@@ -573,6 +597,7 @@ def re2nfa_star(fsa, node, tree):
     fsa.insert(node2, epsilon, node1)
     fsa.insert(node2, epsilon, node3)
     return node3
+
 
 #################################################################
 # Demonstration
@@ -587,7 +612,7 @@ def demo():
 
     # Create a new FSA.
     fsa = FSA(alphabet)
-    
+
     # Use a regular expression to initialize the FSA.
     re = 'abcd'
     print('Regular Expression:', re)
@@ -608,5 +633,6 @@ def demo():
     # Use the FSA to generate all strings of length less than 3
     # (broken)
     #fsa.generate(3)
+
 
 if __name__ == '__main__': demo()

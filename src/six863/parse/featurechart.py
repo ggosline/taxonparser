@@ -15,15 +15,16 @@ feature structures as nodes.
 import yaml
 
 try:
-    from . chart import *
-    from . category import *
+    from .chart import *
+    from .category import *
     from . import cfg
-    from . featurelite import *
+    from .featurelite import *
 except:
     from chart import *
     from category import *
     import cfg
     from featurelite import *
+
 
 def load_earley(filename, trace=1):
     """
@@ -45,6 +46,7 @@ def load_earley(filename, trace=1):
     grammar = GrammarFile.read_file(filename)
     return grammar.earley_parser(trace)
 
+
 class FeatureTreeEdge(TreeEdge):
     """
     FIXME: out of date documentation
@@ -62,6 +64,7 @@ class FeatureTreeEdge(TreeEdge):
     
     For more information about edges, see the L{EdgeI} interface.
     """
+
     def __init__(self, span, lhs, rhs, dot=0, vars=None):
         """
         Construct a new C{FeatureTreeEdge}.
@@ -103,7 +106,7 @@ class FeatureTreeEdge(TreeEdge):
         """
         return FeatureTreeEdge(span=(index, index), lhs=production.lhs(),
                                rhs=production.rhs(), dot=0, vars=bindings)
-    
+
     # Accessors
     def vars(self):
         """
@@ -111,28 +114,28 @@ class FeatureTreeEdge(TreeEdge):
         @rtype: L{VariableBindings}
         """
         return self._vars
-        
+
     def lhs(self):
         """
         @return: the value of the left-hand side with variables set.
         @rtype: C{Category}
         """
         return TreeEdge.lhs(self)(*self._vars)
-    
+
     def orig_lhs(self):
         """
         @return: the value of the left-hand side with no variables set.
         @rtype: C{Category}
         """
         return TreeEdge.lhs(self)
-    
+
     def rhs(self):
         """
         @return: the value of the right-hand side with variables set.
         @rtype: C{Category}
         """
         return tuple(x(*self._vars) for x in TreeEdge.rhs(self))
-    
+
     def orig_rhs(self):
         """
         @return: the value of the right-hand side with no variables set.
@@ -150,46 +153,50 @@ class FeatureTreeEdge(TreeEdge):
         if len(self._rhs) == self._dot: str += ' *'
         return '%s %s' % (str, self._vars)
 
+
 class FeatureFundamentalRule(FundamentalRule):
     def __init__(self, trace=0):
         FundamentalRule.__init__(self)
         self.trace = trace
         self.unify_memo = {}
+
     def apply_iter(self, chart, grammar, left_edge, right_edge):
         # Make sure the rule is applicable.
         if not (left_edge.end() == right_edge.start() and
-                left_edge.is_incomplete() and right_edge.is_complete() and
-                isinstance(left_edge, FeatureTreeEdge) and
-                isinstance(right_edge, FeatureTreeEdge)
-               ):
+                    left_edge.is_incomplete() and right_edge.is_complete() and
+                    isinstance(left_edge, FeatureTreeEdge) and
+                    isinstance(right_edge, FeatureTreeEdge)
+        ):
             return
         left_bindings = left_edge.vars().copy()
         right_bindings = right_edge.vars().copy()
         try:
             unified = unify(next(left_edge), right_edge.lhs(), left_bindings,
-            right_bindings, memo=self.unify_memo, trace=self.trace-2)
+                            right_bindings, memo=self.unify_memo, trace=self.trace - 2)
             if isinstance(unified, Category): unified.freeze()
-        except UnificationFailure: return
+        except UnificationFailure:
+            return
 
         # Construct the new edge.
         new_edge = FeatureTreeEdge(span=(left_edge.start(), right_edge.end()),
-                            lhs=left_edge.lhs(), rhs=left_edge.rhs(),
-                            dot=left_edge.dot()+1, vars=left_bindings)
-        
+                                   lhs=left_edge.lhs(), rhs=left_edge.rhs(),
+                                   dot=left_edge.dot() + 1, vars=left_bindings)
+
         # Add it to the chart, with appropraite child pointers.
         changed_chart = False
         for cpl1 in chart.child_pointer_lists(left_edge):
-            if chart.insert(new_edge, cpl1+(right_edge,)):
+            if chart.insert(new_edge, cpl1 + (right_edge,)):
                 changed_chart = True
 
         # If we changed the chart, then generate the edge.
         if changed_chart: yield new_edge
 
+
 class SingleEdgeFeatureFundamentalRule(SingleEdgeFundamentalRule):
     def __init__(self, trace=0):
         self.trace = trace
         self._fundamental_rule = FeatureFundamentalRule(trace)
-    
+
     def apply_iter(self, chart, grammar, edge1):
         fr = self._fundamental_rule
         if edge1.is_incomplete():
@@ -203,27 +210,31 @@ class SingleEdgeFeatureFundamentalRule(SingleEdgeFundamentalRule):
                 for new_edge in fr.apply_iter(chart, grammar, edge2, edge1):
                     yield new_edge
 
+
 class FeatureTopDownExpandRule(TopDownExpandRule):
     """
     The @C{TopDownExpandRule} specialised for feature-based grammars.
     """
+
     def __init__(self, trace=0):
         TopDownExpandRule.__init__(self)
         self.unify_memo = {}
         self.trace = trace
+
     def apply_iter(self, chart, grammar, edge):
         if edge.is_complete(): return
         for prod in grammar.productions():
             bindings = edge.vars().copy()
             try:
                 unified = unify(next(edge), prod.lhs(), bindings, {},
-                memo=self.unify_memo, trace=self.trace-2)
+                                memo=self.unify_memo, trace=self.trace - 2)
                 if isinstance(unified, Category): unified.freeze()
             except UnificationFailure:
                 continue
             new_edge = FeatureTreeEdge.from_production(prod, edge.end())
             if chart.insert(new_edge, ()):
                 yield new_edge
+
 
 class FeatureEarleyChartParse(EarleyChartParse):
     """
@@ -248,25 +259,26 @@ class FeatureEarleyChartParse(EarleyChartParse):
     word can have. Unlike in the L{EarleyChartParse}, this lexicon is
     case-insensitive.
     """
+
     def __init__(self, grammar, lexicon, trace=0):
         # Build a case-insensitive lexicon.
-        #ci_lexicon = dict((k.upper(), v) for k, v in lexicon.iteritems())
+        # ci_lexicon = dict((k.upper(), v) for k, v in lexicon.iteritems())
         # Call the super constructor.
         EarleyChartParse.__init__(self, grammar, lexicon, trace)
-        
+
     def get_parse_list(self, tokens):
         chart = Chart(tokens)
         grammar = self._grammar
 
         # Width, for printing trace edges.
-        #w = 40/(chart.num_leaves()+1)
+        # w = 40/(chart.num_leaves()+1)
         w = 2
-        if self._trace > 0: print(' '*9, chart.pp_leaves(w))
+        if self._trace > 0: print(' ' * 9, chart.pp_leaves(w))
 
         # Initialize the chart with a special "starter" edge.
         root = GrammarCategory(pos='[INIT]')
-        edge = FeatureTreeEdge((0,0), root, (grammar.start(),), 0,
-                {})
+        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0,
+            {})
         chart.insert(edge, ())
 
         # Create the 3 rules:
@@ -274,28 +286,27 @@ class FeatureEarleyChartParse(EarleyChartParse):
         completer = SingleEdgeFeatureFundamentalRule(self._trace)
         #scanner = FeatureScannerRule(self._lexicon)
 
-        for end in range(chart.num_leaves()+1):
+        for end in range(chart.num_leaves() + 1):
             if self._trace > 1: print('Processing queue %d' % end)
-            
+
             # Scanner rule substitute, i.e. this is being used in place
             # of a proper FeatureScannerRule at the moment.
-            if end > 0 and end-1 < chart.num_leaves():
-                leaf = chart.leaf(end-1)
+            if end > 0 and end - 1 < chart.num_leaves():
+                leaf = chart.leaf(end - 1)
                 for pos in self._lexicon(leaf):
-                    new_leaf_edge = LeafEdge(leaf, end-1)
+                    new_leaf_edge = LeafEdge(leaf, end - 1)
                     chart.insert(new_leaf_edge, ())
-                    new_pos_edge = FeatureTreeEdge((end-1, end), pos, [leaf], 1,
+                    new_pos_edge = FeatureTreeEdge((end - 1, end), pos, [leaf], 1,
                         {})
                     chart.insert(new_pos_edge, (new_leaf_edge,))
                     if self._trace > 0:
-                        print('Scanner  ', chart.pp_edge(new_pos_edge,w))
-            
-            
+                        print('Scanner  ', chart.pp_edge(new_pos_edge, w))
+
             for edge in chart.select(end=end):
                 if edge.is_incomplete():
                     for e in predictor.apply(chart, grammar, edge):
                         if self._trace > 1:
-                            print('Predictor', chart.pp_edge(e,w))
+                            print('Predictor', chart.pp_edge(e, w))
                 #if edge.is_incomplete():
                 #    for e in scanner.apply(chart, grammar, edge):
                 #        if self._trace > 0:
@@ -303,10 +314,11 @@ class FeatureEarleyChartParse(EarleyChartParse):
                 if edge.is_complete():
                     for e in completer.apply(chart, grammar, edge):
                         if self._trace > 0:
-                            print('Completer', chart.pp_edge(e,w))
+                            print('Completer', chart.pp_edge(e, w))
 
         # Output a list of complete parses.
         return chart.parses(root)
+
 
 def demo():
     import sys, time
@@ -327,7 +339,7 @@ def demo():
 
     # Define some grammatical productions.
     grammatical_productions = [
-        cfg.Production(S, (NP, VP)),  cfg.Production(PP, (P, NP)),
+        cfg.Production(S, (NP, VP)), cfg.Production(PP, (P, NP)),
         cfg.Production(NP, (NP, PP)),
         cfg.Production(VP, (VP, PP)), cfg.Production(VP, (V, NP)),
         cfg.Production(VP, (V,)), cfg.Production(NP, (DetPl, NPl)),
@@ -338,15 +350,16 @@ def demo():
         cfg.Production(NP, ('John',)), cfg.Production(NP, ('I',)),
         cfg.Production(Det, ('the',)), cfg.Production(Det, ('my',)),
         cfg.Production(Det, ('a',)),
-        cfg.Production(NSg, ('dog',)),   cfg.Production(NSg, ('cookie',)),
-        cfg.Production(V, ('ate',)),  cfg.Production(V, ('saw',)),
+        cfg.Production(NSg, ('dog',)), cfg.Production(NSg, ('cookie',)),
+        cfg.Production(V, ('ate',)), cfg.Production(V, ('saw',)),
         cfg.Production(P, ('with',)), cfg.Production(P, ('under',)),
-        ]
-    
+    ]
+
     earley_grammar = cfg.Grammar(S, grammatical_productions)
     earley_lexicon = {}
     for prod in lexical_productions:
         earley_lexicon.setdefault(prod.rhs()[0].upper(), []).append(prod.lhs())
+
     def lexicon(word):
         return earley_lexicon.get(word.upper(), [])
 
@@ -359,13 +372,17 @@ def demo():
     print("Time: %s" % (time.time() - t))
     for tree in trees: print(tree)
 
+
 def run_profile():
     import profile
+
     profile.run('for i in range(1): demo()', '/tmp/profile.out')
     import pstats
+
     p = pstats.Stats('/tmp/profile.out')
     p.strip_dirs().sort_stats('time', 'cum').print_stats(60)
     p.strip_dirs().sort_stats('cum', 'time').print_stats(60)
+
 
 if __name__ == '__main__':
     demo()

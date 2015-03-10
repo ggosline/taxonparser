@@ -50,6 +50,7 @@ class LexEntry():
         self.category = category
         self.appliesto = appliesto
 
+
 def addlexicon(words: list, POS: str):
     for word in words:
         addlexentry(word, POS, None, None)

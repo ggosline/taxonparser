@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Steven Bird <sb@csse.unimelb.edu.au>
-#         Edward Loper <edloper@ldc.upenn.edu>
+# Edward Loper <edloper@ldc.upenn.edu>
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -92,6 +92,7 @@ class Nonterminal(object):
     @ivar _symbol: The node value corresponding to this
         C{Nonterminal}.  This value must be immutable and hashable. 
     """
+
     def __init__(self, symbol):
         """
         Construct a new non-terminal from the given symbol.
@@ -133,11 +134,13 @@ class Nonterminal(object):
             symbol.
         @rtype: C{boolean}
         """
-        return not (self==other)
+        return not (self == other)
 
     def __cmp__(self, other):
-        if self == other: return 0
-        else: return -1
+        if self == other:
+            return 0
+        else:
+            return -1
 
     def __hash__(self):
         return self._hash
@@ -173,6 +176,7 @@ class Nonterminal(object):
         """
         return Nonterminal('%s/%s' % (self._symbol, rhs._symbol))
 
+
 def nonterminals(symbols):
     """
     Given a string containing a list of symbol names, return a list of
@@ -186,9 +190,12 @@ def nonterminals(symbols):
         in the same order as the symbols names.
     @rtype: C{list} of L{Nonterminal}
     """
-    if ',' in symbols: symbol_list = symbols.split(',')
-    else: symbol_list = symbols.split()
+    if ',' in symbols:
+        symbol_list = symbols.split(',')
+    else:
+        symbol_list = symbols.split()
     return [Nonterminal(s.strip()) for s in symbol_list]
+
 
 #################################################################
 # Production and Grammar
@@ -276,13 +283,13 @@ class Production(object):
         return (isinstance(other, self.__class__) and
                 self._lhs == other._lhs and
                 self._rhs == other._rhs)
-                 
+
     def __ne__(self, other):
         return not (self == other)
 
     def __lt__(self, other):
         if not isinstance(other, self.__class__): return -1
-        return((self._lhs, self._rhs) < (other._lhs, other._rhs))
+        return ((self._lhs, self._rhs) < (other._lhs, other._rhs))
 
     def __hash__(self):
         """
@@ -301,6 +308,7 @@ class Grammar(object):
     If you need efficient key-based access to productions, you
     can use a subclass to implement it.
     """
+
     def __init__(self, start, productions):
         """
         Create a new context-free grammar, from the given start state
@@ -323,7 +331,7 @@ class Grammar(object):
             self._lhs_index[prod._lhs].append(prod)
             if prod._rhs:
                 self._rhs_index[prod._rhs[0]].append(prod)
-        
+
     def start(self):
         return self._start
 
@@ -366,6 +374,7 @@ class Grammar(object):
             str += '\n    %s' % production
         return str
 
+
 _PARSE_RE = re.compile(r'''^(\w+)\s*           # lhs
                           (?:-+>|=+>)\s*       # arrow
                           (?:(                 # rhs:
@@ -379,6 +388,7 @@ _PARSE_RE = re.compile(r'''^(\w+)\s*           # lhs
                        re.VERBOSE)
 _SPLIT_RE = re.compile(r'''(\w+|-+>|=+>|"[^"]+"|'[^']+'|\|)''')
 
+
 def parse_production(s):
     """
     Returns a list of productions
@@ -388,30 +398,33 @@ def parse_production(s):
         raise ValueError('Bad production string')
     # Use _SPLIT_RE to process it.
     pieces = _SPLIT_RE.split(s)
-    pieces = [p for i,p in enumerate(pieces) if i%2==1]
+    pieces = [p for i, p in enumerate(pieces) if i % 2 == 1]
     lhside = Nonterminal(pieces[0])
     rhsides = [[]]
     for piece in pieces[2:]:
         if piece == '|':
-            rhsides.append([])                     # Vertical bar
+            rhsides.append([])  # Vertical bar
         elif piece[0] in ('"', "'"):
-            rhsides[-1].append(piece[1:-1])        # Terminal
+            rhsides[-1].append(piece[1:-1])  # Terminal
         else:
-            rhsides[-1].append(Nonterminal(piece)) # Nonterminal
+            rhsides[-1].append(Nonterminal(piece))  # Nonterminal
     return [Production(lhside, rhside) for rhside in rhsides]
+
 
 def parse_grammar(s):
     productions = []
     for linenum, line in enumerate(s.split('\n')):
         line = line.strip()
-        if line.startswith('#') or line=='': continue
-        try: productions += parse_production(line)
+        if line.startswith('#') or line == '': continue
+        try:
+            productions += parse_production(line)
         except ValueError:
             raise ValueError('Unable to parse line %s' % linenum)
     if len(productions) == 0:
         raise ValueError('No productions found!')
     start = productions[0].lhs()
     return Grammar(start, productions)
+
 
 #################################################################
 # Demonstration
@@ -425,9 +438,9 @@ def demo():
     # Create some nonterminals
     S, NP, VP, PP = nonterminals('S, NP, VP, PP')
     N, V, P, Det = nonterminals('N, V, P, Det')
-    VP_slash_NP = VP/NP
+    VP_slash_NP = VP / NP
 
-    print('Some nonterminals:', [S, NP, VP, PP, N, V, P, Det, VP/NP])
+    print('Some nonterminals:', [S, NP, VP, PP, N, V, P, Det, VP / NP])
     print('    S.symbol() =>', repr(S.symbol()))
     print()
 
@@ -455,7 +468,8 @@ def demo():
     print('    grammar.start()       =>', repr(grammar.start()))
     print('    grammar.productions() =>', end=' ')
     # Use string.replace(...) is to line-wrap the output.
-    print(repr(grammar.productions()).replace(',', ',\n'+' '*25))
+    print(repr(grammar.productions()).replace(',', ',\n' + ' ' * 25))
     print()
+
 
 if __name__ == '__main__': demo()

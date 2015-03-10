@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Contributed by Rob Speer (NLTK version)
-#         Steven Bird <sb@csse.unimelb.edu.au> (NLTK-Lite Port)
+# Steven Bird <sb@csse.unimelb.edu.au> (NLTK-Lite Port)
 #         Ewan Klein <ewan@inf.ed.ac.uk> (Hooks for semantics)
 #         Peter Wang <wangp@csse.unimelb.edu.au> (Overhaul)
 # URL: <http://nltk.sourceforge.net>
@@ -16,8 +16,8 @@ from src.six863.kimmo import kimmo
 from src.six863.semantics import logic
 
 try:
-    from . featurelite import *
-    from . cfg import *
+    from .featurelite import *
+    from .cfg import *
 except:
     from featurelite import *
     from cfg import *
@@ -33,6 +33,7 @@ def makevar(varname):
     Variable object.
     """
     return Variable(varname[1:])
+
 
 class Category(Nonterminal, FeatureI):
     """
@@ -64,9 +65,9 @@ class Category(Nonterminal, FeatureI):
     keep control over what their inner objects do. If you freeze a Category
     but mutate its inner objects, undefined behavior will occur.
     """
-    
+
     headname = 'head'
-    
+
     def __init__(self, features=None, **morefeatures):
         if features is None: features = {}
         self._features = unify(features, morefeatures)
@@ -76,7 +77,7 @@ class Category(Nonterminal, FeatureI):
 
     def __lt__(self, other):
         return (repr(self) < repr(other))
-    
+
     def __div__(self, other):
         """
         @return: A new Category based on this one, with its C{/} feature set to 
@@ -106,7 +107,7 @@ class Category(Nonterminal, FeatureI):
     def __hash__(self):
         if self._hash is not None: return self._hash
         return hash(str(self))
-    
+
     def freeze(self):
         """
         Freezing a Category memoizes its hash value, to make comparisons on it
@@ -126,13 +127,13 @@ class Category(Nonterminal, FeatureI):
         @rtype: C{bool}
         """
         return self._frozen
-    
+
     def get(self, key):
         return self._features.get(key)
 
     def __getitem__(self, key):
         return self._features.get(key)
-    
+
     def __setitem__(self, key, value):
         if self._frozen: raise "Cannot modify a frozen Category"
         self._features[key] = value
@@ -148,7 +149,7 @@ class Category(Nonterminal, FeatureI):
 
     def has_key(self, key):
         return key in self._features
-    
+
     def symbol(self):
         """
         @return: The node value corresponding to this C{Category}. 
@@ -164,26 +165,26 @@ class Category(Nonterminal, FeatureI):
         @rtype: C{str} or C{None}
         """
         return self.get(self.__class__.headname)
-    
+
     def copy(self):
         """
         @return: A deep copy of C{self}.
         """
         # Create a reentrant deep copy by round-tripping it through YAML.
         return deepcopy(self)
-    
+
     def feature_names(self):
         """
         @return: a list of all features that have values.
         """
         return list(self._features.keys())
-    
+
     has_feature = has_key
 
     #################################################################
     ## Variables
     #################################################################
-    
+
     def remove_unbound_vars(self):
         selfcopy = self.copy()
         Category._remove_unbound_vars(self)
@@ -206,14 +207,14 @@ class Category(Nonterminal, FeatureI):
         @return: A string representation of this feature structure.
         """
         return str(self)
-    
+
     def __str__(self):
         """
         @return: A string representation of this feature structure.
         """
         if self._memostr is not None: return self._memostr
         return self.__class__._str(self, {}, {})
-    
+
     @classmethod
     def _str(cls, obj, reentrances, reentrance_ids):
         segments = []
@@ -224,8 +225,10 @@ class Category(Nonterminal, FeatureI):
             if fname == cls.headname: continue
             fval = obj[fname]
             if isinstance(fval, bool):
-                if fval: segments.append('+%s' % fname)
-                else: segments.append('-%s' % fname)
+                if fval:
+                    segments.append('+%s' % fname)
+                else:
+                    segments.append('-%s' % fname)
             elif not isinstance(fval, dict):
                 segments.append('%s=%r' % (fname, fval))
             else:
@@ -236,9 +239,9 @@ class Category(Nonterminal, FeatureI):
         if head is None: head = ''
         if head and not len(segments): return str(head)
         return '%s[%s]' % (head, ', '.join(segments))
-    
+
     yaml_tag = '!parse.Category'
-    
+
     @classmethod
     def to_yaml(cls, dumper, data):
         node = dumper.represent_mapping(cls.yaml_tag, data._features)
@@ -262,22 +265,22 @@ class Category(Nonterminal, FeatureI):
                  'comma': re.compile(r'\s*,\s*'),
                  'none': re.compile(r'None(?=\s|\]|,)'),
                  'int': re.compile(r'-?\d+(?=\s|\]|,)'),
-                 'var': re.compile(r'\?[a-zA-Z_][a-zA-Z0-9_]*'+'|'+
-                                   r'\?<[a-zA-Z_][a-zA-Z0-9_]*'+
+                 'var': re.compile(r'\?[a-zA-Z_][a-zA-Z0-9_]*' + '|' +
+                                   r'\?<[a-zA-Z_][a-zA-Z0-9_]*' +
                                    r'(=[a-zA-Z_][a-zA-Z0-9_]*)*>'),
                  'symbol': re.compile(r'\w+'),
                  'stringmarker': re.compile("['\"\\\\]"),
-    
-                 'categorystart':re.compile(r'\s*([^\s\(\)"\'\-=,\[\]/\?]*)\s*\['),
+
+                 'categorystart': re.compile(r'\s*([^\s\(\)"\'\-=,\[\]/\?]*)\s*\['),
                  'bool': re.compile(r'\s*([-\+])'),
                  'arrow': re.compile(r'\s*->\s*'),
                  'disjunct': re.compile(r'\s*\|\s*'),
                  'whitespace': re.compile(r'\s*'),
-                 'semantics': re.compile(r'<([^>]+)>'), 
+                 'semantics': re.compile(r'<([^>]+)>'),
                  'application': re.compile(r'<(app)\((\?[a-z][a-z]*)\s*,\s*(\?[a-z][a-z]*)\)>'),
                  'slash': re.compile(r'\s*/\s*'),
-                }
-    
+    }
+
     @classmethod
     def parse(cls, s):
         parsed, position = cls._parse(s, 0)
@@ -290,7 +293,7 @@ class Category(Nonterminal, FeatureI):
         if reentrances is None: reentrances = {}
         parsed, position = cls._parse(s, position)
         return cls(parsed), position
-    
+
     @classmethod
     def _parse(cls, s, position=0, reentrances=None):
         """
@@ -306,7 +309,7 @@ class Category(Nonterminal, FeatureI):
         _PARSE_RE = cls._PARSE_RE
 
         features = {}
-        
+
         # Find the head, if there is one.
         match = _PARSE_RE['name'].match(s, position)
         if match is not None:
@@ -318,12 +321,12 @@ class Category(Nonterminal, FeatureI):
                 features[cls.headname] = makevar(match.group(0))
                 position = match.end()
 
-        
+
         # If the name is followed by an open bracket, start looking for
         # features.
         if position < len(s) and s[position] == '[':
             position += 1
-    
+
             # Build a list of the features defined by the structure.
             # Each feature has one of the three following forms:
             #     name = value
@@ -332,51 +335,53 @@ class Category(Nonterminal, FeatureI):
             while True:
                 if not position < len(s):
                     raise ValueError('close bracket', position)
-            
+
                 # Use these variables to hold info about the feature:
                 name = target = val = None
-                
+
                 # Check for a close bracket at the beginning
                 match = _PARSE_RE['bracket'].match(s, position)
                 if match is not None:
                     position = match.end()
-                    break   
-                    
-                # Is this a shorthand boolean value?
+                    break
+
+                    # Is this a shorthand boolean value?
                 match = _PARSE_RE['bool'].match(s, position)
                 if match is not None:
-                    if match.group(1) == '+': val = True
-                    else: val = False
+                    if match.group(1) == '+':
+                        val = True
+                    else:
+                        val = False
                     position = match.end()
-                
+
                 # Find the next feature's name.
                 match = _PARSE_RE['name'].match(s, position)
                 if match is None: raise ValueError('feature name', position)
                 name = match.group(1)
                 position = match.end()
-                
+
                 # If it's not a shorthand boolean, it must be an assignment.
                 if val is None:
                     match = _PARSE_RE['assign'].match(s, position)
                     if match is None: raise ValueError('equals sign', position)
                     position = match.end()
-    
+
                     val, position = cls._parseval(s, position, reentrances)
                 features[name] = val
-                        
+
                 # Check for a close bracket
                 match = _PARSE_RE['bracket'].match(s, position)
                 if match is not None:
                     position = match.end()
-                    break   
-                    
-                # Otherwise, there should be a comma
+                    break
+
+                    # Otherwise, there should be a comma
                 match = _PARSE_RE['comma'].match(s, position)
                 if match is None: raise ValueError('comma', position)
                 position = match.end()
-            
+
         return features, position
-    
+
     @classmethod
     def _parseval(cls, s, position, reentrances):
         """
@@ -389,10 +394,10 @@ class Category(Nonterminal, FeatureI):
         @return: A tuple (val, pos) of the value created by parsing
             and the position where the parsed value ends.
         """
-        
+
         # A set of useful regular expressions (precompiled)
         _PARSE_RE = cls._PARSE_RE
-        
+
         # End of string (error)
         if position == len(s): raise ValueError('value', position)
 
@@ -401,25 +406,26 @@ class Category(Nonterminal, FeatureI):
         if match is not None:
             fun = next(ParserSubstitute(match.group(2)))
             arg = next(ParserSubstitute(match.group(3)))
-            return ApplicationExpressionSubst(fun, arg), match.end()       
+            return ApplicationExpressionSubst(fun, arg), match.end()
 
-        # other semantic value enclosed by '< >'; return value given by the lambda expr parser
+            # other semantic value enclosed by '< >'; return value given by the lambda expr parser
         match = _PARSE_RE['semantics'].match(s, position)
         if match is not None:
             return next(ParserSubstitute(match.group(1))), match.end()
-        
+
         # String value
         if s[position] in "'\"":
             start = position
-            quotemark = s[position:position+1]
+            quotemark = s[position:position + 1]
             position += 1
-            while 1: 
+            while 1:
                 match = cls._PARSE_RE['stringmarker'].search(s, position)
                 if not match: raise ValueError('close quote', position)
                 position = match.end()
-                if match.group() == '\\': position += 1
+                if match.group() == '\\':
+                    position += 1
                 elif match.group() == quotemark:
-                    return s[start+1:position-1], position
+                    return s[start + 1:position - 1], position
 
         # Nested category
         if _PARSE_RE['categorystart'].match(s, position) is not None:
@@ -447,7 +453,7 @@ class Category(Nonterminal, FeatureI):
 
         # We don't know how to parse this value.
         raise ValueError('value', position)
-    
+
     @classmethod
     def parse_rules(cls, s):
         """
@@ -467,7 +473,7 @@ class Category(Nonterminal, FeatureI):
             lhs = cls(lhs)
         except ValueError as e:
             estr = ('Error parsing field structure\n\n\t' +
-                    s + '\n\t' + ' '*e.args[1] + '^ ' +
+                    s + '\n\t' + ' ' * e.args[1] + '^ ' +
                     'Expected %s\n' % e.args[0])
             raise ValueError(estr)
         lhs.freeze()
@@ -475,7 +481,8 @@ class Category(Nonterminal, FeatureI):
         match = _PARSE_RE['arrow'].match(s, position)
         if match is None:
             raise ValueError('expected arrow', s, s[position:])
-        else: position = match.end()
+        else:
+            position = match.end()
         rules = []
         while position < len(s):
             rhs = []
@@ -485,22 +492,23 @@ class Category(Nonterminal, FeatureI):
                     if isinstance(val, dict): val = cls(val)
                 except ValueError as e:
                     estr = ('Error parsing field structure\n\n\t' +
-                        s + '\n\t' + ' '*e.args[1] + '^ ' +
-                        'Expected %s\n' % e.args[0])
+                            s + '\n\t' + ' ' * e.args[1] + '^ ' +
+                            'Expected %s\n' % e.args[0])
                     raise ValueError(estr)
                 if isinstance(val, Category): val.freeze()
                 rhs.append(val)
                 position = _PARSE_RE['whitespace'].match(s, position).end()
             rules.append(Production(lhs, rhs))
-            
+
             if position < len(s):
                 match = _PARSE_RE['disjunct'].match(s, position)
                 position = match.end()
-        
+
         # Special case: if there's nothing after the arrow, it is one rule with
         # an empty RHS, instead of no rules.
         if len(rules) == 0: rules = [Production(lhs, ())]
         return rules
+
 
 class GrammarCategory(Category):
     """
@@ -521,10 +529,10 @@ class GrammarCategory(Category):
     An example of a C{GrammarCategory} is C{VP[+fin]/NP}, for a verb phrase
     that is finite and has an omitted noun phrase inside it.
     """
-    
+
     headname = 'pos'
     yaml_tag = '!parse.GrammarCategory'
-    
+
     @classmethod
     def _str(cls, obj, reentrances, reentrance_ids):
         segments = []
@@ -536,48 +544,53 @@ class GrammarCategory(Category):
             if isinstance(obj, GrammarCategory) and fname == '/': continue
             fval = obj[fname]
             if isinstance(fval, bool):
-                if fval: segments.append('+%s' % fname)
-                else: segments.append('-%s' % fname)
+                if fval:
+                    segments.append('+%s' % fname)
+                else:
+                    segments.append('-%s' % fname)
             elif not isinstance(fval, dict):
                 segments.append('%s=%r' % (fname, fval))
             else:
                 fval_repr = cls._str(fval, reentrances, reentrance_ids)
                 segments.append('%s=%s' % (fname, fval_repr))
 
-        if segments: features = '[%s]' % ', '.join(segments)
-        else: features = ''
+        if segments:
+            features = '[%s]' % ', '.join(segments)
+        else:
+            features = ''
         head = obj.get(cls.headname)
         if head is None: head = ''
         slash = None
         if isinstance(obj, GrammarCategory): slash = obj.get('/')
-        if not slash: slash = ''
+        if not slash:
+            slash = ''
         else:
             if isinstance(slash, dict):
                 slash = '/%s' % cls._str(slash, reentrances, reentrance_ids)
             else:
                 slash = '/%r' % slash
 
-        
         return '%s%s%s' % (head, features, slash)
-    
+
     @staticmethod
     def parse(s, position=0):
         return GrammarCategory.inner_parse(s, position)[0]
-    
+
     @classmethod
     def inner_parse(cls, s, position, reentrances=None):
         if reentrances is None: reentrances = {}
         if s[position] in "'\"":
             start = position
-            quotemark = s[position:position+1]
+            quotemark = s[position:position + 1]
             position += 1
-            while 1: 
+            while 1:
                 match = cls._PARSE_RE['stringmarker'].search(s, position)
                 if not match: raise ValueError('close quote', position)
                 position = match.end()
-                if match.group() == '\\': position += 1
+                if match.group() == '\\':
+                    position += 1
                 elif match.group() == quotemark:
-                    return s[start+1:position-1], position
+                    return s[start + 1:position - 1], position
 
         body, position = GrammarCategory._parse(s, position, reentrances)
         slash_match = Category._PARSE_RE['slash'].match(s, position)
@@ -589,12 +602,14 @@ class GrammarCategory(Category):
         elif '/' not in body:
             body['/'] = False
         return cls(body), position
-    
+
+
 class SubstituteBindingsI:
     """
     An interface for classes that can perform substitutions for feature
     variables.
     """
+
     def substitute_bindings(self, bindings):
         """
         @return: The object that is obtained by replacing
@@ -603,29 +618,34 @@ class SubstituteBindingsI:
         """
         raise NotImplementedError
 
+
 class ParserSubstitute(logic.Parser):
     """
     A lambda calculus expression parser, extended to create application
     expressions which support the SubstituteBindingsI interface.
     """
+
     def make_ApplicationExpression(self, first, second):
         return ApplicationExpressionSubst(first, second)
+
 
 class ApplicationExpressionSubst(logic.ApplicationExpression, SubstituteBindingsI):
     """
     A lambda application expression, extended to implement the
     SubstituteBindingsI interface.
     """
+
     def substitute_bindings(self, bindings):
         newval = self
         for semvar in self.variables():
             varstr = str(semvar)
             # discard Variables which are not FeatureVariables
-            if varstr.startswith('?'): 
+            if varstr.startswith('?'):
                 var = makevar(varstr)
                 if bindings.is_bound(var):
                     newval = newval.replace(semvar, bindings.lookup(var))
         return newval
+
 
 ############################################################################
 # Read a grammar from a file
@@ -637,35 +657,41 @@ class GrammarFile(object):
         self.lexical_productions = []
         self.start = GrammarCategory(pos='Start')
         self.kimmo = None
-        
+
     def grammar(self):
-        return Grammar(self.start, self.grammatical_productions +\
-        self.lexical_productions)
-        
+        return Grammar(self.start, self.grammatical_productions + \
+                       self.lexical_productions)
+
     def earley_grammar(self):
         return Grammar(self.start, self.grammatical_productions)
-    
+
     def earley_lexicon(self):
         lexicon = {}
         for prod in self.lexical_productions:
             lexicon.setdefault(prod.rhs()[0].upper(), []).append(prod.lhs())
+
         def lookup(word):
             return lexicon.get(word.upper(), [])
+
         return lookup
 
     def kimmo_lexicon(self):
         def lookup(word):
             kimmo_results = self.kimmo.recognize(word.lower())
             return [GrammarCategory(k[1]) for k in kimmo_results]
+
         return lookup
 
     def earley_parser(self, trace=1):
         from .featurechart import FeatureEarleyChartParse
-        if self.kimmo is None: lexicon = self.earley_lexicon()
-        else: lexicon = self.kimmo_lexicon()
-        
+
+        if self.kimmo is None:
+            lexicon = self.earley_lexicon()
+        else:
+            lexicon = self.kimmo_lexicon()
+
         return FeatureEarleyChartParse(self.earley_grammar(),
-                           lexicon, trace=trace)
+                                       lexicon, trace=trace)
 
     def apply_lines(self, lines):
         for line in lines:
@@ -704,15 +730,17 @@ class GrammarFile(object):
         lines = f.readlines()
         self.apply_lines(lines)
         f.close()
-    
+
     @staticmethod
     def read_file(filename):
         result = GrammarFile()
         result.apply_file(filename)
         return result
 
+
 yaml.add_representer(Category, Category.to_yaml)
 yaml.add_representer(GrammarCategory, GrammarCategory.to_yaml)
+
 
 def demo():
     print("Category(pos='n', agr=dict(number='pl', gender='f')):")
@@ -737,7 +765,8 @@ def demo():
     print()
     g = GrammarFile.read_file("speer.cfg")
     print(g.grammar())
-    
+
+
 if __name__ == '__main__':
     demo()
     

@@ -2,8 +2,9 @@ from .featurechart import *
 from .logic import Counter
 import sys
 
+
 def interact(grammar_filename, trace=2):
-    cp = load_earley(grammar_filename, trace=trace-2)
+    cp = load_earley(grammar_filename, trace=trace - 2)
     model = []
     counter = Counter()
     while True:
@@ -18,7 +19,7 @@ def interact(grammar_filename, trace=2):
             continue
         elif len(trees) > 1:
             print("That was ambiguous, but I'll guess at what you meant.")
-        
+
         # Extract semantic information from the parse tree.
         tree = trees[0]
         pos = tree[0][0].node['pos']
@@ -34,7 +35,7 @@ def interact(grammar_filename, trace=2):
         vars = set(almostfree).difference(free)
         for var in vars:
             skolem = skolem.replace_unique(var, counter)
-        
+
         if trace > 0:
             print(tree)
             print('Semantic value:', skolem)
@@ -43,7 +44,7 @@ def interact(grammar_filename, trace=2):
             print("Got these clauses:")
             for clause in clauses:
                 print('\t', clause)
-        
+
         if pos == 'S':
             # Handle statements
             model += clauses
@@ -57,7 +58,7 @@ def interact(grammar_filename, trace=2):
                     newbindings = dict(bindings)
                     try:
                         unify(object_to_features(clause),
-                        object_to_features(known), newbindings)
+                              object_to_features(known), newbindings)
                         bindings = newbindings
                         success = True
                         break
@@ -74,8 +75,10 @@ def interact(grammar_filename, trace=2):
                 # aren't possible.
                 print("I don't know.")
 
+
 def demo():
     interact('lab3-slash.cfg', trace=2)
+
 
 if __name__ == '__main__':
     demo()

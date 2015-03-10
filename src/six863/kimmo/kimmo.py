@@ -8,6 +8,7 @@ from .morphology import *
 from .fsa import FSA
 import yaml
 
+
 def _pairify(state):
     newstate = {}
     for label, targets in list(state.items()):
@@ -25,6 +26,7 @@ class KimmoRuleSet(yaml.YAMLObject):
     form.
     """
     yaml_tag = '!KimmoRuleSet'
+
     def __init__(self, subsets, defaults, rules, morphology=None, null='0', boundary='#'):
         """
         Creates a KimmoRuleSet. You may not want to do this directly, but use
@@ -52,58 +54,66 @@ class KimmoRuleSet(yaml.YAMLObject):
         self._boundary = boundary
         self._subsets = subsets
         self._morphology = morphology
-        
+
         for pair in defaults:
             # defaults shouldn't contain subsets
             if self.is_subset(pair.input()) or self.is_subset(pair.output()):
                 raise ValueError('default ' + str(pair) + ' contains subset')
-            self._pair_alphabet.add( pair )
-        
+            self._pair_alphabet.add(pair)
+
         for r in self.rules():
             for kp in r.pairs():
                 if (not (self.is_subset(kp.input()) or self.is_subset(kp.output()))):
-                    self._pair_alphabet.add( kp )
+                    self._pair_alphabet.add(kp)
 
     def rules(self):
         "The list of rules in this ruleset."
         return self._rules
+
     def subsets(self):
         "The dictionary defining subsets of characters of the language."
         return self._subsets
+
     def is_subset(self, key):
         "Is this string a subset representing other strings?"
         return key[0] == '~' or key in self.subsets()
+
     def null(self):
         "The null symbol for this ruleset."
         return self._null
+
     def morphology(self):
         """The morphological lexicon (as a KimmoMorphology). Could be None, if
         the ruleset is only used for generation.
         """
         return self._morphology
-    
+
     def _pairtext(self, char):
-        if char == self._null: return ''
-        else: return char
-    
+        if char == self._null:
+            return ''
+        else:
+            return char
+
     def _generate(self, pairs, state_list, morphology_state=None, word='',
-    lexical=None, surface=None, features='', log=None):
+                  lexical=None, surface=None, features='', log=None):
         if morphology_state:
             morph = self._morphology
             morphed = False
             for state, feat in morph.next_states(morphology_state, word):
                 if feat is not None:
                     newfeat = combine_features(features, feat)
-                else: newfeat = features
+                else:
+                    newfeat = features
                 for result in self._generate(pairs, state_list,
-                state, '', lexical, surface, newfeat, log):
+                                             state, '', lexical, surface, newfeat, log):
                     yield result
                     morphed = True
             if morphed: return
             lexical_chars = list(morph.valid_lexical(morphology_state,
-            word, self._pair_alphabet)) + list(self._null)
-        else: lexical_chars = None
-        
+                                                     word, self._pair_alphabet)) + list(self._null)
+        else:
+            lexical_chars = None
+
         if lexical == '' or surface == '':
             if morphology_state is None or morphology_state.lower() == 'end':
                 # check that all rules are in accepting states
@@ -116,10 +126,10 @@ class KimmoRuleSet(yaml.YAMLObject):
                     log.succeed(pairs)
                 yield pairs, features
                 return
-            
+
         next_pairs = [p for p in self._pair_alphabet if
-          (lexical is None or startswith(lexical, self._pairtext(p.input()))) and
-          (surface is None or startswith(surface, self._pairtext(p.output())))]
+                      (lexical is None or startswith(lexical, self._pairtext(p.input()))) and
+                      (surface is None or startswith(surface, self._pairtext(p.output())))]
         for pair in next_pairs:
             if pair.input() == self._null and pair.output() == self._null:
                 continue
@@ -131,26 +141,26 @@ class KimmoRuleSet(yaml.YAMLObject):
                 state = state_list[r]
                 next_state = self._advance_rule(rule, state, pair)
                 new_states[r] = next_state
-            
+
             newword = word + self._pairtext(pair.input())
 
             if log:
                 log.step(pairs, pair, self._rules, state_list, new_states,
-                morphology_state, newword)
+                         morphology_state, newword)
             fail = False
             for new_state in new_states:
-                if new_state is None or str(new_state) == '0'\
-                or str(new_state) == 'reject':
+                if new_state is None or str(new_state) == '0' \
+                        or str(new_state) == 'reject':
                     fail = True
                     break
             if fail: continue
             newlex, newsurf = lexical, surface
             if lexical: newlex = lexical[len(self._pairtext(pair.input())):]
             if surface: newsurf = surface[len(self._pairtext(pair.output())):]
-            for result in self._generate(pairs+[pair], new_states,
-            morphology_state, newword, newlex, newsurf, features, log):
+            for result in self._generate(pairs + [pair], new_states,
+                                         morphology_state, newword, newlex, newsurf, features, log):
                 yield result
-        
+
     def generate(self, lexical, log=None):
         """
         Given a lexical form, return all possible surface forms that fit
@@ -163,12 +173,12 @@ class KimmoRuleSet(yaml.YAMLObject):
         if not lexical.endswith(self._boundary):
             lexical += self._boundary
         got = self._generate([], [rule.fsa().start() for rule in
-        self._rules], lexical=lexical, log=log)
+                                  self._rules], lexical=lexical, log=log)
         results = []
         for (pairs, features) in got:
             results.append(''.join(self._pairtext(pair.output()).strip(self._boundary) for pair in pairs))
         return results
-    
+
     def recognize(self, surface, log=None):
         """
         Given a surface form, return all possible lexical forms that fit
@@ -183,7 +193,7 @@ class KimmoRuleSet(yaml.YAMLObject):
         if not surface.endswith(self._boundary):
             surface += self._boundary
         got = self._generate([], [rule.fsa().start() for rule in
-        self._rules], morphology_state='Begin', surface=surface, log=log)
+                                  self._rules], morphology_state='Begin', surface=surface, log=log)
         results = []
         for (pairs, features) in got:
             results.append((''.join(self._pairtext(pair.input()).strip(self._boundary) for pair in pairs), features))
@@ -196,7 +206,7 @@ class KimmoRuleSet(yaml.YAMLObject):
             if comppair.includes(pair, self._subsets):
                 return rule.fsa().nextState(state, comppair)
         return None
-    
+
     def _test_case(self, input, outputs, arrow, method):
         outputs.sort()
         if arrow == '<=':
@@ -206,13 +216,15 @@ class KimmoRuleSet(yaml.YAMLObject):
         value = method(input)
         if len(value) and isinstance(value[0], tuple):
             results = [v[0] for v in value]
-        else: results = value
+        else:
+            results = value
         results.sort()
         if outputs != results:
             print('  Failed: got %s' % (', '.join(results) or 'no results'))
             return False
-        else: return True
-    
+        else:
+            return True
+
     def batch_test(self, filename):
         """
         Test a rule set by reading lines from a file.
@@ -259,7 +271,7 @@ class KimmoRuleSet(yaml.YAMLObject):
                         self._test_case(input, outputs, '<=', self.recognize)
         finally:
             f.close()
-    
+
     @classmethod
     def from_yaml(cls, loader, node):
         """
@@ -267,7 +279,7 @@ class KimmoRuleSet(yaml.YAMLObject):
         """
         map = loader.construct_mapping(node)
         return cls.from_yaml_dict(map)
-    
+
     @classmethod
     def load(cls, filename):
         """
@@ -341,7 +353,7 @@ class KimmoRuleSet(yaml.YAMLObject):
         result = cls._from_yaml_dict(yaml.load(f))
         f.close()
         return result
-    
+
     @classmethod
     def _from_yaml_dict(cls, map):
         lexicon = map.get('lexicon')
@@ -363,15 +375,19 @@ class KimmoRuleSet(yaml.YAMLObject):
             elif isinstance(rule, str):
                 if rule.strip().startswith('FSA'):
                     rules.append(KimmoFSARule.parse_table(name, rule, subsets))
-                else: rules.append(KimmoArrowRule(name, rule, subsets))
+                else:
+                    rules.append(KimmoArrowRule(name, rule, subsets))
             else:
                 raise ValueError("Can't recognize the data structure in '%s' as a rule: %s" % (name, rule))
         return cls(subsets, defaults, rules, lexicon)
-    
+
     def gui(self, startTk=True):
         from . import draw
+
         return draw.KimmoGUI(self, startTk)
+
     draw_graphs = gui
+
 
 class TextTrace(object):
     """
@@ -379,18 +395,22 @@ class TextTrace(object):
     KimmoRuleSet.recognize, and it will output the steps it goes through
     on a text terminal.
     """
+
     def __init__(self, verbosity=1):
         """
         Creates a TextTrace. The 'verbosity' argument ranges from 1 to 3, and
         specifies how much text will be output to the screen.
         """
         self.verbosity = verbosity
-    def reset(self): pass
+
+    def reset(self):
+        pass
+
     def step(self, pairs, curr, rules, prev_states, states,
-    morphology_state, word):
+             morphology_state, word):
         lexical = ''.join(p.input() for p in pairs)
         surface = ''.join(p.output() for p in pairs)
-        indent = ' '*len(lexical)
+        indent = ' ' * len(lexical)
         if self.verbosity > 2:
             print('%s%s<%s>' % (indent, lexical, curr.input()))
             print('%s%s<%s>' % (indent, surface, curr.output()))
@@ -415,7 +435,7 @@ class TextTrace(object):
             print()
         else:
             print('%s%s<%s> | %s<%s>' % (indent, lexical, curr.input(),
-              surface, curr.output()), end=' ')
+                                         surface, curr.output()), end=' ')
             if morphology_state:
                 print('\t%r => %s' % (word, morphology_state), end=' ')
             blocked = []
@@ -429,13 +449,14 @@ class TextTrace(object):
     def succeed(self, pairs):
         lexical = ''.join(p.input() for p in pairs)
         surface = ''.join(p.output() for p in pairs)
-        indent = ' '*len(lexical)
+        indent = ' ' * len(lexical)
 
         print('%s%s' % (indent, lexical))
         print('%s%s' % (indent, surface))
         print('%sSUCCESS: %s <=> %s' % (indent, lexical, surface))
         print()
         print()
+
 
 def load(filename):
     """
@@ -445,18 +466,22 @@ def load(filename):
     """
     return KimmoRuleSet.load(filename)
 
+
 def guidemo():
     "An example of loading rules into the GUI."
     rules = load('turkish.yaml')
     rules.gui()
 
+
 def main():
     """If a YAML file is specified on the command line, load it as a
     KimmoRuleSet in the GUI."""
     import sys
+
     if len(sys.argv) > 1:
         filename = sys.argv[1]
         k = load(filename)
         k.gui()
+
 
 if __name__ == '__main__': main()

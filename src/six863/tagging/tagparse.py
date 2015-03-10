@@ -63,7 +63,7 @@ def main():
     # load from pickle so it's faster
     tagger = pickle.load(open('demo_tagger.pickle'))
     tagged_chart_parse(sentence, grammar, tagger)
-    #kimmo = load('english.yaml')
+    # kimmo = load('english.yaml')
     #kimmo_chart_parse(sentence, grammar, kimmo)
 
 

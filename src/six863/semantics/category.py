@@ -3,7 +3,7 @@
 # Copyright (C) 2001-2007 NLTK Project
 # Author: Contributed by Rob Speer (NLTK version)
 # Steven Bird <sb@csse.unimelb.edu.au> (NLTK-Lite Port)
-#         Ewan Klein <ewan@inf.ed.ac.uk> (Hooks for semantics)
+# Ewan Klein <ewan@inf.ed.ac.uk> (Hooks for semantics)
 #         Peter Wang <wangp@csse.unimelb.edu.au> (Overhaul)
 # URL: <http://nltk.sourceforge.net>
 # For license information, see LICENSE.TXT
@@ -11,10 +11,10 @@
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
 from . import logic
-from . cfg import *
+from .cfg import *
 from ..kimmo import kimmo
 
-from . featurelite import *
+from .featurelite import *
 from copy import deepcopy
 import yaml
 # import nltk.yamltags
@@ -60,7 +60,7 @@ class Category(Nonterminal, FeatureI, SubstituteBindingsI):
         self._memostr = None
 
     def __lt__(self, other):
-        return  (repr(self) < repr(other))
+        return (repr(self) < repr(other))
 
     def __div__(self, other):
         """

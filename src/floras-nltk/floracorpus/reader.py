@@ -94,7 +94,7 @@ if __name__ == "__main__":
     taxa = myds.taxa
     # for t in taxa:
     # for s in t.sentences:
-    #         if len(s.phrases) > 1:
+    # if len(s.phrases) > 1:
     #             print(s.phrases)
 
     pass

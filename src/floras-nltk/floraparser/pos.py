@@ -20,6 +20,7 @@ PLENDINGS = re.compile(r"(?:[^aeiou]ies|i|ia|(x|ch|sh)es|ves|ices|ae|s)$")
 
 NUMBERS = re.compile(r'^[0-9–—.·()]+$')
 
+
 class FlTagger():
 
     def rootword(self, word):
@@ -118,7 +119,7 @@ class FlTagger():
 
         return flword, 'UNK', None
 
-    # def tag(self, blob):
+        # def tag(self, blob):
         # return [self.tag_word(word) for word in blob.words]
 
 
