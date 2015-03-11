@@ -134,7 +134,7 @@ class AbstractParse(ParseI):
         """
         # Make sure we're not directly instantiated:
         if self.__class__ == AbstractParse:
-            raise AssertionError, "Abstract classes can't be instantiated"
+            raise AssertionError("Abstract classes can't be instantiated")
 
     def parse(self, sentence):
         return self.get_parse_list(sentence.split())

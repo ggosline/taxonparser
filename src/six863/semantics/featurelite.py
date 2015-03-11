@@ -26,7 +26,7 @@ structures intuitively:
 ...   C: c
 ...   D: d
 ... ''')
->>> print show(unify(f1, f2))
+>>> print (show(unify(f1, f2)))
 A:
   B: b
   C: c
@@ -240,16 +240,16 @@ class Variable(object):
     def __hash__(self):
         return hash(self._uid)
 
-    def __cmp__(self, other):
+    def __eq__(self, other):
         """
         Variables are equal if they are the same object or forward to the
         same object. Variables with the same name may still be unequal.
         """
         if not isinstance(other, Variable): return -1
         if isinstance(self._value, Variable):
-            return cmp(self._value, other)
+            return (self._value == other)
         else:
-            return cmp((self._name, self._value), (other._name, other._value))
+            return ((self._name, self._value) == (other._name, other._value))
 
     def __repr__(self):
         if self._value is None:
@@ -425,7 +425,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     
     >>> f1 = yaml.load("number: singular")
     >>> f2 = yaml.load("person: 3")
-    >>> print show(unify(f1, f2))
+    >>> print (show(unify(f1, f2)))
     number: singular
     person: 3
 
@@ -439,7 +439,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ...   C: c
     ...   D: d
     ... ''')
-    >>> print show(unify(f1, f2))
+    >>> print (show(unify(f1, f2)))
     A:
       B: b
       C: c
@@ -450,13 +450,13 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     in later unifications if you provide a dictionary of _bindings_ from
     variables to their values.
     >>> bindings = {}
-    >>> print unify(Variable('x'), 5, bindings)
+    >>> print (unify(Variable('x'), 5, bindings))
     5
     
-    >>> print bindings
+    >>> print (bindings)
     {'x': 5}
     
-    >>> print unify({'a': Variable('x')}, {}, bindings)
+    >>> print (unify({'a': Variable('x')}, {}, bindings))
     {'a': 5}
     
     The same variable name can be reused in different binding dictionaries
@@ -483,16 +483,16 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... ''')
     >>> bindings1 = {}
     >>> bindings2 = {}
-    >>> print show(unify(f1, f2, bindings1, bindings2))
+    >>> print (show(unify(f1, f2, bindings1, bindings2)))
     a: 1
     b: 1
     c: 2
     d: 2
     
-    >>> print bindings1
+    >>> print (bindings1)
     {'x': 2}
     
-    >>> print bindings2
+    >>> print (bindings2)
     {'x': 1}
 
     Feature structures can involve _reentrant_ values, where multiple feature
@@ -523,7 +523,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ...     D: d
     ... ''')
     >>> f3 = unify(f1, f2)
-    >>> print show(f3)
+    >>> print (show(f3))
     A: &id001
       B: b
       C: c
@@ -544,13 +544,13 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... G: *2
     ... ''')
     >>> f3 = unify(f1, f2)
-    >>> print f3
+    >>> print (f3)
     {'G': {'H': {...}}, 'F': {'H': {...}}}
-    >>> print f3['F'] is f3['G']
+    >>> print (f3['F'] is f3['G'])
     True
-    >>> print f3['F'] is f3['G']['H']
+    >>> print (f3['F'] is f3['G']['H'])
     True
-    >>> print f3['F'] is f3['G']['H']['H']
+    >>> print (f3['F'] is f3['G']['H']['H'])
     True
 
     A cycle can also be created using variables instead of reentrance.
@@ -566,11 +566,11 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... F: ?x
     ... ''')
     >>> f3 = unify(f1, f2, {})
-    >>> print f3
+    >>> print (f3)
     {'F': {'H': {...}}}
-    >>> print f3['F'] is f3['F']['H']
+    >>> print (f3['F'] is f3['F']['H'])
     True
-    >>> print f3['F'] is f3['F']['H']['H']
+    >>> print (f3['F'] is f3['F']['H']['H'])
     True
 
     Two sets of bindings can be provided because the variable names on each
@@ -595,14 +595,14 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     >>> # We could avoid defining two empty dictionaries by simply using the
     >>> # defaults, with unify(f1, f2) -- but we want to be able to examine
     >>> # the bindings afterward.
-    >>> print show(unify(f1, f2, bindings1, bindings2))
+    >>> print (show(unify(f1, f2, bindings1, bindings2)))
     a: 1
     b: 1
     c: 2
     d: 2
-    >>> print bindings1
+    >>> print (bindings1)
     {'x': 2}
-    >>> print bindings2
+    >>> print (bindings2)
     {'x': 1}
 
     If a variable is unified with another variable, the two variables are
@@ -618,11 +618,11 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... c: ?y
     ... ''')
     >>> bindings = {}
-    >>> print show(unify(f1, f2, bindings))
+    >>> print (show(unify(f1, f2, bindings)))
     a: &id001 ?y
     b: *id001
     c: *id001
-    >>> print bindings
+    >>> print (bindings)
     {'x': ?y}
 
     Reusing the same variable bindings ensures that appropriate bindings are
@@ -631,10 +631,10 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     >>> f1 = {'a': Variable('x')}
     >>> f2 = unify(f1, {'a': {}}, bindings)
     >>> f3 = unify(f2, {'b': Variable('x')}, bindings)
-    >>> print show(f3)
+    >>> print (show(f3))
     a: &id001 {}
     b: *id001
-    >>> print bindings
+    >>> print (bindings)
     {'x': {}}
 
     @param feature1: The first object to be unified.

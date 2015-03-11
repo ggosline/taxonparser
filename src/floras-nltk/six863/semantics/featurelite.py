@@ -95,7 +95,7 @@ def isMapping(obj):
 
 class FeatureI(object):
     def __init__(self):
-        raise TypeError, "FeatureI is an abstract interface"
+        raise TypeError("FeatureI is an abstract interface")
 
 
 class _FORWARD(object):
@@ -108,7 +108,7 @@ class _FORWARD(object):
     """
 
     def __init__(self):
-        raise TypeError, "The _FORWARD class is not meant to be instantiated"
+        raise TypeError("The _FORWARD class is not meant to be instantiated")
 
 
 class Variable(object):
@@ -240,16 +240,16 @@ class Variable(object):
     def __hash__(self):
         return hash(self._uid)
 
-    def __cmp__(self, other):
+    def __eq__(self, other):
         """
         Variables are equal if they are the same object or forward to the
         same object. Variables with the same name may still be unequal.
         """
         if not isinstance(other, Variable): return -1
         if isinstance(self._value, Variable):
-            return cmp(self._value, other)
+            return (self._value == other)
         else:
-            return cmp((self._name, self._value), (other._name, other._value))
+            return ((self._name, self._value) == (other._name, other._value))
 
     def __repr__(self):
         if self._value is None:
@@ -738,7 +738,7 @@ def _destructively_unify(feature1, feature2, bindings1, bindings2, memo, fail,
         print
         show(dict(feature1=feature1, feature2=feature2,
                   bindings1=bindings1, bindings2=bindings2, memo=memo))
-        raise ValueError, "Infinite recursion in unification"
+        raise ValueError("Infinite recursion in unification")
     if memo.has_key((id(feature1), id(feature2))):
         result = memo[id(feature1), id(feature2)]
         if result is UnificationFailure: raise result()

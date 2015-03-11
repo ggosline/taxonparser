@@ -38,19 +38,22 @@ edge you wish to apply a rule to.
 # At some point, we should rewrite this tool to use the new canvas
 # widget system.
 
+
+
+import nltk.compat
 import pickle
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 import tkinter, tkinter.font, tkinter.messagebox
 import math
 import os.path
-
-from nltk.parse.chart import *
-from nltk import grammar as cfg
-from nltk import tokenize
-from nltk import Tree
-from nltk.draw import ShowText, EntryDialog, in_idle
-from nltk.draw import MutableOptionMenu
-from nltk.draw import ColorizedList, SymbolWidget, CanvasFrame
+from nltk import Tree, SteppingChartParser
+from six863.parse import cfg
+from six863.parse.chart import SteppingChartParse
+import six863.parse.featurechart
+from six863.parse.cfg import Nonterminal
+from nltk.draw.util import ShowText, EntryDialog, in_idle
+from nltk.draw.util import MutableOptionMenu
+from nltk.draw.util import ColorizedList, SymbolWidget, CanvasFrame
 from nltk.draw.cfg import CFGEditor
 from nltk.draw.tree import tree_to_treesegment, TreeSegmentWidget
 
@@ -60,6 +63,8 @@ from nltk.draw.tree import tree_to_treesegment, TreeSegmentWidget
 #######################################################################
 # Edge List
 #######################################################################
+
+
 
 class EdgeList(ColorizedList):
     ARROW = SymbolWidget.SYMBOLS['rightarrow']
@@ -402,7 +407,7 @@ class ChartResultsView(object):
                                              width=2, outline='#088')
 
     def _color(self, treewidget, color):
-        treewidget.node()['color'] = color
+        treewidget.label()['color'] = color
         for child in treewidget.subtrees():
             if isinstance(child, TreeSegmentWidget):
                 self._color(child, color)
@@ -506,7 +511,7 @@ class ChartComparer(object):
         # This chart is displayed when we don't have a value (eg
         # before any chart is loaded).
         faketok = [''] * 8
-        self._emptychart = Chart(faketok)
+        self._emptychart = six863.parse.featurechart.Chart(faketok)
 
         # The left & right charts start out empty.
         self._left_name = 'None'
@@ -780,7 +785,7 @@ class ChartComparer(object):
     def _difference(self):
         if not self._checkcompat(): return
 
-        out_chart = Chart(self._left_chart.tokens())
+        out_chart = six863.parse.featurechart.Chart(self._left_chart.tokens())
         for edge in self._left_chart:
             if edge not in self._right_chart:
                 out_chart.insert(edge, [])
@@ -790,7 +795,7 @@ class ChartComparer(object):
     def _intersection(self):
         if not self._checkcompat(): return
 
-        out_chart = Chart(self._left_chart.tokens())
+        out_chart = six863.parse.featurechart.Chart(self._left_chart.tokens())
         for edge in self._left_chart:
             if edge in self._right_chart:
                 out_chart.insert(edge, [])
@@ -800,7 +805,7 @@ class ChartComparer(object):
     def _union(self):
         if not self._checkcompat(): return
 
-        out_chart = Chart(self._left_chart.tokens())
+        out_chart = six863.parse.featurechart.Chart(self._left_chart.tokens())
         for edge in self._left_chart:
             out_chart.insert(edge, [])
         for edge in self._right_chart:
@@ -1128,11 +1133,11 @@ class ChartView(object):
         """
         c = self._chart_canvas
 
-        if isinstance(edge, TreeEdge):
+        if isinstance(edge, six863.parse.featurechart.TreeEdge):
             lhs = edge.lhs()
             rhselts = []
             for elt in edge.rhs():
-                if isinstance(elt, cfg.Nonterminal):
+                if isinstance(elt, Nonterminal):
                     rhselts.append(str(elt.symbol()))
                 else:
                     rhselts.append(repr(elt))
@@ -1160,6 +1165,9 @@ class ChartView(object):
             - Find an available level
             - Call _draw_edge
         """
+        # Do NOT show leaf edges in the chart.
+        if isinstance(edge, six863.parse.featurechart.LeafEdge): return
+
         if edge in self._edgetags: return
         self._analyze_edge(edge)
         self._grow()
@@ -1196,7 +1204,7 @@ class ChartView(object):
             if edge in self._edgelevels[i]:
                 level = i
                 break
-        if level == None: return
+        if level is None: return
         # Try to view the new edge..
         y = (level + 1) * self._chart_level_size
         dy = self._text_height + 10
@@ -1219,10 +1227,10 @@ class ChartView(object):
         linetag = c.create_line(x1, y, x2, y, arrow='last', width=3)
 
         # Draw a label for the edge.
-        if isinstance(edge, TreeEdge):
+        if isinstance(edge, six863.parse.featurechart.TreeEdge):
             rhs = []
             for elt in edge.rhs():
-                if isinstance(elt, cfg.Nonterminal):
+                if isinstance(elt, Nonterminal):
                     rhs.append(str(elt.symbol()))
                 else:
                     rhs.append(repr(elt))
@@ -1288,7 +1296,7 @@ class ChartView(object):
                 self._color_edge(self._marks[edge])
             if (edge.is_complete() and edge.span() == (0, N)):
                 self._color_edge(edge, '#084', '#042')
-            elif isinstance(edge, LeafEdge):
+            elif isinstance(edge, six863.parse.featurechart.LeafEdge):
                 self._color_edge(edge, '#48c', '#246')
             else:
                 self._color_edge(edge, '#00f', '#008')
@@ -1304,7 +1312,7 @@ class ChartView(object):
         """
         Unmark an edge (or all edges)
         """
-        if edge == None:
+        if edge is None:
             old_marked_edges = list(self._marks.keys())
             self._marks = {}
             for edge in old_marked_edges:
@@ -1348,7 +1356,7 @@ class ChartView(object):
             self._analyze_edge(edge)
 
         # Size of chart levels
-        self._chart_level_size = self._text_height * 2.5
+        self._chart_level_size = self._text_height * 2
 
         # Default tree size..
         self._tree_height = (3 * (ChartView._TREE_LEVEL_SIZE +
@@ -1538,7 +1546,7 @@ class ChartView(object):
         # Draw the node
         nodey = depth * (ChartView._TREE_LEVEL_SIZE + self._text_height)
         tag = c.create_text(nodex, nodey, anchor='n', justify='center',
-                            text=str(treetok.node), fill='#042',
+                            text=str(treetok.label()), fill='#042',
                             font=self._boldfont)
         self._tree_tags.append(tag)
 
@@ -1613,11 +1621,11 @@ class ChartView(object):
 # dictionary.  (I.e., it uses TopDownMatchRule instead of ScannerRule)
 # But it's close enough for demonstration purposes.
 
-class PseudoEarleyRule(AbstractChartRule):
+class PseudoEarleyRule(six863.parse.featurechart.AbstractChartRule):
     NUM_EDGES = 1
-    _completer = CompleterRule()
-    _scanner = TopDownMatchRule()
-    _predictor = PredictorRule()
+    _completer = six863.parse.featurechart.CompleterRule()
+    _scanner = six863.parse.featurechart.TopDownMatchRule()
+    _predictor = six863.parse.featurechart.PredictorRule()
 
     def __init__(self):
         self._most_recent_rule = None
@@ -1644,7 +1652,7 @@ class PseudoEarleyRule(AbstractChartRule):
             return 'Pseudo Earley Rule'
 
 
-class PseudoEarleyInitRule(TopDownInitRule):
+class PseudoEarleyInitRule(six863.parse.featurechart.TopDownInitRule):
     def __str__(self):
         return 'Predictor Rule (aka Top Down Expand Rule)'
 
@@ -1677,19 +1685,19 @@ class EdgeRule(object):
         return super.__str__(self)
 
 
-class TopDownExpandEdgeRule(EdgeRule, TopDownExpandRule): pass
+class TopDownExpandEdgeRule(EdgeRule, six863.parse.featurechart.TopDownExpandRule): pass
 
 
-class TopDownMatchEdgeRule(EdgeRule, TopDownMatchRule): pass
+class TopDownMatchEdgeRule(EdgeRule, six863.parse.featurechart.TopDownMatchRule): pass
 
 
-class BottomUpEdgeRule(EdgeRule, BottomUpPredictRule): pass
+class BottomUpEdgeRule(EdgeRule, six863.parse.featurechart.BottomUpPredictRule): pass
 
 
-class BottomUpInitEdgeRule(EdgeRule, BottomUpInitRule): pass
+class BottomUpInitEdgeRule(EdgeRule, six863.parse.featurechart.BottomUpInitRule): pass
 
 
-class FundamentalEdgeRule(EdgeRule, SingleEdgeFundamentalRule): pass
+class FundamentalEdgeRule(EdgeRule, six863.parse.featurechart.SingleEdgeFundamentalRule): pass
 
 
 class PseudoEarleyEdgeRule(EdgeRule, PseudoEarleyRule): pass
@@ -1762,6 +1770,9 @@ class ChartDemo(object):
     def _init_parser(self, grammar, tokens):
         self._grammar = grammar
         self._tokens = tokens
+        self._reset_parser()
+
+    def _reset_parser(self):
         self._cp = SteppingChartParse(self._grammar)
         self._cp.initialize(self._tokens)
         self._chart = self._cp.chart()
@@ -2137,9 +2148,7 @@ class ChartDemo(object):
 
     def reset(self, *args):
         self._animating = 0
-        self._cp = SteppingChartParse(self._grammar)
-        self._cp.initialize(self._tokens)
-        self._chart = self._cp.chart()
+        self._reset_parser()
         self._cv.update(self._chart)
         if self._matrix: self._matrix.set_chart(self._chart)
         if self._matrix: self._matrix.deselect_cell()
@@ -2167,7 +2176,7 @@ class ChartDemo(object):
         EntryDialog(self._root, sentence, instr, self.set_sentence, title)
 
     def set_sentence(self, sentence):
-        self._tokens = list(tokenize.whitespace(sentence))
+        self._tokens = list(sentence.split())
         self.reset()
 
     #////////////////////////////////////////////////////////////
@@ -2265,7 +2274,7 @@ class ChartDemo(object):
         return new_edge
 
     def _display_rule(self, rule):
-        if rule == None:
+        if rule is None:
             self._rulelabel2['text'] = ''
         else:
             name = str(rule)
@@ -2277,12 +2286,12 @@ class ChartDemo(object):
     #////////////////////////////////////////////////////////////
 
     # Basic rules:
-    _TD_INIT = [TopDownInitRule()]
-    _TD_EXPAND = [TopDownExpandRule()]
-    _TD_MATCH = [TopDownMatchRule()]
-    _BU_INIT = [BottomUpInitRule()]
-    _BU_RULE = [BottomUpPredictRule()]
-    _FUNDAMENTAL = [SingleEdgeFundamentalRule()]
+    _TD_INIT = [six863.parse.featurechart.TopDownInitRule()]
+    _TD_EXPAND = [six863.parse.featurechart.TopDownExpandRule()]
+    _TD_MATCH = [six863.parse.featurechart.TopDownMatchRule()]
+    _BU_INIT = [six863.parse.featurechart.BottomUpInitRule()]
+    _BU_RULE = [six863.parse.featurechart.BottomUpPredictRule()]
+    _FUNDAMENTAL = [six863.parse.featurechart.SingleEdgeFundamentalRule()]
     _EARLEY = [PseudoEarleyRule()]
     _EARLEY_INIT = [PseudoEarleyInitRule()]
 
@@ -2337,13 +2346,13 @@ def demo():
 
     sent = 'John ate the cake on the table with a fork'
     sent = 'John ate the cake on the table'
-    tokens = list(tokenize.whitespace(sent))
+    tokens = list(sent.split())
 
     print('grammar= (')
     for rule in grammar.productions():
-        print('    ', repr(rule) + ',')
+        print(('    ', repr(rule) + ','))
     print(')')
-    print('tokens = %r' % tokens)
+    print(('tokens = %r' % tokens))
     print('Calling "ChartDemo(grammar, tokens)"...')
     ChartDemo(grammar, tokens).mainloop()
 

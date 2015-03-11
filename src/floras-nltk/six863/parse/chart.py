@@ -12,7 +12,7 @@
 from nltk.tree import Tree
 
 try:
-    from ..parse import cfg as CFG
+    from ..parse import cfg as CFG, AbstractParse
 except:
     import __init__
     import cfg as CFG
@@ -179,6 +179,9 @@ class EdgeI(object):
         """
         raise AssertionError('EdgeI is an abstract interface')
 
+    def next(self):
+        return self.__next__()
+
     def is_complete(self):
         """
         @return: True if this edge's structure is fully consistent
@@ -198,7 +201,7 @@ class EdgeI(object):
     #////////////////////////////////////////////////////////////
     # Comparisons
     #////////////////////////////////////////////////////////////
-    def __lt__(self, other):
+    def __eq__(self, other):
         raise AssertionError('EdgeI is an abstract interface')
 
     def __hash__(self, other):
@@ -308,9 +311,9 @@ class TreeEdge(EdgeI):
             return self._rhs[self._dot]
 
     # Comparisons & hashing
-    def __lt__(self, other):
+    def __eq__(self, other):
         if self.__class__ != other.__class__: return -1
-        return ((self._span, self.lhs(), self.rhs(), self._dot) <
+        return ((self._span, self.lhs(), self.rhs(), self._dot) ==
                 (other._span, other.lhs(), other.rhs(), other._dot))
 
     def __hash__(self):
@@ -381,9 +384,9 @@ class LeafEdge(EdgeI):
     def __next__(self): return None
 
     # Comparisons & hashing
-    def __lt__(self, other):
+    def __eq__(self, other):
         if not isinstance(other, LeafEdge): return -1
-        return ((self._index, self._leaf) < (other._index, other._leaf))
+        return ((self._index, self._leaf) == (other._index, other._leaf))
 
     def __hash__(self):
         return hash((self._index, self._leaf))
@@ -1368,7 +1371,7 @@ class EarleyChartParse(AbstractParse):
         if self._trace > 0: print(' ', chart.pp_leaves(w))
 
         # Initialize the chart with a special "starter" edge.
-        root = grammar.Nonterminal('[INIT]')
+        root = CFG.Nonterminal('[INIT]')
         edge = TreeEdge((0, 0), root, (grammar.start(),))
         chart.insert(edge, ())
 

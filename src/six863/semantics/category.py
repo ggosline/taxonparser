@@ -10,12 +10,19 @@
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-from . import logic
-from .cfg import *
-from ..kimmo import kimmo
 
-from .featurelite import *
+from src.six863.kimmo import kimmo
+from src.six863.semantics import logic
+
+try:
+    from .featurelite import *
+    from .cfg import *
+except:
+    from featurelite import *
+    from cfg import *
+
 from copy import deepcopy
+
 import yaml
 # import nltk.yamltags
 

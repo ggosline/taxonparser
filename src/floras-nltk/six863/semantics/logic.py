@@ -1,7 +1,7 @@
 # Natural Language Toolkit: Logic
-from nltk.utilities import Counter
-from featurelite import SubstituteBindingsMixin, FeatureI
-from featurelite import Variable as FeatureVariable
+from nltk.internals import Counter
+from six863.semantics.featurelite import SubstituteBindingsMixin, FeatureI
+from six863.parse.featurelite import Variable as FeatureVariable
 
 _counter = Counter()
 
@@ -144,7 +144,7 @@ class Expression(object):
         raise NotImplementedError
 
     def __hash__(self):
-        raise NotImplementedError, self.__class__
+        raise NotImplementedError(self.__class__)
 
     def normalize(self):
         if hasattr(self, '_normalized'): return self._normalized
@@ -660,7 +660,7 @@ class Parser:
         whether the token will be removed from the buffer; setting it to
         0 gives lookahead capability."""
         if self.buffer == '':
-            raise Error, "end of stream"
+            raise Error("end of stream")
         tok = None
         buffer = self.buffer
         while not tok:
@@ -709,7 +709,7 @@ class Parser:
             tok = self.token()
 
             if tok != Parser.DOT:
-                raise Error, "parse error, unexpected token: %s" % tok
+                raise Error("parse error, unexpected token: %s" % tok)
             term = self.next()
             accum = factory(Variable(vars.pop()), term)
             while vars:
@@ -752,7 +752,7 @@ class Parser:
                 # Expression is a simple variable expression: x
                 return VariableExpression(Variable(tok))
             else:
-                raise Error, "parse error, unexpected token: %s" % tok
+                raise Error("parse error, unexpected token: %s" % tok)
 
     # This is intended to be overridden, so that you can derive a Parser class
     # that constructs expressions using your subclasses.  So far we only need

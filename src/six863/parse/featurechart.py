@@ -189,7 +189,8 @@ class FeatureFundamentalRule(FundamentalRule):
                 changed_chart = True
 
         # If we changed the chart, then generate the edge.
-        if changed_chart: yield new_edge
+        if changed_chart:
+            yield new_edge
 
 
 class SingleEdgeFeatureFundamentalRule(SingleEdgeFundamentalRule):
@@ -277,8 +278,7 @@ class FeatureEarleyChartParse(EarleyChartParse):
 
         # Initialize the chart with a special "starter" edge.
         root = GrammarCategory(pos='[INIT]')
-        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0,
-            {})
+        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0, {})
         chart.insert(edge, ())
 
         # Create the 3 rules:

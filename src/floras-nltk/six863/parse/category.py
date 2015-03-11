@@ -10,7 +10,7 @@
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-from nltk.sem import logic
+from six863.semantics.logic import Parser, ApplicationExpression
 from .cfg import *
 from ..kimmo import kimmo
 
@@ -611,7 +611,7 @@ class SubstituteBindingsI:
         raise NotImplementedError
 
 
-class ParserSubstitute(logic.Parser):
+class ParserSubstitute(Parser):
     """
     A lambda calculus expression parser, extended to create application
     expressions which support the SubstituteBindingsI interface.
@@ -621,7 +621,7 @@ class ParserSubstitute(logic.Parser):
         return ApplicationExpressionSubst(first, second)
 
 
-class ApplicationExpressionSubst(logic.ApplicationExpression, SubstituteBindingsI):
+class ApplicationExpressionSubst(ApplicationExpression, SubstituteBindingsI):
     """
     A lambda application expression, extended to implement the
     SubstituteBindingsI interface.

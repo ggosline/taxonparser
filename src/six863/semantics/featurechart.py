@@ -13,11 +13,17 @@ feature structures as nodes.
 """
 
 import yaml
-from .chart import *
-from .category import *
-from . import cfg
 
-from .featurelite import *
+try:
+    from .chart import *
+    from .category import *
+    from . import cfg
+    from .featurelite import *
+except:
+    from chart import *
+    from category import *
+    import cfg
+    from featurelite import *
 
 
 def load_earley(filename, trace=1):
@@ -273,8 +279,7 @@ class FeatureEarleyChartParse(EarleyChartParse):
 
         # Initialize the chart with a special "starter" edge.
         root = GrammarCategory(pos='[INIT]')
-        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0,
-            {})
+        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0, {})
         chart.insert(edge, ())
 
         # Create the 3 rules:
@@ -361,9 +366,7 @@ def demo():
 
     sent = 'I saw John with a dog with my cookie'
     print("Sentence:\n", sent)
-    from nltk import tokenize
-
-    tokens = list(tokenize.whitespace(sent))
+    tokens = sent.split()
     t = time.time()
     cp = FeatureEarleyChartParse(earley_grammar, lexicon, trace=1)
     trees = cp.get_parse_list(tokens)

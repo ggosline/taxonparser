@@ -9,8 +9,14 @@
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
 
-from .__init__ import *
-from nltk import cfg, Tree
+try:
+    from .__init__ import *
+    from . import cfg
+except:
+    from __init__ import *
+    import cfg
+
+from nltk import Tree
 
 """
 Data classes and parser implementations for \"chart parsers\", which
@@ -171,6 +177,9 @@ class EdgeI(object):
         """
         raise AssertionError('EdgeI is an abstract interface')
 
+    def next(self):
+        return self.__next__()
+
     def is_complete(self):
         """
         @return: True if this edge's structure is fully consistent
@@ -190,7 +199,7 @@ class EdgeI(object):
     #////////////////////////////////////////////////////////////
     # Comparisons
     #////////////////////////////////////////////////////////////
-    def __cmp__(self, other):
+    def __eq__(self, other):
         raise AssertionError('EdgeI is an abstract interface')
 
     def __hash__(self, other):
@@ -300,10 +309,10 @@ class TreeEdge(EdgeI):
             return self._rhs[self._dot]
 
     # Comparisons & hashing
-    def __cmp__(self, other):
+    def __eq__(self, other):
         if self.__class__ != other.__class__: return -1
-        return cmp((self._span, self.lhs(), self.rhs(), self._dot),
-                   (other._span, other.lhs(), other.rhs(), other._dot))
+        return ((self._span, self.lhs(), self.rhs(), self._dot) ==
+                (other._span, other.lhs(), other.rhs(), other._dot))
 
     def __hash__(self):
         return hash((self.lhs(), self.rhs(), self._span, self._dot))
@@ -373,9 +382,9 @@ class LeafEdge(EdgeI):
     def __next__(self): return None
 
     # Comparisons & hashing
-    def __cmp__(self, other):
+    def __eq__(self, other):
         if not isinstance(other, LeafEdge): return -1
-        return cmp((self._index, self._leaf), (other._index, other._leaf))
+        return ((self._index, self._leaf) == (other._index, other._leaf))
 
     def __hash__(self):
         return hash((self._index, self._leaf))
@@ -534,6 +543,7 @@ class Chart(object):
         # If it doesn't exist, then create it.
         if restr_keys not in self._indexes:
             self._add_index(restr_keys)
+
         vals = [restrictions[k] for k in restr_keys]
         return iter(self._indexes[restr_keys].get(tuple(vals), []))
 
@@ -731,6 +741,8 @@ class Chart(object):
             index in the sentence.
         """
         if width is None: width = 50 / (self.num_leaves() + 1)
+        width = int(width)
+
         (start, end) = (edge.start(), edge.end())
 
         str = '|' + ('.' + ' ' * (width - 1)) * start
@@ -761,6 +773,8 @@ class Chart(object):
             for calls to L{pp_edge}.
         """
         if width is None: width = 50 / (self.num_leaves() + 1)
+
+        width = int(width)
 
         if self._tokens is not None and width > 1:
             header = '|.'
@@ -1659,9 +1673,8 @@ def demo():
     # Tokenize a sample sentence.
     sent = 'I saw John with a dog with my cookie'
     print("Sentence:\n", sent)
-    from nltk import tokenize
 
-    tokens = list(tokenize.whitespace(sent))
+    tokens = sent.split()
 
     print(tokens)
 
