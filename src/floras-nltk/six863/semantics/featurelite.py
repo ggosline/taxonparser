@@ -664,7 +664,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
 
     if memo is None: memo = {}
     copymemo = {}
-    if memo.has_key((id(feature1), id(feature2))):
+    if (id(feature1), id(feature2)) in memo:
         result = memo[id(feature1), id(feature2)]
         if result is UnificationFailure:
             if trace > 2:
@@ -739,7 +739,7 @@ def _destructively_unify(feature1, feature2, bindings1, bindings2, memo, fail,
         show(dict(feature1=feature1, feature2=feature2,
                   bindings1=bindings1, bindings2=bindings2, memo=memo))
         raise ValueError("Infinite recursion in unification")
-    if memo.has_key((id(feature1), id(feature2))):
+    if (id(feature1), id(feature2)) in memo:
         result = memo[id(feature1), id(feature2)]
         if result is UnificationFailure: raise result()
     unified = _do_unify(feature1, feature2, bindings1, bindings2, memo, fail,
@@ -838,7 +838,7 @@ def _lookup_values(mapping, visited, remove=False):
         else:
             return var.forwarded_self()
     if not isMapping(mapping): return mapping
-    if visited.has_key(id(mapping)): return mapping
+    if id(mapping) in visited: return mapping
     visited[id(mapping)] = True
 
     for fname, fval in mapping.items():

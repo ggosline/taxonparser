@@ -460,11 +460,11 @@ class Category(Nonterminal, FeatureI, SubstituteBindingsI):
         try:
             lhs, position = cls.inner_parse(s, position)
             lhs = cls(lhs)
-        except ValueError, e:
+        except ValueError as  e:
             estr = ('Error parsing field structure\n\n\t' +
                     s + '\n\t' + ' ' * e.args[1] + '^ ' +
                     'Expected %s\n' % e.args[0])
-            raise ValueError, estr
+            raise ValueError(estr)
         lhs.freeze()
 
         match = _PARSE_RE['arrow'].match(s, position)
@@ -479,7 +479,7 @@ class Category(Nonterminal, FeatureI, SubstituteBindingsI):
                 try:
                     val, position = cls.inner_parse(s, position, {})
                     if isinstance(val, dict): val = cls(val)
-                except ValueError, e:
+                except ValueError as e:
                     estr = ('Error parsing field structure\n\n\t' +
                             s + '\n\t' + ' ' * e.args[1] + '^ ' +
                             'Expected %s\n' % e.args[0])

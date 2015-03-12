@@ -1,6 +1,6 @@
 import tkinter
 from nltk.draw import TreeWidget
-from nltk.draw import CanvasFrame
+from nltk.draw.util import CanvasFrame
 
 """A class that draws parse trees in a simple Tk window."""
 

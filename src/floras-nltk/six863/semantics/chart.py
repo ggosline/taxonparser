@@ -10,7 +10,8 @@
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
 
 from __init__ import *
-from nltk import cfg, Tree
+from nltk import Tree
+from src.six863.parse import cfg
 
 """
 Data classes and parser implementations for \"chart parsers\", which
@@ -545,7 +546,7 @@ class Chart(object):
         # Make sure it's a valid index.
         for k in restr_keys:
             if not hasattr(EdgeI, k):
-                raise ValueError, 'Bad restriction: %s' % k
+                raise ValueError('Bad restriction: %s' % k)
 
         # Create the index.
         self._indexes[restr_keys] = {}
@@ -883,7 +884,7 @@ class ChartRuleI(object):
         @rtype: C{list} of L{EdgeI}
         @return: A list of the edges that were added.
         """
-        raise AssertionError, 'ChartRuleI is an abstract interface'
+        raise AssertionError('ChartRuleI is an abstract interface')
 
     def apply_iter(self, chart, grammar, *edges):
         """
@@ -898,7 +899,7 @@ class ChartRuleI(object):
             that should be passed to C{apply} is specified by the
             L{NUM_EDGES} class variable.
         """
-        raise AssertionError, 'ChartRuleI is an abstract interface'
+        raise AssertionError('ChartRuleI is an abstract interface')
 
     def apply_everywhere(self, chart, grammar):
         """
@@ -908,7 +909,7 @@ class ChartRuleI(object):
         @rtype: C{list} of L{EdgeI}
         @return: A list of the edges that were added.
         """
-        raise AssertionError, 'ChartRuleI is an abstract interface'
+        raise AssertionError('ChartRuleI is an abstract interface')
 
     def apply_everywhere_iter(self, chart, grammar):
         """

@@ -1,9 +1,7 @@
-from .featurechart import *
-from .treeview import *
-
+from six863.semantics.featurechart import *
 
 def demo():
-    cp = load_earley('lab3-slash.cfg', trace=0)
+    cp = load_earley('lab3-slash.fcfg', trace=0)
     trees = cp.parse('Mary sees a dog in Noosa')
     for tree in trees:
         print(tree)

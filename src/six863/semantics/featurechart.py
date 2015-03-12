@@ -16,12 +16,12 @@ import yaml
 
 try:
     from .chart import *
-    from .category import *
+    from .category import Category, GrammarCategory, GrammarFile
     from . import cfg
     from .featurelite import *
 except:
     from chart import *
-    from category import *
+    from category import Category, GrammarCategory, GrammarFile
     import cfg
     from featurelite import *
 

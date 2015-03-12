@@ -14,12 +14,9 @@
 from src.six863.kimmo import kimmo
 from src.six863.semantics import logic
 
-try:
-    from .featurelite import *
-    from .cfg import *
-except:
-    from featurelite import *
-    from cfg import *
+from src.six863.semantics.featurelite import *
+from src.six863.parse.cfg import *
+from src.six863.semantics.featurechart import FeatureEarleyChartParse
 
 from copy import deepcopy
 
@@ -657,7 +654,6 @@ class GrammarFile(object):
         return lookup
 
     def earley_parser(self, trace=1):
-        from .featurechart import FeatureEarleyChartParse
 
         if self.kimmo is None:
             lexicon = self.earley_lexicon()

@@ -1,7 +1,20 @@
 # Natural Language Toolkit: Logic
-from collections import Counter
+
 from .featurelite import SubstituteBindingsMixin, FeatureI
 from .featurelite import Variable as FeatureVariable
+
+
+class Counter:
+    """
+    A counter that auto-increments each time its value is read.
+    """
+
+    def __init__(self, initial_value=0):
+        self._value = initial_value
+
+    def get(self):
+        self._value += 1
+        return self._value
 
 _counter = Counter()
 

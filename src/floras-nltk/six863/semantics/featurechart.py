@@ -13,11 +13,12 @@ feature structures as nodes.
 """
 
 import yaml
-from chart import *
-from category import *
-import cfg
 
-from featurelite import *
+from src.six863.parse.chart import TreeEdge, FundamentalRule, SingleEdgeFundamentalRule, TopDownExpandRule, LeafEdge, \
+    EarleyChartParse, Chart
+from src.six863.semantics.category import GrammarCategory, GrammarFile, Category
+from src.six863.parse import cfg
+from src.six863.semantics.featurelite import *
 
 
 def load_earley(filename, trace=1):
@@ -269,13 +270,11 @@ class FeatureEarleyChartParse(EarleyChartParse):
         # Width, for printing trace edges.
         # w = 40/(chart.num_leaves()+1)
         w = 2
-        if self._trace > 0: print
-        ' ' * 9, chart.pp_leaves(w)
+        if self._trace > 0: print(' ' * 9, chart.pp_leaves(w))
 
         # Initialize the chart with a special "starter" edge.
         root = GrammarCategory(pos='[INIT]')
-        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0,
-            {})
+        edge = FeatureTreeEdge((0, 0), root, (grammar.start(),), 0, {})
         chart.insert(edge, ())
 
         # Create the 3 rules:
@@ -284,8 +283,7 @@ class FeatureEarleyChartParse(EarleyChartParse):
         # scanner = FeatureScannerRule(self._lexicon)
 
         for end in range(chart.num_leaves() + 1):
-            if self._trace > 1: print
-            'Processing queue %d' % end
+            if self._trace > 1: print('Processing queue %d' % end)
 
             # Scanner rule substitute, i.e. this is being used in place
             # of a proper FeatureScannerRule at the moment.
@@ -298,15 +296,13 @@ class FeatureEarleyChartParse(EarleyChartParse):
                         {})
                     chart.insert(new_pos_edge, (new_leaf_edge,))
                     if self._trace > 0:
-                        print
-                        'Scanner  ', chart.pp_edge(new_pos_edge, w)
+                        print('Scanner  ', chart.pp_edge(new_pos_edge, w))
 
             for edge in chart.select(end=end):
                 if edge.is_incomplete():
                     for e in predictor.apply(chart, grammar, edge):
                         if self._trace > 1:
-                            print
-                            'Predictor', chart.pp_edge(e, w)
+                            print('Predictor', chart.pp_edge(e, w))
                 #if edge.is_incomplete():
                 #    for e in scanner.apply(chart, grammar, edge):
                 #        if self._trace > 0:
@@ -314,8 +310,7 @@ class FeatureEarleyChartParse(EarleyChartParse):
                 if edge.is_complete():
                     for e in completer.apply(chart, grammar, edge):
                         if self._trace > 0:
-                            print
-                            'Completer', chart.pp_edge(e, w)
+                            print('Completer', chart.pp_edge(e, w))
 
         # Output a list of complete parses.
         return chart.parses(root)
@@ -365,18 +360,15 @@ def demo():
         return earley_lexicon.get(word.upper(), [])
 
     sent = 'I saw John with a dog with my cookie'
-    print
-    "Sentence:\n", sent
-    from nltk import tokenize
+    print("Sentence:\n", sent)
 
-    tokens = list(tokenize.whitespace(sent))
+    tokens = sent.split()
     t = time.time()
-    cp = FeatureEarleyChartParse(earley_grammar, lexicon, trace=1)
+    cp = FeatureEarleyChartParse(earley_grammar, lexicon, trace=2)
     trees = cp.get_parse_list(tokens)
-    print
-    "Time: %s" % (time.time() - t)
-    for tree in trees: print
-    tree
+    print("Time: %s" % (time.time() - t))
+    for tree in trees:
+        print(tree)
 
 
 def run_profile():

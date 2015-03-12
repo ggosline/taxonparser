@@ -396,14 +396,14 @@ class Category(Nonterminal, FeatureI):
         # Semantic value of the form <app(?x, ?y) >'; return an ApplicationExpression
         match = _PARSE_RE['application'].match(s, position)
         if match is not None:
-            fun = next(ParserSubstitute(match.group(2)))
-            arg = next(ParserSubstitute(match.group(3)))
+            fun = ParserSubstitute(match.group(2)).next()
+            arg = ParserSubstitute(match.group(3)).next()
             return ApplicationExpressionSubst(fun, arg), match.end()
 
             # other semantic value enclosed by '< >'; return value given by the lambda expr parser
         match = _PARSE_RE['semantics'].match(s, position)
         if match is not None:
-            return next(ParserSubstitute(match.group(1))), match.end()
+            return ParserSubstitute(match.group(1)).next(), match.end()
 
         # String value
         if s[position] in "'\"":

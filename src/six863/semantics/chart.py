@@ -9,12 +9,9 @@
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
 
-try:
-    from .__init__ import *
-    from . import cfg
-except:
-    from __init__ import *
-    import cfg
+
+from .__init__ import *
+from src.six863.parse import cfg
 
 from nltk import Tree
 
