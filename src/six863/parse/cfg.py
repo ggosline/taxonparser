@@ -136,7 +136,7 @@ class Nonterminal(object):
         """
         return not (self == other)
 
-    def __cmp__(self, other):
+    def __eq__(self, other):
         if self == other:
             return 0
         else:

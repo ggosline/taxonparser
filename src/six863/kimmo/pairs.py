@@ -38,9 +38,14 @@ class KimmoPair(object):
         s = sI + ':' + sO
         return s
 
-    def __cmp__(self, other):
+    def __eq__(self, other):
         if type(self) != type(other): return -1
-        return cmp((self._input, self._output), (other.input(),
+        return ((self._input, self._output) == (other.input(),
+                                                other.output()))
+
+    def __lt__(self, other):
+        if type(self) != type(other): return -1
+        return ((self._input, self._output) < (other.input(),
                                                  other.output()))
 
     def __hash__(self):

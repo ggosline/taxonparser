@@ -120,7 +120,7 @@ class FeatureTreeEdge(TreeEdge):
         @return: the value of the left-hand side with variables set.
         @rtype: C{Category}
         """
-        return TreeEdge.lhs(self)(*self._vars)
+        return apply(TreeEdge.lhs(self), self._vars)
 
     def orig_lhs(self):
         """
@@ -134,7 +134,7 @@ class FeatureTreeEdge(TreeEdge):
         @return: the value of the right-hand side with variables set.
         @rtype: C{Category}
         """
-        return tuple(x(*self._vars) for x in TreeEdge.rhs(self))
+        return tuple(apply(x, self._vars) for x in TreeEdge.rhs(self))
 
     def orig_rhs(self):
         """

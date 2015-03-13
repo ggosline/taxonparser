@@ -483,7 +483,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... ''')
     >>> bindings1 = {}
     >>> bindings2 = {}
-    >>> print (show(unify(f1, f2, bindings1, bindings2)))
+    >>> print (show(unify(f1, f2, bindings1, bindings2, trace=3)))
     a: 1
     b: 1
     c: 2
@@ -595,7 +595,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     >>> # We could avoid defining two empty dictionaries by simply using the
     >>> # defaults, with unify(f1, f2) -- but we want to be able to examine
     >>> # the bindings afterward.
-    >>> print (show(unify(f1, f2, bindings1, bindings2)))
+    >>> print (show(unify(f1, f2, bindings1, bindings2, trace=3)))
     a: 1
     b: 1
     c: 2
@@ -618,7 +618,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... c: ?y
     ... ''')
     >>> bindings = {}
-    >>> print (show(unify(f1, f2, bindings)))
+    >>> print (show(unify(f1, f2, bindings, trace=3)))
     a: &id001 ?y
     b: *id001
     c: *id001
