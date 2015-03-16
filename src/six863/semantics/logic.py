@@ -1,7 +1,7 @@
 # Natural Language Toolkit: Logic
 
-from .featurelite import SubstituteBindingsMixin, FeatureI
-from .featurelite import Variable as FeatureVariable
+from src.six863.semantics.featurelite import SubstituteBindingsMixin, FeatureI
+from src.six863.semantics.featurelite import Variable as FeatureVariable
 
 
 class Counter:
@@ -723,7 +723,7 @@ class Parser:
 
             if tok != Parser.DOT:
                 raise Error("parse error, unexpected token: %s" % tok)
-            term = next(self)
+            term = (self.__next__())
             accum = factory(Variable(vars.pop()), term)
             while vars:
                 accum = factory(Variable(vars.pop()), accum)
@@ -731,12 +731,12 @@ class Parser:
 
         elif tok == Parser.OPEN:
             # Expression is an application expression: (M N)
-            first = next(self)
-            second = next(self)
+            first = (self.__next__())
+            second = (self.__next__())
             exps = []
             while self.token(0) != Parser.CLOSE:
                 # Support expressions like: (M N P) == ((M N) P)
-                exps.append(next(self))
+                exps.append((self.__next__()))
             tok = self.token()  # swallow the close token
             assert tok == Parser.CLOSE
             if isinstance(second, Operator):
@@ -810,7 +810,7 @@ def expressions():
                                                                  ApplicationExpression(XZ, Y))))
     O = LambdaExpression(x, LambdaExpression(y, XY))
     N = ApplicationExpression(LambdaExpression(x, XA), I)
-    T = next(Parser('\\x y.(x y z)'))
+    T = (Parser('\\x y.(x y z)')).__next__()
     return [X, XZ, XYZ, I, K, L, S, B, C, O, N, T]
 
 
@@ -828,7 +828,7 @@ def demo():
         la = ApplicationExpression(ApplicationExpression(l, P), Q)
         las = la.simplify()
         print("Apply and simplify: %s -> %s" % (la, las))
-        ll = next(Parser(str(l)))
+        ll = (Parser(str(l)).__next__())
         print('l is:', l)
         print('ll is:', ll)
         assert l.equals(ll)

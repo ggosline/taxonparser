@@ -66,6 +66,7 @@ with the right hand side (M{rhs}) in a tree (M{tree}) is known as
 X{expanding} M{lhs} to M{rhs} in M{tree}.
 """
 
+from __future__ import print_function
 import re
 
 
@@ -435,21 +436,19 @@ def demo():
     A demonstration showing how C{Grammar}s can be created and used.
     """
 
-    from nltk import cfg
-
     # Create some nonterminals
-    S, NP, VP, PP = cfg.nonterminals('S, NP, VP, PP')
-    N, V, P, Det = cfg.nonterminals('N, V, P, Det')
+    S, NP, VP, PP = nonterminals('S, NP, VP, PP')
+    N, V, P, Det = nonterminals('N, V, P, Det')
     VP_slash_NP = VP / NP
 
     print('Some nonterminals:', [S, NP, VP, PP, N, V, P, Det, VP / NP])
     print('    S.symbol() =>', repr(S.symbol()))
     print()
 
-    print(cfg.Production(S, [NP]))
+    print(Production(S, [NP]))
 
     # Create some Grammar Productions
-    grammar = cfg.parse_grammar("""
+    grammar = parse_grammar("""
     S -> NP VP
     PP -> P NP
     NP -> Det N

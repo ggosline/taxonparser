@@ -9,9 +9,9 @@
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
 
-
-from .__init__ import *
-from src.six863.parse import cfg
+from __future__ import print_function
+import src.six863.semantics.__init__
+from src.six863.semantics import cfg
 
 from nltk import Tree
 
@@ -1319,7 +1319,7 @@ class PredictorRule(TopDownExpandRule): pass
 ##  Simple Earley Chart Parser
 ########################################################################
 
-class EarleyChartParse(AbstractParse):
+class EarleyChartParse(src.six863.semantics.__init__.AbstractParse):
     """
     A chart parser implementing the Earley parsing algorithm:
 
@@ -1361,7 +1361,7 @@ class EarleyChartParse(AbstractParse):
         self._grammar = grammar
         self._lexicon = lexicon
         self._trace = trace
-        AbstractParse.__init__(self)
+        src.six863.semantics.__init__.AbstractParse.__init__(self)
 
     def get_parse_list(self, tokens, tree_class=Tree):
         chart = Chart(list(tokens))
@@ -1410,7 +1410,7 @@ BU_STRATEGY = [BottomUpInitRule(), BottomUpPredictRule(),
                SingleEdgeFundamentalRule()]
 
 
-class ChartParse(AbstractParse):
+class ChartParse(src.six863.semantics.__init__.AbstractParse):
     """
     A generic chart parser.  A X{strategy}, or list of
     L{ChartRules<ChartRuleI>}, is used to decide what edges to add to
@@ -1442,7 +1442,7 @@ class ChartParse(AbstractParse):
         self._grammar = grammar
         self._strategy = strategy
         self._trace = trace
-        AbstractParse.__init__(self)
+        src.six863.semantics.__init__.AbstractParse.__init__(self)
 
     def get_parse_list(self, tokens, tree_class=Tree):
         chart = Chart(list(tokens))

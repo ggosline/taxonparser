@@ -10,13 +10,12 @@
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-
 from src.six863.kimmo import kimmo
 from src.six863.semantics import logic
+import src.six863.semantics.featurechart
 
 from src.six863.semantics.featurelite import *
 from src.six863.parse.cfg import *
-from src.six863.semantics.featurechart import FeatureEarleyChartParse
 
 from copy import deepcopy
 
@@ -397,14 +396,14 @@ class Category(Nonterminal, FeatureI, SubstituteBindingsI):
         # Semantic value of the form <app(?x, ?y) >'; return an ApplicationExpression
         match = _PARSE_RE['application'].match(s, position)
         if match is not None:
-            fun = next(ParserSubstitute(match.group(2)))
-            arg = next(ParserSubstitute(match.group(3)))
+            fun = (ParserSubstitute(match.group(2)).__next__())
+            arg = (ParserSubstitute(match.group(3)).__next__())
             return logic.ApplicationExpressionSubst(fun, arg), match.end()
 
             # other semantic value enclosed by '< >'; return value given by the lambda expr parser
         match = _PARSE_RE['semantics'].match(s, position)
         if match is not None:
-            return next(ParserSubstitute(match.group(1))), match.end()
+            return (ParserSubstitute(match.group(1)).__next__()), match.end()
 
         # String value
         if s[position] in "'\"":
@@ -660,7 +659,7 @@ class GrammarFile(object):
         else:
             lexicon = self.kimmo_lexicon()
 
-        return FeatureEarleyChartParse(self.earley_grammar(),
+        return src.six863.semantics.featurechart.FeatureEarleyChartParse(self.earley_grammar(),
                                        lexicon, trace=trace)
 
     def apply_lines(self, lines):

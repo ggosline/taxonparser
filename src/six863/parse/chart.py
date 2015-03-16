@@ -8,6 +8,7 @@
 # For license information, see LICENSE.TXT
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
+from __future__ import print_function
 
 try:
     from .__init__ import *

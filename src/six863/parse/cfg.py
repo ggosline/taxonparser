@@ -6,7 +6,7 @@
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
-
+from __future__ import print_function
 """
 Basic data classes for representing context free grammars.  A
 X{grammar} specifies which trees can represent the structure of a

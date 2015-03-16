@@ -57,6 +57,7 @@ to ensure that variables with the same name get the same value.
 
 """
 
+from __future__ import print_function
 from copy import copy, deepcopy
 import re
 import yaml

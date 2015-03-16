@@ -1,4 +1,4 @@
-from six863.semantics.featurechart import *
+from src.six863.semantics.featurechart import *
 
 def demo():
     cp = load_earley('lab3-slash.fcfg', trace=0)
