@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 __author__ = 'gg12kg'
 
 import csv
@@ -44,19 +46,19 @@ multiwords = {}
 
 
 class LexEntry():
-    def __init__(self, POS:str, wordlist:tuple, category=None, appliesto=None):
+    def __init__(self, POS, wordlist, category=None, appliesto=None):
         self.POS = POS
         self.wordlist = wordlist
         self.category = category
         self.appliesto = appliesto
 
 
-def addlexicon(words: list, POS: str):
+def addlexicon(words, POS):
     for word in words:
         addlexentry(word, POS, None, None)
 
 
-def addlexentry(word: str, POS: str, category, appliesto):
+def addlexentry(word, POS, category, appliesto):
     ws = word.strip('_').split('_')
     if len(ws) > 1:
         firstword = ws[0]

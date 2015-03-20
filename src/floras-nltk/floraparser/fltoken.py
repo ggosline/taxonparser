@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 __author__ = 'gg12kg'
 
 import re
@@ -85,8 +87,7 @@ class FlWord():
 
 
 class FlToken():
-
-    def __init__(self, sentence: FlSentence, word: FlWord):
+    def __init__(self, sentence, word):
         self.sentence = sentence
         self.word = word
         self.lexentry = None
@@ -110,7 +111,7 @@ class FlPhrase(Tree):
         self.tokens = self.sentence.tokens
         self.parent = None
 
-    def split(self, separator: str):
+    def split(self, separator):
         '''
         Split a phrase based on a character string
         Returns slices for the substring with the separator omitted

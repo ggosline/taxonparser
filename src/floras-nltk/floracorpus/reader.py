@@ -2,7 +2,7 @@ from itertools import chain
 import pickle
 from nltk.data import LazyLoader
 
-from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktWordTokenizer, PunktLanguageVars
+from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktLanguageVars
 # from nltk.util import AbstractLazySequence, LazyMap, LazyConcatenation
 
 from floracorpus.SQLitedb import SQLitedb
@@ -11,7 +11,6 @@ from floraparser.fltoken import FlToken, FlTokenizer, FlTaxon, FlPhrase
 class AbstractFloraCorpusReader(object):
 
     def __init__(self, reader=None,
-                 word_tokenizer=PunktWordTokenizer(),
                  sent_tokenizer=LazyLoader(r'..\resources\FloraPunkt.pickle')):
 
         self._reader = reader   # file reader
@@ -82,7 +81,7 @@ class FloraCorpusReader(AbstractFloraCorpusReader):
                         'description', ]
         self.dbr = SQLitedb(db)
         self.rdr = self.dbr.OpenTable(query, fieldlst)
-        super().__init__(reader=self.rdr, **kwargs)
+        super(AbstractFloraCorpusReader).__init__(reader=self.rdr, **kwargs)
 
 
 
@@ -108,7 +107,7 @@ if __name__ == "__main__":
                     notindict.add(token.text)
     with open('notindict.txt', 'w', encoding='utf-8') as nidf:
         for wd in sorted(notindict):
-            print(wd, file=nidf, )
+            nidf.write(wd + '\n')
 
     del myds
 

@@ -11,7 +11,7 @@ class botglossary:
             self._glossary = {r['term'] : glcls(**r) for r in mydictreader}
         pass
     @property
-    def glossary(self) -> dict :
+    def glossary(self):
         """
         :rtype : dict
         """
