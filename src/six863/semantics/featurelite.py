@@ -776,7 +776,7 @@ def _do_unify(feature1, feature2, bindings1, bindings2, memo, fail, depth=0):
     # At this point, we know they're both mappings.
     # Do the destructive part of unification.
 
-    while _FORWARD in feature2: feature2 = feature2[_FORWARD]
+    while _FORWARD in feature2.keys(): feature2 = feature2[_FORWARD]
     if feature1 is not feature2: feature2[_FORWARD] = feature1
     for (fname, val2) in list(feature2.items()):
         if fname == _FORWARD: continue

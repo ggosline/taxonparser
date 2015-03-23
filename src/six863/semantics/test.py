@@ -1,11 +1,11 @@
 from src.six863.semantics.featurechart import *
 
 def demo():
-    cp = load_earley('lab3-slash.fcfg', trace=0)
+    cp = load_earley('lab3-slash.cfg', trace=0)
     trees = cp.parse('Mary sees a dog in Noosa')
     for tree in trees:
         print(tree)
-        sem = tree[0].node['sem']
+        sem = tree[0].label()['sem']
         print(sem)
         print(sem.skolemise().clauses())
         return sem.skolemise().clauses()

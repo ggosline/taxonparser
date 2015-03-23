@@ -120,7 +120,7 @@ class FeatureTreeEdge(TreeEdge):
         @return: the value of the left-hand side with variables set.
         @rtype: C{Category}
         """
-        return apply(TreeEdge.lhs(self), self._vars)
+        return substitute_bindings(TreeEdge.lhs(self), self._vars)
 
     def orig_lhs(self):
         """
@@ -227,7 +227,7 @@ class FeatureTopDownExpandRule(TopDownExpandRule):
         for prod in grammar.productions():
             bindings = edge.vars().copy()
             try:
-                unified = unify(next(edge), prod.lhs(), bindings, {},
+                unified = unify(edge.next(), prod.lhs(), bindings, {},
                                 memo=self.unify_memo, trace=self.trace - 2)
                 if isinstance(unified, Category): unified.freeze()
             except UnificationFailure:

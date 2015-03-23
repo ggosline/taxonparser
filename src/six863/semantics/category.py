@@ -182,7 +182,7 @@ class Category(Nonterminal, FeatureI, SubstituteBindingsI):
 
     @staticmethod
     def _remove_unbound_vars(obj):
-        for (key, value) in list(obj.items()):
+        for (key, value) in obj.items():
             if isinstance(value, Variable):
                 del obj[key]
             elif isinstance(value, (Category, dict)):

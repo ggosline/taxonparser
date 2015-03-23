@@ -1,0 +1,168 @@
+# Gazdar sentences
+The man that Fido chased returned
+# The next sentence is ill-formed
+The man chased Fido returned
+The man that chased Fido returned
+The man I think chased Fido returned
+The man who I think chased Fido returned
+# The next sentence is ill-formed
+The man I think that chased Fido returned
+# The next sentence is ill-formed
+The man who I think that chased Fido returned
+The man that chased Fido returned
+Who do you think Mary saw
+In which car was the guy seen
+How slowly would you say he was driving
+How suspicious was Mary
+Who saw Mary
+Which guy drove the car
+Mary offered for John to go
+I want to eat a raw eggplant
+I have eaten a raw eggplant
+John has been eating raw eggplant
+# The next sentence is ill-formed
+John does been eating raw eggplant
+John does eat raw eggplant
+I will eat a raw eggplant that Mary likes
+I will be eating a raw eggplant that Mary likes
+Mary will not eat raw eggplant
+# The next sentence is ill-formed
+Mary not will eat raw eggplant
+Mary will not quickly eat raw eggplant
+Mary will quickly eat raw eggplant
+Mary is tired of raw eggplant
+I wonder if Mary likes Bill
+# The next sentence is ill-formed
+I wonder that Mary likes Bill
+I wonder how Mary saw Mary
+# The next sentence is ill-formed
+Who did you believe that came
+# The next sentence is ill-formed
+Who did you wonder whether came
+# The next sentence is ill-formed
+Who did you wonder if came
+# The next sentence is ill-formed
+Who did you arrange for to come
+# The next sentence is ill-formed
+Which table did you wonder on Mary put the book
+# The next sentence is ill-formed
+Who do you believe that John saw Mary
+Who do you believe that John saw
+Who do you believe John saw
+Whether Bill passes the exam matters to John
+Bill hopes John saw Mary
+Bill hopes to see Mary
+Bill hopes that John saw Mary
+# The next sentence is ill-formed
+Bill hopes John to see Mary
+# The next sentence is ill-formed
+Bill wants that John to see Mary
+Bill wants to see Mary
+Bill wants John to see Mary
+# The next sentence is ill-formed
+Bill wants that John saw Mary
+# The next sentence is ill-formed
+Who did you wonder came
+# The next sentence is ill-formed
+Which did you buy the table on Mary put the book
+# The next sentence is ill-formed
+Who did you wonder saw Mary
+# The next sentence is ill-formed
+Which did you buy the table supported the book
+I put it down to the fact that Mary came
+# The next sentence is ill-formed
+The fact I put it down to that Mary came
+This table Mary could put John on
+# The next sentence is ill-formed
+This table Mary put John on which supported the book
+That I put Mary on the table surprised John
+# The next sentence is ill-formed
+The table that I put Mary on surprised John
+Whether Mary passes the exam matters to John
+# The next sentence is ill-formed
+The exam whether Mary passes matters to John
+Who is it that Mary likes
+Who do you think that you saw
+Who do you think you saw
+# The next sentence is ill-formed
+Who do you think that saw you
+Who do you think saw you
+Who do you regret that you saw
+# The next sentence is ill-formed
+Who do you regret you saw
+# The next sentence is ill-formed
+Who do you regret that saw you
+# The next sentence is ill-formed
+Who do you regret saw you
+John is easy to please and to love
+# The next sentence is ill-formed
+John is easy to please and to love Mary
+The guy who Mary loves and Bill hates computed my tax
+# The next sentence is ill-formed
+The guy who Mary loves and Bill hates John computed my tax
+The kennel which Mary made and Fido sleeps in has been stolen
+The kennel in which Mary keeps drugs and Fido sleeps has been stolen
+# The next sentence is ill-formed
+The kennel which Mary made and Fido sleeps has been stolen
+John saw more horses than Bill saw or Mary talked to
+John saw more horses than Bill saw cows or Mary talked to cats
+# The next sentence is ill-formed
+John saw more horses than Bill saw cows or Mary talked to
+John saw more horses than cows
+John saw more horses than Bill
+I know a guy who Bill saw and Mary liked
+I know a guy who saw Bill and liked Mary
+# The next sentence is ill-formed
+I know a guy who Bill saw and liked Mary
+I know a guy who Mary likes and hopes will win
+Mary put the book either here or there
+I wonder who Bill saw and Mary liked
+I wonder who saw Bill and liked Mary
+# The next sentence is ill-formed
+I wonder who Bill saw and liked Mary
+I wonder who Mary likes and hopes will win
+# The next sentence is ill-formed
+Mary asked who and where Bill had seen
+# The next sentence is ill-formed
+Mary asked who and what bought
+I wonder when and how often Bill eats eggplant
+I wonder who and whose friends Bill saw
+Mary asked whether John saw Bill
+Mary asked John whether Bill saw him
+Which book and which pencil did Mary buy
+# The next sentence is ill-formed
+Where and when did Bill put the book
+On which table and under which flower pot did Mary put the keys
+To which city and to which conference did Bill go
+To which city and which conference did Bill go
+Which city and which conference did Bill go to
+# The next sentence is ill-formed
+Which city and to which conference did Bill go to
+# The next sentence is ill-formed
+To which city and which conference did Bill go to
+John to who and to whose friends that letter was given likes eggplant
+I have wanted to know exactly what happened to Bill for many years
+I have wanted to know for many years what happened to Bill
+The woman believed that the guy was ill who was here
+The woman believed that the guy who was here was ill
+The woman who was here believed that the man was ill
+Bill caught and Mary killed the rabid dog
+Bill finds it easy to believe John to be a werewolf but Mary finds it hard to believe
+# The next sentence is ill-formed
+Bill finds it easy to believe but Mary finds it hard to believe John to be a werewolf
+# The next sentence is ill-formed
+Bill offered and Mary gave John a Cadillac
+# The next sentence is ill-formed
+Mary told and John showed that Bill was a werewolf
+Mary told Fred and John showed that Bill was a werewolf
+Bill may be and John certainly is a werewolf
+Mary said she would and Bill actually did eat a raw eggplant
+Mary used to be and Bill still is very suspicious
+John has claimed  but I do not believe that Bill is a Communist
+I like but Bill does not like to visit new cities
+I can tell you when but I can not tell you why Bill left me
+I have been wondering whether but would not want to state that your theory is correct
+John hummed and Mary sang the same tune
+John hummed and Mary sang at equal volumes
+John gave Mary and Bill to Fred books which looked remarkably similar
+The Red Sox beat and the Yankees were beaten by different teams

@@ -62,8 +62,7 @@ from copy import copy, deepcopy
 import re
 import yaml
 # import unittest
-import sys
-
+from src.six863.parse.category import *
 
 class UnificationFailure(Exception):
     """
@@ -484,7 +483,7 @@ def unify(feature1, feature2, bindings1=None, bindings2=None, memo=None, fail=No
     ... ''')
     >>> bindings1 = {}
     >>> bindings2 = {}
-    >>> print (show(unify(f1, f2, bindings1, bindings2, trace=3)))
+    >>> print (show(unify(f1, f2, bindings1, bindings2)))
     a: 1
     b: 1
     c: 2
@@ -776,8 +775,9 @@ def _do_unify(feature1, feature2, bindings1, bindings2, memo, fail, depth=0):
     # At this point, we know they're both mappings.
     # Do the destructive part of unification.
 
-    while _FORWARD in feature2: feature2 = feature2[_FORWARD]
-    if feature1 is not feature2: feature2[_FORWARD] = feature1
+    while _FORWARD in feature2.keys(): feature2 = feature2[_FORWARD]
+    if feature1 is not feature2:
+        feature2[_FORWARD] = feature1
     for (fname, val2) in list(feature2.items()):
         if fname == _FORWARD: continue
         val1 = feature1.get(fname)
