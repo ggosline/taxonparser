@@ -228,7 +228,7 @@ class FeatureTopDownExpandRule(TopDownExpandRule):
         for prod in grammar.productions():
             bindings = edge.vars().copy()
             try:
-                unified = unify(next(edge), prod.lhs(), bindings, {},
+                unified = unify(edge.next(), prod.lhs(), bindings, {},
                                 memo=self.unify_memo, trace=self.trace - 2)
                 if isinstance(unified, Category): unified.freeze()
             except UnificationFailure:

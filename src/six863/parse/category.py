@@ -10,13 +10,11 @@
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-# from ..semantics import logic
-# from ..kimmo import kimmo
-from src.six863.kimmo import kimmo
-from src.six863.semantics import logic
+from six863.semantics import logic
+from six863.kimmo import kimmo
 
 try:
-    from .featurelite import *
+    from src.six863.parse.featurelite import FeatureI, GrammarFile, Grammar, unify, Variable
     from .cfg import *
 except:
     from featurelite import *
@@ -763,7 +761,7 @@ def demo():
     print(GrammarCategory.parse('VP[+fin, agr=?x, tense=past]/NP[+pl, agr=?x]'))
     print(repr(GrammarCategory.parse('VP[+fin, agr=?x, tense=past]/NP[+pl, agr=?x]')))
     print()
-    g = GrammarFile.read_file("gazdar6.cfg")
+    g = GrammarFile.read_file("gazdar6.fcfg")
     print(g.grammar())
 
 

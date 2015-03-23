@@ -12,16 +12,14 @@ Extension of chart parsing implementation to handle grammars with
 feature structures as nodes.
 """
 
-import yaml
-
 try:
     from .chart import *
-    from .category import *
+    from .category import Category, GrammarCategory, GrammarFile
     from . import cfg
-    from .featurelite import *
+    from src.six863.parse.featurelite import *
 except:
     from chart import *
-    from category import *
+    from category import Category, GrammarCategory, GrammarFile
     import cfg
     from featurelite import *
 
@@ -321,7 +319,7 @@ class FeatureEarleyChartParse(EarleyChartParse):
 
 
 def demo():
-    import sys, time
+    import time
 
     S = GrammarCategory.parse('S')
     VP = GrammarCategory.parse('VP')

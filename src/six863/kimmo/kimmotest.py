@@ -1,5 +1,5 @@
 from .kimmo import *
 
-k = KimmoRuleSet.load('english.yaml')
+k = KimmoRuleSet.load('gazdar.kimmo.yaml.yaml')
 print(list(k.generate('`slip+ed', TextTrace(3))))
-print(list(k.recognize('slipped', TextTrace(1))))
+print(list(k.recognize('chased', TextTrace(1))))

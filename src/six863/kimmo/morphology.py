@@ -1,6 +1,6 @@
 from .fsa import FSA
 import yaml
-from .featurelite import unify
+from src.six863.parse.featurelite import unify
 
 
 def startswith(stra, strb):

@@ -8,7 +8,6 @@
 # For license information, see LICENSE.TXT
 #
 # $Id: chart.py 4157 2007-02-28 09:56:25Z stevenbird $
-
 from __future__ import print_function
 import src.six863.semantics.__init__
 from src.six863.semantics import cfg
@@ -1740,7 +1739,7 @@ def demo():
     maxlen = max(len(key) for key in list(times.keys()))
     format = '%' + repr(maxlen) + 's parser: %6.3fsec'
     times_items = list(times.items())
-    times_items.sort(lambda a, b: cmp(a[1], b[1]))
+    times_items.sort()
     for (parser, t) in times_items:
         print(format % (parser, t))
 

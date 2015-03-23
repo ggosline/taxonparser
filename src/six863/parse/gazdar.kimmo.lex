@@ -46,7 +46,7 @@ sus`picious AfterAdj    {pos: A, compar: false}
 cor`rect    AfterAdj    {pos: A, compar: false}
 
 ADVERB:
-+ly    AdjSuffix {pos: ADV}
++ly    AfterAdjSuffix {pos: ADV}
 
 ADJ_SUFFIX:
 +er    AfterAdjSuffix {compar: true}

@@ -3,7 +3,7 @@ from .treeview import *
 
 
 def demo():
-    cp = load_earley('gazdar6.cfg', trace=2)
+    cp = load_earley('gazdar6.fcfg', trace=2)
     trees = cp.parse('the man who chased Fido returned')
     for tree in trees: print(tree)
 

@@ -64,7 +64,6 @@ import yaml
 # import unittest
 import sys
 
-
 class UnificationFailure(Exception):
     """
     An exception that is raised when two values cannot be unified.

@@ -12,7 +12,7 @@ import yaml
 
 def _pairify(state):
     newstate = {}
-    for label, targets in list(state.items()):
+    for label, targets in state.items():
         newstate[KimmoPair.make(label)] = targets
     return newstate
 
@@ -202,7 +202,7 @@ class KimmoRuleSet(yaml.YAMLObject):
 
     def _advance_rule(self, rule, state, pair):
         trans = rule.fsa()._transitions[state]
-        expected_pairs = sort_subsets(list(trans.keys()), self._subsets)
+        expected_pairs = sort_subsets(trans.keys(), self._subsets)
         for comppair in expected_pairs:
             if comppair.includes(pair, self._subsets):
                 return rule.fsa().nextState(state, comppair)
@@ -361,7 +361,7 @@ class KimmoRuleSet(yaml.YAMLObject):
         if lexicon:
             lexicon = KimmoMorphology.load(lexicon)
         subsets = map['subsets']
-        for key, value in list(subsets.items()):
+        for key, value in subsets.items():
             if isinstance(value, str):
                 subsets[key] = value.split()
         defaults = map['defaults']
@@ -370,7 +370,7 @@ class KimmoRuleSet(yaml.YAMLObject):
         defaults = [KimmoPair.make(text) for text in defaults]
         ruledic = map['rules']
         rules = []
-        for (name, rule) in list(ruledic.items()):
+        for (name, rule) in ruledic.items():
             if isinstance(rule, dict):
                 rules.append(KimmoFSARule.from_dfa_dict(name, rule, subsets))
             elif isinstance(rule, str):
