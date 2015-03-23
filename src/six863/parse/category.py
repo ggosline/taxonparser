@@ -12,12 +12,10 @@
 
 from six863.semantics import logic
 from six863.kimmo import kimmo
-
+from six863.parse.featurelite import FeatureI, GrammarFile, Grammar, unify, Variable
 try:
-    from src.six863.parse.featurelite import FeatureI, GrammarFile, Grammar, unify, Variable
     from .cfg import *
 except:
-    from featurelite import *
     from cfg import *
 
 from copy import deepcopy

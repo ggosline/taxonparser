@@ -67,8 +67,8 @@ class FSA(yaml.YAMLObject):
         A generator that yields each transition arrow in the FSA in the form
         (source, label, target).
         """
-        for (state, map) in list(self._transitions.items()):
-            for (symbol, targets) in list(map.items()):
+        for (state, map) in self._transitions.items():
+            for (symbol, targets) in map.items():
                 for target in targets:
                     yield (state, symbol, target)
 
@@ -77,7 +77,7 @@ class FSA(yaml.YAMLObject):
         A generator for all possible labels taking state s1 to state s2.
         """
         map = self._transitions.get(s1, {})
-        for (symbol, targets) in list(map.items()):
+        for (symbol, targets) in map.items():
             if s2 in targets: yield symbol
 
     def sigma(self):
@@ -241,10 +241,10 @@ class FSA(yaml.YAMLObject):
         result = set()
         forward = self._transitions[state]
         backward = self._reverse[state]
-        for label, targets in list(forward.items()):
+        for label, targets in forward.items():
             for target in targets:
                 result.add((state, label, target))
-        for label, targets in list(backward.items()):
+        for label, targets in backward.items():
             for target in targets:
                 result.add((target, label, state))
         return result
@@ -291,8 +291,8 @@ class FSA(yaml.YAMLObject):
         Return whether this is a DFA
         (every symbol leads from a state to at most one target state).
         """
-        for map in list(self._transitions.values()):
-            for targets in list(map.values()):
+        for map in self._transitions.values():
+            for targets in map.values():
                 if len(targets) > 1: return False
         return True
 
@@ -313,7 +313,7 @@ class FSA(yaml.YAMLObject):
     def forward_traverse(self, state):
         "All states reachable by following transitions from a given state."
         result = set()
-        for (symbol, targets) in list(self._transitions[state].items()):
+        for (symbol, targets) in self._transitions[state].items():
             result = result.union(targets)
         return result
 
@@ -321,7 +321,7 @@ class FSA(yaml.YAMLObject):
         """All states from which a given state is reachable by following
         transitions."""
         result = set()
-        for (symbol, targets) in list(self._reverse[state].items()):
+        for (symbol, targets) in self._reverse[state].items():
             result = result.union(targets)
         return result
 
@@ -353,7 +353,7 @@ class FSA(yaml.YAMLObject):
                 self._clean_map(self._reverse[state])
 
     def _clean_map(self, map):
-        for (key, value) in list(map.items()):
+        for (key, value) in map.items():
             if len(value) == 0:
                 del map[key]
 
@@ -446,8 +446,8 @@ class FSA(yaml.YAMLObject):
     def from_yaml(cls, loader, node):
         map = loader.construct_mapping(node)
         result = cls(map.get('sigma', []), {}, map.get('finals', []))
-        for (s1, map1) in list(map['transitions'].items()):
-            for (symbol, targets) in list(map1.items()):
+        for (s1, map1) in map['transitions'].items():
+            for (symbol, targets) in map1.items():
                 for s2 in targets:
                     result.insert(s1, symbol, s2)
         return result

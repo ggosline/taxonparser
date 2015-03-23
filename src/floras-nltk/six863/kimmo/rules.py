@@ -1,5 +1,5 @@
+from nltk.tokenize.regexp import regexp_tokenize
 from nltk.tree import Tree
-from nltk import tokenize
 from copy import deepcopy
 import re, yaml
 
@@ -150,7 +150,7 @@ class KimmoArrowRule(KimmoFSARule):
         self._negated = False
         self._pairs = set()
         self._subsets = subsets
-        desc = list(tokenize.regexp(description, _kimmo_rule))
+        desc = list(regexp_tokenize(description, _kimmo_rule))
         self._parse(desc)
 
     def __repr__(self):
@@ -182,7 +182,7 @@ class KimmoArrowRule(KimmoFSARule):
         return tokens[i]
 
     def _pair_from_tree(self, tree):
-        if (tree.node != 'Pair'):
+        if (tree.label() != 'Pair'):
             raise RuntimeError('expected Pair, got ' + str(tree))
         if len(tree) == 1:
             return KimmoPair(tree[0], tree[0])
@@ -240,7 +240,7 @@ class KimmoArrowRule(KimmoFSARule):
 
 
     def _collect_alphabet(self, tree, sigma):
-        if tree.node == 'Pair':
+        if tree.label() == 'Pair':
             pair = self._pair_from_tree(tree)
             sigma.add(pair)
             self._pairs.add(pair)

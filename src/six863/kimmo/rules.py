@@ -108,11 +108,11 @@ class KimmoFSARule(object):
     def from_dfa_dict(name, states, subsets):
         fsa = FSA()
         pairs = set([KimmoPair.make('@')])
-        for (statename, trans) in list(states.items()):
+        for (statename, trans) in states.items():
             for label in trans:
                 if label != 'others':
                     pairs.add(KimmoPair.make(label))
-        for (statename, trans) in list(states.items()):
+        for (statename, trans) in states.items():
             parts = statename.split()
             source = parts[-1]
             if not parts[0].startswith('rej'):
@@ -127,7 +127,7 @@ class KimmoFSARule(object):
             for label in trans:
                 if label != 'others':
                     used_pairs.add(KimmoPair.make(label))
-            for label, target in list(trans.items()):
+            for label, target in trans.items():
                 if label.lower() == 'others':
                     fsa.insert_safe(source, KimmoPair.make('@'), target)
                     for pair in pairs.difference(used_pairs):

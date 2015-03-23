@@ -54,7 +54,7 @@ class KimmoMorphology(object):
 
     def valid_lexical(self, state, word, alphabet):
         trans = self.fsa()._transitions[state]
-        for label in list(trans.keys()):
+        for label in trans.keys():
             if label is not None and startswith(label[0], word) and len(label[0]) > len(word):
                 next = label[0][len(word):]
                 for pair in alphabet:
@@ -62,7 +62,7 @@ class KimmoMorphology(object):
 
     def next_states(self, state, word):
         choices = self.fsa()._transitions[state]
-        for (key, value) in list(choices.items()):
+        for (key, value) in choices.items():
             if key is None:
                 if word == '':
                     for next in value: yield (next, None)
