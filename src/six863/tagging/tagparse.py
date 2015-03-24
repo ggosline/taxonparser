@@ -1,6 +1,5 @@
-from nltk.parse import chart
-from nltk import grammar as cfg
-from drawchart import ChartDemo
+from parse import chart, cfg
+from tagging.drawchart import ChartDemo
 from nltk.tokenize.regexp import wordpunct_tokenize
 # from nltk_contrib.mit.six863.kimmo import *
 import re, pickle
@@ -59,7 +58,7 @@ def read(filename):
 
 def main():
     sentence = 'The quick brown fox jumped over the lazy dog'
-    grammar = cfg.CFG.fromstring(read('demo.cfg'))
+    grammar = cfg.parse_grammar(read('demo.cfg'))
     # load from pickle so it's faster
     tagger = pickle.load(open('demo_tagger.pickle'))
     tagged_chart_parse(sentence, grammar, tagger)
