@@ -3,10 +3,10 @@
 # based on code from Carl de Marcken, Beracah Yankama, and Rob Speer
 from __future__ import print_function
 
-from .rules import KimmoArrowRule, KimmoFSARule
-from .pairs import KimmoPair, sort_subsets
-from .morphology import *
-from .fsa import FSA
+from kimmo.rules import KimmoArrowRule, KimmoFSARule
+from kimmo.pairs import KimmoPair, sort_subsets
+from kimmo.morphology import *
+from kimmo.fsa import FSA
 import yaml
 
 

@@ -62,7 +62,6 @@ from copy import copy, deepcopy
 import re
 import yaml
 # import unittest
-from src.six863.parse.category import *
 
 class UnificationFailure(Exception):
     """

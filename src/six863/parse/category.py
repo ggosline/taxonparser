@@ -10,14 +10,12 @@
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-from six863.semantics import logic
-from six863.kimmo import kimmo
-from six863.parse.featurelite import FeatureI, GrammarFile, Grammar, unify, Variable
-try:
-    from .cfg import *
-except:
-    from cfg import *
+from semantics import logic
+from parse.featurelite import FeatureI, unify, Variable
+from parse.cfg import Production, Grammar, Nonterminal
+from kimmo import kimmo
 
+import re
 from copy import deepcopy
 
 import yaml

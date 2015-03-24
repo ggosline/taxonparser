@@ -12,16 +12,9 @@ Extension of chart parsing implementation to handle grammars with
 feature structures as nodes.
 """
 
-try:
-    from .chart import *
-    from .category import Category, GrammarCategory, GrammarFile
-    from . import cfg
-    from src.six863.parse.featurelite import *
-except:
-    from chart import *
-    from category import Category, GrammarCategory, GrammarFile
-    import cfg
-    from featurelite import *
+from parse.chart import *
+from parse.category import Category, GrammarCategory, GrammarFile
+from parse.featurelite import *
 
 
 def load_earley(filename, trace=1):
