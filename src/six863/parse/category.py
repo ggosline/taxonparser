@@ -677,7 +677,7 @@ class GrammarFile(object):
         return lookup
 
     def earley_parser(self, trace=1):
-        from src.six863.parse.featurechart import FeatureEarleyChartParse
+        from parse.featurechart import FeatureEarleyChartParse
 
         if self.kimmo is None:
             lexicon = self.earley_lexicon()
@@ -757,7 +757,7 @@ def demo():
     print(GrammarCategory.parse('VP[+fin, agr=?x, tense=past]/NP[+pl, agr=?x]'))
     print(repr(GrammarCategory.parse('VP[+fin, agr=?x, tense=past]/NP[+pl, agr=?x]')))
     print()
-    g = GrammarFile.read_file("gazdar6.fcfg")
+    g = GrammarFile.read_file("gazdar6.cfg")
     print(g.grammar())
 
 

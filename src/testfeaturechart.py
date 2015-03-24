@@ -1,6 +1,6 @@
-from nltk import parse, grammar
+from six863.parse.featurechart import load_earley
 
-grammar1 = grammar.FeatureGrammar.fromstring(
-    open(r'C:\GitHub\taxonparser\src\six863\semantics\gazdar4.fcfg').readlines())
+grammar1 = load_earley('./six863/parse/gazdar6.cfg', trace=1)
 
-pass
+print(grammar1
+)
