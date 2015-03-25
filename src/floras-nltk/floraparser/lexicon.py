@@ -4,42 +4,6 @@ __author__ = 'gg12kg'
 
 import csv
 
-COORDCONJUNCTION = 'and|or|nor|×'.split('|')
-SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless'.split('|')
-
-ARTICLE = 'the|a|an'.split('|')
-
-PUNCTUATION = ',|;|(|)'.split('|')
-
-NOT = 'not'
-
-PREPOSITION = 'above|across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
-              'during|for|from|in|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
-              'towards|up|upward|with|without|when'.split('|')
-
-CLUSTERSTRINGS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
-                 "pairs|pair|rows|number|numbers".split('|')
-
-LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
-             "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
-             "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5|2/5".split('|')
-
-ORDNUMBERS = "primary|secondary|tertiary".split('|')
-
-UNITS = "mm.|cm.|dm.|m.|km.".split('|')
-
-DIMENSION = "high|tall|long|wide|diam.|diameter".split('|')
-
-ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|up_to|exactly".split('|')
-
-FREQUENCY = "sometimes|often|usually|rarely|generally|never|always".split('|')
-
-DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly".split('|')
-
-COMPARISON = "paler|darker|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter".split('|')
-
-TO = ['to']
-
 lexicon = {}
 
 multiwords = {}
@@ -73,41 +37,89 @@ def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
     with open(gfile) as csvfile:
         mydictreader = csv.DictReader(csvfile)
         for gentry in mydictreader:
-            term, category, appliesto = gentry['term'], gentry['category'], gentry['appliesto']
-            if category in ('structure', 'FEATURE', 'substance''life_style', 'PLANT'):
+            term, category, appliesto = gentry['term'], gentry['category'], gentry['appliesTo']
+            if category in ('structure', 'FEATURE', 'substance''life_style', 'PLANT', 'taxon', 'EN'):
                 POS = 'NN'
             else:
                 POS = 'JJ'
             addlexentry(term, POS, category, appliesto)
 
 
-addlexicon(PUNCTUATION, 'PUNC')
-
-addlexicon(PREPOSITION, 'PP')
-
+COORDCONJUNCTION = 'and|or|neither|nor|otherwise|×'.split('|')
 addlexicon(COORDCONJUNCTION, 'CC')
 
-addlexicon(TO, 'TO')
+SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless'.split('|')
+addlexicon(SUBCONJUNCTION, 'CJ')
 
+ARTICLE = 'the|a|an'.split('|')
 addlexicon(ARTICLE, 'ART')
 
-addlexicon(ACCURACY, 'RBA')
+DETERMINER = 'each|every|some|all|other|both'.split('|')
+addlexicon(DETERMINER, 'DET')
 
-addlexicon(FREQUENCY, 'RBF')
+PUNCTUATION = ',|;|(|)'.split('|')
+addlexicon(PUNCTUATION, 'PUNC')
 
-addlexicon(DEGREE, 'RBD')
+PRONOUN = 'it|one|ones|form|forms|parts'.split('|')
+addlexicon(PRONOUN, 'PRO')
 
-addlexicon(['not'], 'NOT')
+PREPOSITION = 'above|across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
+              'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
+              'towards|up|upward|with|within|without|when|owing_to'.split('|')
+addlexicon(PREPOSITION, 'PP')
 
-addlexicon(ORDNUMBERS, 'NUMO')
+GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
+         "pairs|pair|row|rows|number|numbers".split('|')
+addlexicon(GROUPS, 'NG')
 
+LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
+             "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
+             "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5|2/5".split('|')
 addlexicon(LITNUMBERS, 'NUML')
 
+ORDNUMBERS = "principal|primary|secondary|tertiary|1st|2nd|3rd".split('|')
+addlexicon(ORDNUMBERS, 'NUMO')
+
+UNITS = "mm.|cm.|dm.|m.|km.".split('|')
 addlexicon(UNITS, 'UNIT')
 
+DIMENSION = "high|tall|long|wide|diam.|diameter|diam".split('|')
 addlexicon(DIMENSION, 'DIM')
 
-addlexicon(COMPARISON, 'JJC')
+RANGE = 'up_to|at_least'.split('|')
+addlexicon(RANGE, 'PR')
+
+POSITIONA = 'upper|lower|uppermost|lowermost'.split('|')
+addlexicon(POSITIONA, 'AJP')
+
+POSITION = 'top|on_bottom|base|at apex|front|back|both_sides|each_side|section|rest_of'.split('|')
+addlexicon(POSITION, 'NP')
+
+ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|exactly".split('|')
+addlexicon(ACCURACY, 'AVA')
+
+FREQUENCY = "sometimes|often|usually|rarely|generally|never|always|soon".split('|')
+addlexicon(FREQUENCY, 'AVF')
+
+DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much".split('|')
+addlexicon(DEGREE, 'AVD')
+
+COMPARISON = "paler|darker|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
+             "older|younger|" \
+             "exceeding|equalling|as_long_as|indistinguishable_from".split('|')
+addlexicon(COMPARISON, 'AJC')
+
+COMPADJ = "more|less|most|least".split('|')
+addlexicon(COMPADJ, 'AJCA')
+
+TIMING = "at_first|when young|becoming|remaining|turning".split('|')
+addlexicon(TIMING, 'AJT')
+
+VERB = 'to_form|forming'.split('|')
+addlexicon(VERB, 'PV')
+
+addlexicon(['to'], 'TO')
+addlexicon(['not'], 'NOT')
 
 readcpglossary()
 

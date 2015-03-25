@@ -81,7 +81,7 @@ class FloraCorpusReader(AbstractFloraCorpusReader):
                         'description', ]
         self.dbr = SQLitedb(db)
         self.rdr = self.dbr.OpenTable(query, fieldlst)
-        super(AbstractFloraCorpusReader).__init__(reader=self.rdr, **kwargs)
+        super().__init__(reader=self.rdr, **kwargs)
 
 
 
