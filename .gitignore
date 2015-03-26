@@ -35,3 +35,4 @@ $tf*/
 *.accdb
 *.db3
 *.pyc
+.idea/workspace.xml
