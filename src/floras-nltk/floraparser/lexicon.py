@@ -38,14 +38,16 @@ def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
         mydictreader = csv.DictReader(csvfile)
         for gentry in mydictreader:
             term, category, appliesto = gentry['term'], gentry['category'], gentry['appliesTo']
-            if category in ('structure', 'FEATURE', 'substance''life_style', 'PLANT', 'taxon', 'EN'):
+            if category in ('structure', 'FEATURE', 'substance', 'life_style', 'PLANT', 'taxonomy', 'EN'):
                 POS = 'NN'
-            else:
+            elif category != '':
                 POS = 'JJ'
+            else:
+                POS = 'UNK'
             addlexentry(term, POS, category, appliesto)
 
 
-COORDCONJUNCTION = 'and|or|neither|nor|otherwise|×'.split('|')
+COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|except|except_for|×'.split('|')
 addlexicon(COORDCONJUNCTION, 'CC')
 
 SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless'.split('|')
@@ -54,7 +56,7 @@ addlexicon(SUBCONJUNCTION, 'CJ')
 ARTICLE = 'the|a|an'.split('|')
 addlexicon(ARTICLE, 'ART')
 
-DETERMINER = 'each|every|some|all|other|both'.split('|')
+DETERMINER = 'each|every|some|all|other|both|their'.split('|')
 addlexicon(DETERMINER, 'DET')
 
 PUNCTUATION = ',|;|(|)'.split('|')
@@ -65,11 +67,11 @@ addlexicon(PRONOUN, 'PRO')
 
 PREPOSITION = 'above|across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
               'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
-              'towards|up|upward|with|within|without|when|owing_to'.split('|')
+              'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|if'.split('|')
 addlexicon(PREPOSITION, 'PP')
 
 GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
-         "pairs|pair|row|rows|number|numbers".split('|')
+         "pairs|pair|row|rows|number|numbers|colonies".split('|')
 addlexicon(GROUPS, 'NG')
 
 LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
@@ -89,7 +91,7 @@ addlexicon(DIMENSION, 'DIM')
 RANGE = 'up_to|at_least'.split('|')
 addlexicon(RANGE, 'PR')
 
-POSITIONA = 'upper|lower|uppermost|lowermost'.split('|')
+POSITIONA = 'upper|lower|uppermost|lowermost|various'.split('|')
 addlexicon(POSITIONA, 'AJP')
 
 POSITION = 'top|on_bottom|base|at apex|front|back|both_sides|each_side|section|rest_of'.split('|')
@@ -98,7 +100,7 @@ addlexicon(POSITION, 'NP')
 ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|exactly".split('|')
 addlexicon(ACCURACY, 'AVA')
 
-FREQUENCY = "sometimes|often|usually|rarely|generally|never|always|soon".split('|')
+FREQUENCY = "sometimes|often|usually|rarely|generally|never|always|soon|also|even".split('|')
 addlexicon(FREQUENCY, 'AVF')
 
 DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much".split('|')
