@@ -8,14 +8,13 @@ from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktLa
 from floracorpus.SQLitedb import SQLitedb
 from floraparser.fltoken import FlToken, FlTokenizer, FlTaxon, FlPhrase
 
-class AbstractFloraCorpusReader(object):
 
+class AbstractFloraCorpusReader(object):
     def __init__(self, reader=None,
                  sent_tokenizer=LazyLoader(r'..\resources\FloraPunkt.pickle')):
-
-        self._reader = reader   # file reader
+        self._reader = reader  # file reader
         self._word_tokenize = FlTokenizer().span_tokenize
-        #punkt_param = PunktParameters()
+        # punkt_param = PunktParameters()
         # punkt_param.abbrev_types = set(['cm', 'mm', 'km', 'c', 'diam', 'fig'])
         # self._sent_tokenize = PunktSentenceTokenizer(punkt_param).tokenize
         self._sent_tokenize = sent_tokenizer.span_tokenize
@@ -33,8 +32,8 @@ class AbstractFloraCorpusReader(object):
 
         # def words(self, taxonids=None):
         # """
-        #     :return: the given taxa as a list of
-        #         taxonNos + each encoded as a list of sentences, which are
+        # :return: the given taxa as a list of
+        # taxonNos + each encoded as a list of sentences, which are
         #         in turn encoded as lists of word strings.
         #     :rtype: list(int, list(list(list(str)))
         #     """
@@ -84,7 +83,6 @@ class FloraCorpusReader(AbstractFloraCorpusReader):
         super().__init__(reader=self.rdr, **kwargs)
 
 
-
 if __name__ == "__main__":
 
     myds = FloraCorpusReader(db=r'..\resources\efloras.db3',
@@ -94,17 +92,18 @@ if __name__ == "__main__":
     # for t in taxa:
     # for s in t.sentences:
     # if len(s.phrases) > 1:
-    #             print(s.phrases)
+    # print(s.phrases)
 
     pass
 
     notindict = set()
     for t in taxa:
         for sent in t.sentences:
-            for token in sent.tokens:
-                if token.POS == 'UNK':
-                    print(sent.tokens)
-                    notindict.add(token.text)
+            for phrase in sent.phrases:
+                for token in phrase:
+                    if token.POS == 'UNK':
+                        print(phrase)
+                        notindict.add(token.text)
     with open('notindict.txt', 'w', encoding='utf-8') as nidf:
         for wd in sorted(notindict):
             nidf.write(wd + '\n')

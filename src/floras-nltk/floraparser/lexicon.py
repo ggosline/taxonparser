@@ -3,6 +3,7 @@
 __author__ = 'gg12kg'
 
 import csv
+from six863.parse.category import GrammarCategory
 
 lexicon = {}
 
@@ -30,7 +31,9 @@ def addlexentry(word, POS, category, appliesto):
             multiwords[firstword] += [tuple(ws)]
         else:
             multiwords[firstword] = [tuple(ws)]
-    lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
+    # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
+    features = {'pos': POS, 'category': category, 'appliesto': appliesto}
+    lexicon.setdefault(tuple(ws), []).append(GrammarCategory(features=features))
 
 
 def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
@@ -59,8 +62,10 @@ addlexicon(ARTICLE, 'ART')
 DETERMINER = 'each|every|some|all|other|both|their'.split('|')
 addlexicon(DETERMINER, 'DET')
 
-PUNCTUATION = ',|;|(|)'.split('|')
+PUNCTUATION = ';|(|)'.split('|')
 addlexicon(PUNCTUATION, 'PUNC')
+
+addlexicon([','], 'COMMA')
 
 PRONOUN = 'it|one|ones|form|forms|parts'.split('|')
 addlexicon(PRONOUN, 'PRO')

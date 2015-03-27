@@ -111,6 +111,10 @@ class FlPhrase(Tree):
         self.tokens = self.sentence.tokens
         self.parent = None
 
+    @property
+    def text(self):
+        return self.taxon.description[self.slice]
+
     def split(self, separator):
         '''
         Split a phrase based on a character string

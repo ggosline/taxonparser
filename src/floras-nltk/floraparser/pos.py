@@ -78,8 +78,7 @@ class FlTagger():
 
         word = flword.text.lower()
 
-        if NUMBERS.match(word):
-            return flword, 'NUM', None
+
 
         if word in multiwords:  # multi word phrase
             ws = self.multiwordtokenize(flword, word)
@@ -87,27 +86,31 @@ class FlTagger():
             ws = (word,)
 
         if ws in lexicon:
-            return flword, lexicon[ws].POS, lexicon[ws]
+            return flword, lexicon[ws][0]['pos'], lexicon[ws]
+
+        # lexicon matches punctuation, including single parentheses; so do before numbers
+        if NUMBERS.match(word):
+            return flword, 'NUM', None
 
         ws = FlTagger.singularize(self, word)
         if ws:
             ws = (ws,)
             if ws in lexicon:
-                if lexicon[ws].POS == 'NN':
+                if lexicon[ws][0]['pos'] == 'NN':
                     POS = 'NNS'
                 else:
-                    POS = lexicon[ws].POS
+                    POS = lexicon[ws][0]['pos']
                 return flword, POS, lexicon[ws]
 
         # Try taking the word apart at dashes
         root = self.rootword(word)
         if root:
             if (root[0],) in lexicon:
-                le = lexicon[(root[0],)]
-                return root, le.POS, le
+                le = lexicon[(root[0],)][0]
+                return root, le['pos'], le
             if ('_' + root[0],) in lexicon:  # suffix
-                le = lexicon[('_' + root[0],)]
-                return root, le.POS, le
+                le = lexicon[('_' + root[0],)][0]
+                return root, le['pos'], le
 
         if word.endswith('ly'):
             return flword, 'RB', None

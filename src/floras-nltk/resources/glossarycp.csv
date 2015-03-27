@@ -32,7 +32,7 @@
 33,47062,"actinomorphic",,"architecture","perianth, calyx, corolla",,"Radially symmetric; divisible into two essentially equal portions along any median longitudinal plane.","architecture","NULL",1,"90c15216-3167-49af-8ad5-b26bde718a40"
 34,47063,"aculeate",,"shape",,,"Having slender, stiff, sharp projections oriented in the general plane of the structure.","shape","NULL",1,"a391f977-717c-410a-a82b-e66259eb902c"
 35,47064,"acuminate",,"shape",,,"Gradually diminishing in width or diameter to a slender tip, the sides longitudinally concave.  Corresponds with attenuate for base shape.","shape","NULL",1,"acd76ca4-54ae-48a8-abad-30c7aa996bb8"
-36,47065,"acute",,"shape",,,"Sharply angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90-í.","shape","NULL",1,"e9ccc258-c44c-4b18-88e3-e9cd0169017f"
+36,47065,"acute",,"shape",,,"Sharply angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90-ï¿½.","shape","NULL",1,"e9ccc258-c44c-4b18-88e3-e9cd0169017f"
 37,47066,"acyclic",,"arrangement",,,"Disposed helically about and along the axis, each on a different radius than the one(s) vertically adjacent.","arrangement","NULL",1,"328b2e30-46ac-42bd-b3d4-c1d5ce2b2427"
 38,47067,"adaxial",,"insertion",,,"On or pertaining to the side or portion of a lateral structure that faces (or would face) toward the bearing axis when (or if) the axis of the lateral structure is (or were) oriented in the same general direction as the bearing axis.","position","NULL",1,"16cc1bf7-0646-4350-bf75-28fffcba5474"
 39,47068,"adaxial",,"position",,,"On or pertaining to the side or portion of a lateral structure that faces (or would face) toward the bearing axis when (or if) the axis of the lateral structure is (or were) oriented in the same general direction as the bearing axis.","position","NULL",1,"2412ddf4-d793-43ad-b387-9c12438c143b"
@@ -277,7 +277,7 @@
 299,47328,"blistered",,"relief",,,"Having relatively coarse, irregularly disposed, rounded protrusions or convexities resembling blisters.  See also papillate (papillose).","relief","NULL",1,"e9866bfc-9d60-4e01-9774-205b0251a8d4"
 300,47329,"blotch",,"FEATURE",,,"An area that differs in color from the rest of a structure's surface.  See also eyespot.","FEATURE","NULL",1,"0f37bc09-ab3c-4da6-98d0-08dddca42471"
 301,47330,"blotched",,"coloration",,,"Having one or more areas that differ in color from the rest of the surface.  See also eyespotted.","coloration","NULL",1,"1655db55-b43c-4e46-84bf-385ffc53291e"
-302,47331,"blunt",,"shape",,,"Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90-í or more.","shape","q",1,"25a0f940-0995-418f-9b37-466b524a96e8"
+302,47331,"blunt",,"shape",,,"Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90-ï¿½ or more.","shape","q",1,"25a0f940-0995-418f-9b37-466b524a96e8"
 304,47333,"boat-shaped",,"shape",,,"Like the generalized form of a boat hull, the walls relatively thin to moderately thick, the interior essentially empty and open along one side.","shape","NULL",1,"12c98153-aebb-42ad-a856-a1b79180e0f9"
 305,47334,"bole",,"structure",,,"The relatively stout, columnar, main stem of a distinct aboveground portion of a tree.","STRUCTURE","NULL",0,"a5ba9e16-e0af-4430-a3a0-7aeb052fbffd"
 306,47335,"bony",,"texture",,,"Very hard and rather brittle, like bone.","texture","NULL",1,"756d3d3c-7086-4b0b-8948-3abbfa48c2e5"
@@ -1633,7 +1633,7 @@
 1720,48750,"obtrulliform",,"shape",,,"Inversely trulliform (trowel-shaped, trullate).","shape","NULL",1,"ed2eddfc-e36b-49ae-b167-2f452039e26f"
 1721,48751,"obtrulloid",,"shape",,,"Inversely trulloid.","shape","NULL",1,"e6126508-8da0-40ca-9c0c-d5531d9479b6"
 1722,48752,"obturbinate",,"shape",,,"Inversely turbinate (top-shaped).  See also pyriform (pear-shaped).","shape","NULL",1,"aa37f6fe-1b78-4ab3-bb7f-b093461d88b1"
-1723,48753,"obtuse",,"shape",,,"Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90-í or more.","shape","NULL",1,"a0e2a732-01ad-44e9-be3c-53c3eb5d7add"
+1723,48753,"obtuse",,"shape",,,"Bluntly angular; having an angular tip whose generalized sides intersect at an angle of 90-ï¿½ or more.","shape","NULL",1,"a0e2a732-01ad-44e9-be3c-53c3eb5d7add"
 1725,48755,"obvolute",,"arrangement","cotyledons",,"Having each cotyledon folded inward longitudinally, the two facing one another with their edges overlapping alternately (each enveloping one side or the other).","arrangement","q",1,"e2d4d08a-1354-4ee1-bac9-797f1df3a3fb"
 1726,48756,"obvolute",,"vernation",,,"Conduplicate with the lateral edges of each leaf alternately overlapping those of the oppositely oriented, distally next adjacent one.","arrangement","q",1,"8de68108-d9ff-426f-85ef-38e0b644b32a"
 1727,48757,"ocellate",,"coloration",,,"Having a more or less circular area that differes in hue and/or intensity from the remainder of the structure; esp. a corolla with such an area at its center.","coloration","NULL",1,"990f97d8-127c-48e2-93cd-59549904101d"
@@ -1858,7 +1858,7 @@
 1954,48964,"plane_shape",,"CHARACTER",,,"Overall two-dimensional form or aspect(s) thereof.  Overlaps conceptually with architecture, arrangement, habit, insertion, orientation, and position.","CHARACTER","NULL",1,"b6767327-de66-4f4e-9dc9-6badfd205fef"
 1955,48965,"planoconcave",,"shape",,,"Relatively thin with opposite broad faces, one plane and one concave.","shape","NULL",1,"b492d769-689f-4aaa-80d8-50c3a91361ce"
 1956,48966,"planoconvex",,"shape",,,"Relatively thin with opposite broad faces, one plane and one convex.","shape","NULL",1,"e301bafd-37cb-4dbd-a73f-553e687855f4"
-1957,48967,"plantlet",,"structure",,,"A juvenile, complete plant produced asexually by budding, as from the leaf margin in some KalanchoÔÇÿ (Crassulaceae); this term is usually applied only while such vegetatively produced offspring remain attached to the plant of origin.","STRUCTURE","NULL",0,"5b767969-6af8-46ea-90f2-63a80ca1dfee"
+1957,48967,"plantlet",,"structure",,,"A juvenile, complete plant produced asexually by budding, as from the leaf margin in some Kalanchoï¿½ï¿½ï¿½ (Crassulaceae); this term is usually applied only while such vegetatively produced offspring remain attached to the plant of origin.","STRUCTURE","NULL",0,"5b767969-6af8-46ea-90f2-63a80ca1dfee"
 1958,48968,"plated",,"relief","bark",,"Fissured in a more or less regular, anastomosing pattern with distinct, relatively large, undisturbed sectors intervening, the latter ultimately falling away more or less intact after attaining considerable thickness.","relief","NULL",1,"7c08997b-34e7-44d5-aee1-a9eb84f9ed2f"
 1959,48969,"platter-shaped",,"shape",,,"Relatively thin with opposite broad oval faces, shallowly concave-convex; like a serving platter.  See also buckler-shaped (scutate, scutiform), which is not clearly distinct in its application.","shape","NULL",1,"44cee067-5a3d-4a83-b0f6-303fb61e4dc4"
 1960,48970,"pleated",,"shape","foliaceous structure",,"Having alternately adaxial and abaxial lengthwise folds, resembling a fan.","shape","NULL",1,"511c76dc-cb8f-4818-8007-2b4a36c035d8"
@@ -1916,7 +1916,7 @@
 2012,49022,"prismatic",,"shape",,,"Uniformly polygonal in transverse section, basally and apically truncate, all faces essentially plane.","shape","NULL",1,"b263c8bc-aea3-413c-a3a8-3518666a3367"
 2013,49023,"procumbent",,"habit","axis",,"Lying directly upon the substrate over its entire length.","orientation","NULL",1,"7ef1448a-ab34-4e45-9e85-e9e666e01516"
 2015,49025,"prolate",,"shape",,,"Symmetrically elongate parallel to the developmental or polar axis.","shape","NULL",1,"54c1bc2e-f27a-428c-97b5-3948e0ef82f9"
-2016,49026,"proliferous",,"reproduction","plant, structure",,"Bearing plantlets, as from the leaf margin in some KalanchoÔÇÿ (Crassulaceae).","reproduction","NULL",1,"b40e8227-1a95-4520-b764-a9a0db01aeeb"
+2016,49026,"proliferous",,"reproduction","plant, structure",,"Bearing plantlets, as from the leaf margin in some Kalanchoï¿½ï¿½ï¿½ (Crassulaceae).","reproduction","NULL",1,"b40e8227-1a95-4520-b764-a9a0db01aeeb"
 2017,49027,"prominence",,"CHARACTER",,,"Elevation or depression of a discrete feature relative to the surrounding surface.","CHARACTER","NULL",1,"382036d9-7780-431b-9db3-e6d33ef7ae2b"
 2018,49028,"prominent",,"prominence",,,"Protruding above the general level of the surrounding surface.  See also prominulous.","prominence","NULL",1,"28ee7073-6928-4a22-9a0a-e79a5f8e9c5c"
 2019,49029,"prominulous",,"prominence",,,"Diminutively prominent, protruding only slightly above the general level of the surrounding surface.","prominence","NULL",1,"a39abcb6-2014-4a68-b0d2-f0c96f26a302"
@@ -2026,7 +2026,7 @@
 2129,49139,"receptacular_bract",,"structure",,,"A small papery (chartaceous) to membranous bract borne on the compound receptacle (torus) of a capitulum (head) in Asteraceae (Compositae).","STRUCTURE","NULL",0,"d2272f88-d318-4bf4-8b09-e5ecceb7dade"
 2130,49140,"reclinate",,"vernation",,,"Each with its blade oriented downward and parallel to the proximal portion of its distally recurved petiole.","vernation","NULL",1,"37d76e7b-0d5d-4dc5-a000-a7b38a66e841"
 2131,49141,"reclining",,"habit","axis",,"Inserted above substrate level and recurved, the distal portion procumbent.","habit","NULL",1,"2a585a8c-0f78-49b8-965e-ed8d7ba5f1bb"
-2132,49142,"rectangular",,"shape",,,"Basically four-sided, the sides more or less straight, those of each opposing pair more or less parallel, the generalized angles between adjacent sides approximately 90-í.","shape","NULL",1,"17603caa-84cf-400e-9739-de660ef4beb2"
+2132,49142,"rectangular",,"shape",,,"Basically four-sided, the sides more or less straight, those of each opposing pair more or less parallel, the generalized angles between adjacent sides approximately 90-ï¿½.","shape","NULL",1,"17603caa-84cf-400e-9739-de660ef4beb2"
 2133,49143,"recurved",,"orientation",,,"Curving outward (abaxially), downward, or backward.","orientation","NULL",1,"5b58c206-cbd9-4a50-9919-c1c3dac442bd"
 2134,49144,"reduced",,"size",,,"Unusually or unexpectedly small.","shape","q",1,"a98b4091-f38c-4ad5-b113-30d1337e8329"
 2135,49145,"reflectance",,"CHARACTER",,,"Aspect as to proportion and pattern of incident light reflected from the surface.","CHARACTER","NULL",1,"b751ce4e-05c4-4918-85a6-304ba28f30af"
@@ -2210,7 +2210,7 @@
 2319,49349,"setulose",,"pubescence",,,"Finely setose (hispid).","pubescence","NULL",1,"3e452a05-694f-4cdf-949e-88f2ab0ed9d8"
 2320,49350,"seven_",,"prefix",,,"Indicating presence of or constitution by seven entities of the type denoted by the term's stem; as in seven-leafleted, seven-loculed, seven-winged.","prefix","NULL",1,"054ca4f7-6b0b-4a34-900e-9881e377a1c9"
 2321,49351,"shaggy",,"pubescence",,,"Bearing sparse, long, slender, soft, capillate trichomes that are not intertwined.  See also villosulous.","pubescence","NULL",1,"3a99d308-04b8-45a0-84ef-48db2c842a7e"
-2322,49352,"sharp",,"shape",,,"Acutely angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90-í.","shape","NULL",1,"e5dc6951-b248-43ae-8d1e-1559e8dc3418"
+2322,49352,"sharp",,"shape",,,"Acutely angular; regularly and more or less straightly attenuate to an angular tip, the sides intersecting at an angle of less than 90-ï¿½.","shape","NULL",1,"e5dc6951-b248-43ae-8d1e-1559e8dc3418"
 2323,49353,"sheath",,"structure","leaf",,"The lower (basal or proximal), fundamentally laminar but strongly involute portion of one of the non-petiolate leaves characteristic of most monocotyledons (Liliidae); distinct from the leaf blade, which, when present, is borne distally upon it; analogous","STRUCTURE","NULL",0,"4c2cbfb7-ed67-4091-820e-022b714a8bad"
 2324,49354,"sheathed",,"architecture","structure",,"Closely enclosed over some or all of its length by a terete or involute structure.","architecture","NULL",1,"dfe43998-0f0b-4f58-8491-299b743c49c0"
 2325,49355,"sheathing",,"architecture","foliaceous structure",,"Differentiated into distinct proximal and distal portions, the former terete or involute and closely enclosing the bearing axis above the point of insertion.","shape","NULL",1,"a0ff9dd9-6239-48d8-a51a-f32f071c9b13"
@@ -2715,8 +2715,8 @@
 2843,49874,"veinlet",,"structure",,,"A strand belonging to the ultimate (least in diameter) order of vasculature in a leaf or other basically laminar structure when that order consists of strands ending freely within areoles and/or connecting distally by pairs across areoles; absent in some","STRUCTURE","NULL",0,"e3ab3fff-3015-4b76-af51-fc69ee9396d8"
 2844,49875,"velamen",,"structure",,,"A thin, often chartaceous (papery, papyraceous) or pergamentaceous (parchment-like), outermost tissue layer of an aerial root; esp. in Orchidaceae.","STRUCTURE","NULL",0,"5ad0c920-f1fa-4a41-b6af-c162eca10613"
 2845,49876,"velamina",,"structure",,,"A thin, often chartaceous (papery, papyraceous) or pergamentaceous (parchment-like), outermost tissue layer of an aerial root; esp. in Orchidaceae.","STRUCTURE","NULL",0,"176b1f82-00fa-4854-8365-28fc0a6e969a"
-2846,49877,"velum",,"structure",,,"A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in IsoÔÇÿtaceae.","STRUCTURE","NULL",0,"150be79d-f48f-41b8-a660-fefbf186e752"
-2847,49878,"vela",,"structure",,,"A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in IsoÔÇÿtaceae.","STRUCTURE","NULL",0,"a24a9bde-3094-4277-9e76-4a31a0ea34be"
+2846,49877,"velum",,"structure",,,"A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in Isoï¿½ï¿½ï¿½taceae.","STRUCTURE","NULL",0,"150be79d-f48f-41b8-a660-fefbf186e752"
+2847,49878,"vela",,"structure",,,"A membranous adaxial flap or fold of vegetative tissue wholly or partly covering the sporangial cavity of a sporophyll; in Isoï¿½ï¿½ï¿½taceae.","STRUCTURE","NULL",0,"a24a9bde-3094-4277-9e76-4a31a0ea34be"
 2848,49879,"velutinous",,"pubescence",,,"Of or bearing dense, moderately firm, more or less erect, capillate trichomes, like velvet pile to the touch.","pubescence","NULL",1,"23ce130e-a9c6-4b55-bd70-3aaa3eeaffd1"
 2849,49880,"velvety",,"pubescence",,,"Of or bearing dense, moderately firm, more or less erect, capillate trichomes, like velvet pile to the touch.","pubescence","NULL",1,"7c10973d-f171-4a43-9843-2a93cb2f1e1e"
 2850,49881,"venation",,"CHARACTER",,,"Configuration of laminar vasculature as to its hierarchical organization and the dispositions of component orders.  For descriptive purposes, the orders of vasculature are ranked with reference only to the lamina in point, irrespective of rank within any","CHARACTER","NULL",1,"59a70cab-b74c-4a18-85db-ec7f76846fd9"
@@ -3418,7 +3418,7 @@
 3645,,"multiflorous",,"architecture",,,,,"KG",,
 3649,,"nervation",,"CHARACTER",,,"see <b>venation</b>, which is preferred",,"KG",,
 3650,,"noticeable",,"prominence",,,,,"KG",,
-3651,,"chromosome_number",,"CHARACTER",,,,,"KG",,
+3651,,"Chromosome_number",,"CHARACTER",,,,,"KG",,
 3655,,"in_our_area",,"location",,,,,"KG",,
 3659,,"part",,"structure",,,,,"KG",,
 3661,,"penninerved",,"nervation",,,"with the veins in a pinnate pattern, i.e. branching off from the midrib at an angle at intervals",,"KG",,

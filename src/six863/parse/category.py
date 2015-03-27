@@ -757,8 +757,8 @@ def demo():
     print(GrammarCategory.parse('VP[+fin, agr=?x, tense=past]/NP[+pl, agr=?x]'))
     print(repr(GrammarCategory.parse('VP[+fin, agr=?x, tense=past]/NP[+pl, agr=?x]')))
     print()
-    g = GrammarFile.read_file("gazdar6.cfg")
-    print(g.grammar())
+    # g = GrammarFile.read_file("gazdar6.cfg")
+    #print(g.grammar())
 
 
 if __name__ == '__main__':
