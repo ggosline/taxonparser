@@ -10,12 +10,12 @@
 #
 # $Id: category.py 4162 2007-03-01 00:46:05Z stevenbird $
 
-from src.six863.kimmo import kimmo
-from src.six863.semantics import logic
-import src.six863.semantics.featurechart
+from kimmo import kimmo
+from semantics import logic
+import semantics.featurechart
 
-from src.six863.semantics.featurelite import *
-from src.six863.parse.cfg import *
+from semantics.featurelite import *
+from parse.cfg import *
 
 from copy import deepcopy
 
@@ -659,7 +659,7 @@ class GrammarFile(object):
         else:
             lexicon = self.kimmo_lexicon()
 
-        return src.six863.semantics.featurechart.FeatureEarleyChartParse(self.earley_grammar(),
+        return semantics.featurechart.FeatureEarleyChartParse(self.earley_grammar(),
                                        lexicon, trace=trace)
 
     def apply_lines(self, lines):

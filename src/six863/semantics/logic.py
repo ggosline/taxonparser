@@ -1,7 +1,7 @@
 # Natural Language Toolkit: Logic
 
-from src.six863.semantics.featurelite import SubstituteBindingsMixin, FeatureI
-from src.six863.semantics.featurelite import Variable as FeatureVariable
+from semantics.featurelite import SubstituteBindingsMixin, FeatureI
+from semantics.featurelite import Variable as FeatureVariable
 
 
 class Counter:
