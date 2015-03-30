@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{E84809D3-1C93-4BC9-A7F7-16309CF49384}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>taxonparser</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="floras-nltk\floracorpus\ADO.py" />
+    <Content Include="floras-nltk\floracorpus\notindict.txt" />
+    <Content Include="floras-nltk\floracorpus\reader.py" />
+    <Content Include="floras-nltk\floracorpus\SQLitedb.py" />
+    <Content Include="floras-nltk\floracorpus\__init__.py" />
+    <Content Include="floras-nltk\floraparser\bits.py" />
+    <Content Include="floras-nltk\floraparser\botglossary.py" />
+    <Content Include="floras-nltk\floraparser\floraparse.py" />
+    <Content Include="floras-nltk\floraparser\fltoken.py" />
+    <Content Include="floras-nltk\floraparser\lexicon.py" />
+    <Content Include="floras-nltk\floraparser\pos.py" />
+    <Content Include="floras-nltk\floraparser\splitter.py" />
+    <Content Include="floras-nltk\floraparser\__init__.py" />
+    <Content Include="floras-nltk\floras-nltk.pyproj" />
+    <Content Include="floras-nltk\floras-nltk.sln" />
+    <Content Include="floras-nltk\floras_nltk.py" />
+    <Content Include="floras-nltk\florawordset.txt" />
+    <Content Include="floras-nltk\FZfamlist.txt" />
+    <Content Include="floras-nltk\hyphenated_words.txt" />
+    <Content Include="floras-nltk\lg_parse\__init__.py" />
+    <Content Include="floras-nltk\link_grammar\clinkgrammar.py" />
+    <Content Include="floras-nltk\link_grammar\example.py" />
+    <Content Include="floras-nltk\link_grammar\linkgrammar.py" />
+    <Content Include="floras-nltk\link_grammar\parses-en.txt" />
+    <Content Include="floras-nltk\link_grammar\tests.py" />
+    <Content Include="floras-nltk\link_grammar\__init__.py" />
+    <Content Include="floras-nltk\missingvocab.txt" />
+    <Content Include="floras-nltk\new colours.txt" />
+    <Content Include="floras-nltk\new-margin-words.txt" />
+    <Content Include="floras-nltk\new-shape-words.txt" />
+    <Content Include="floras-nltk\notingloss.txt" />
+    <Content Include="floras-nltk\readlg-dict.py" />
+    <Content Include="floras-nltk\resources\FZ Descriptions.txt" />
+    <Content Include="floras-nltk\resources\Glossaries.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="floras-nltk\resources\lg-floras\en\.idea\encodings.xml" />
+    <Content Include="floras-nltk\resources\lg-floras\en\.idea\misc.xml" />
+    <Content Include="floras-nltk\resources\lg-floras\en\.idea\modules.xml" />
+    <Content Include="floras-nltk\resources\lg-floras\en\.idea\scopes\scope_settings.xml" />
+    <Content Include="floras-nltk\resources\lg-floras\en\.idea\vcs.xml" />
+    <Content Include="floras-nltk\resources\lg-floras\en\.idea\workspace.xml" />
+    <Content Include="floras-nltk\resources\lg-floras\en\words\words.n.2.s" />
+    <Content Include="floras-nltk\Snobol\Snobol.py" />
+    <Content Include="floras-nltk\Snobol\Snoboltest.py" />
+    <Content Include="floras-nltk\Snobol\__init__.py" />
+    <Content Include="floras-nltk\wordlist.txt" />
+    <Content Include="floras-nltk\__init__.py" />
+    <Content Include="six863\kimmo\draw.py" />
+    <Content Include="six863\kimmo\fsa.py" />
+    <Content Include="six863\kimmo\kimmo.py" />
+    <Content Include="six863\kimmo\kimmotest.py" />
+    <Content Include="six863\kimmo\morphology.py" />
+    <Content Include="six863\kimmo\pairs.py" />
+    <Content Include="six863\kimmo\rules.py" />
+    <Content Include="six863\kimmo\__init__.py" />
+    <Content Include="six863\parse\category.py" />
+    <Content Include="six863\parse\cfg.py" />
+    <Content Include="six863\parse\chart.py" />
+    <Content Include="six863\parse\featurechart.py" />
+    <Content Include="six863\parse\featurelite.py" />
+    <Content Include="six863\parse\kimmotest.py" />
+    <Content Include="six863\parse\test.py" />
+    <Content Include="six863\parse\tree.py" />
+    <Content Include="six863\parse\treeview.py" />
+    <Content Include="six863\parse\__init__.py" />
+    <Content Include="six863\semantics\all-gazdar-sentences.txt" />
+    <Content Include="six863\semantics\batchtest.py" />
+    <Content Include="six863\semantics\category.py" />
+    <Content Include="six863\semantics\cfg.py" />
+    <Content Include="six863\semantics\chart.py" />
+    <Content Include="six863\semantics\featurechart.py" />
+    <Content Include="six863\semantics\featurelite.py" />
+    <Content Include="six863\semantics\grammar.py" />
+    <Content Include="six863\semantics\interact.py" />
+    <Content Include="six863\semantics\logic.py" />
+    <Content Include="six863\semantics\test.py" />
+    <Content Include="six863\semantics\testw.py" />
+    <Content Include="six863\semantics\tree.py" />
+    <Content Include="six863\semantics\treeview.py" />
+    <Content Include="six863\semantics\__init__.py" />
+    <Content Include="six863\tagging\drawchart.py" />
+    <Content Include="six863\tagging\tagparse.py" />
+    <Content Include="six863\tagging\train.py" />
+    <Content Include="six863\tagging\__init__.py" />
+    <Content Include="six863\__init__.py" />
+    <Content Include="TaxonNameParser\ADO.py" />
+    <Content Include="TaxonNameParser\EasyExcel.py" />
+    <Content Include="TaxonNameParser\FTEADistClassifier.py" />
+    <Content Include="TaxonNameParser\FTEAParaClassifier.py" />
+    <Content Include="TaxonNameParser\FTEAreader.py" />
+    <Content Include="TaxonNameParser\FTWAHeaders.py" />
+    <Content Include="TaxonNameParser\getBits.py" />
+    <Content Include="TaxonNameParser\headers.txt" />
+    <Content Include="TaxonNameParser\IPWord.py" />
+    <Content Include="TaxonNameParser\nltktest.py" />
+    <Content Include="TaxonNameParser\ParseFamily.py" />
+    <Content Include="TaxonNameParser\RBParaClassifier.py" />
+    <Content Include="TaxonNameParser\RBreader.py" />
+    <Content Include="TaxonNameParser\recordtype.py" />
+    <Content Include="TaxonNameParser\SISDump.py" />
+    <Content Include="TaxonNameParser\Snobol.py" />
+    <Content Include="TaxonNameParser\Snoboltest.py" />
+    <Content Include="TaxonNameParser\SortedCollection.py" />
+    <Content Include="TaxonNameParser\TaxonNameParser.py" />
+    <Content Include="TaxonNameParser\TaxonNameParser.pyproj" />
+    <Content Include="TaxonNameParser\test.py" />
+    <Content Include="TaxonNameParser\ucsv.py" />
+    <Content Include="TaxonNameParser\wordreader.py" />
+    <Content Include="TaxonNameParser\XMLTreeBuilder.py" />
+    <Content Include="TaxonNameParser\__init__.py" />
+    <Content Include="testchart.py" />
+    <Content Include="testfeaturechart.py" />
+    <Content Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="floras-nltk\floracorpus\SQLitedb.pyc" />
+    <None Include="floras-nltk\floracorpus\__init__.pyc" />
+    <None Include="floras-nltk\floracorpus\__pycache__\reader.cpython-33.pyc" />
+    <None Include="floras-nltk\floracorpus\__pycache__\SQLitedb.cpython-33.pyc" />
+    <None Include="floras-nltk\floracorpus\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="floras-nltk\floraparser\botglossary.pyc" />
+    <None Include="floras-nltk\floraparser\fltoken.pyc" />
+    <None Include="floras-nltk\floraparser\lexicon.pyc" />
+    <None Include="floras-nltk\floraparser\pos.pyc" />
+    <None Include="floras-nltk\floraparser\__init__.pyc" />
+    <None Include="floras-nltk\floraparser\__pycache__\botglossary.cpython-33.pyc" />
+    <None Include="floras-nltk\floraparser\__pycache__\fltoken.cpython-33.pyc" />
+    <None Include="floras-nltk\floraparser\__pycache__\lexicon.cpython-33.pyc" />
+    <None Include="floras-nltk\floraparser\__pycache__\pos.cpython-33.pyc" />
+    <None Include="floras-nltk\floraparser\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="floras-nltk\florawordset.pickle" />
+    <None Include="floras-nltk\hyphenated_words.pickle" />
+    <None Include="floras-nltk\lgwordset.pickle" />
+    <None Include="floras-nltk\link_grammar\AUTHORS" />
+    <None Include="floras-nltk\resources\efloras.db3" />
+    <None Include="floras-nltk\resources\FloraPunkt.pickle" />
+    <None Include="floras-nltk\resources\glossarycp.csv" />
+    <None Include="floras-nltk\resources\lg-floras\en\.idea\.name" />
+    <None Include="floras-nltk\resources\lg-floras\en\.idea\en.iml" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.affix" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.batch" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.biolg.batch" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.constituent-knowledge" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.dict" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.dict.m4" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.fix-long.batch" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.fixes.batch" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.knowledge" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.regex" />
+    <None Include="floras-nltk\resources\lg-floras\en\4.0.voa.batch" />
+    <None Include="floras-nltk\resources\lg-floras\en\Makefile" />
+    <None Include="floras-nltk\resources\lg-floras\en\Makefile.am" />
+    <None Include="floras-nltk\resources\lg-floras\en\Makefile.in" />
+    <None Include="floras-nltk\resources\lg-floras\en\README" />
+    <None Include="floras-nltk\resources\lg-floras\en\tiny.dict" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\currency" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\currency.p" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.given-bisex.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.given-female.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.given-male.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.locations.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.national.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.organizations.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\entities.us-states.sing" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\Makefile" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\Makefile.am" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\Makefile.in" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\measures.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\measures.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.1.dot" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.4.dot" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.5" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\units.6" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-bot.pre" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-bot.suf" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.adv.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.prep.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.v.4.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.v.4.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.v.4.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.v.4.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words-medical.v.4.5" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adj.1-const" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adj.1-vowel" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adj.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adj.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adv.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adv.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adv.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.adv.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.1-const" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.1-vowel" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.1.gerund" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.2.x" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.3-const" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.3-vowel" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.3.y" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.n.t" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.1.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.1.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.1.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.1.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.1.p" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.10.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.10.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.10.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.10.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.2.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.2.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.2.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.2.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.2.5" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.4.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.4.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.4.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.4.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.4.5" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.5.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.5.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.5.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.5.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.6.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.6.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.6.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.6.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.6.5" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.8.1" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.8.2" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.8.3" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.8.4" />
+    <None Include="floras-nltk\resources\lg-floras\en\words\words.v.8.5" />
+    <None Include="floras-nltk\resources\range.cfg" />
+    <None Include="floras-nltk\resources\simplerange.cfg" />
+    <None Include="floras-nltk\resources\simplerange.fcfg" />
+    <None Include="floras-nltk\resources\vfgglossary.csv" />
+    <None Include="six863\kimmo\englex.lex" />
+    <None Include="six863\kimmo\english.lex" />
+    <None Include="six863\kimmo\english.yaml" />
+    <None Include="six863\kimmo\english2.lex" />
+    <None Include="six863\kimmo\fsa.pyc" />
+    <None Include="six863\kimmo\kimmo.py.bak" />
+    <None Include="six863\kimmo\kimmo.pyc" />
+    <None Include="six863\kimmo\morphology.pyc" />
+    <None Include="six863\kimmo\pairs.pyc" />
+    <None Include="six863\kimmo\rules.pyc" />
+    <None Include="six863\kimmo\turkish.lex" />
+    <None Include="six863\kimmo\turkish.yaml" />
+    <None Include="six863\kimmo\__init__.pyc" />
+    <None Include="six863\kimmo\__pycache__\fsa.cpython-33.pyc" />
+    <None Include="six863\kimmo\__pycache__\kimmo.cpython-33.pyc" />
+    <None Include="six863\kimmo\__pycache__\morphology.cpython-33.pyc" />
+    <None Include="six863\kimmo\__pycache__\pairs.cpython-33.pyc" />
+    <None Include="six863\kimmo\__pycache__\rules.cpython-33.pyc" />
+    <None Include="six863\kimmo\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="six863\parse\category.pyc" />
+    <None Include="six863\parse\cfg.pyc" />
+    <None Include="six863\parse\chart.pyc" />
+    <None Include="six863\parse\featurechart.pyc" />
+    <None Include="six863\parse\featurelite.py.bak" />
+    <None Include="six863\parse\gazdar.kimmo.lex" />
+    <None Include="six863\parse\gazdar.kimmo.yaml" />
+    <None Include="six863\parse\gazdar6.cfg" />
+    <None Include="six863\parse\speer.cfg" />
+    <None Include="six863\parse\treeview.pyc" />
+    <None Include="six863\parse\__init__.pyc" />
+    <None Include="six863\parse\__pycache__\category.cpython-33.pyc" />
+    <None Include="six863\parse\__pycache__\cfg.cpython-33.pyc" />
+    <None Include="six863\parse\__pycache__\chart.cpython-33.pyc" />
+    <None Include="six863\parse\__pycache__\featurechart.cpython-33.pyc" />
+    <None Include="six863\parse\__pycache__\featurelite.cpython-33.pyc" />
+    <None Include="six863\parse\__pycache__\treeview.cpython-33.pyc" />
+    <None Include="six863\parse\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="six863\semantics\category.pyc" />
+    <None Include="six863\semantics\cfg.pyc" />
+    <None Include="six863\semantics\chart.pyc" />
+    <None Include="six863\semantics\featurechart.pyc" />
+    <None Include="six863\semantics\featurelite.pyc" />
+    <None Include="six863\semantics\gazdar.kimmo.lex" />
+    <None Include="six863\semantics\gazdar.kimmo.yaml" />
+    <None Include="six863\semantics\gazdar6.cfg" />
+    <None Include="six863\semantics\lab3-slash.cfg" />
+    <None Include="six863\semantics\lab3-start.fcfg" />
+    <None Include="six863\semantics\logic.pyc" />
+    <None Include="six863\semantics\sem0.cfg" />
+    <None Include="six863\semantics\sem1.cfg" />
+    <None Include="six863\semantics\sem2.cfg" />
+    <None Include="six863\semantics\speer.cfg" />
+    <None Include="six863\semantics\starter.cfg" />
+    <None Include="six863\semantics\test.cfg" />
+    <None Include="six863\semantics\treeview.pyc" />
+    <None Include="six863\semantics\__init__.pyc" />
+    <None Include="six863\semantics\__pycache__\category.cpython-33.pyc" />
+    <None Include="six863\semantics\__pycache__\cfg.cpython-33.pyc" />
+    <None Include="six863\semantics\__pycache__\chart.cpython-33.pyc" />
+    <None Include="six863\semantics\__pycache__\featurechart.cpython-33.pyc" />
+    <None Include="six863\semantics\__pycache__\featurelite.cpython-33.pyc" />
+    <None Include="six863\semantics\__pycache__\logic.cpython-33.pyc" />
+    <None Include="six863\semantics\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="six863\tagging\demo.cfg" />
+    <None Include="six863\tagging\demo_tagger.pickle" />
+    <None Include="six863\tagging\demo_tagger.yaml" />
+    <None Include="six863\tagging\englex.lex" />
+    <None Include="six863\tagging\english.yaml" />
+    <None Include="six863\tagging\__pycache__\drawchart.cpython-33.pyc" />
+    <None Include="six863\tagging\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="six863\__init__.pyc" />
+    <None Include="six863\__pycache__\__init__.cpython-33.pyc" />
+    <None Include="__init__.pyc" />
+    <None Include="__pycache__\__init__.cpython-33.pyc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

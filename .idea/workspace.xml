@@ -5,66 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="357d4199-caad-4b7c-a810-57762320d5c3" name="Default" comment="Merge branch 'master' of https://github.com/ggosline/taxonparser&#10;&#10;Conflicts:&#10;&#9;src/floras-nltk/floras_nltk.py&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/floraparse.py" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\floraparser\parse.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\draw.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\englex.lex" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\english.lex" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\english.yaml" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\english2.lex" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\featurelite.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\fsa.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\kimmo.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\kimmotest.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\morphology.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\pairs.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\rules.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\turkish.lex" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\kimmo\turkish.yaml" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\category.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\cfg.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\chart.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\featurechart.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\featurelite.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\gazdar.kimmo.lex" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\gazdar.kimmo.yaml" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\gazdar6.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\test.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\tree.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\parse\treeview.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\batchtest.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\category.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\cfg.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\chart.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\featurechart.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\featurelite.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\gazdar4.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\gazdar5.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\gazdar6.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\interact.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\lab3-slash.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\lab3-start.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\logic.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\sem0.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\sem1.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\sem2.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\starter.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\test.cfg" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\test.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\testw.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\tree.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\GitHub\taxonparser\src\floras-nltk\six863\semantics\treeview.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/six863/parse/category.py" afterPath="$PROJECT_DIR$/src/six863/parse/category.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/fltoken.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/fltoken.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv" afterPath="$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/six863/parse/chart.py" afterPath="$PROJECT_DIR$/src/six863/parse/chart.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floracorpus/notindict.txt" afterPath="$PROJECT_DIR$/src/floras-nltk/floracorpus/notindict.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floracorpus/reader.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floracorpus/reader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/taxonparser.iml" afterPath="$PROJECT_DIR$/.idea/taxonparser.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/six863/semantics/logic.py" afterPath="$PROJECT_DIR$/src/six863/semantics/logic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/six863/parse/test.py" afterPath="$PROJECT_DIR$/src/six863/parse/test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="taxonparser.iws" />
@@ -89,7 +33,112 @@
     <favorites_list name="taxonparser" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="lexicon.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2363">
+              <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+              <folding>
+                <element signature="e#48#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/six863/parse/category.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="11306" max-vertical-offset="13124">
+              <caret line="688" column="0" selection-start-line="688" selection-start-column="0" selection-end-line="688" selection-end-column="0" />
+              <folding>
+                <element signature="e#450#477#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chart.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/six863/parse/chart.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="10064" max-vertical-offset="29835">
+              <caret line="601" column="0" selection-start-line="601" selection-start-column="0" selection-end-line="601" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/six863/parse/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2228" max-vertical-offset="3043">
+              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="featurechart.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/six863/parse/featurechart.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20211361" vertical-offset="4862" max-vertical-offset="6528">
+              <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/six863/parse/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="272">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="24638" max-vertical-offset="37893">
+              <caret line="1515" column="0" selection-start-line="1515" selection-start-column="0" selection-end-line="1515" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pydevd_comm.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_comm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="9644" max-vertical-offset="23205">
+              <caret line="682" column="0" selection-start-line="682" selection-start-column="0" selection-end-line="682" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="featurelite.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/six863/parse/featurelite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5356" max-vertical-offset="14892">
+              <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pairs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/six863/kimmo/pairs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1581">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -111,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/floras-nltk/six863/semantics/chart.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/six863/semantics/featurechart.py" />
         <option value="$PROJECT_DIR$/src/six863/kimmo/pairs.py" />
-        <option value="$PROJECT_DIR$/src/six863/parse/chart.py" />
         <option value="$PROJECT_DIR$/src/six863/semantics/cfg.py" />
         <option value="$PROJECT_DIR$/src/six863/semantics/chart.py" />
         <option value="$PROJECT_DIR$/src/six863/semantics/logic.py" />
@@ -136,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/six863/kimmo/__init__.py" />
         <option value="$PROJECT_DIR$/src/six863/kimmo/kimmotest.py" />
         <option value="$PROJECT_DIR$/src/six863/parse/featurechart.py" />
-        <option value="$PROJECT_DIR$/src/six863/parse/test.py" />
         <option value="$PROJECT_DIR$/src/six863/semantics/batchtest.py" />
         <option value="$PROJECT_DIR$/src/six863/tagging/tagparse.py" />
         <option value="$PROJECT_DIR$/src/six863/parse/cfg.py" />
@@ -156,8 +203,10 @@
         <option value="$PROJECT_DIR$/src/floras-nltk/six863/parse/__init__.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/six863/parse/category.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/parse.py" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/floraparse.py" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
+        <option value="$PROJECT_DIR$/src/six863/parse/chart.py" />
+        <option value="$PROJECT_DIR$/src/six863/parse/test.py" />
       </list>
     </option>
   </component>
@@ -212,6 +261,142 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="six863" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="six863" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="floras-nltk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="floras-nltk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="floraparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="floras-nltk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="floracorpus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -252,20 +437,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taxonparser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.lastSelected" value="project.propDebugger" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -316,28 +491,7 @@
       <recent name="C:\GitHub\taxonparser\src\floras-nltk\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.floraparse">
-    <configuration default="false" name="reader" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/floras-nltk/floracorpus" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="taxonparser" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/floras-nltk/floracorpus/reader.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.test">
     <configuration default="false" name="lexicon" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -413,6 +567,27 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/six863/parse" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="taxonparser" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/six863/parse/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -559,19 +734,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.tests" />
-      <item index="1" class="java.lang.String" itemvalue="Python.reader" />
-      <item index="2" class="java.lang.String" itemvalue="Python.lexicon" />
-      <item index="3" class="java.lang.String" itemvalue="Python.chart" />
-      <item index="4" class="java.lang.String" itemvalue="Python.parse" />
-      <item index="5" class="java.lang.String" itemvalue="Python.floraparse" />
+      <item index="1" class="java.lang.String" itemvalue="Python.lexicon" />
+      <item index="2" class="java.lang.String" itemvalue="Python.chart" />
+      <item index="3" class="java.lang.String" itemvalue="Python.parse" />
+      <item index="4" class="java.lang.String" itemvalue="Python.floraparse" />
+      <item index="5" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.floraparse" />
-        <item index="1" class="java.lang.String" itemvalue="Python.lexicon" />
-        <item index="2" class="java.lang.String" itemvalue="Python.parse" />
-        <item index="3" class="java.lang.String" itemvalue="Python.chart" />
-        <item index="4" class="java.lang.String" itemvalue="Python.reader" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.floraparse" />
+        <item index="2" class="java.lang.String" itemvalue="Python.lexicon" />
+        <item index="3" class="java.lang.String" itemvalue="Python.parse" />
+        <item index="4" class="java.lang.String" itemvalue="Python.chart" />
       </list>
     </recent_temporary>
   </component>
@@ -764,7 +939,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427363168087</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Merge branch 'master' of https://github.com/ggosline/taxonparser&#10;&#10;Conflicts:&#10;&#9;src/floras-nltk/floras_nltk.py&#10;">
+      <created>1427481050139</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1427481050139</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -772,26 +953,26 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31806615" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18948035" sideWeight="0.49865952" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3265306" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43440595" sideWeight="0.374375" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47388536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32484075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31592357" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32356688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19011407" sideWeight="0.49865952" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28025478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16032954" sideWeight="0.5013405" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44713375" sideWeight="0.5506971" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16032954" sideWeight="0.5013405" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908162" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4356688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28025478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37961784" sideWeight="0.625625" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31806615" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -948,8 +1129,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/floraparse.py</url>
-          <line>41</line>
+          <line>43</line>
           <option name="timeStamp" value="304" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/src/six863/parse/test.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="305" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/src/six863/parse/test.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="306" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/src/six863/parse/test.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="307" />
         </line-breakpoint>
         <breakpoint enabled="true" type="python-exception">
           <properties notifyOnTerminate="true" exception="IndexError">
@@ -968,15 +1164,92 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="305" />
+      <option name="time" value="309" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/category.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11306" max-vertical-offset="13124">
+          <caret line="688" column="0" selection-start-line="688" selection-start-column="0" selection-end-line="688" selection-end-column="0" />
+          <folding>
+            <element signature="e#450#477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/chart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10064" max-vertical-offset="29835">
+          <caret line="601" column="0" selection-start-line="601" selection-start-column="0" selection-end-line="601" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2228" max-vertical-offset="3043">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/featurechart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/six863/parse/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="272">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="24638" max-vertical-offset="37893">
+          <caret line="1515" column="0" selection-start-line="1515" selection-start-column="0" selection-end-line="1515" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_comm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9644" max-vertical-offset="23205">
+          <caret line="682" column="0" selection-start-line="682" selection-start-column="0" selection-end-line="682" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/featurelite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5356" max-vertical-offset="14892">
+          <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/kimmo/pairs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1581">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2397">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#48#58#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,18 +1386,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/six863/parse/featurelite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.218221" vertical-offset="7344" max-vertical-offset="14943">
-          <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/six863/kimmo/morphology.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1033" max-vertical-offset="2227">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,9 +1397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2954" max-vertical-offset="8398">
           <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-          <folding>
-            <element signature="e#161#198#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1142,7 +1404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36726546" vertical-offset="57973" max-vertical-offset="59024">
           <caret line="3421" column="16" selection-start-line="3421" selection-start-column="16" selection-end-line="3421" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1150,7 +1411,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.626151" vertical-offset="0" max-vertical-offset="1258">
           <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,7 +1418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8121547" vertical-offset="3112" max-vertical-offset="3655">
           <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1166,7 +1425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.4106814" vertical-offset="1668" max-vertical-offset="2278">
           <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1178,19 +1436,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/six863/parse/featurechart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="6528">
-          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/floras-nltk/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="543">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1198,7 +1447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="543">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1206,7 +1454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="543">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1214,17 +1461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="543">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1878453" vertical-offset="0" max-vertical-offset="2397">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#48#58#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,18 +1469,92 @@
         <state vertical-scroll-proportion="0.76620823" vertical-offset="290" max-vertical-offset="799">
           <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
           <folding>
-            <element signature="e#23#77#0" expanded="true" />
+            <element signature="e#23#77#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2363">
+          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+          <folding>
+            <element signature="e#48#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_comm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11327" max-vertical-offset="23205">
+          <caret line="682" column="0" selection-start-line="682" selection-start-column="0" selection-end-line="682" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="25454" max-vertical-offset="37893">
+          <caret line="1515" column="0" selection-start-line="1515" selection-start-column="0" selection-end-line="1515" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/kimmo/pairs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1581">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2228" max-vertical-offset="3043">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/six863/parse/category.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66797644" vertical-offset="0" max-vertical-offset="13124">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="11306" max-vertical-offset="13124">
+          <caret line="688" column="0" selection-start-line="688" selection-start-column="0" selection-end-line="688" selection-end-column="0" />
           <folding>
             <element signature="e#450#477#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/featurelite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5356" max-vertical-offset="14892">
+          <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/chart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10064" max-vertical-offset="29835">
+          <caret line="601" column="0" selection-start-line="601" selection-start-column="0" selection-end-line="601" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/six863/parse/featurechart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20211361" vertical-offset="4862" max-vertical-offset="6528">
+          <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,8 @@
-from src.six863.semantics.featurechart import *
+from semantics.featurechart import *
+import os
 
 def demo():
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
     cp = load_earley('lab3-slash.cfg', trace=0)
     trees = cp.parse('Mary sees a dog in Noosa')
     for tree in trees:

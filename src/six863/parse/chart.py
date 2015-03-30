@@ -982,11 +982,11 @@ class AbstractChartRule(object):
 
     # Default: delegate to apply_iter.
     def apply(self, chart, grammar, *edges):
-        return list(self.apply_iter(chart, grammar, *edges))
+        return self.apply_iter(chart, grammar, *edges)
 
     # Default: delegate to apply_everywhere_iter.
     def apply_everywhere(self, chart, grammar):
-        return list(self.apply_everywhere_iter(chart, grammar))
+        return self.apply_everywhere_iter(chart, grammar)
 
     # Default: return a name based on the class name.
     def __str__(self):
