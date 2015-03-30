@@ -14,7 +14,7 @@ from floracorpus.reader import FloraCorpusReader
 #nltk.internals.config_java(r"C:\Program Files\Java\jdk1.8.0\bin\java.exe")
 
 testme = """\
-Plant : shrub or small tree (1·2)3–5(6) m. high, with rounded crown, without latex;
+Shrub or small tree (1·2)3–5(6) m. high, with rounded crown, without latex;
 bark: smooth;
 stems: ± flattened with paired raised lines at first, becoming terete and rugulose, densely chocolate-brown- to fawn-pubescent.
 Leaves: opposite to subopposite or alternate, petiolate;

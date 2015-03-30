@@ -10,12 +10,12 @@ lexicon = {}
 multiwords = {}
 
 
-class LexEntry():
-    def __init__(self, POS, wordlist, category=None, appliesto=None):
-        self.POS = POS
-        self.wordlist = wordlist
-        self.category = category
-        self.appliesto = appliesto
+# class LexEntry():
+#     def __init__(self, POS, wordlist, category=None, appliesto=None):
+#         self.POS = POS
+#         self.wordlist = wordlist
+#         self.category = category
+#         self.appliesto = appliesto
 
 
 def addlexicon(words, POS):
