@@ -327,7 +327,7 @@
 353,47382,"bundled",,"architecture","inflorescence","not recommended","Comprising one or more fascicles.","architecture","NULL",1,"1eb86bbd-4b8a-4e30-9303-f2b5fe11ffb2"
 354,47383,"bundled",,"arrangement",,"not recommended","Disposed in one or more fascicles, the members of each inserted close together and only slightly if at all divergent from one another.","arrangement","NULL",1,"ece013bb-2f0b-42d0-8e75-cfbb3e67162c"
 355,47384,"bursicle",,"structure",,,"A pouch- or flap-like protrusion from the stigma that encloses the caudicle of a pollinium.","STRUCTURE","NULL",0,"f2eb25b3-369d-4b64-b0a6-36919e1790e7"
-356,47385,"bush",,"life_style","plant",,"A short shrub that branches from ground level.  See also subshrub (suffrutex, undershrub), tree, woody clump.","nominative","NULL",1,"e7f11245-48c2-4749-be4d-856b06667278"
+356,47385,"bush",,"life-form","plant",,"A short shrub that branches from ground level.  See also subshrub (suffrutex, undershrub), tree, woody clump.","nominative","NULL",1,"e7f11245-48c2-4749-be4d-856b06667278"
 357,47386,"bushy",,"habit","plant",,"Having or developing the character of a bush.  See also arboreous, arborescent, subshrubby, suffrutescent, suffruticose, tree-like, woody-clumping.","habit","NULL",1,"a40f692a-4d67-49e3-8261-a736f157f7a9"
 358,47387,"butterfly-like",,"architecture","corolla",,"Having a relatively large, erect adaxial (upper) petal (the standard, banner or vexillum), two smaller lateral petals (the wings or alae), and two individually smaller but connate or coherent abaxial (lower) petals that together form a carinate structure","architecture","NULL",1,"f8846123-670a-450b-a9d8-5507c36be22f"
 359,47388,"caducous",,"duration","structure",,"Deciduous upon or immediately after emergence, with little or no evident senescence beforehand.","duration","NULL",1,"5c795160-c3ba-4750-bc5f-57ab1db7b586"
@@ -1153,7 +1153,7 @@
 1221,48251,"hemispheric",,"shape",,,"Half-spheric(al); broadest at the base and uniformly rounded to the apex, circular in any transverse section, and half-circular in any median longitudinal section.","shape","NULL",1,"ce95ce87-9497-49d5-ac29-7755f74838d1"
 1222,48252,"hemispherical",,"shape",,,"Half-spheric(al); broadest at the base and uniformly rounded to the apex, circular in any transverse section, and half-circular in any median longitudinal section.","shape","NULL",1,"0e60a63b-a3ca-4a0f-a3df-06b5b749ab30"
 1223,48253,"hepta_",,"prefix",,,"Indicating presence of or constitution by seven entities of the type denoted by the term's stem; as in  heptacolpate, heptafoliolate, heptapterous.","prefix","NULL",1,"33d441ad-8094-42d0-916f-d77ce4367091"
-1224,48254,"herb",,"life_style","plant",,"Annual, biennial, or perennial with no woody (lignified) tissue in any part of the shoot; when persisting over more than one growing season, the parts of the shoot dying back seasonally.","nominative","NULL",1,"b459e8cf-b3b1-40c2-ad17-5b31a7911cc0"
+1224,48254,"herb",,"life-form","plant",,"Annual, biennial, or perennial with no woody (lignified) tissue in any part of the shoot; when persisting over more than one growing season, the parts of the shoot dying back seasonally.","nominative","NULL",1,"b459e8cf-b3b1-40c2-ad17-5b31a7911cc0"
 1225,48255,"herbaceous",,"habit","plant",,"Having no significant degree of secondary growth in any part of the shoot, which thus does not develop woody (lignified) tissue.","texture","NULL",1,"2c381927-effc-49b6-a68f-148bf0869b5e"
 1226,48256,"herbaceous",,"texture",,,"Composed entirely of relatively soft, non-woody (unlignified) tissues derived from primary growth.","texture","NULL",1,"8041c591-453b-4076-803d-84c55f1d5723"
 1227,48257,"hermaphroditic",,"reproduction",,,"Having functional reproductive structures of both sexes.  See also perfect.","reproduction","NULL",1,"dfc5fba9-c54a-4262-8a08-cd4a5723a390"
@@ -1454,7 +1454,7 @@
 1533,48508,"lepides",,"structure",,,"A relatively thick, planate trichome.  See also squamella.","STRUCTURE","NULL",0,"e6a34ceb-a3e7-49f7-a4ac-cf0ea1552dc4"
 1534,48509,"leptosporangiate",,"reproduction",,,"Having relatively small sporangia each of which develops from a single initial cell that, by periclinal division, gives rise to an outer and an inner cell, the former then giving rise to the entire sporangium, including contents and sporangiophore, the la","reproduction","NULL",1,"025e9164-ca29-4f1f-9bde-81b402a80402"
 1535,48510,"levering",,"habit","trichome",,"Forming part of a pappus and reflexing at maturity, thus helping to loosen the individual fruit (cypsela) from the capitulum (head); in Asteraceae (Compositae).","habit","NULL",1,"ff05da51-0057-40f4-9839-3a280746f227"
-1536,48511,"liana",,"life_style","plant",,"Perennial with elongate ligneous stems that are  flexible at least initially and that climb upon trees and shrubs.","nominative","NULL",1,"889b477d-63e4-4e40-8d21-71b9cbed4a57"
+1536,48511,"liana",,"life-form","plant",,"Perennial with elongate ligneous stems that are  flexible at least initially and that climb upon trees and shrubs.","nominative","NULL",1,"889b477d-63e4-4e40-8d21-71b9cbed4a57"
 1537,48512,"lianous",,"habit","plant",,"Having elongate, ligneous stems that are flexible at least initially and that climb upon trees and shrubs.","habit","NULL",1,"501497fe-3d97-426a-a48b-fbdde152b232"
 1538,48513,"lid",,"structure",,,"A distal, cover-like portion of a structure whose main body is otherwise closed, transversely discontinuous with the main body around most of the circumference, or becoming partially or wholly separate by transverse dehiscence; as of a pitcher (ascidium),","STRUCTURE","NULL",0,"c162800f-7ac5-4f02-8ff3-679d247a5c15"
 1539,48514,"lidded",,"architecture",,,"Having a lid (operculum).","architecture","NULL",1,"95d8e9a0-fc85-4601-bc83-302f44a07d43"
@@ -2220,7 +2220,7 @@
 2329,49359,"shoot",,"structure",,,"Collectively, all those portions of a plant body that are anatomically distinct from the root, the component axes differentiated into nodes and internodes, and branching exogenously from the former.","STRUCTURE","NULL",0,"260bbace-4305-48af-b5e0-d6c8a4296eda"
 2331,49361,"short-shoot",,"structure",,,"A first- or higher-order woody stem branch having relatively unelongated internodes, thus proximate nodes, and limited duration of growth, usually branching little if at all; often a main locus of flower production; usually more or less perpendicular to t","STRUCTURE","NULL",0,"e74a799b-dc5e-41a6-916e-04f4fbc934ca"
 2332,49362,"showy",,"manifestation",,,"Prominently evident and attractive due to size, shape and/or coloration.","manifestation","NULL",1,"4b729c9d-648b-49f3-9912-34c6fc2ca698"
-2333,49363,"shrub",,"life_style","plant",,"Perennial, woody, relatively short, with a single main stem that is not distinctly columnar and branches from or above ground level, the branches often crowded.  See also subshrub (suffrutex, undershrub), tree, woody clump.","nominative","NULL",1,"08bcc00e-27e7-4c08-ae99-b491d5279b02"
+2333,49363,"shrub",,"life-form","plant",,"Perennial, woody, relatively short, with a single main stem that is not distinctly columnar and branches from or above ground level, the branches often crowded.  See also subshrub (suffrutex, undershrub), tree, woody clump.","nominative","NULL",1,"08bcc00e-27e7-4c08-ae99-b491d5279b02"
 2334,49364,"shrubby",,"habit","plant",,"Having or developing the character of a shrub.  See also arboreous, arborescent, subshrubby, suffrutescent, suffruticose, tree-like, woody-clumping.","habit","NULL",1,"ba21cb22-3284-49c0-89d8-3388284ee2b8"
 2335,49365,"sickle-shaped",,"shape",,,"Elongate and laterally arcuate with the lateral edges more or less concentric, the degree of curvature decreasing distally or not; like the outline of the face of a sickle blade.","shape","NULL",1,"0c125969-e922-4840-939a-f5a36937adbe"
 2337,49367,"sigmoid",,"course",,,"Curved more or less regularly first in one direction and then in the opposite direction, like the letter S.","course","NULL",1,"cb4fe50f-8a44-46b7-9520-521e15ed2a62"
@@ -2453,7 +2453,7 @@
 2568,49587,"subrotund",,"shape",,,"Broadly ellipsoid with a length:width ratio closely approaching 1:1; almost rotund, slightly longer than broad.","shape","NULL",1,"c544d0ab-cd24-46bc-b9d3-1bfd9416a6ca"
 2569,49588,"subround",,"shape",,,"Compressed circular or very broadly elliptic, only slightly longer than wide.","shape","NULL",1,"20f121b5-4a84-4f04-8c8e-598faba4b5c0"
 2570,49589,"subsessile",,"architecture","structure",,"Almost sessile; having a very short, somewhat indistinct stalk.","architecture","NULL",1,"cbff951a-c511-41b9-ad16-3b643904f9a3"
-2571,49590,"subshrub",,"life_style","plant",,"Of shrub-like form but with only the base woody, bearing herbaceous branches that die back at the end of each growing season.  See also bush, shrub (frutex), tree, woody clump.","nominative","NULL",1,"b0bb6306-505b-49d5-96be-ef3f9636b290"
+2571,49590,"subshrub",,"life-form","plant",,"Of shrub-like form but with only the base woody, bearing herbaceous branches that die back at the end of each growing season.  See also bush, shrub (frutex), tree, woody clump.","nominative","NULL",1,"b0bb6306-505b-49d5-96be-ef3f9636b290"
 2572,49591,"subshrubby",,"habit","plant",,"Having or developing the character of a subshrub (undershrub).  See also arboreous, arborescent, bushy, frutescent, fruticose, shrubby, woody-clumping.","habit","NULL",1,"58282013-5e38-46f4-b9ec-c8f520e0e316"
 2573,49592,"subsidiary_cell",,"structure",,,"One of the cytologically distinctive epidermal cells that are sometimes present in a stomate and that surround and are regularly oriented in relation to the guard cells.","STRUCTURE","NULL",0,"d6a57bfa-916d-45cc-9527-4f48bf78f42a"
 2574,49593,"subspheric",,"shape",,,"Broadly ellipsoid with a length:width ratio closely approaching 1:1; almost spheric(al), slightly longer than broad.","shape","NULL",1,"1f358eea-1d9b-4423-a251-a4a1005697c0"
@@ -2610,7 +2610,7 @@
 2736,49755,"transverse",,"dehiscence",,,"More or less perpendicular to the central axis.","dehiscence","q",1,"6717c4f9-a975-40df-bb05-847debb521b1"
 2737,49756,"transverse",,"orientation",,,"Perpendicular to the long axis of the context of reference.","dehiscence","q",1,"b5e82d4e-9ce6-4bcb-9552-99e6207dc821"
 2738,49757,"trapeziform",,"shape",,,"Four-sided and either asymmetrical or bilaterally symmetrical like a triangle truncated distally perpendicular to its central axis.","shape","NULL",1,"df1c7777-b353-479e-83fe-d73d037b305d"
-2739,49758,"tree",,"life_style","plant",,"Perennial, woody, more or less erect, relatively tall, with one or more distinct aboveground portions each with a single, relatively stout, columnar, main stem (trunk or bole) that bears branches.  See also bush, frutex, shrub, subshrub, suffrutex, unders","nominative","NULL",1,"d95b8ad7-97d4-4c89-9d40-2aa6b8f1e615"
+2739,49758,"tree",,"life-form","plant",,"Perennial, woody, more or less erect, relatively tall, with one or more distinct aboveground portions each with a single, relatively stout, columnar, main stem (trunk or bole) that bears branches.  See also bush, frutex, shrub, subshrub, suffrutex, unders","nominative","NULL",1,"d95b8ad7-97d4-4c89-9d40-2aa6b8f1e615"
 2740,49759,"tree-form",,"habit","plant",,"Having or developing the character of a tree.  See also bushy, frutescent, fruticose, shrubby, subshrubby, suffrutescent, suffruticose, woody-clumping.","habit","NULL",1,"d7bf1f65-9b88-4973-a243-20cf453b768d"
 2741,49760,"tree-like",,"architecture",,,"Like the branched axial structure of a tree.","architecture","NULL",1,"73a31043-f63f-4ed3-905d-a91b300587b5"
 2742,49761,"tri_",,"prefix",,,"Indicating presence of or constitution by three entities of the type denoted by the term's stem; as in  tricarpellate, trifurcate, trilocular.","prefix","NULL",1,"83b7f58e-950a-4eb5-bc5f-5aa91576add2"
@@ -2670,7 +2670,7 @@
 2798,49829,"uncinate",,"shape",,,"Having a recurved terminal portion that resembles a hook.","shape","NULL",1,"4948b6c4-b993-4c87-a42e-a38c2e1f21e3"
 2799,49830,"unctuous",,"coating",,,"Of a grease- or oil-like film.","coating","q",1,"0e25d19f-faf2-41bf-b504-66fa1033eb17"
 2800,49831,"unctuous",,"texture",,,"Liquid or deformably solid, cohesive, and slippery to the touch.","coating","q",1,"04f9c9ee-38b8-428b-aa29-34818fbc7a22"
-2801,49832,"undershrub",,"life_style","plant",,"Of shrub-like form but with only the base woody, bearing herbaceous branches that die back at the end of each growing season.  See also bush, frutex, shrub, tree, woody clump.","nominative","NULL",1,"aba21f99-0fc4-4e0e-8bd4-5cf391c35b4f"
+2801,49832,"undershrub",,"life-form","plant",,"Of shrub-like form but with only the base woody, bearing herbaceous branches that die back at the end of each growing season.  See also bush, frutex, shrub, tree, woody clump.","nominative","NULL",1,"aba21f99-0fc4-4e0e-8bd4-5cf391c35b4f"
 2802,49833,"undulate",,"shape",,,"Having regular, curved, smoothly connected, alternating, wave-like deviations upward and downward from the general plane of the structure.","shape","NULL",1,"8525745a-a358-4c6c-a477-ed1d74cbe6db"
 2803,49834,"unequal",,"size","equivalent structures",,"Distinctly differing in extent.  See also equal, subequal.","size","NULL",1,"4a6a520b-1251-4f3c-9ae4-78715ec23ff6"
 2804,49835,"unguiculate",,"shape","l",,"Having an abruptly much narrower proximal portion (unguis or claw), itself of variable shape but usually attenuate toward the base; esp. petals.","shape","NULL",1,"3e674eab-b315-4d9d-812f-1f310b1a52fa"
@@ -2743,7 +2743,7 @@
 2872,49903,"villose",,"pubescence",,,"Bearing sparse, long, slender, soft, capillate trichomes that are not intertwined.  See also villosulous.","pubescence","NULL",1,"2762098a-a48e-4452-b4fc-41b6cf8a553e"
 2873,49904,"villosulous",,"pubescence",,,"Finely villose (shaggy, villous).","pubescence","NULL",1,"53ef5dce-07b1-469b-8271-0c08eb085b80"
 2874,49905,"villous",,"pubescence",,,"Bearing sparse, long, slender, soft, capillate trichomes that are not intertwined.  See also villosulous.","pubescence","NULL",1,"80f4d553-5490-4272-8c56-26a9ad1b42fd"
-2875,49906,"vine",,"life_style","plant",,"Perennial, with elongate, herbaceous or ligneous stems that are flexible at least initially and that clamber, climb or trail.","nominative","NULL",1,"fbec0ee9-dfc4-48ad-9dac-a7e4cd45261d"
+2875,49906,"vine",,"life-form","plant",,"Perennial, with elongate, herbaceous or ligneous stems that are flexible at least initially and that clamber, climb or trail.","nominative","NULL",1,"fbec0ee9-dfc4-48ad-9dac-a7e4cd45261d"
 2876,49907,"viny",,"habit","plant",,"Having elongate, herbaceous or ligneous stems that are flexible at least initially and that clamber, climb or trail.","habit","NULL",1,"1b7f649f-7eae-4ee3-8c5b-2c9b6fddc3ad"
 2877,49908,"virgate",,"architecture","axis",,"Long, slender, unbranched, and more or less straight.","architecture","NULL",1,"62969fd0-f88c-44e2-90b1-2e7bf990e84e"
 2878,49909,"viscid",,"coating",,,"Of a sticky substance.","coating","q",1,"f96bb637-5fd8-44de-ad74-56ac4832dbf7"
@@ -3172,20 +3172,7 @@
 3302,50407,"papillate",,"pubescence","NULL","NULL","NULL","NULL","NULL",0,"c75d9206-d81a-4472-b2e2-6e7c2a7860b8"
 3303,50408,"pale",,"coloration","NULL","NULL","NULL","NULL","NULL",0,"f9f457ef-fc67-4049-bc6b-8ea80828e22e"
 3304,50409,"dull",,"coloration","NULL","NULL","NULL","NULL","NULL",0,"e25de066-1d0c-4cff-ae66-fd1b80098241"
-3305,50410,"plant",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"f7f966e3-fdc6-4093-a23c-3966ba3fb690"
-3306,50411,"annuals",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"6200cb76-4d49-48d1-b7ab-7393eccc21d2"
-3307,50412,"biennials",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"e673a74b-3436-4b71-b197-0282976291f8"
-3308,50413,"bushes",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"54ba7760-24a9-469c-8d47-31a142543c86"
-3309,50414,"herbs",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"c970520e-9769-4928-8297-768f2cbbe848"
-3310,50415,"lianas",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"059176e9-eb17-4dcc-bd92-f130883e38fc"
-3311,50416,"perennials",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"25745c85-c47d-4e24-bc26-6723b2d8c891"
-3312,50417,"shrubs",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"2434fa9e-f8d6-42b8-9dae-1845bcdde58b"
-3313,50418,"subshrubs",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"aaddc490-5fc2-4938-a6c6-44e3d59efe32"
-3314,50419,"summer_annuals",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"d40faae2-fca7-4275-b76d-e42b28c9dbd8"
-3315,50420,"trees",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"0fdaf5b8-e831-4ef9-a914-971f4fd1d3ef"
-3316,50421,"undershrubs",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"95b1560c-f6c0-4c53-98db-88b22b0b82f7"
-3317,50422,"vines",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"fdd2a566-a5ba-46b6-ab5a-7f48815a1d66"
-3318,50423,"winter_annuals",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"77fcb95d-a66a-49a4-909c-21d7e2c56c6f"
+3305,50410,"plant",,"life-form","NULL","NULL","NULL","NULL","NULL",0,"f7f966e3-fdc6-4093-a23c-3966ba3fb690"
 3319,50424,"woody_clumps",,"structure","NULL","NULL","NULL","NULL","NULL",0,"cc94568b-3fcf-48ea-8ac9-cb0f16394a67"
 3320,50425,"plants",,"life_style","NULL","NULL","NULL","NULL","NULL",0,"9fade84a-9187-49ce-a170-6d264e6b022e"
 3321,50426,"shape",,"CHARACTER","NULL","NULL","NULL","NULL","NULL",0,"ebf71024-31df-4888-8edd-b5bcf3065c9a"
@@ -3333,7 +3320,7 @@
 3508,,"loculus",,"structure",,,,,,,
 3509,,"dichasial",,"architecture","inflorescence",,,,,,
 3510,,"monochasial",,"architecture","inflorescence",,,,,,
-3511,,"liane",,"life_style",,,,,,,
+3511,,"liane",,"life-form",,,,,,,
 3512,,"shrublet",,"life-form",,,,,,,
 3513,,"grey",,"coloration",,,,,,,
 3514,,"greyish",,"coloration",,,,,,,
@@ -3463,4 +3450,4 @@
 3724,,"wing-like",,"shape",,,,,"KG",,
 3737,,"due_to_abortion",,"derivation",,,"termination, partway through their development, of parts that are usually present; usually of flowers or fruits",,"KG",,
 3738,,"grouped",,"architecture",,,,,,,
-3740,,"climber",,"life_style",,,,,,,
+3740,,"climber",,"life-form",,,,,,,

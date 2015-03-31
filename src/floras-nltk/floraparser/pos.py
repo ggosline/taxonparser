@@ -2,11 +2,12 @@
 __author__ = 'George'
 
 import re
+import copy
 
 from textblob import Word
 
 from floraparser.lexicon import lexicon, multiwords
-# from floraparser.fltoken import FlWord, FlSentence
+from six863.parse.category import GrammarCategory
 
 PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
@@ -22,7 +23,6 @@ NUMBERS = re.compile(r'^[0-9–—.·()]+$')
 
 
 class FlTagger():
-
     def rootword(self, word):
         # hyphenated word
         # return list of words with last word first (the root?)
@@ -78,8 +78,6 @@ class FlTagger():
 
         word = flword.text.lower()
 
-
-
         if word in multiwords:  # multi word phrase
             ws = self.multiwordtokenize(flword, word)
         else:
@@ -90,37 +88,40 @@ class FlTagger():
 
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
-            return flword, 'NUM', None
+            return flword, 'NUM', [GrammarCategory(pos='NUM', numeric=True)]
 
         ws = FlTagger.singularize(self, word)
         if ws:
             ws = (ws,)
             if ws in lexicon:
-                if lexicon[ws][0]['pos'] == 'NN':
-                    POS = 'NNS'
+                lexent = copy.deepcopy(lexicon[ws])
+                for gc in lexent:
+                    if gc['pos'] == 'N':
+                        gc['plural'] = True
+                        POS = 'NP'
                 else:
-                    POS = lexicon[ws][0]['pos']
-                return flword, POS, lexicon[ws]
+                    POS = lexent[0]['pos']
+                return flword, POS, lexent
 
         # Try taking the word apart at dashes
         root = self.rootword(word)
         if root:
             if (root[0],) in lexicon:
                 le = lexicon[(root[0],)][0]
-                return root, le['pos'], le
+                return root, le['pos'], [le]
             if ('_' + root[0],) in lexicon:  # suffix
                 le = lexicon[('_' + root[0],)][0]
-                return root, le['pos'], le
+                return root, le['pos'], [le]
 
         if word.endswith('ly'):
-            return flword, 'RB', None
+            return flword, 'AV', [GrammarCategory(pos='AV')]
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets
         # for sy in synsets:
         # pass
 
-        return flword, 'UNK', None
+        return flword, 'UNK', [GrammarCategory(pos='UNK')]
 
         # def tag(self, blob):
         # return [self.tag_word(word) for word in blob.words]
