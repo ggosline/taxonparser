@@ -62,13 +62,15 @@ def pickle_lexicon():
     DETERMINER = 'each|every|some|all|other|both|their'.split('|')
     addlexicon(DETERMINER, 'DET')
     PUNCTUATION = ';|(|)'.split('|')
-    addlexicon(PUNCTUATION, 'PUNC')
+    for char in PUNCTUATION:
+        addlexentry(char, 'PUNC', punc=char)
     addlexicon([','], 'COMMA')
     PRONOUN = 'it|one|ones|form|forms|parts'.split('|')
     addlexicon(PRONOUN, 'PRO')
-    PREPOSITION = 'above|across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
+    PREPOSITION = 'across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
                   'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
-                  'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|if'.split('|')
+                  'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|' \
+                  'tipped_by'.split('|')
     for word in PREPOSITION:
         addlexentry(word, 'P', prep=word)
     GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
@@ -86,9 +88,9 @@ def pickle_lexicon():
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least'.split('|')
     addlexicon(RANGE, 'PR')
-    POSITIONA = 'upper|lower|uppermost|lowermost|various'.split('|')
+    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various'.split('|')
     addlexicon(POSITIONA, 'A', position=True, compar=False)
-    POSITION = 'top|on_bottom|base|at apex|front|back|both_sides|each_side|section|rest_of'.split('|')
+    POSITION = 'top|bottom|base|apex|front|back|both_sides|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, compar=False)
     ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|exactly".split('|')
     addlexicon(ACCURACY, 'ADV', accuracy=True)
@@ -102,10 +104,10 @@ def pickle_lexicon():
     addlexicon(COMPARISON, 'A', compar=True)
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
-    TIMING = "at_first|when young|becoming|remaining|turning".split('|')
-    addlexicon(TIMING, 'AJ', timing=True)
-    VERB = 'to_form|forming'.split('|')
-    addlexicon(VERB, 'PV')
+    TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity".split('|')
+    addlexicon(TIMING, 'ADV', timing=True)
+    VERB = 'to_form|forming|terminating'.split('|')
+    addlexicon(VERB, 'P', verb=True)
     addlexicon(['to'], '*TO')
     addlexicon(['not'], '*NOT')
     addlexicon(['in'], '*IN')
@@ -113,6 +115,7 @@ def pickle_lexicon():
     addlexicon(['for'], '*FOR')
     addlexicon(['that'], 'RCOMP')
     addlexicon(['that'], 'COMP')
+    addlexicon(['times'], '*TIMES')
     readcpglossary()
     # for wlist in multiwords.values():
     # wlist = sorted(wlist, key=len)

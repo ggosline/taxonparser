@@ -114,7 +114,7 @@ class FlTagger():
                 return root, le['pos'], [le]
 
         if word.endswith('ly'):
-            return flword, 'AV', [GrammarCategory(pos='AV')]
+            return flword, 'ADV', [GrammarCategory(pos='ADV')]
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets
