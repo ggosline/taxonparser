@@ -7,7 +7,7 @@ from parse.category import GrammarFile
 # from floracorpus.reader import FloraCorpusReader
 from floraparser import lexicon
 from floraparser.fltoken import FlSentence
-from floracorpus.reader import AbstractFloraCorpusReader
+from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
 # myds = FloraCorpusReader(db=r'..\resources\efloras.db3',
 # query="Select * from Taxa where family = 'Celastraceae';", )
 
@@ -40,7 +40,7 @@ def load_earley(filename, trace=1):
 
 trec = defaultdict(lambda: None)
 
-description1 = 'Shrublets or shrubs or small trees ' \
+description1 = 'Shrublets, shrubs or small trees ' \
                '(0·3)1–8 m. high' \
                ', with spines up to 8 cm. long' \
                ', axillary or terminating short axillary branches' \
@@ -54,21 +54,28 @@ description2 = 'A glabrous spiny scrambling shrub 5 m. high; ' \
                ', shining, green; spines straight, very acute, c. 2·5 cm. long, subinterpetiolar' \
                ', in age apparently at the forks of the older branches. ' \
                'Leaf-lamina 4–6 × 2–2·5 cm., shining above, narrowly ovate, subacuminate and acute at the apex, margin spinulose-serrulate or subentire' \
-               ', broadly cuneate at the base, smaller on the flowering branches; ' \
+               ', broadly cuneate at the base' \
+               ', smaller on the flowering branches; ' \
                'petiole 0·5–0·8 cm. long. ' \
                'Flowers white, in subinterpetiolar dichotomous cymes. ' \
                'Petals 3 times as long as the pubescent calyx-lobes. ' \
                'Fruit yellow-orange, c. 1 cm. long, slightly compressed, tipped by the persistent style.'
 
-trec['description'] = description2
+trec['description'] = description1
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
 
 if __name__ == '__main__':
-    # myds = FloraCorpusReader(db=r'..\resources\efloras.db3',
-    # query="Select * from Taxa where family = 'Celastraceae';", )
+    ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
+                              query="Select * from Taxa where genus = 'Salacia';", )
 
     grammar = load_earley('flg.cfg')
-    trees = grammar.get_parse(ttaxa.taxa[0].sentences[3].phrases[0])
-    for tree in trees:
-        tree.draw()
+    for taxon in ttaxa.taxa:
+        for sent in taxon.sentences:
+            for phrase in sent.phrases:
+                trees = grammar.get_parse(phrase)
+                if trees:
+                    for tree in trees:
+                        tree.draw()
+                else:
+                    print('parse failed:' + ''.join(phrase))

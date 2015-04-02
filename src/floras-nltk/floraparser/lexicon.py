@@ -3,8 +3,10 @@
 __author__ = 'gg12kg'
 
 import csv
-from six863.parse.category import GrammarCategory
 import pickle
+import os
+
+from six863.parse.category import GrammarCategory
 
 lexicon = {}
 
@@ -12,7 +14,7 @@ multiwords = {}
 
 
 def pickle_lexicon():
-    global addlexicon, addlexentry, readcpglossary, COORDCONJUNCTION, word, SUBCONJUNCTION, ARTICLE, DETERMINER, PUNCTUATION, PRONOUN, PREPOSITION, GROUPS, LITNUMBERS, ORDNUMBERS, UNITS, DIMENSION, RANGE, POSITIONA, POSITION, ACCURACY, FREQUENCY, DEGREE, COMPARISON, COMPADJ, TIMING, VERB, f
+    global lexicon, multiwords
     # class LexEntry():
     # def __init__(self, POS, wordlist, category=None, appliesto=None):
     # self.POS = POS
@@ -43,7 +45,7 @@ def pickle_lexicon():
             mydictreader = csv.DictReader(csvfile)
             for gentry in mydictreader:
                 term, category, appliesto = gentry['term'], gentry['category'].lower(), gentry['appliesTo'].lower()
-                if category in ('structure', 'feature', 'substance', 'life-form', 'plant', 'taxonomy', 'en'):
+                if category in ('structure', 'feature', 'substance', 'life-form', 'plant', 'taxonomy', 'en', 'process'):
                     POS = 'N'
                 elif category != '':
                     POS = 'A'
@@ -54,7 +56,7 @@ def pickle_lexicon():
     COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|except|except_for|×'.split('|')
     for word in COORDCONJUNCTION:
         addlexentry(word, 'CONJ', conj=word, coord=True)
-    SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless'.split('|')
+    SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless|if'.split('|')
     for word in SUBCONJUNCTION:
         addlexentry(word, 'CONJ', conj=word, coord=False)
     ARTICLE = 'the|a|an'.split('|')
@@ -70,7 +72,7 @@ def pickle_lexicon():
     PREPOSITION = 'across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
                   'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
                   'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|' \
-                  'tipped_by'.split('|')
+                  'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
         addlexentry(word, 'P', prep=word)
     GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
@@ -106,8 +108,8 @@ def pickle_lexicon():
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity".split('|')
     addlexicon(TIMING, 'ADV', timing=True)
-    VERB = 'to_form|forming|terminating'.split('|')
-    addlexicon(VERB, 'P', verb=True)
+    GERUND = "covering|closing|enveloping|forming|terminating|dehiscing|dividing|ending".split('|')
+    addlexicon(GERUND, 'P', verb=True)
     addlexicon(['to'], '*TO')
     addlexicon(['not'], '*NOT')
     addlexicon(['in'], '*IN')
@@ -130,7 +132,10 @@ if __name__ == '__main__':
     multiwords = {}
     pickle_lexicon()
 else:
+    savedir = os.curdir
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
     with open('lexicon.pickle', 'rb') as f:
         lexicon = pickle.load(f)
     with open('multiwords.pickle', 'rb') as f:
         multiwords = pickle.load(f)
+    os.chdir(savedir)
