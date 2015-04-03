@@ -4,9 +4,6 @@ __author__ = 'gg12kg'
 
 import re
 from floraparser import botglossary, pos
-from floraparser.lexicon import lexicon, multiwords
-from nltk import Tree
-
 fltagger = pos.FlTagger()
 
 class FlTaxon():
@@ -64,6 +61,8 @@ class FlSentence():
     def tokens(self):
         if not self._tokens:
             self._tokens = [FlToken(self, word) for word in self.words]
+            # eliminate null tokens
+            self._tokens = [tk for tk in self._tokens if tk.slice != slice(0, 0)]
         return self._tokens
 
     @property
@@ -93,6 +92,7 @@ class FlToken():
         self.lexentry = None
         self.POS = None
         self.slice = word.slice
+        # tagger can leave tokens with slice(0,0) from multiword processing
         self.flRoot, self.POS, self.lexentry = fltagger.tag_word(self.word)
 
     @property
@@ -102,8 +102,11 @@ class FlToken():
     def __repr__(self):
         return self.word.text + '<' + self.POS + '>'
 
+    def __getitem__(self, item):
+        return self.text[item]
 
-class FlPhrase(Tree):
+
+class FlPhrase():
     def __init__(self, sentence, slice=slice(0)):
         self.sentence = sentence
         self.slice = slice

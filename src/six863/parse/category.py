@@ -720,7 +720,7 @@ class GrammarFile(object):
                         self.grammatical_productions.append(rule)
 
     def apply_file(self, filename):
-        f = open(filename)
+        f = open(filename, encoding="utf-8")
         lines = f.readlines()
         self.apply_lines(lines)
         f.close()
