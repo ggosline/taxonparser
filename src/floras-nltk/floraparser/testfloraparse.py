@@ -1,4 +1,3 @@
-
 __author__ = 'gg12kg'
 from collections import defaultdict
 from parse.featurechart import FeatureEarleyChartParse
@@ -35,7 +34,7 @@ def load_earley(filename, trace=1):
 
     grammar = GrammarFile.read_file(filename)
     return FeatureEarleyChartParse(grammar.earley_grammar(),
-                                   lexicon=lexicon, trace=trace)
+        lexicon=lexicon, trace=trace)
 
 
 trec = defaultdict(lambda: None)
@@ -61,21 +60,26 @@ description2 = 'A glabrous spiny scrambling shrub 5 m. high; ' \
                'Petals 3 times as long as the pubescent calyx-lobes. ' \
                'Fruit yellow-orange, c. 1 cm. long, slightly compressed, tipped by the persistent style.'
 
-trec['description'] = description1
+description3 = 'branches densely red-brown-tomentose'
+
+trec['description'] = description3
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
 
 if __name__ == '__main__':
-    ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                              query="Select * from Taxa where genus = 'Salacia';", )
+    if False:
+        ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
+                                  query="Select * from Taxa where genus = 'Salacia';", )
 
-    grammar = load_earley('flg.cfg')
+    grammar = load_earley('flg.fcfg', trace=1)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
-            for phrase in sent.phrases:
-                trees = grammar.get_parse(phrase)
+            for i, phrase in enumerate(sent.phrases):
+                trees = grammar.get_parse_list(phrase.tokens)
                 if trees:
-                    for tree in trees:
-                        tree.draw()
+                    print('Success: ' + phrase.text)
+                    print('No. of trees: %d' % len(trees))
+                    for treex in trees:
+                        treex.draw()
                 else:
-                    print('parse failed:' + ''.join(phrase))
+                    print('Fail:    ' + phrase.text)

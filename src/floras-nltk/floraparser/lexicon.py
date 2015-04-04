@@ -18,7 +18,7 @@ def pickle_lexicon():
     # class LexEntry():
     # def __init__(self, POS, wordlist, category=None, appliesto=None):
     # self.POS = POS
-    #         self.wordlist = wordlist
+    # self.wordlist = wordlist
     #         self.category = category
     #         self.appliesto = appliesto
     def addlexicon(words, POS, **morefeatures):
@@ -110,14 +110,14 @@ def pickle_lexicon():
     addlexicon(TIMING, 'ADV', timing=True)
     GERUND = "covering|closing|enveloping|forming|terminating|dehiscing|dividing|ending".split('|')
     addlexicon(GERUND, 'P', verb=True)
-    addlexicon(['to'], '*TO')
-    addlexicon(['not'], '*NOT')
-    addlexicon(['in'], '*IN')
-    addlexicon(['than'], '*THAN')
-    addlexicon(['for'], '*FOR')
+    addlexicon(['to'], 'TO')
+    addlexicon(['not'], 'NOT')
+    addlexicon(['in'], 'IN')
+    addlexicon(['than'], 'THAN')
+    addlexicon(['for'], 'FOR')
     addlexicon(['that'], 'RCOMP')
     addlexicon(['that'], 'COMP')
-    addlexicon(['times'], '*TIMES')
+    addlexicon(['times'], 'TIMES')
     readcpglossary()
     # for wlist in multiwords.values():
     # wlist = sorted(wlist, key=len)

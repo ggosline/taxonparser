@@ -68,7 +68,7 @@ class FlSentence():
     @property
     def phrases(self):
         if not self._phrases:
-            self._phrases = FlPhrase(self).split(';')
+            self._phrases = FlPhrase.split(self, self.tokens, ';')
         return self._phrases
 
 
@@ -97,36 +97,35 @@ class FlToken():
 
     @property
     def text(self):
-        return self.word.text
+        return self.sentence.text[self.slice]
 
     def __repr__(self):
-        return self.word.text + '<' + self.POS + '>'
+        return self.text
 
-    def __getitem__(self, item):
-        return self.text[item]
+    def __getitem__(self, slice):
+        return self.text[slice]
 
 
 class FlPhrase():
-    def __init__(self, sentence, slice=slice(0)):
+    def __init__(self, sentence, tokens):
         self.sentence = sentence
-        self.slice = slice
-        self.children = []
-        self.tokens = self.sentence.tokens
-        self.parent = None
+        self.slice = slice(tokens[0].slice.start, tokens[-1].slice.stop)
+        self.tokens = tokens
 
     @property
     def text(self):
-        return self.taxon.description[self.slice]
+        return self.sentence.text[self.slice]
 
-    def split(self, separator):
+    @staticmethod
+    def split(sentence, tokens, separator):
         '''
         Split a phrase based on a character string
         Returns slices for the substring with the separator omitted
         '''
-        locations = [i for i, val in enumerate(self.tokens) if val.text == separator]
+        locations = [i for i, val in enumerate(tokens) if val.text == separator]
         locations.insert(0, -1)
         locations.append(None)
-        return [self.tokens[locations[i] + 1:locations[i + 1]] for i in range(0, len(locations) - 1)]
+        return [FlPhrase(sentence, tokens[locations[i] + 1:locations[i + 1]]) for i in range(0, len(locations) - 1)]
 
 class FlTokenizer():
     '''
