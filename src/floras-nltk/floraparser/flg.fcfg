@@ -39,11 +39,14 @@ COUNT -> NUM | NUM P[prep='per'] NBAR
 
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
+ABAR[category=?c] -> A[category=?c]
+
 ADVP ->  ADVP ADV | ADV
 
-ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c] | A[category=?c]
+ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c]
+ABAR[category=?c] -> A[category=?c]
 
-ABAR[category='prep'] -> ADVP PP[prep=?p] | PP
+ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
 AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
 AP -> AP CONJ[conj='or'] PP
@@ -56,7 +59,9 @@ AP -> AP CONJ[conj='and'] AP
 #AP[category=?c] -> SPEC AP
 
 APL[category=?c]/?x -> APL[category=?c]/?x COMMA AP[category=?c]/?x | AP[category=?c]/?x
-AP[category=?c]/?x -> APL[category=?c]/?x CDELIM CONJ[conj='or'] AP[category=?c]/?x
+AP[category=?c]/?x -> APL[category=?c]/?x CONJ[conj='or'] AP[category=?c]/?x
+AP[category=?c]/?x -> CONJ[conj='or'] AP[category='presence']/?x
+#AP[category=?c] -> ABAR[category=?c]/?x CONJ[conj='or'] ABAR[category=?c]
 
 PP/?x -> P NP/?x
 PP/?x -> P/NP

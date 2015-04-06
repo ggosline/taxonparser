@@ -62,7 +62,7 @@ description2 = 'A glabrous spiny scrambling shrub 5 m. high; ' \
                'Petals 3 times as long as the pubescent calyx-lobes. ' \
                'Fruit yellow-orange, c. 1 cm. long, slightly compressed, tipped by the persistent style.'
 
-description3 = 'lamina dull on both surfaces'  # , (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong, acuminate, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded, chartaceous to softly coriaceous, with (6)7–10 lateral nerves and ± densely reticulate venation varying in prominence'
+description3 = 'lamina dull on both surfaces, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong  or elliptic-oblong, acuminate, obtuse or retuse'  # , with margin shallowly rounded-denticulate'# , rarely subentire '#, cuneate'# to rounded' #, chartaceous to softly coriaceous' #, with (6)7–10 lateral nerves and ± densely reticulate venation varying in prominence'
 
 trec['description'] = description3
 trdr = [trec]
