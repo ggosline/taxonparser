@@ -45,7 +45,8 @@ def pickle_lexicon():
             mydictreader = csv.DictReader(csvfile)
             for gentry in mydictreader:
                 term, category, appliesto = gentry['term'], gentry['category'].lower(), gentry['appliesTo'].lower()
-                if category in ('structure', 'feature', 'substance', 'life-form', 'plant', 'taxonomy', 'en', 'process'):
+                if category in ('structure', 'feature', 'character',
+                                'substance', 'life-form', 'plant', 'taxonomy', 'en', 'process'):
                     POS = 'N'
                 elif category != '':
                     POS = 'A'
@@ -86,21 +87,21 @@ def pickle_lexicon():
     addlexicon(ORDNUMBERS, 'NUM', ordinal=True)
     UNITS = "mm.|cm.|dm.|m.|km.".split('|')
     addlexicon(UNITS, 'UNIT')
-    DIMENSION = "high|tall|long|wide|diam.|diameter|diam".split('|')
+    DIMENSION = "high|tall|long|wide|diam.|diameter|diam|".split('|')
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least'.split('|')
     addlexicon(RANGE, 'PR')
     POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various'.split('|')
     addlexicon(POSITIONA, 'A', position=True, compar=False)
-    POSITION = 'top|bottom|base|apex|front|back|both_sides|each_side|section|rest_of'.split('|')
+    POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, compar=False)
     ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|exactly".split('|')
     addlexicon(ACCURACY, 'ADV', accuracy=True)
     FREQUENCY = "sometimes|often|usually|rarely|generally|never|always|soon|also|even".split('|')
     addlexicon(FREQUENCY, 'ADV', frequencey=True)
-    DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much".split('|')
+    DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
     addlexicon(DEGREE, 'ADV', degree=True)
-    COMPARISON = "paler|darker|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
+    COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from".split('|')
     addlexicon(COMPARISON, 'A', compar=True)

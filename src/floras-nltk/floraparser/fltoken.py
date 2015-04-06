@@ -91,9 +91,9 @@ class FlToken():
         self.word = word
         self.lexentry = None
         self.POS = None
-        self.slice = word.slice
         # tagger can leave tokens with slice(0,0) from multiword processing
         self.flRoot, self.POS, self.lexentry = fltagger.tag_word(self.word)
+        self.slice = word.slice
 
     @property
     def text(self):

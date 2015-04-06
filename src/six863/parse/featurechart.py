@@ -173,7 +173,7 @@ class FeatureFundamentalRule(FundamentalRule):
                                    lhs=left_edge.lhs(), rhs=left_edge.rhs(),
                                    dot=left_edge.dot() + 1, vars=left_bindings)
 
-        # Add it to the chart, with appropraite child pointers.
+        # Add it to the chart, with appropriate child pointers.
         changed_chart = False
         for cpl1 in chart.child_pointer_lists(left_edge):
             if chart.insert(new_edge, cpl1 + (right_edge,)):

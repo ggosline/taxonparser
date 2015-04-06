@@ -57,7 +57,7 @@ class FlTagger():
         for wlist in mwlist:  # Could optimize
             for windx in range(0, len(wlist)):
                 match = None
-                if iword + windx < len(words) and wlist[windx] == words[iword + windx].text:
+                if iword + windx <= len(words) and wlist[windx] == words[iword + windx].text:
                     match = slice(iword, windx + iword)
                 else:
                     match = None
@@ -68,13 +68,15 @@ class FlTagger():
                     wn.slice = slice(0, 0)  # mark as null word
                 # need to delete the words here but in the middle of a for loop
                 return wlist
-            else:
-                return (word,)
+
+        return (word,)
 
     def tag_word(self, flword):
         """
         :param flword: fltoken.FlWord
         """
+        if flword.text == '':
+            return None, '', None
 
         word = flword.text.lower()
 

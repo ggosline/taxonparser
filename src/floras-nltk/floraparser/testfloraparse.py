@@ -1,5 +1,7 @@
+# coding: utf-8
 __author__ = 'gg12kg'
 from collections import defaultdict
+import sys
 from parse.featurechart import FeatureEarleyChartParse
 from parse.category import GrammarFile
 
@@ -60,26 +62,30 @@ description2 = 'A glabrous spiny scrambling shrub 5 m. high; ' \
                'Petals 3 times as long as the pubescent calyx-lobes. ' \
                'Fruit yellow-orange, c. 1 cm. long, slightly compressed, tipped by the persistent style.'
 
-description3 = 'branches densely red-brown-tomentose'
+description3 = 'lamina dull on both surfaces'  # , (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong, acuminate, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded, chartaceous to softly coriaceous, with (6)7–10 lateral nerves and ± densely reticulate venation varying in prominence'
 
 trec['description'] = description3
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
-
+ttrace = 1
+ofile = sys.stdout
 if __name__ == '__main__':
     if False:
+        ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from Taxa where genus = 'Salacia';", )
-
-    grammar = load_earley('flg.fcfg', trace=1)
-    for taxon in ttaxa.taxa:
-        for sent in taxon.sentences:
-            for i, phrase in enumerate(sent.phrases):
-                trees = grammar.get_parse_list(phrase.tokens)
-                if trees:
-                    print('Success: ' + phrase.text)
-                    print('No. of trees: %d' % len(trees))
-                    for treex in trees:
-                        treex.draw()
-                else:
-                    print('Fail:    ' + phrase.text)
+                                  query="Select * from Taxa where genus = 'Salacia' and species = 'erecta';", )
+        ofile = open('testphrases.txt', 'w', encoding='utf-8')
+    grammar = load_earley('flg.fcfg', trace=ttrace)
+    with ofile as of:
+        for taxon in ttaxa.taxa:
+            for sent in taxon.sentences:
+                for i, phrase in enumerate(sent.phrases):
+                    trees = grammar.get_parse_list(phrase.tokens)
+                    if trees:
+                        print('Success: ' + phrase.text, file=of)
+                        print('No. of trees: %d' % len(trees), file=of)
+                        if ttrace:
+                            for treex in trees:
+                                treex.draw()
+                    else:
+                        print('Fail:    ' + phrase.text, file=of)

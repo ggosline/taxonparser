@@ -3,52 +3,69 @@
 Start -> DESCRIPTION
 
 UNK ->
+XP/?x -> PP/?x | AP/?x | NP/?x
 
 CDELIM -> COMMA |
-COMMA ->
+# COMMA ->
 
 DESCRIPTION -> NP CHARLIST
 
-R -> S/NP
-R -> RCOMP S/NP
+NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
+#NBAR[category=?c] -> NBAR[category=?c] AP
+NBAR[category=?c] -> NBAR[category=?c] PAREXP
 
-SIZEB -> PR NUM UNIT DIM | NUM UNIT DIM | NUM CONJ[conj='×'] NUM UNIT
-SIZE -> ADV[+accuracy] SIZEB |  SIZEB
+NP -> DET NBAR | ART NBAR | PRO
+NP -> NAME
+NP -> A[+compar] NBAR THAN S
+NP -> A[+compar] NBAR THAN S/NBAR
+NP[category=?c] -> NBAR[category=?c]
+NP/NP ->
 
-CHAR -> AP | PP | SIZE | NP AP
-CHARLIST -> CHAR | CHAR CDELIM CHARLIST
-
-# NP -> NP R
-
-APL[category=?c]/?x -> APL[category=?c]/?x COMMA AP[category=?c]/?x | AP[category=?c]/?x
-AP[category=?c]/?x -> APL[category=?c]/?x CDELIM CONJ[conj='or'] AP[category=?c]/?x
 NPL[category=?c]/?x -> NPL[category=?c]/?x COMMA NP[category=?c]/?x | NP[category=?c]/?x
 NP[category=?c]/?x -> NPL[category=?c]/?x CDELIM CONJ[conj='or'] NP[category=?c]/?x
-AP -> AP CONJ[conj='or'] PP
-AP -> AP CONJ[conj='and'] AP
-# S/?x -> S/?x CONJ S/?x
-AP -> NUM TIMES A[+compar] NP
 
-PP/?x -> P NP/?x
-PP -> P[prep='with'] NP CHARLIST
-PP -> STARPP
+#R -> S/NP
+#R -> RCOMP S/NP
+# NP -> NP R
 
-ADVP ->  ADVP ADV | ADV
-#AP[category=?c] -> SPEC AP
-ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c] | A[category=?c]
-AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
-#AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
-#AP[category=?c] -> PP
+CHAR -> AP | PP | SIZE | COUNT | NP AP
+CHARLIST -> CHAR COMMA CHARLIST | CHAR
+
+SIZEB -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
+SIZE -> ADV[+accuracy] SIZEB |  SIZEB
+DIMEN -> P[prep='in'] DIM
+DIMEN -> DIM
+COUNT -> NUM | NUM P[prep='per'] NBAR
 
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
+ADVP ->  ADVP ADV | ADV
 
-NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c] | NBAR[category=?c] AP
+ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c] | A[category=?c]
 
-NP -> A[+compar] NBAR THAN S
-NP -> A[+compar] NBAR THAN S/NBAR
-NP -> DET NBAR | ART NBAR | PRO
-NP -> NAME
-NP[category=?c] -> NBAR[category=?c]
+ABAR[category='prep'] -> ADVP PP[prep=?p] | PP
 
-PAREXP -> PUNC[punc='('] CHAR PUNC[punc=')']
+AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
+AP -> AP CONJ[conj='or'] PP
+AP -> NUM TIMES A[+compar] NP
+AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
+
+AP -> AP CONJ[conj='and'] AP
+
+#AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
+#AP[category=?c] -> SPEC AP
+
+APL[category=?c]/?x -> APL[category=?c]/?x COMMA AP[category=?c]/?x | AP[category=?c]/?x
+AP[category=?c]/?x -> APL[category=?c]/?x CDELIM CONJ[conj='or'] AP[category=?c]/?x
+
+PP/?x -> P NP/?x
+PP/?x -> P/NP
+
+PP -> P[prep='with'] NP CHARLIST
+
+# S/?x -> S/?x CONJ S/?x
+
+PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
+
+
+

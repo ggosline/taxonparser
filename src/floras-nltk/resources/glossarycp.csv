@@ -2171,9 +2171,9 @@
 2279,49309,"selfing",,"reproduction","taxon",,"Having fertilization regularly involving gametes derived from the same plant.","reproduction","NULL",1,"03bd52f1-29b0-4a7c-a244-2ec911a14dee"
 2280,49310,"sellaeform",,"shape",,,"See selliform.","shape","NULL",1,"1a66996d-ae88-4adc-973b-31c2ac1c4aa0"
 2281,49311,"selliform",,"shape",,,"Relatively thin, broad and long, strongly compound-curved, concavely from end to end and convexly from side to side; like the generalized shape of a saddle.","shape","NULL",1,"3d0cc032-a295-487e-b303-3f8b233347fc"
-2283,49313,"semicircular",,"arrangement","bundle scars",,"Forming an incomplete circle, like the letter C.","arrangement","NULL",1,"2fdc13bb-3485-48c2-897c-dbb2f81f447f"
+2283,49313,"semicircular",,"shape",,,"Forming an incomplete circle, like the letter C.","arrangement","NULL",1,"2fdc13bb-3485-48c2-897c-dbb2f81f447f"
 2284,49314,"semicraspedodromous",,"venation",,,"Having a single median primary vein that branches to either side along the length of the lamina, each secondary vein running thence toward and bifurcate near the margin, one branch terminating at the margin, the other upwardly arcuate and merging with the","venation","NULL",1,"b3492cbe-4949-430e-a246-2d4ffbfdd1ab"
-2285,49315,"semielliptic",,"arrangement","bundle scars",,"Forming an incomplete ellipsis, like the letter U.","arrangement","NULL",1,"3504a242-b5d8-4121-b0e5-c82bfeed5a23"
+2285,49315,"semielliptic",,"shape",,,"Forming an incomplete ellipsis, like the letter U.","arrangement","NULL",1,"3504a242-b5d8-4121-b0e5-c82bfeed5a23"
 2286,49316,"semiobterete",,"shape",,,"Inversely semiterete; obterete but flattened on one side.","shape","NULL",1,"1323bbc4-a4ed-41d1-8c0c-6ab940f6dcc1"
 2287,49317,"semistalked",,"architecture","structure",,"Almost stalkless; having a very short, somewhat indistinct stalk.","architecture","NULL",1,"544e5165-cc11-4b4f-875a-69e3fa20a711"
 2288,49318,"semiterete",,"shape",,,"Terete but flattened on one side.","shape","NULL",1,"5faef344-ad0b-413c-bdf9-2e58cc448c84"
@@ -3434,7 +3434,7 @@
 3701,,"subsp.",,"taxonomy",,,"subspecies; the alternative contraction ssp. is not recommended",,"KG",,
 3702,,"superimposed",,"position",,,,,"KG",,
 3703,,"terminating",,"architecture",,,,,"KG",,
-3705,,"thickets",,"habitat",,,,,"KG",,
+3705,,"thickets",,"structure",,,,,"KG",,
 3706,,"thickness",,"CHARACTER",,,,,"KG",,
 3707,,"threads",,"structure",,,,,"KG",,
 3708,,"times",,,,,,,"KG",,
