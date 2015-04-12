@@ -28,7 +28,7 @@ NP[category=?c]/?x -> NPL[category=?c]/?x CDELIM CONJ[conj='or'] NP[category=?c]
 #R -> RCOMP S/NP
 # NP -> NP R
 
-CHAR -> AP | PP | SIZE | COUNT | NP AP
+CHAR -> APL | AP | WITHP | SIZE | COUNT | NP AP
 CHARLIST -> CHAR COMMA CHARLIST | CHAR
 
 SIZEB -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
@@ -51,17 +51,19 @@ ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
 AP -> AP CONJ[conj='or'] PP
 AP -> NUM TIMES A[+compar] NP
-AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
+#AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
 
 AP -> AP CONJ[conj='and'] AP
 
 #AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
 #AP[category=?c] -> SPEC AP
 
-APL[category=?c]/?x -> APL[category=?c]/?x COMMA AP[category=?c]/?x | AP[category=?c]/?x
-AP[category=?c]/?x -> APL[category=?c]/?x CONJ[conj='or'] AP[category=?c]/?x
-AP[category=?c]/?x -> CONJ[conj='or'] AP[category='presence']/?x
-#AP[category=?c] -> ABAR[category=?c]/?x CONJ[conj='or'] ABAR[category=?c]
+APL[category=?c]/?x -> AP[category=?c]/?x COMMA APL[category=?c]/?x | AP[category=?c]/?x
+APL[category=?c]/?x -> APL[category=?c]/?x  CONJ[conj='or'] AP[category=?c]/?x
+APL[category=?c]/?x -> CONJ[conj='or'] AP[category='presence']/?x
+#AP[category=?c] -> ABAR[category=?c]/?x  CONJ[conj='or'] ABAR[category=?c]
+
+WITHP -> P[prep='with'] NP CHARLIST
 
 PP/?x -> P NP/?x
 PP/?x -> P/NP
@@ -71,6 +73,10 @@ PP -> P[prep='with'] NP CHARLIST
 # S/?x -> S/?x CONJ S/?x
 
 PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
+
+N[category='structure'] -> 'leaves'
+
+A[category='pubescence'] -> 'glabrous'
 
 
 

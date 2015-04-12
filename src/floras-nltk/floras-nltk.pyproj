@@ -6,7 +6,7 @@
     <ProjectGuid>ff512dee-42fe-43d8-a3b4-446c4c9fefca</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>floras_nltk.py</StartupFile>
-    <SearchPath>Debug\;link_grammar\</SearchPath>
+    <SearchPath>Debug\;link_grammar\;..\six863\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>floras-nltk</Name>

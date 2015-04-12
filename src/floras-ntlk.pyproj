@@ -5,8 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{427e2239-1663-4a45-9f82-9b059a3b1e86}</ProjectGuid>
     <ProjectHome>floras-nltk\</ProjectHome>
-    <StartupFile>link_grammar\tests.py</StartupFile>
-    <SearchPath>..\;.</SearchPath>
+    <StartupFile>floraparser\testfloraparse.py</StartupFile>
+    <SearchPath>..\;.;..\six863\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
@@ -27,9 +27,14 @@
     </Compile>
     <Compile Include="floracorpus\reader.py" />
     <Compile Include="floraparser\bits.py" />
+    <Compile Include="floraparser\botglossary.py" />
+    <Compile Include="floraparser\fltoken.py" />
     <Compile Include="floraparser\glossaryreader.py" />
+    <Compile Include="floraparser\lexicon.py" />
     <Compile Include="floraparser\pos.py" />
     <Compile Include="floraparser\splitter.py" />
+    <Compile Include="floraparser\testfloraparse.py" />
+    <Compile Include="floraparser\testnltk3.py" />
     <Compile Include="floraparser\__init__.py" />
     <Compile Include="floras_nltk.py" />
     <Compile Include="link_grammar\clinkgrammar.py" />
@@ -61,6 +66,8 @@
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.3" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="floraparser\flg.fcfg" />
+    <Content Include="floraparser\flgrammar.cfg" />
     <Content Include="floraparser\__pycache__\bits.cpython-33.pyc" />
     <Content Include="floraparser\__pycache__\glossaryreader.cpython-33.pyc" />
     <Content Include="floraparser\__pycache__\pos.cpython-33.pyc" />
