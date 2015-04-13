@@ -61,11 +61,11 @@ AP -> AP CONJ[conj='and'] AP
 APL[category=?c]/?x -> AP[category=?c]/?x COMMA APL[category=?c]/?x | AP[category=?c]/?x
 APL[category=?c]/?x -> APL[category=?c]/?x  CONJ[conj='or'] AP[category=?c]/?x
 APL[category=?c]/?x -> CONJ[conj='or'] AP[category='presence']/?x
-#AP[category=?c] -> ABAR[category=?c]/?x  CONJ[conj='or'] ABAR[category=?c]
+APL[category=?c] -> ABAR[category=?c]  CONJ[conj='or'] ABAR[category=?c]
 
 WITHP -> P[prep='with'] NP CHARLIST
 
-PP/?x -> P NP/?x
+PP -> P NP
 PP/?x -> P/NP
 
 PP -> P[prep='with'] NP CHARLIST
