@@ -51,8 +51,7 @@ class FGFlora(FeatureGrammar):
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina dull on both sides, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., reddish, oblong to elliptic-oblong,  acuminate, obtuse or retuse, with margin shallowly rounded-denticulate or rarely subentire, cuneate to rounded, chartaceous to softly coriaceous, with (6)7–10 lateral nerves'  # and ± densely reticulate venation varying in prominence'
-
+description = 'stems with paired raised lines or quadrangular, olive-green to purplish and rugulose-tuberculate at first, becoming subterete, purplish-grey and smooth or remaining rugulose'
 trec['description'] = description
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
@@ -69,12 +68,21 @@ if __name__ == '__main__':
                                   query="Select * from Taxa where genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     alltokens = [tk for taxon in ttaxa.taxa for sent in taxon.sentences for tk in sent.tokens]
-    pr = FGFlora.fromstring(gs, fltokens=alltokens)
-    parser = parse.FeatureEarleyChartParser(pr, trace=ttrace)
+    flgr = FGFlora.fromstring(gs, fltokens=alltokens)
+    parser = parse.FeatureBottomUpChartParser(flgr, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
-                trees = list(parser.parse(phrase.tokens))
+                # trees = list(parser.parse(phrase.tokens))
+                trees = []
+                chart = parser.chart_parse(phrase.tokens)
+                # charedges = list(chart.select(is_complete=True, lhs='CHAR'))
+                # for charedge in charedges:
+                # for tree in chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+                #         trees.append(tree)
+                #
+                treegen = chart.parses(flgr.start(), tree_class=nltk.Tree)
+                trees = list(treegen)
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)

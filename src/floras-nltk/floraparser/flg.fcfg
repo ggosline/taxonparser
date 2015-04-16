@@ -41,7 +41,7 @@ ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
 ABAR[category=?c] -> A[category=?c]
 
-ADVP ->  ADVP ADV | ADV
+ADVP ->  ADVP ADV | ADV | PAREXP
 
 ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c]
 ABAR[category=?c] -> A[category=?c]
@@ -50,6 +50,7 @@ ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
 AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
 AP -> AP CONJ[conj='or'] PP
+AP -> PP CONJ[conj='or'] AP
 AP -> NUM TIMES A[+compar] NP
 #AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
 
@@ -74,9 +75,9 @@ PP -> P[prep='with'] NP CHARLIST
 
 PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
 
-N[category='structure'] -> 'leaves'
+#N[category='structure'] -> 'leaves'
 
-A[category='pubescence'] -> 'glabrous'
+#A[category='pubescence'] -> 'glabrous'
 
 
 
