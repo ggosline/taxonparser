@@ -7,7 +7,7 @@ import copy
 from textblob import Word
 
 from floraparser.lexicon import lexicon, multiwords
-from six863.parse.category import GrammarCategory
+from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 
 PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
@@ -76,7 +76,7 @@ class FlTagger():
         :param flword: fltoken.FlWord
         """
         if flword.text == '':
-            return None, '', None
+            return None, '', None, None
 
         word = flword.text.lower()
 
@@ -86,11 +86,11 @@ class FlTagger():
             ws = (word,)
 
         if ws in lexicon:
-            return flword, lexicon[ws][0]['pos'], lexicon[ws]
+            return flword, lexicon[ws][0]['pos'], lexicon[ws], ws
 
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
-            return flword, 'NUM', [GrammarCategory(pos='NUM', numeric=True)]
+            return flword, 'NUM', [FeatStructNonterminal(TYPE='NUM', pos='NUM', numeric=True, value=word)], ('NUM',)
 
         ws = FlTagger.singularize(self, word)
         if ws:
@@ -103,27 +103,27 @@ class FlTagger():
                         POS = 'NP'
                 else:
                     POS = lexent[0]['pos']
-                return flword, POS, lexent
+                return flword, POS, lexent, ws
 
         # Try taking the word apart at dashes
         root = self.rootword(word)
         if root:
             if (root[0],) in lexicon:
                 le = lexicon[(root[0],)][0]
-                return root, le['pos'], [le]
+                return root, le['pos'], [le], (root[0],)
             if ('_' + root[0],) in lexicon:  # suffix
                 le = lexicon[('_' + root[0],)][0]
-                return root, le['pos'], [le]
+                return root, le['pos'], [le], ('_' + root[0],)
 
         if word.endswith('ly'):
-            return flword, 'ADV', [GrammarCategory(pos='ADV')]
+            return flword, 'ADV', [FeatStructNonterminal(TYPE='ADV', pos='ADV')], (word,)
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets
         # for sy in synsets:
         # pass
 
-        return flword, 'UNK', [GrammarCategory(pos='UNK')]
+        return flword, 'UNK', [FeatStructNonterminal(TYPE='UNK', pos='UNK')], (word,)
 
         # def tag(self, blob):
         # return [self.tag_word(word) for word in blob.words]

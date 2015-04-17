@@ -39,19 +39,27 @@ class FGFlora(FeatureGrammar):
 
         start, productions = read_grammar(input, fstruct_reader.read_partial,
                                           encoding=encoding)
-        if fltokens:
-            for fltoken in fltokens:
-                for lexent in fltoken.lexentry:
-                    lexlhs = FeatStructNonterminal(**lexent._features)
-                    lexlhs[TYPE] = lexent['pos']
-                    newprod = Production(lexlhs, (fltoken,))
-                    productions.append(newprod)
+        # if fltokens:
+        # for fltoken in fltokens:
+        #         for lexent in fltoken.lexentry:
+        #             lexlhs = lexent
+        #             # lexlhs[TYPE] = lexent['pos']
+        #             newprod = Production(lexlhs, (fltoken,))
+        #             productions.append(newprod)
+
+        for wordtuple, featlist in lexicon.lexicon.items():
+            for lexent in featlist:
+                lexlhs = lexent
+                newprod = Production(lexlhs, (wordtuple,))
+                productions.append(newprod)
+
         return FeatureGrammar(start, productions)
 
 
 trec = defaultdict(lambda: None)
 
-description = 'stems with paired raised lines or quadrangular, olive-green to purplish and rugulose-tuberculate at first, becoming subterete, purplish-grey and smooth or remaining rugulose'
+description = 'stems with paired raised lines or quadrangular, olive-green to purplish, rugulose-tuberculate at first'  # , becoming subterete, purplish-grey and smooth or remaining rugulose'
+
 trec['description'] = description
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
@@ -69,13 +77,13 @@ if __name__ == '__main__':
         of = open('testphrases.txt', 'w', encoding='utf-8')
     alltokens = [tk for taxon in ttaxa.taxa for sent in taxon.sentences for tk in sent.tokens]
     flgr = FGFlora.fromstring(gs, fltokens=alltokens)
-    parser = parse.FeatureBottomUpChartParser(flgr, trace=ttrace)
+    parser = parse.FeatureEarleyChartParser(flgr, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
                 # trees = list(parser.parse(phrase.tokens))
                 trees = []
-                chart = parser.chart_parse(phrase.tokens)
+                chart = parser.chart_parse(tk.lexwords for tk in phrase.tokens)
                 # charedges = list(chart.select(is_complete=True, lhs='CHAR'))
                 # for charedge in charedges:
                 # for tree in chart.trees(charedge, complete=True, tree_class=nltk.Tree):

@@ -6,7 +6,7 @@ import csv
 import pickle
 import os
 
-from six863.parse.category import GrammarCategory
+from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 
 lexicon = {}
 
@@ -34,11 +34,11 @@ def pickle_lexicon():
             else:
                 multiwords[firstword] = [tuple(ws)]
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        features = {'pos': POS}
+        features = {TYPE: POS, 'pos': POS}
         for item in morefeatures.items():  # avoid null values
             if item[1]:
                 features[item[0]] = item[1]
-        lexicon.setdefault(tuple(ws), []).append(GrammarCategory(features=features))
+        lexicon.setdefault(tuple(ws), []).append(FeatStructNonterminal(features=features))
 
     def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
         with open(gfile) as csvfile:
@@ -109,7 +109,7 @@ def pickle_lexicon():
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity".split('|')
     addlexicon(TIMING, 'ADV', timing=True)
-    GERUND = "covering|closing|enveloping|forming|terminating|dehiscing|dividing|ending".split('|')
+    GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing|dividing|ending".split('|')
     addlexicon(GERUND, 'P', verb=True)
     addlexicon(['to'], 'TO')
     addlexicon(['not'], 'NOT')
@@ -119,6 +119,7 @@ def pickle_lexicon():
     addlexicon(['that'], 'RCOMP')
     addlexicon(['that'], 'COMP')
     addlexicon(['times'], 'TIMES')
+    addlexicon(['NUM'], 'NUM')
     readcpglossary()
     # for wlist in multiwords.values():
     # wlist = sorted(wlist, key=len)
