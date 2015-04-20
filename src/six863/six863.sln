@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "six863", "six863.pyproj", "{3C1F79EB-86D0-4946-9B4A-F6B9560AAC53}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "floras-nltk", "..\floras-nltk\floras-nltk.pyproj", "{FF512DEE-42FE-43D8-A3B4-446C4C9FEFCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C1F79EB-86D0-4946-9B4A-F6B9560AAC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C1F79EB-86D0-4946-9B4A-F6B9560AAC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF512DEE-42FE-43D8-A3B4-446C4C9FEFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF512DEE-42FE-43D8-A3B4-446C4C9FEFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

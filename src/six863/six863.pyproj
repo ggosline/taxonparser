@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3c1f79eb-86d0-4946-9b4a-f6b9560aac53}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>__init__.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="kimmo\draw.py" />
+    <Compile Include="kimmo\fsa.py" />
+    <Compile Include="kimmo\kimmo.py" />
+    <Compile Include="kimmo\kimmotest.py" />
+    <Compile Include="kimmo\morphology.py" />
+    <Compile Include="kimmo\pairs.py" />
+    <Compile Include="kimmo\rules.py" />
+    <Compile Include="kimmo\__init__.py" />
+    <Compile Include="parse\category.py" />
+    <Compile Include="parse\cfg.py" />
+    <Compile Include="parse\chart.py" />
+    <Compile Include="parse\featurechart.py" />
+    <Compile Include="parse\featurelite.py" />
+    <Compile Include="parse\kimmotest.py" />
+    <Compile Include="parse\test.py" />
+    <Compile Include="parse\tree.py" />
+    <Compile Include="parse\treeview.py" />
+    <Compile Include="parse\__init__.py" />
+    <Compile Include="semantics\batchtest.py" />
+    <Compile Include="semantics\category.py" />
+    <Compile Include="semantics\cfg.py" />
+    <Compile Include="semantics\chart.py" />
+    <Compile Include="semantics\featurechart.py" />
+    <Compile Include="semantics\featurelite.py" />
+    <Compile Include="semantics\grammar.py" />
+    <Compile Include="semantics\interact.py" />
+    <Compile Include="semantics\logic.py" />
+    <Compile Include="semantics\test.py" />
+    <Compile Include="semantics\testw.py" />
+    <Compile Include="semantics\tree.py" />
+    <Compile Include="semantics\treeview.py" />
+    <Compile Include="semantics\__init__.py" />
+    <Compile Include="tagging\drawchart.py" />
+    <Compile Include="tagging\tagparse.py" />
+    <Compile Include="tagging\train.py" />
+    <Compile Include="tagging\__init__.py" />
+    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="semantics\all-gazdar-sentences.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="kimmo" />
+    <Folder Include="parse" />
+    <Folder Include="semantics" />
+    <Folder Include="tagging" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
