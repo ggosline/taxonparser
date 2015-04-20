@@ -2,32 +2,29 @@
 
 Start -> DESCRIPTION
 
-XP/?x -> PP/?x | AP/?x | NP/?x
-
+#XP[category=?c] -> PP[category=?c] | AP[category=?c] | NP[category=?c]
 CDELIM -> COMMA |
 # COMMA ->
 
-DESCRIPTION -> NP CHARLIST
+DESCRIPTION -> NP CDELIM CHARLIST
 
 NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
 #NBAR[category=?c] -> NBAR[category=?c] AP
 NBAR[category=?c] -> NBAR[category=?c] PAREXP
 
-NP -> DET NBAR | ART NBAR | PRO
+NP[category=?c] -> DET NBAR[category=?c] | ART NBAR[category=?c] | PRO
 NP -> NAME
 NP -> A[+compar] NBAR THAN S
 NP -> A[+compar] NBAR THAN S/NBAR
 NP[category=?c] -> NBAR[category=?c]
-NP/NP ->
+#NP/NP ->
 
-NPL[category=?c]/?x -> NPL[category=?c]/?x COMMA NP[category=?c]/?x | NP[category=?c]/?x
-NP[category=?c]/?x -> NPL[category=?c]/?x CDELIM CONJ[conj='or'] NP[category=?c]/?x
 
 #R -> S/NP
 #R -> RCOMP S/NP
 # NP -> NP R
 
-CHAR -> APL | AP | WITHP | SIZE | COUNT | NP AP
+CHAR -> AP | WITHP | SIZE | COUNT | NP AP
 #CHAR[category=inflorescence] -> IN NP
 CHARLIST -> CHAR COMMA CHARLIST | CHAR
 
@@ -39,12 +36,12 @@ COUNT -> NUM | NUM P[prep='per'] NBAR
 
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
-ABAR[category=?c] -> A[category=?c]
+# ABAR[category=?c] -> A[category=?c]
 
-ADVP ->  ADVP ADV | ADV | PAREXP
+#ADVP ->  ADVP ADV | ADV | PAREXP
 
-ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c]
-ABAR[category=?c] -> A[category=?c]
+# ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c]
+ABAR[category=?c] -> A[category=?c] | ADV ABAR[category=?c]
 
 ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
@@ -55,14 +52,16 @@ AP -> NUM TIMES A[+compar] NP
 #AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
 
 APGROUP -> AP CONJ[conj='and'] AP
+AP[category=?c] -> CONJ[conj='or'] AP[category='presence']
 
 #AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
 #AP[category=?c] -> SPEC AP
 
-AP[category=?c] -> ABAR[category=?c] COMMA ABAR[category=?c] | ABAR[category=?c]
-ABAR[category=?c] -> ABAR[category=?c] CDELIM CONJ[conj='or'] ABAR[category=?c]
-AP[category=?c] -> CONJ[conj='or'] AP[category='presence']
-#APL[category=?c] -> ABAR[category=?c]  CONJ[conj='or'] ABAR[category=?c]
+NPL[category=?c] -> NP[category=?c] COMMA NPL[category=?c] | NP[category=?c, conj=or]
+NP[category=?c, conj=or] -> NPL[category=?c] CDELIM CONJ[conj=or] NP[category=?c]
+
+APL[category=?c] -> AP[category=?c] COMMA AP[category=?c, conj=or] | AP[category=?c]
+AP[category=?c, conj=or] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
 
 WITHP -> P[prep='with'] NP CHARLIST
 
@@ -73,7 +72,7 @@ PP -> P[prep='with'] NP CHARLIST
 
 # S/?x -> S/?x CONJ S/?x
 
-PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
+PAREXP -> PUNC[punc='('] AP PUNC[punc=')'] | COMMA AP COMMA
 
 #N[category='structure'] -> 'leaves'
 

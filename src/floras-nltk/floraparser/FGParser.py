@@ -53,7 +53,7 @@ class FGGrammar(FeatureGrammar):
         for wordtuple, featlist in lexicon.lexicon.items():
             for lexent in featlist:
                 lexlhs = lexent
-                newprod = Production(lexlhs, (wordtuple,))
+                newprod = Production(lexlhs, ['_'.join(wordtuple)])
                 productions.append(newprod)
 
         return FGGrammar(start, productions)
@@ -64,8 +64,8 @@ class FGGrammar(FeatureGrammar):
         :param tokens:
         :return:
         '''
-        pass
-
+        missing = [tok for tok in tokens
+                   if not self._lexical_index.get(tok)]
 
 class FGParser():
     def __init__(self, grammarfile='flg.fcfg', trace=1, parser=parse.FeatureEarleyChartParser):
@@ -76,7 +76,24 @@ class FGParser():
         self._chart = None
 
     def parse(self, tokens):
-        self._chart = self._parser.chart_parse(tokens)
+        '''
+        add all the lexical productions to the grammar
+        :type tokens: builtins.generator
+        :return:
+        '''
+        newprod = False
+        for fltoken in tokens:
+            if not self._grammar._lexical_index.get(fltoken.lexword):
+                newprod = True
+                for lexent in fltoken.lexentry:
+                    lexrhs = fltoken.lexword
+                    newprod = Production(lexent, (lexrhs,))
+                    self._grammar._productions.append(newprod)
+        if newprod:
+            self._grammar.__init__(self._grammar._start, self._grammar._productions)
+
+        if not self._chart:
+            self._chart = self._parser.chart_parse([tk.lexword for tk in tokens])
         # charedges = list(chart.select(is_complete=True, lhs='CHAR'))
         # for charedge in charedges:
         # for tree in chart.trees(charedge, complete=True, tree_class=nltk.Tree):
@@ -86,7 +103,9 @@ class FGParser():
         trees = list(treegen)
         return trees
 
-    def partialparses(self):
+    def partialparses(self, tokens):
+        if not self._chart:
+            self._chart = self._parser.chart_parse(tokens)
         trees = []
         charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
         for charedge in charedges:

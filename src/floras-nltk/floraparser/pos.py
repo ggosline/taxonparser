@@ -116,7 +116,7 @@ class FlTagger():
                 return root, le['pos'], [le], ('_' + root[0],)
 
         if word.endswith('ly'):
-            return flword, 'ADV', [FeatStructNonterminal(TYPE='ADV', pos='ADV')], (word,)
+            return flword, 'ADV', [FeatStructNonterminal(features={TYPE: 'ADV', 'pos': 'ADV'})], (word,)
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets

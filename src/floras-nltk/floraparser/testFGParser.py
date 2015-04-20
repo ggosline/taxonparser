@@ -9,7 +9,7 @@ from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftC
 
 trec = defaultdict(lambda: None)
 
-description = 'Fruit orange, ovoid-3-gonous and acute when young, becoming 3-crested, eventually globose, 1·3–3 cm. in diam., smooth or with a few tubercles, 1–3-seeded'
+description = 'lamina dark green, glossy or  rather dull on both surfaces, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong to obovate, acuminate at the apex, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded at the base, chartaceous to softly coriaceous, with (6)7–10 lateral nerves, with ± densely reticulate venation varying in prominence'
 
 trec['description'] = description
 trdr = [trec]
@@ -23,11 +23,12 @@ if __name__ == '__main__':
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from Taxa where genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser.FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
+    parser = FGParser.FGParser(parser=FeatureEarleyChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
-                trees = parser.parse(tk.lexwords for tk in phrase.tokens)
+                tokens = [tk for tk in phrase.tokens]
+                trees = parser.parse(tokens)
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
@@ -36,7 +37,7 @@ if __name__ == '__main__':
                             treex.draw()
                 else:
                     print('Fail:    ' + phrase.text, file=of)
-                    trees = parser.partialparses()
+                    trees = parser.partialparses(tokens)
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees:

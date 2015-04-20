@@ -95,10 +95,11 @@ def pickle_lexicon():
     addlexicon(POSITIONA, 'A', position=True, compar=False)
     POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, compar=False)
-    ACCURACY = "c.|about|more_or_less|±|very|a_little|not_much|all|rather|exactly".split('|')
+    ACCURACY = "c.|about|more_or_less|±|exactly".split('|')
     addlexicon(ACCURACY, 'ADV', accuracy=True)
-    FREQUENCY = "sometimes|often|usually|rarely|generally|never|always|soon|also|even".split('|')
-    addlexicon(FREQUENCY, 'ADV', frequencey=True)
+    FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|soon|also|even".split(
+        '|')
+    addlexicon(FREQUENCY, 'ADV', frequency=True)
     DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
     addlexicon(DEGREE, 'ADV', degree=True)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
