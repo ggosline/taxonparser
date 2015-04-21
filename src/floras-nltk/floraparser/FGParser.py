@@ -77,10 +77,10 @@ class FGParser():
 
     def parse(self, tokens):
         '''
-        add all the lexical productions to the grammar
         :type tokens: builtins.generator
         :return:
         '''
+        # check for tokens added by the POS processor -- e.g. ADV
         newprod = False
         for fltoken in tokens:
             if not self._grammar._lexical_index.get(fltoken.lexword):
@@ -92,20 +92,17 @@ class FGParser():
         if newprod:
             self._grammar.__init__(self._grammar._start, self._grammar._productions)
 
-        if not self._chart:
-            self._chart = self._parser.chart_parse([tk.lexword for tk in tokens])
-        # charedges = list(chart.select(is_complete=True, lhs='CHAR'))
-        # for charedge in charedges:
-        # for tree in chart.trees(charedge, complete=True, tree_class=nltk.Tree):
-        # trees.append(tree)
-        #
+        self._chart = self._parser.chart_parse([tk.lexword for tk in tokens])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
         trees = list(treegen)
         return trees
 
-    def partialparses(self, tokens):
-        if not self._chart:
-            self._chart = self._parser.chart_parse(tokens)
+    def partialparses(self):
+        '''
+        In a failed parse check for candidate trees labelled with CHAR
+        parse must have been called first! to generate the chart
+        '''
+
         trees = []
         charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
         for charedge in charedges:

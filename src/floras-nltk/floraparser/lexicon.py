@@ -44,7 +44,8 @@ def pickle_lexicon():
         with open(gfile) as csvfile:
             mydictreader = csv.DictReader(csvfile)
             for gentry in mydictreader:
-                term, category, appliesto = gentry['term'], gentry['category'].lower(), gentry['appliesTo'].lower()
+                gid, term, category, appliesto = gentry['ID'], gentry['term'], gentry['category'].lower(), gentry[
+                    'appliesTo'].lower()
                 if category in ('structure', 'feature', 'character',
                                 'substance', 'life-form', 'plant', 'taxonomy', 'en', 'process'):
                     POS = 'N'
@@ -52,7 +53,8 @@ def pickle_lexicon():
                     POS = 'A'
                 else:
                     POS = 'UNK'
-                addlexentry(term, POS, category=category, appliesto=appliesto)
+                if gid != '#':
+                    addlexentry(term, POS, category=category, appliesto=appliesto)
 
     COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|except|except_for|×'.split('|')
     for word in COORDCONJUNCTION:

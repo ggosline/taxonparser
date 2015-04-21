@@ -24,7 +24,7 @@ NP[category=?c] -> NBAR[category=?c]
 #R -> RCOMP S/NP
 # NP -> NP R
 
-CHAR -> AP | WITHP | SIZE | COUNT | NP AP
+CHAR[category=?c] -> AP[category=?c] | WITHP[category=?c] | SIZE[category=size] | COUNT[category=count] | NP[category=?c] AP
 #CHAR[category=inflorescence] -> IN NP
 CHARLIST -> CHAR COMMA CHARLIST | CHAR
 
@@ -37,6 +37,7 @@ COUNT -> NUM | NUM P[prep='per'] NBAR
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
 # ABAR[category=?c] -> A[category=?c]
+ABAR[category=?c] -> ABAR[category=?c] PAREXP
 
 #ADVP ->  ADVP ADV | ADV | PAREXP
 
@@ -63,12 +64,12 @@ NP[category=?c, conj=or] -> NPL[category=?c] CDELIM CONJ[conj=or] NP[category=?c
 APL[category=?c] -> AP[category=?c] COMMA AP[category=?c, conj=or] | AP[category=?c]
 AP[category=?c, conj=or] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
 
-WITHP -> P[prep='with'] NP CHARLIST
+WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHARLIST
 
 PP -> P NP
 PP/?x -> P/NP
 
-PP -> P[prep='with'] NP CHARLIST
+# PP -> P[prep='with'] NP CHARLIST
 
 # S/?x -> S/?x CONJ S/?x
 
