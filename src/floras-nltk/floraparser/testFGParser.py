@@ -4,9 +4,10 @@ import sys
 
 from collections import defaultdict
 from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
-import FGParser
+
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
-from nltk.treetransforms import collapse_unary
+from floraparser.FGParser import FGParser, collapse_unary
+
 trec = defaultdict(lambda: None)
 
 description = 'Fruit orange,  1·3–3 cm. in diam., smooth or with a few tubercles, 1–3-seeded'
@@ -23,7 +24,7 @@ if __name__ == '__main__':
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from Taxa where genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser.FGParser(parser=FeatureEarleyChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
@@ -33,7 +34,7 @@ if __name__ == '__main__':
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees:
-                            # collapse_unary(treex)
+                            collapse_unary(treex)
                             treex.draw()
                 else:
                     print('Fail:    ' + phrase.text, file=of)
