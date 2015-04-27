@@ -93,10 +93,10 @@ def pickle_lexicon():
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least'.split('|')
     addlexicon(RANGE, 'PR')
-    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|above|beneath|above_and_beneath|between'.split('|')
-    addlexicon(POSITIONA, 'A', position=True, compar=False)
+    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between'.split('|')
+    addlexicon(POSITIONA, 'A', position=True, category='position')
     POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
-    addlexicon(POSITION, 'N', position=True, compar=False)
+    addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly".split('|')
     addlexicon(ACCURACY, 'ADV', accuracy=True)
     FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|soon|also|even".split(
@@ -112,7 +112,8 @@ def pickle_lexicon():
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length".split('|')
     addlexicon(TIMING, 'ADV', timing=True)
-    GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing|dividing|ending".split('|')
+    GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing_by|dividing|ending|varying_in".split(
+        '|')
     addlexicon(GERUND, 'P', verb=True)
     addlexicon(['to'], 'TO')
     addlexicon(['not'], 'NOT')

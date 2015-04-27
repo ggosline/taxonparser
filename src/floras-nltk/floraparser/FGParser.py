@@ -141,6 +141,10 @@ class FGTerminal(FlToken):
     def __init__(self, char):
         self.lexword = char
 
+    @property
+    def text(self):
+        return self.lexword
+
     def __repr__(self):
         return 'EOPHRASE'
 

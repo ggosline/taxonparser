@@ -34,7 +34,7 @@ if __name__ == '__main__':
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
-                        for treex in trees:
+                        for treex in trees[0:10]:
                             cleanparsetree(treex)
                             treex.draw()
                 else:
@@ -42,7 +42,7 @@ if __name__ == '__main__':
                     trees = parser.partialparses()
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
-                        for treex in trees:
+                        for treex in trees[0:40]:
                             cleanparsetree(treex)
                             treex.draw()
 

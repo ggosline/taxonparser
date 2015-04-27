@@ -6,7 +6,10 @@ Start -> DESCRIPTION
 CDELIM -> COMMA |
 # COMMA ->
 
-DESCRIPTION -> NP CDELIM CHARLIST
+DESCRIPTION -> SUBJECT CDELIM CHARLIST
+
+SUBJECT -> N[category=structure]
+SUBJECT -> NP[category='life-form']
 
 NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
 NBAR[category=?c] -> NBAR[category=?c] AP
@@ -39,12 +42,10 @@ COUNT[category=count] -> NUM | NUM P[prep='per'] NBAR
 
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
-# ABAR[category=?c] -> A[category=?c]
-ABAR[category=?c] -> ABAR[category=?c] PAREXP
+ABAR[category=?c] -> ABAR[category=?c] PPAREXP
 
-#ADVP ->  ADVP ADV | ADV | PAREXP
+# ADVP ->  ADVP ADV | ADV | PAREXP
 
-# ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c]
 ABAR[category=?c] -> A[category=?c] | ADV ABAR[category=?c] |  ABAR[category=?c] ADV
 
 ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
@@ -66,7 +67,10 @@ NP[category=?c, conj=or] -> NPL[category=?c] CDELIM CONJ[conj=or] NP[category=?c
 
 APL[category=?c] -> AP[category=?c] COMMA AP[category=?c, conj=or] | AP[category=?c]
 AP[category=?c, conj=or] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
+
 ABAR[category=?c] -> ABAR[category=?c] CONJ[conj=and] ABAR
+AP[category=?c] -> AP[category=?c]  A[+position]
+AP[category=?c] -> AP[category=?c]  A[+timing] | A[+timing] AP[category=?c]
 
 WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHARLIST
 
@@ -75,13 +79,9 @@ PP/?x -> P/NP
 
 # PP -> P[prep='with'] NP CHARLIST
 
-# S/?x -> S/?x CONJ S/?x
+PPAREXP -> PUNC[punc='('] AP PUNC[punc=')']
+PAREXP -> COMMA AP COMMA | PPAREXP
 
-PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
-
-#N[category='structure'] -> 'leaves'
-
-#A[category='pubescence'] -> 'glabrous'
 
 
 
