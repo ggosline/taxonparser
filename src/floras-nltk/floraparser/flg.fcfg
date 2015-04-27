@@ -9,7 +9,7 @@ CDELIM -> COMMA |
 DESCRIPTION -> NP CDELIM CHARLIST
 
 NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
-#NBAR[category=?c] -> NBAR[category=?c] AP
+NBAR[category=?c] -> NBAR[category=?c] AP
 NBAR[category=?c] -> NBAR[category=?c] PAREXP
 
 NP[category=?c] -> DET NBAR[category=?c] | ART NBAR[category=?c] | PRO
@@ -19,16 +19,17 @@ NP -> A[+compar] NBAR THAN S/NBAR
 NP[category=?c] -> NBAR[category=?c]
 #NP/NP ->
 
-
 #R -> S/NP
 #R -> RCOMP S/NP
 # NP -> NP R
 
-CHAR[category=?c] -> AP[category=?c] | WITHP[category=?c] | NP[category=?c] AP
-CHAR[category=size] -> SIZE
-CHAR[category=count] -> COUNT
+CTERMINATOR -> COMMA | '$'
+CHAR[category=?c] -> CHR[category=?c] CTERMINATOR
+CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c] |  NP[category=?c] AP
+CHR[category=size] ->  SIZE
+CHR[category=count] ->  COUNT
 #CHAR[category=inflorescence] -> IN NP
-CHARLIST -> CHAR COMMA CHARLIST | CHAR
+CHARLIST -> CHAR CHARLIST | CHAR
 
 SIZEB -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
 SIZE -> ADV[+accuracy] SIZEB |  SIZEB
@@ -44,7 +45,7 @@ ABAR[category=?c] -> ABAR[category=?c] PAREXP
 #ADVP ->  ADVP ADV | ADV | PAREXP
 
 # ABAR[category=?c] -> ADVP A[category=?c] ADVP  | A[category=?c] ADVP | ADVP A[category=?c]
-ABAR[category=?c] -> A[category=?c] | ADV ABAR[category=?c]
+ABAR[category=?c] -> A[category=?c] | ADV ABAR[category=?c] |  ABAR[category=?c] ADV
 
 ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
@@ -65,6 +66,7 @@ NP[category=?c, conj=or] -> NPL[category=?c] CDELIM CONJ[conj=or] NP[category=?c
 
 APL[category=?c] -> AP[category=?c] COMMA AP[category=?c, conj=or] | AP[category=?c]
 AP[category=?c, conj=or] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
+ABAR[category=?c] -> ABAR[category=?c] CONJ[conj=and] ABAR
 
 WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHARLIST
 
@@ -75,7 +77,7 @@ PP/?x -> P/NP
 
 # S/?x -> S/?x CONJ S/?x
 
-PAREXP -> PUNC[punc='('] AP PUNC[punc=')'] | COMMA AP COMMA
+PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
 
 #N[category='structure'] -> 'leaves'
 

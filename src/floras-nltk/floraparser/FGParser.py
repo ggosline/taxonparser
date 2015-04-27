@@ -6,6 +6,7 @@ from nltk import grammar, parse
 from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader, read_grammar, SLASH, TYPE, Production
 from nltk.parse.featurechart import FeatureChart
 from floraparser import lexicon
+from floraparser.fltoken import FlToken
 from nltk import Tree
 
 class FGGrammar(FeatureGrammar):
@@ -91,6 +92,8 @@ class FGParser():
         if newprod:
             self._grammar.__init__(self._grammar._start, self._grammar._productions)
 
+        tokens = tokens + [FGTerminal('$')]
+
         self._chart = self._parser.chart_parse([tk for tk in tokens])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
         trees = list(treegen)
@@ -134,6 +137,20 @@ class FGParser():
                 yield edge
 
 
+class FGTerminal(FlToken):
+    def __init__(self, char):
+        self.lexword = char
+
+    def __repr__(self):
+        return 'EOPHRASE'
+
+
+def cleanparsetree(tree):
+    purgenodes(tree, ['CTERMINATOR'])
+    flattentree(tree, 'CHARLIST')
+    collapse_unary(tree)
+
+
 def collapse_unary(tree, collapsePOS=False, collapseRoot=False, joinChar="+"):
     """
     Collapse subtrees with a single child (ie. unary productions)
@@ -166,13 +183,6 @@ def collapse_unary(tree, collapsePOS=False, collapseRoot=False, joinChar="+"):
         node = nodeList.pop()
         if isinstance(node, Tree):
             if len(node) == 1 and isinstance(node[0], Tree) and (collapsePOS == True or isinstance(node[0, 0], Tree)):
-                if isinstance(node.label(), FeatStructNonterminal):
-                    lab1 = node.label()[TYPE]
-                if isinstance(node[0].label(), FeatStructNonterminal):
-                    lab2 = node[0].label()[TYPE]
-                else:
-                    lab2 = node[0].label()
-                node.set_label(lab1 + joinChar + lab2)
                 node[0:] = [child for child in node[0]]
                 # since we assigned the child's children to the current node,
                 # evaluate the current node again
@@ -180,3 +190,43 @@ def collapse_unary(tree, collapsePOS=False, collapseRoot=False, joinChar="+"):
             else:
                 for child in node:
                     nodeList.append(child)
+
+
+def purgenodes(tree, typelist):
+    if isinstance(tree, Tree):
+        for i, child in enumerate(tree):
+            if isinstance(child, Tree) and isinstance(child.label(), FeatStructNonterminal) and child.label()[
+                TYPE] in typelist:
+                del tree[i]
+            else:
+                purgenodes(child, typelist)
+
+
+def flattentree(tree, listnodetype):
+    # Traverse the tree-depth first keeping a pointer to the parent for modification purposes.
+    nodeList = [(tree, [])]
+    while nodeList != []:
+        node, parent = nodeList.pop()
+        if isinstance(node, Tree):
+            # if the node contains the 'childChar' character it means that
+            # it is an artificial node and can be removed, although we still need
+            # to move its children to its parent
+            if isinstance(node.label(), FeatStructNonterminal) and node.label()[TYPE] == listnodetype:
+                nodeIndex = parent.index(node)
+                del parent[nodeIndex]
+                # Generated node was on the left if the nodeIndex is 0 which
+                # means the grammar was left factored.  We must insert the children
+                # at the beginning of the parent's children
+                if nodeIndex == 0:
+                    parent.insert(0, node[0])
+                    if len(node) > 1:
+                        parent.insert(1, node[1])
+                else:
+                    parent.extend(node[:])
+
+                # parent is now the current node so the children of parent will be added to the agenda
+                node = parent
+
+            for child in node:
+                nodeList.append((child, node))
+
