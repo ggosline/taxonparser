@@ -6,11 +6,12 @@ from collections import defaultdict
 from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
 
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
-from floraparser.FGParser import FGParser, collapse_unary
+from floraparser.FGParser import FGParser, cleanparsetree
+from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Fruit orange,  1·3–3 cm. in diam., smooth or with a few tubercles, 1–3-seeded'
+description = 'stems with paired raised lines or quadrangular, olive-green to purplish and rugulose-tuberculate at first, becoming subterete, purplish-grey and smooth, or remaining rugulose'
 
 trec['description'] = description
 trdr = [trec]
@@ -24,7 +25,7 @@ if __name__ == '__main__':
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from Taxa where genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureEarleyChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
@@ -34,7 +35,7 @@ if __name__ == '__main__':
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees:
-                            collapse_unary(treex)
+                            cleanparsetree(treex)
                             treex.draw()
                 else:
                     print('Fail:    ' + phrase.text, file=of)
@@ -42,6 +43,7 @@ if __name__ == '__main__':
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees:
+                            cleanparsetree(treex)
                             treex.draw()
 
     of.close()
