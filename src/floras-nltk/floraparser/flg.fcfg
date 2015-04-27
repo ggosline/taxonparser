@@ -24,7 +24,9 @@ NP[category=?c] -> NBAR[category=?c]
 #R -> RCOMP S/NP
 # NP -> NP R
 
-CHAR[category=?c] -> AP[category=?c] | WITHP[category=?c] | SIZE[category=size] | COUNT[category=count] | NP[category=?c] AP
+CHAR[category=?c] -> AP[category=?c] | WITHP[category=?c] | NP[category=?c] AP
+CHAR[category=size] -> SIZE
+CHAR[category=count] -> COUNT
 #CHAR[category=inflorescence] -> IN NP
 CHARLIST -> CHAR COMMA CHARLIST | CHAR
 
@@ -32,7 +34,7 @@ SIZEB -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
 SIZE -> ADV[+accuracy] SIZEB |  SIZEB
 DIMEN -> P[prep='in'] DIM
 DIMEN -> DIM
-COUNT -> NUM | NUM P[prep='per'] NBAR
+COUNT[category=count] -> NUM | NUM P[prep='per'] NBAR
 
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]

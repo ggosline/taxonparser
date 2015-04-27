@@ -86,7 +86,7 @@ class FlTagger():
             ws = (word,)
 
         if ws in lexicon:
-            return flword, lexicon[ws][0]['pos'], lexicon[ws], ws
+            return flword, lexicon[ws][0][TYPE], lexicon[ws], ws
 
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
@@ -98,11 +98,11 @@ class FlTagger():
             if ws in lexicon:
                 lexent = copy.deepcopy(lexicon[ws])
                 for gc in lexent:
-                    if gc['pos'] == 'N':
+                    if gc[TYPE] == 'N':
                         gc['plural'] = True
                         POS = 'NP'
                 else:
-                    POS = lexent[0]['pos']
+                    POS = lexent[0][TYPE]
                 return flword, POS, lexent, ws
 
         # Try taking the word apart at dashes
@@ -110,20 +110,20 @@ class FlTagger():
         if root:
             if (root[0],) in lexicon:
                 le = lexicon[(root[0],)][0]
-                return root, le['pos'], [le], (root[0],)
+                return root, le[TYPE], [le], (root[0],)
             if ('_' + root[0],) in lexicon:  # suffix
                 le = lexicon[('_' + root[0],)][0]
-                return root, le['pos'], [le], ('_' + root[0],)
+                return root, le[TYPE], [le], ('_' + root[0],)
 
         if word.endswith('ly'):
-            return flword, 'ADV', [FeatStructNonterminal(features={TYPE: 'ADV', 'pos': 'ADV'})], (word,)
+            return flword, 'ADV', [FeatStructNonterminal(features={TYPE: 'ADV'})], (word,)
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets
         # for sy in synsets:
         # pass
 
-        return flword, 'UNK', [FeatStructNonterminal(TYPE='UNK', pos='UNK')], (word,)
+        return flword, 'UNK', [FeatStructNonterminal(TYPE='UNK')], (word,)
 
         # def tag(self, blob):
         # return [self.tag_word(word) for word in blob.words]

@@ -98,6 +98,16 @@ class FlToken():
             self.lexword = '_'.join(wordtuple)
         self.slice = word.slice
 
+    def __eq__(self, other):
+        return (isinstance(other, str)
+                and self.lexword == other)
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __hash__(self):
+        return hash(self.lexword)
+
     @property
     def text(self):
         return self.sentence.text[self.slice]

@@ -34,7 +34,7 @@ def pickle_lexicon():
             else:
                 multiwords[firstword] = [tuple(ws)]
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        features = {TYPE: POS, 'pos': POS}
+        features = {TYPE: POS}
         for item in morefeatures.items():  # avoid null values
             if item[1]:
                 features[item[0]] = item[1]
