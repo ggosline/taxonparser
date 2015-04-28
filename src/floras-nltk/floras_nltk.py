@@ -3,7 +3,8 @@
 from pprint import pprint as pp
 import re
 
-# import nltk
+import nltk
+from nltk.data import LazyLoader
 
 #from textblob import TextBlob, Blobber
 #from floraparser.bits import find_ranges
@@ -119,7 +120,7 @@ if __name__ == "__main__":
         for tree in trees:
             print(tree)
 
-    if (True):
+    if (False):
         import linkgrammar as lg
 
         sents = re.split(r'(?<=\.)\s+(?=[A-Z])|;\s+', testtext)
@@ -132,4 +133,29 @@ if __name__ == "__main__":
                 print(linkage.num_of_links, linkage.constituent_phrases_nested)
                 pass
         pass
-        
+
+    if True:
+        from floraparser.fltoken import FlTokenizer
+        from nltk.stem import WordNetLemmatizer
+        from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktLanguageVars
+
+        fltk = FlTokenizer()
+        wnl = WordNetLemmatizer()
+        NUMBERS = re.compile(r'^[0-9–—.·()-]+$')
+        sent_tokenizer = LazyLoader(r'..\resources\FloraPunkt.pickle')
+        PunktLanguageVars.sent_end_chars = ('.',)
+        wordset = set()
+        with open('../resources/AllTaxa.txt') as at:
+            for desc in at:
+                sents = sent_tokenizer.tokenize(desc)
+                for sent in sents:
+                    tl = fltk.tokenize(sent)
+                    if tl[-1].endswith('.'):
+                        tl[-1] = tl[-1][:-1]
+
+                    wl = [wnl.lemmatize(word.lower()) for word in tl if (not NUMBERS.match(word) and not '.' in word)]
+                    wordset.update(wl)
+        with open('../resources/AllTaxa.words', 'w', encoding='utf-8') as wf:
+            for w in sorted(wordset):
+                print(w, file=wf)
+
