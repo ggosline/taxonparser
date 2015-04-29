@@ -134,7 +134,7 @@ if __name__ == "__main__":
                 pass
         pass
 
-    if True:
+    if False:
         from floraparser.fltoken import FlTokenizer
         from nltk.stem import WordNetLemmatizer
         from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters, PunktLanguageVars
@@ -158,4 +158,19 @@ if __name__ == "__main__":
         with open('../resources/AllTaxa.words', 'w', encoding='utf-8') as wf:
             for w in sorted(wordset):
                 print(w, file=wf)
+
+    if True:
+        with open('../resources/specificnames.txt', 'r', encoding='utf-8') as namesf:
+            namesset = {word.rstrip() for word in namesf}
+        with open('../resources/KewGlossary.txt', 'r') as kf:
+            kewset = {word.rstrip() for word in kf}
+        with open('../resources/AllTaxa.words', 'r', encoding='utf-8') as wf:
+            wordset = {word.rstrip() for word in wf}
+
+        wordset -= namesset
+        hyphwords = {word for word in wordset if '-' in word}
+        hyphparts = {word for hyph in hyphwords for word in hyph.split('-')}
+        plainwords = wordset - hyphwords
+        notkwords = plainwords - kewset
+        pass
 

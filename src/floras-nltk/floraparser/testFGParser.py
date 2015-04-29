@@ -11,7 +11,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'stems with paired raised lines or quadrangular, olive-green to purplish and rugulose-tuberculate at first, becoming subterete, purplish-grey and smooth, or remaining rugulose'
+description = 'lamina dark green, paler below, glossy or more rarely rather dull on both surfaces, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong to obovate, acuminate at the apex with acumen long to short, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded at the base, chartaceous to softly coriaceous, with (6)7–10 lateral nerves and with ± densely reticulate venation'  # varying in prominence'
 
 trec['description'] = description
 trdr = [trec]
@@ -35,7 +35,7 @@ if __name__ == '__main__':
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees[0:10]:
-                            cleanparsetree(treex)
+                            # cleanparsetree(treex)
                             treex.draw()
                 else:
                     print('Fail:    ' + phrase.text, file=of)

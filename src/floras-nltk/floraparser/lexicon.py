@@ -73,7 +73,7 @@ def pickle_lexicon():
     PRONOUN = 'it|one|ones|form|forms|parts'.split('|')
     addlexicon(PRONOUN, 'PRO')
     PREPOSITION = 'across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
-                  'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|than|through|throughout|toward|' \
+                  'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|through|throughout|toward|' \
                   'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|' \
                   'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
@@ -98,12 +98,12 @@ def pickle_lexicon():
     POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly".split('|')
-    addlexicon(ACCURACY, 'ADV', accuracy=True)
+    addlexicon(ACCURACY, 'ADV', accuracy=True, timing=False)
     FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|soon|also|even".split(
         '|')
-    addlexicon(FREQUENCY, 'ADV', frequency=True)
+    addlexicon(FREQUENCY, 'ADV', frequency=True, timing=False)
     DEGREE = "almost|sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
-    addlexicon(DEGREE, 'ADV', degree=True)
+    addlexicon(DEGREE, 'ADV', degree=True, timing=False)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from".split('|')

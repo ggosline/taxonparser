@@ -15,7 +15,8 @@ NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
 NBAR[category=?c] -> NBAR[category=?c] AP
 NBAR[category=?c] -> NBAR[category=?c] PAREXP
 
-NP[category=?c] -> DET NBAR[category=?c] | ART NBAR[category=?c] | PRO
+NP[category=?c] -> DET NBAR[category=?c] | ART NBAR[category=?c]
+NP -> PRO
 NP -> NAME
 NP -> A[+compar] NBAR THAN S
 NP -> A[+compar] NBAR THAN S/NBAR
@@ -28,6 +29,7 @@ NP[category=?c] -> NBAR[category=?c]
 
 CTERMINATOR -> COMMA | '$'
 CHAR[category=?c] -> CHR[category=?c] CTERMINATOR
+CHR[category=?c] ->  AP[category=?c, +timing]
 CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c] |  NP[category=?c] AP
 CHR[category=size] ->  SIZE
 CHR[category=count] ->  COUNT
@@ -44,20 +46,26 @@ ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] PPAREXP
 
-# ADVP ->  ADVP ADV | ADV | PAREXP
+#ADVP ->  ADVP ADV | ADV | PAREXP
+ADVB -> ADV
+ADVB[+comp] -> A[+makecomp] ADV
 
-ABAR[category=?c] -> A[category=?c] | ADV ABAR[category=?c] |  ABAR[category=?c] ADV
+ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
+ABAR[category=?c] -> A[category=?c] | ADVB ABAR[category=?c]
+#ABAR[category=?c] ->  ABAR[category=?c] ADVB
 
 ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
+ABAR[+compar] -> A[+compar] THAN NP
+ABAR[category=count] -> NUM
+
 AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
-AP -> AP CONJ[conj='or'] PP
-AP -> PP CONJ[conj='or'] AP
+AP[category=?c] -> AP[category=?c] CONJ[conj='or'] PP
+AP[category=?c] -> PP CONJ[conj='or'] AP[category=?c]
 AP -> NUM TIMES A[+compar] NP
 #AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
 
-APGROUP -> AP CONJ[conj='and'] AP
-AP[category=?c] -> CONJ[conj='or'] AP[category='presence']
+AP[category=presence] -> CONJ[conj='or'] AP[category='presence']
 
 #AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
 #AP[category=?c] -> SPEC AP
@@ -65,17 +73,22 @@ AP[category=?c] -> CONJ[conj='or'] AP[category='presence']
 NPL[category=?c] -> NP[category=?c] COMMA NPL[category=?c] | NP[category=?c, conj=or]
 NP[category=?c, conj=or] -> NPL[category=?c] CDELIM CONJ[conj=or] NP[category=?c]
 
-APL[category=?c] -> AP[category=?c] COMMA AP[category=?c, conj=or] | AP[category=?c]
-AP[category=?c, conj=or] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
+APL[category=(?b + ?c)] -> AP[category=?b] COMMA AP[category=?c, conj=or]
+APL[category=?c] -> AP[category=?c]
+AP[category=?c, conj=or, -timing] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
 
-ABAR[category=?c] -> ABAR[category=?c] CONJ[conj=and] ABAR
+APAND[category=(?b + ?c)] -> AP[category=?b] COMMA APAND[category=?c]
+#APAND[category=?b] -> AP[category=?b]
+APAND[category=(?b + ?c), -timing] -> APAND[category=?b] CDELIM CONJ[conj=and] AP[category=?c]
+
+#ABAR[category=?c] -> ABAR[category=?c] CONJ[conj=and] ABAR
 AP[category=?c] -> AP[category=?c]  A[+position]
-AP[category=?c] -> AP[category=?c]  A[+timing] | A[+timing] AP[category=?c]
+AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
 WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHARLIST
 
 PP -> P NP
-PP/?x -> P/NP
+# PP/?x -> P/NP
 
 # PP -> P[prep='with'] NP CHARLIST
 
