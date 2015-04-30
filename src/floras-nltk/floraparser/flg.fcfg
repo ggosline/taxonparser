@@ -28,6 +28,7 @@ NP[category=?c] -> NBAR[category=?c]
 # NP -> NP R
 
 CTERMINATOR -> COMMA | '$'
+# CTERMINATOR ->
 CHAR[category=?c] -> CHR[category=?c] CTERMINATOR
 CHR[category=?c] ->  AP[category=?c, +timing]
 CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c] |  NP[category=?c] AP
@@ -85,7 +86,7 @@ APAND[category=(?b + ?c), -timing] -> APAND[category=?b] CDELIM CONJ[conj=and] A
 AP[category=?c] -> AP[category=?c]  A[+position]
 AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
-WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHARLIST
+WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHR
 
 PP -> P NP
 # PP/?x -> P/NP

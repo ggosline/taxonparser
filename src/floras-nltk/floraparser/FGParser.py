@@ -7,7 +7,7 @@ from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader
 from nltk.parse.featurechart import FeatureChart
 from floraparser import lexicon
 from floraparser.fltoken import FlToken
-from nltk import Tree
+from nltk import Tree, ImmutableTree
 
 class FGGrammar(FeatureGrammar):
     def __init__(self, start, productions):
@@ -96,7 +96,10 @@ class FGParser():
 
         self._chart = self._parser.chart_parse([tk for tk in tokens])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
-        trees = list(treegen)
+        trees = []
+        for tree in treegen:
+            if tree not in trees:
+                trees.append(tree)
         return trees
 
     def partialparses(self):
@@ -107,10 +110,20 @@ class FGParser():
 
         trees = []
         charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
+
         for charedge in charedges:
             for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
-                trees.append(tree)
-        return trees
+                if not trees:
+                    trees.append((tree, charedge.start(), charedge.end()))
+                    tmin = charedge.start()
+                    tmax = charedge.end()
+                else:
+                    for i, (t, tstart, tend) in enumerate(trees):
+                        if charedge.start() <= tstart and charedge.end() >= tend:
+                            del trees[i]
+                            trees.append((tree, charedge.start(), charedge.end()))
+
+        return [t for t, _, _ in trees]
 
     def simple_select(self, **restrictions):
         """

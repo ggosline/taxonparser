@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="357d4199-caad-4b7c-a810-57762320d5c3" name="Default" comment="Merge branch 'master' of https://github.com/ggosline/taxonparser&#10;&#10;Conflicts:&#10;&#9;src/floras-nltk/floras_nltk.py&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/floras-nltk/resources/KewGlossary.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.pickle" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/multiwords.pickle" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/multiwords.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/resources/AllTaxa.words" afterPath="$PROJECT_DIR$/src/floras-nltk/resources/AllTaxa.words" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floras_nltk.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floras_nltk.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv" afterPath="$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -58,10 +51,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/six863/semantics/featurechart.py" />
-        <option value="$PROJECT_DIR$/src/six863/semantics/category.py" />
-        <option value="$PROJECT_DIR$/src/six863/semantics/featurelite.py" />
-        <option value="$PROJECT_DIR$/src/six863/semantics/test.py" />
         <option value="$PROJECT_DIR$/src/six863/semantics/all-gazdar-sentences.txt" />
         <option value="$PROJECT_DIR$/src/six863/semantics/testw.py" />
         <option value="$PROJECT_DIR$/src/six863/parse/gazdar.kimmo.lex" />
@@ -102,13 +91,17 @@
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/testfloraparse.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/testnltk3.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/fltoken.py" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floras_nltk.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" />
+        <option value="$PROJECT_DIR$/temp/tree3" />
+        <option value="$PROJECT_DIR$/temp/tree4" />
+        <option value="$PROJECT_DIR$/temp/tree1" />
+        <option value="$PROJECT_DIR$/temp/tree2" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" />
       </list>
     </option>
   </component>
@@ -144,7 +137,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -791,7 +784,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430240829537</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Merge branch 'master' of https://github.com/ggosline/taxonparser&#10;&#10;Conflicts:&#10;&#9;src/floras-nltk/floras_nltk.py&#10;">
+      <created>1430327894368</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1430327894368</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -799,17 +798,17 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31806615" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24081115" sideWeight="0.49744898" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19391635" sideWeight="0.49744898" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35286623" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2356688" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21273886" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35796177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3923567" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11406844" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32270408" sideWeight="0.5716096" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13878328" sideWeight="0.502551" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43057325" sideWeight="0.6254753" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46751592" sideWeight="0.6254753" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1017,12 +1016,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py</url>
-          <line>138</line>
+          <line>139</line>
           <option name="timeStamp" value="365" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py</url>
-          <line>129</line>
+          <line>130</line>
           <option name="timeStamp" value="366" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -1044,11 +1043,6 @@
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/testnltk3.py</url>
           <line>97</line>
           <option name="timeStamp" value="379" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="388" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py</url>
@@ -1083,46 +1077,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="412" />
+      <option name="time" value="418" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/TaxonNameParser/SISDump.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2567">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/internals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="4352" max-vertical-offset="15096">
-          <caret line="274" column="0" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1190">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="8466" max-vertical-offset="19023">
-          <caret line="527" column="0" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/six863/parse/gazdar6.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.4871795" vertical-offset="357" max-vertical-offset="3213">
-          <caret line="109" column="31" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testnltk3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.94849783" vertical-offset="204" max-vertical-offset="1700">
@@ -1153,45 +1112,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/featurechart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1839" max-vertical-offset="9639">
-          <caret line="138" column="21" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/earleychart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3793104" vertical-offset="463" max-vertical-offset="7497">
-          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/grammar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12501" max-vertical-offset="25704">
-          <caret line="830" column="0" selection-start-line="830" selection-start-column="0" selection-end-line="830" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1571908645/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="59591" max-vertical-offset="96288">
-          <caret line="3515" column="8" selection-start-line="3515" selection-start-column="8" selection-end-line="3515" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python33/Lib/site-packages/nltk/treetransforms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="5321">
           <caret line="206" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/featstruct.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33247423" vertical-offset="3866" max-vertical-offset="42449">
-          <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1213,31 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4973545" vertical-offset="2644" max-vertical-offset="3400">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/tree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17063493" vertical-offset="2421" max-vertical-offset="27047">
-          <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4966975" vertical-offset="2055" max-vertical-offset="4114">
-          <caret line="143" column="4" selection-start-line="143" selection-start-column="4" selection-end-line="143" selection-end-column="4" />
-          <folding>
-            <element signature="e#22#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/chart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0237781" vertical-offset="10700" max-vertical-offset="28441">
-          <caret line="689" column="0" selection-start-line="689" selection-start-column="0" selection-end-line="689" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,13 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7105" max-vertical-offset="16252">
           <caret line="435" column="0" selection-start-line="435" selection-start-column="0" selection-end-line="435" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="527">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1418,19 +1310,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15994623" vertical-offset="0" max-vertical-offset="1326">
-          <caret line="7" column="0" selection-start-line="6" selection-start-column="9" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.9650538" vertical-offset="53924" max-vertical-offset="58888">
           <caret line="3258" column="43" selection-start-line="3258" selection-start-column="43" selection-end-line="3258" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1442,27 +1325,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py">
+    <entry file="file://$PROJECT_DIR$/temp/tree1">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48626372" vertical-offset="1567" max-vertical-offset="2295">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="765">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp/tree2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="765">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30357143" vertical-offset="782" max-vertical-offset="1802">
-          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
+          <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1571908645/array.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4002642" vertical-offset="1788" max-vertical-offset="7599">
+          <caret line="123" column="11" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1571908645/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33289298" vertical-offset="59129" max-vertical-offset="96288">
+          <caret line="3493" column="8" selection-start-line="3493" selection-start-column="8" selection-end-line="3493" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1765" max-vertical-offset="2295">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/site-packages/nltk/tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1534" max-vertical-offset="27047">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/copy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17173052" vertical-offset="3593" max-vertical-offset="5712">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/site-packages/nltk/featstruct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17173052" vertical-offset="21069" max-vertical-offset="42449">
+          <caret line="1256" column="0" selection-start-line="1256" selection-start-column="0" selection-end-line="1256" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="27733" max-vertical-offset="37825">
+          <caret line="1642" column="0" selection-start-line="1642" selection-start-column="0" selection-end-line="1642" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="391">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/earleychart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17173052" vertical-offset="5106" max-vertical-offset="7497">
+          <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/site-packages/nltk/grammar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17173052" vertical-offset="4443" max-vertical-offset="25704">
+          <caret line="279" column="0" selection-start-line="279" selection-start-column="0" selection-end-line="279" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/featurechart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37384412" vertical-offset="2760" max-vertical-offset="9639">
+          <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13709678" vertical-offset="0" max-vertical-offset="833">
-          <caret line="13" column="437" selection-start-line="13" selection-start-column="437" selection-end-line="13" selection-end-column="437" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="850">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/site-packages/nltk/parse/chart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17173052" vertical-offset="4885" max-vertical-offset="28441">
+          <caret line="309" column="0" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4636724" vertical-offset="1740" max-vertical-offset="4335">
+          <caret line="123" column="82" selection-start-line="123" selection-start-column="82" selection-end-line="123" selection-end-column="82" />
+          <folding>
+            <element signature="e#22#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

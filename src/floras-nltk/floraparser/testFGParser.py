@@ -11,7 +11,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina dark green, paler below, glossy or more rarely rather dull on both surfaces, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong to obovate, acuminate at the apex with acumen long to short, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded at the base, chartaceous to softly coriaceous, with (6)7–10 lateral nerves and with ± densely reticulate venation'  # varying in prominence'
+description = 'Liane up to 6 m. high or higher, with latex, glabrous'
 
 trec['description'] = description
 trdr = [trec]
@@ -23,9 +23,9 @@ if __name__ == '__main__':
     if False:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from Taxa where genus = 'Salacia' and species = 'erecta';", )
+                                  query="Select * from Taxa where rank = 'species' and genus = 'Salacia' and species = 'pynaertii';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureEarleyChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
@@ -34,9 +34,10 @@ if __name__ == '__main__':
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
-                        for treex in trees[0:10]:
-                            # cleanparsetree(treex)
+                        for treex in trees:
+                            cleanparsetree(treex)
                             treex.draw()
+                            print(treex)
                 else:
                     print('Fail:    ' + phrase.text, file=of)
                     trees = parser.partialparses()
