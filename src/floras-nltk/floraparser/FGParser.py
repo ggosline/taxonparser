@@ -97,7 +97,9 @@ class FGParser():
         self._chart = self._parser.chart_parse([tk for tk in tokens])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
         trees = []
-        for tree in treegen:
+        for i, tree in enumerate(treegen):
+            if i > 1000:
+                break
             if tree not in trees:
                 trees.append(tree)
         return trees
@@ -109,19 +111,24 @@ class FGParser():
         '''
 
         trees = []
-        charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
+        charedges = list(self.simple_select(is_complete=True, lhs='CHR'))
 
         for charedge in charedges:
             for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+                newtree = False
                 if not trees:
                     trees.append((tree, charedge.start(), charedge.end()))
-                    tmin = charedge.start()
-                    tmax = charedge.end()
                 else:
                     for i, (t, tstart, tend) in enumerate(trees):
-                        if charedge.start() <= tstart and charedge.end() >= tend:
+                        if charedge.start() <= tstart and charedge.end() >= tend:  # subsumes
                             del trees[i]
-                            trees.append((tree, charedge.start(), charedge.end()))
+                        elif (charedge.start() >= tstart and charedge.end() < tend) \
+                                or (charedge.start() > tstart and charedge.end() <= tend):  # subsumed
+                            newtree = False
+                            continue
+                        newtree = True
+                    if newtree:
+                        trees.append((tree, charedge.start(), charedge.end()))
 
         return [t for t, _, _ in trees]
 

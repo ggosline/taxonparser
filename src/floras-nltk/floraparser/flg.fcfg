@@ -31,7 +31,8 @@ CTERMINATOR -> COMMA | '$'
 # CTERMINATOR ->
 CHAR[category=?c] -> CHR[category=?c] CTERMINATOR
 CHR[category=?c] ->  AP[category=?c, +timing]
-CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c] |  NP[category=?c] AP
+CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c]
+# CHR[category=?c] ->  NP[category=?c] AP
 CHR[category=size] ->  SIZE
 CHR[category=count] ->  COUNT
 #CHAR[category=inflorescence] -> IN NP
@@ -49,6 +50,7 @@ ABAR[category=?c] -> ABAR[category=?c] PPAREXP
 
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
+ADVB -> ADV CONJ[conj='and'] ADVB
 ADVB[+comp] -> A[+makecomp] ADV
 
 ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
@@ -64,9 +66,8 @@ AP[category=?c] -> ABAR[category=?c] PP | ABAR[category=?c]
 AP[category=?c] -> AP[category=?c] CONJ[conj='or'] PP
 AP[category=?c] -> PP CONJ[conj='or'] AP[category=?c]
 AP -> NUM TIMES A[+compar] NP
-#AP[category=presence]/?x -> CONJ[conj='or'] AP[category=presence]
 
-AP[category=presence] -> CONJ[conj='or'] AP[category='presence']
+AP[category=presence] -> CONJ[conj='or'] ABAR[category=presence]
 
 #AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
 #AP[category=?c] -> SPEC AP

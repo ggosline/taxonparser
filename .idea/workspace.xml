@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="357d4199-caad-4b7c-a810-57762320d5c3" name="Default" comment="Merge branch 'master' of https://github.com/ggosline/taxonparser&#10;&#10;Conflicts:&#10;&#9;src/floras-nltk/floras_nltk.py&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.pickle" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/multiwords.pickle" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/multiwords.pickle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt" afterPath="$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -93,15 +97,15 @@
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/fltoken.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floras_nltk.py" />
         <option value="$PROJECT_DIR$/src/floras-nltk/resources/glossarycp.csv" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" />
         <option value="$PROJECT_DIR$/temp/tree3" />
         <option value="$PROJECT_DIR$/temp/tree4" />
         <option value="$PROJECT_DIR$/temp/tree1" />
         <option value="$PROJECT_DIR$/temp/tree2" />
-        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg" />
         <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py" />
+        <option value="$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py" />
       </list>
     </option>
   </component>
@@ -156,16 +160,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taxonparser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -202,6 +196,16 @@
             <PATH_ELEMENT USER_OBJECT="taxonparser">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taxonparser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -790,7 +794,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430327894368</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Merge branch 'master' of https://github.com/ggosline/taxonparser&#10;&#10;Conflicts:&#10;&#9;src/floras-nltk/floras_nltk.py&#10;">
+      <created>1430413869617</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1430413869617</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -798,13 +808,13 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31806615" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19391635" sideWeight="0.49744898" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13751584" sideWeight="0.49744898" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35286623" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2356688" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21273886" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3923567" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39363056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11406844" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32270408" sideWeight="0.5716096" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13878328" sideWeight="0.502551" order="2" side_tool="true" content_ui="tabs" />
@@ -1016,12 +1026,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py</url>
-          <line>139</line>
+          <line>141</line>
           <option name="timeStamp" value="365" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py</url>
-          <line>130</line>
+          <line>132</line>
           <option name="timeStamp" value="366" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -1077,7 +1087,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="418" />
+      <option name="time" value="420" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1317,19 +1327,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35714287" vertical-offset="1593" max-vertical-offset="2499">
-          <caret line="113" column="27" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp/tree1">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="765">
           <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1337,23 +1338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="765">
           <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
-          <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1361,7 +1345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4002642" vertical-offset="1788" max-vertical-offset="7599">
           <caret line="123" column="11" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1373,19 +1356,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1765" max-vertical-offset="2295">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python33/Lib/site-packages/nltk/tree.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1534" max-vertical-offset="27047">
           <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1393,7 +1367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17173052" vertical-offset="3593" max-vertical-offset="5712">
           <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1401,7 +1374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17173052" vertical-offset="21069" max-vertical-offset="42449">
           <caret line="1256" column="0" selection-start-line="1256" selection-start-column="0" selection-end-line="1256" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1409,7 +1381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="27733" max-vertical-offset="37825">
           <caret line="1642" column="0" selection-start-line="1642" selection-start-column="0" selection-end-line="1642" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1417,7 +1388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="391">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,7 +1395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17173052" vertical-offset="5106" max-vertical-offset="7497">
           <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1441,15 +1410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37384412" vertical-offset="2760" max-vertical-offset="9639">
           <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="850">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1461,13 +1421,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py">
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/lexicon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4636724" vertical-offset="1740" max-vertical-offset="4335">
-          <caret line="123" column="82" selection-start-line="123" selection-start-column="82" selection-end-line="123" selection-end-column="82" />
+        <state vertical-scroll-proportion="0.27335164" vertical-offset="1331" max-vertical-offset="2550">
+          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/flg.fcfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.093406595" vertical-offset="816" max-vertical-offset="1836">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/pos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="771" max-vertical-offset="2295">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testphrases.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5430108" vertical-offset="650" max-vertical-offset="1394">
+          <caret line="62" column="80" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/testFGParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31989247" vertical-offset="0" max-vertical-offset="986">
+          <caret line="14" column="86" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
           <folding>
             <element signature="e#22#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/floras-nltk/floraparser/FGParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17173052" vertical-offset="1791" max-vertical-offset="4318">
+          <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

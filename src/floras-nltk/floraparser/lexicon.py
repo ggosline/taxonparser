@@ -92,7 +92,7 @@ def pickle_lexicon():
     DIMENSION = "high|tall|long|wide|diam.|diameter|diam|".split('|')
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least'.split('|')
-    addlexicon(RANGE, 'PR')
+    addlexicon(RANGE, 'ADV')
     POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between'.split('|')
     addlexicon(POSITIONA, 'A', position=True, category='position')
     POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
@@ -107,11 +107,13 @@ def pickle_lexicon():
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from".split('|')
-    addlexicon(COMPARISON, 'A', compar=True)
+    addlexicon(COMPARISON, 'A', compar=True, category='compar')
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length".split('|')
     addlexicon(TIMING, 'ADV', timing=True)
+    PRESENCE = "present|absent".split('|')
+    addlexicon(PRESENCE, 'A', category='presence')
     GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing_by|dividing|ending|varying_in".split(
         '|')
     addlexicon(GERUND, 'P', verb=True)

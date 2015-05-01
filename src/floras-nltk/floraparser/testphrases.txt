@@ -1,0 +1,76 @@
+Fail:    Liane up to 6 m. high or higher, with latex, glabrous
+No. of trees: 5
+Fail:    stems flattened, not lined, pale green and smooth at first, becoming terete and yellowish-brown, smooth, with scarcely prominent lenticels
+No. of trees: 8
+Success: Leaves opposite to subopposite (alternate on climbing shoots), petiolate
+No. of trees: 2
+Fail:    lamina ± glossy above or on both surfaces, paler below, 6·4–11·8(13) × 2·9–5·9 cm., oblong or elliptic-oblong to obovate, ± shortly and usually obliquely acuminate at the apex, with margin finely denticulate to subentire, cuneate or decurrent at the base, subcoriaceous, with c. 6–8 lateral nerves and densely reticulate venation more prominent below than above
+No. of trees: 10
+Success: petiole 4–7 mm. long, with margins straight
+No. of trees: 3
+Success: stipules very small, caducous
+No. of trees: 1
+Fail:    Flowers c. 8–18, functionally unisexual, in axillary, sessile or shortly pedunculate fascicles, rarely also in terminal fascicles
+No. of trees: 6
+Success: buds c. 1·5 mm. long, ovoid
+No. of trees: 1
+Fail:    peduncles up to 1 mm. long (up to c. 5 mm. in Congo specimens)
+No. of trees: 3
+Success: pedicels 3–5 mm. long, smooth, articulated at the base
+No. of trees: 2
+Success: Sepals with pale margin, c. 0·5 mm. long, semicircular, rounded, ± unequal, united at the base, with margin entire or subentire
+No. of trees: 6
+Success: Petals greenish-yellow, with pale margin, 1·5–2 mm. long, ovate to oblong, shortly unguiculate, rounded, entire
+No. of trees: 1
+Success: Disk annular, flat or rather concave, surrounding the base of the ovary
+No. of trees: 6
+Fail:    Stamens 3, with filaments slender, longer than the style (male forms) or much shorter (female forms)
+No. of trees: 5
+Fail:    anthers apiculate and sterile in female forms, dehiscing by 2 longitudinal clefts
+No. of trees: 4
+Success: Ovary ovoid-3-gonous, with style c. 0·5 mm. long
+No. of trees: 1
+Fail:    stigma entire, 3-lobed (female forms) or punctiform (male forms)
+No. of trees: 5
+Success: ovules 2 per loculus
+No. of trees: 2
+Success: Fruit orange-pink with small whitish spots, globose, 1–2 cm. in diam., smooth, 1–3-seeded
+No. of trees: 6
+Fail:    Liane up to 6 m. high or higher, with latex, glabrous
+No. of trees: 5
+Fail:    stems flattened, not lined, pale green and smooth at first, becoming terete and yellowish-brown, smooth, with scarcely prominent lenticels
+No. of trees: 8
+Success: Leaves opposite to subopposite (alternate on climbing shoots), petiolate
+No. of trees: 2
+Fail:    lamina ± glossy above or on both surfaces, paler below, 6·4–11·8(13) × 2·9–5·9 cm., oblong or elliptic-oblong to obovate, ± shortly and usually obliquely acuminate at the apex, with margin finely denticulate to subentire, cuneate or decurrent at the base, subcoriaceous, with c. 6–8 lateral nerves and densely reticulate venation more prominent below than above
+No. of trees: 10
+Success: petiole 4–7 mm. long, with margins straight
+No. of trees: 3
+Success: stipules very small, caducous
+No. of trees: 1
+Fail:    Flowers c. 8–18, functionally unisexual, in axillary, sessile or shortly pedunculate fascicles, rarely also in terminal fascicles
+No. of trees: 6
+Success: buds c. 1·5 mm. long, ovoid
+No. of trees: 1
+Fail:    peduncles up to 1 mm. long (up to c. 5 mm. in Congo specimens)
+No. of trees: 3
+Success: pedicels 3–5 mm. long, smooth, articulated at the base
+No. of trees: 2
+Success: Sepals with pale margin, c. 0·5 mm. long, semicircular, rounded, ± unequal, united at the base, with margin entire or subentire
+No. of trees: 6
+Success: Petals greenish-yellow, with pale margin, 1·5–2 mm. long, ovate to oblong, shortly unguiculate, rounded, entire
+No. of trees: 1
+Success: Disk annular, flat or rather concave, surrounding the base of the ovary
+No. of trees: 6
+Fail:    Stamens 3, with filaments slender, longer than the style (male forms) or much shorter (female forms)
+No. of trees: 5
+Fail:    anthers apiculate and sterile in female forms, dehiscing by 2 longitudinal clefts
+No. of trees: 4
+Success: Ovary ovoid-3-gonous, with style c. 0·5 mm. long
+No. of trees: 1
+Fail:    stigma entire, 3-lobed (female forms) or punctiform (male forms)
+No. of trees: 5
+Success: ovules 2 per loculus
+No. of trees: 2
+Success: Fruit orange-pink with small whitish spots, globose, 1–2 cm. in diam., smooth, 1–3-seeded
+No. of trees: 6

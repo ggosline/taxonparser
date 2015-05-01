@@ -57,7 +57,7 @@ class FlTagger():
         for wlist in mwlist:  # Could optimize
             for windx in range(0, len(wlist)):
                 match = None
-                if iword + windx <= len(words) and wlist[windx] == words[iword + windx].text:
+                if iword + windx < len(words) and wlist[windx] == words[iword + windx].text:
                     match = slice(iword, windx + iword)
                 else:
                     match = None

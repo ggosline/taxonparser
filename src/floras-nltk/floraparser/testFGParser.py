@@ -6,18 +6,19 @@ from collections import defaultdict
 from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
 
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
+from nltk.parse import FeatureBottomUpChartParser, FeatureBottomUpLeftCornerChartParser
 from floraparser.FGParser import FGParser, cleanparsetree
 from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Liane up to 6 m. high or higher, with latex, glabrous'
+description = 'Disk annular, flat or rather concave, surrounding the base of the ovary'
 
 trec['description'] = description
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
 
-ttrace = 4
+ttrace = 3
 of = sys.stdout
 if __name__ == '__main__':
     if False:
@@ -25,7 +26,7 @@ if __name__ == '__main__':
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from Taxa where rank = 'species' and genus = 'Salacia' and species = 'pynaertii';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
