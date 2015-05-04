@@ -34,7 +34,7 @@ def pickle_lexicon():
             else:
                 multiwords[firstword] = [tuple(ws)]
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        features = {TYPE: POS}
+        features = {TYPE: POS, 'orth': word}
         for item in morefeatures.items():  # avoid null values
             if item[1]:
                 features[item[0]] = item[1]
@@ -56,7 +56,7 @@ def pickle_lexicon():
                 if gid != '#':
                     addlexentry(term, POS, category=category, appliesto=appliesto)
 
-    COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|except|except_for|×'.split('|')
+    COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|but|except|except_for|×'.split('|')
     for word in COORDCONJUNCTION:
         addlexentry(word, 'CONJ', conj=word, coord=True)
     SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless|if'.split('|')
@@ -93,7 +93,8 @@ def pickle_lexicon():
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least'.split('|')
     addlexicon(RANGE, 'ADV')
-    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between'.split('|')
+    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between|' \
+                'at_the_base|near_the_base|at_the_apex|outside|inside'.split('|')
     addlexicon(POSITIONA, 'A', position=True, category='position')
     POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, category='position')
@@ -114,7 +115,8 @@ def pickle_lexicon():
     addlexicon(TIMING, 'ADV', timing=True)
     PRESENCE = "present|absent".split('|')
     addlexicon(PRESENCE, 'A', category='presence')
-    GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing_by|dividing|ending|varying_in".split(
+    GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing_by|dividing|" \
+             "ending|varying_in|arranged_in".split(
         '|')
     addlexicon(GERUND, 'P', verb=True)
     addlexicon(['to'], 'TO')

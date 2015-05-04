@@ -8,7 +8,7 @@ CDELIM -> COMMA |
 
 DESCRIPTION -> SUBJECT CDELIM CHARLIST
 
-SUBJECT -> N[category=structure]
+SUBJECT -> N[category=structure] | AP N[category=structure]
 SUBJECT -> NP[category='life-form']
 
 NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
@@ -48,14 +48,16 @@ ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] PPAREXP
 
+CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
-ADVB -> ADV CONJ[conj='and'] ADVB
+ADVB -> ADV CONJUNCTION ADVB
 ADVB[+comp] -> A[+makecomp] ADV
 
 ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c] -> A[category=?c] | ADVB ABAR[category=?c]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
+UNK -> A[category=?c]
 
 ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
@@ -80,14 +82,14 @@ APL[category=?c] -> AP[category=?c]
 AP[category=?c, conj=or, -timing] -> APL[category=?c] CDELIM CONJ[conj=or] AP[category=?c]
 
 APAND[category=(?b + ?c)] -> AP[category=?b] COMMA APAND[category=?c]
-#APAND[category=?b] -> AP[category=?b]
-APAND[category=(?b + ?c), -timing] -> APAND[category=?b] CDELIM CONJ[conj=and] AP[category=?c]
+APAND[category=?b] -> AP[category=?b]
+APAND[category=(?b + ?c)] -> APAND[category=?b] CDELIM CONJUNCTION AP[category=?c]
 
 #ABAR[category=?c] -> ABAR[category=?c] CONJ[conj=and] ABAR
 AP[category=?c] -> AP[category=?c]  A[+position]
 AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
-WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHR
+WITHP[category=?c] -> P[prep='with'] NP[category=?c]
 
 PP -> P NP
 # PP/?x -> P/NP
