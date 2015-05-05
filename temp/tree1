@@ -1,0 +1,40 @@
+(Start[]
+  (DESCRIPTION[]
+    (SUBJECT[] (N[category='structure'] Leaves))
+    (CDELIM[] )
+    (CHARLIST[]
+      (CHAR[category='arrangement']
+        (CHR[category='arrangement']
+          (AP[category='arrangement']
+            (ABAR[category='arrangement']
+              (ABAR[category='arrangement']
+                (A[category='arrangement'] opposite))
+              (TO[] to)
+              (ABAR[category='arrangement']
+                (ABAR[category='arrangement']
+                  (A[category='arrangement'] subopposite))
+                (PPAREXP[]
+                  (PUNC[punc='('] ()
+                  (AP[category='arrangement']
+                    (ABAR[category='arrangement']
+                      (A[category='arrangement'] alternate))
+                    (PP[]
+                      (P[prep='on'] on)
+                      (NP[category='structure']
+                        (NBAR[category='structure']
+                          (AP[category='habit']
+                            (ABAR[category='habit']
+                              (A[appliesto='plant, axis', category='habit']
+                                climbing)))
+                          (NBAR[category='structure']
+                            (N[category='structure'] shoots))))))
+                  (PUNC[punc=')'] )))))))
+        (CTERMINATOR[] (COMMA[] ,)))
+      (CHARLIST[]
+        (CHAR[category='architecture']
+          (CHR[category='architecture']
+            (AP[category='architecture']
+              (ABAR[category='architecture']
+                (A[appliesto='leaf', category='architecture']
+                  petiolate))))
+          (CTERMINATOR[] EOPHRASE))))))
