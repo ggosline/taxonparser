@@ -145,10 +145,10 @@ class FlTokenizer():
     Taken from Punkttokenizer
     '''
 
-    _re_number_range = r'''(?:\(\d+(?:[.·]\d+)?\))?
+    _re_number_range = r'''(?:\(\d+(?:[.·]\d+)?–?\))?
                             \d+(?:[.·]\d)?
                             (?:[--–]\d+(?:[.·]\d+)?)?
-                            (?:\(\d+(?:[.·]\d+)?\))?
+                            (?:\(–?\d+(?:[.·]\d+)?\))?
                         '''
 
     _re_word_start = r"[^\(\"\`{\[:;&\#\*@\)}\],]"

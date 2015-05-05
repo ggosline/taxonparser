@@ -19,7 +19,7 @@ SUFFIX = re.compile(r"\b(?P<root>\w+)(?P<suffix>form|ish|merous|most|shaped|like
 
 PLENDINGS = re.compile(r"(?:[^aeiou]ies|i|ia|(x|ch|sh)es|ves|ices|ae|s)$")
 
-NUMBERS = re.compile(r'^[0-9–—.·()]+$')
+NUMBERS = re.compile(r'^[–0-9—.·()/]+$')
 
 
 class FlTagger():
@@ -90,7 +90,8 @@ class FlTagger():
 
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
-            return flword, 'NUM', [FeatStructNonterminal(TYPE='NUM', pos='NUM', numeric=True, value=word)], ('NUM',)
+            return flword, 'NUM', [FeatStructNonterminal(features={TYPE: 'NUM', 'numeric': True, 'value': word})], (
+            'NUM',)
 
         ws = FlTagger.singularize(self, word)
         if ws:
@@ -123,7 +124,7 @@ class FlTagger():
         # for sy in synsets:
         # pass
 
-        return flword, 'UNK', [FeatStructNonterminal(TYPE='UNK')], (word,)
+        return flword, 'UNK', [FeatStructNonterminal(features={TYPE: 'A', 'category': 'UNK', 'orth': word})], (word,)
 
         # def tag(self, blob):
         # return [self.tag_word(word) for word in blob.words]

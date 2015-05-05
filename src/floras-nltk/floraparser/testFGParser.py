@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Disk annular, flat or rather concave, surrounding the base of the ovary'
+description = 'lobes oblong, 2.5–4 mm. long, 2 mm. wide, with an axial  line'
 
 trec['description'] = description
 trdr = [trec]
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     if False:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from Taxa where rank = 'species' and genus = 'Salacia' and species = 'pynaertii';", )
+                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Uncaria' and species = 'africana';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=FeatureBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
@@ -45,7 +45,7 @@ if __name__ == '__main__':
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees[0:40]:
-                            cleanparsetree(treex)
+                            # cleanparsetree(treex)
                             treex.draw()
 
     of.close()

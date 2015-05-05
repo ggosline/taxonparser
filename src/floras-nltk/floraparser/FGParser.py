@@ -119,9 +119,9 @@ class FGParser():
                 if not trees:
                     trees.append((tree, charedge.start(), charedge.end()))
                 else:
-                    for i, (t, tstart, tend) in enumerate(trees):
+                    for (t, tstart, tend) in trees[:]:
                         if charedge.start() <= tstart and charedge.end() >= tend:  # subsumes
-                            del trees[i]
+                            trees.remove((t, tstart, tend))
                         elif (charedge.start() >= tstart and charedge.end() < tend) \
                                 or (charedge.start() > tstart and charedge.end() <= tend):  # subsumed
                             newtree = False
