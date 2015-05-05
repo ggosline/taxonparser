@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lobes oblong, 2.5–4 mm. long, 2 mm. wide, with an axial  line'
+description = 'Petiole 2–3 cm. long, stout, usually scabrid, jointed at base'
 
 trec['description'] = description
 trdr = [trec]
@@ -24,9 +24,9 @@ if __name__ == '__main__':
     if False:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Uncaria' and species = 'africana';", )
+                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Octoknema' and species = 'orientalis';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureBottomUpLeftCornerChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureEarleyChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):

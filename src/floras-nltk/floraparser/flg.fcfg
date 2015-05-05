@@ -6,17 +6,18 @@ Start -> DESCRIPTION
 CDELIM -> COMMA |
 # COMMA ->
 
-DESCRIPTION -> SUBJECT CDELIM CHARLIST
+DESCRIPTION -> SUBJECT CHARLIST
 
-SUBJECT -> N[category=structure] | AP N[category=structure]
+SUBJECT -> N[category=structure] | AP N[category=structure] | N[category=structure] OFP
 SUBJECT -> NP[category='life-form']
 
 NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
 NBAR[category=?c] -> NBAR[category=?c] AP
+
 NBAR[category=?c] -> NBAR[category=?c] PAREXP
 
 NP[category=?c] -> DET NBAR[category=?c] | ART NBAR[category=?c]
-NP -> PRO
+NBAR[category=pro] -> PRO
 NP -> NAME
 NP -> A[+compar] NBAR THAN S
 NP -> A[+compar] NBAR THAN S/NBAR
@@ -30,13 +31,17 @@ NP[category=?c] -> NBAR[category=?c]
 CTERMINATOR -> COMMA | '$'
 # CTERMINATOR ->
 CHAR[category=?c] -> CHR[category=?c] CTERMINATOR
+CHARLIST -> CHAR CHARLIST | CHAR
+
 CHR[category=?c] ->  AP[category=?c, +timing]
 CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c]
 # CHR[category=?c] ->  NP[category=?c] AP
 CHR[category=size] ->  SIZE
 CHR[category=count] ->  COUNT
+CHRL -> CHR CHRL | CHR
+
 #CHAR[category=inflorescence] -> IN NP
-CHARLIST -> CHAR CHARLIST | CHAR
+
 
 SIZEB -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
 SIZE -> ADV[+accuracy] SIZEB |  SIZEB
@@ -57,7 +62,7 @@ ADVB[+comp] -> A[+makecomp] ADV
 ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c] -> A[category=?c] | ADVB ABAR[category=?c]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
-UNK -> A[category=?c]
+A[category=?c] -> UNK
 
 ABAR[category='prep'] -> ADVP PP[prep=?p] | PP[prep=?p]
 
@@ -89,9 +94,10 @@ APAND[category=(?b + ?c)] -> APAND[category=?b] CDELIM CONJUNCTION AP[category=?
 AP[category=?c] -> AP[category=?c]  A[+position]
 AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
-WITHP[category=?c] -> P[prep='with'] NP[category=?c]
+WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHRL | NP[category=?c] CHRL
+OFP[category=?c] -> OF NP[category=?c]
 
-PP -> P NP
+PP[prep=?p, category=?c] -> P[prep=?p] NP[category=?c]
 # PP/?x -> P/NP
 
 # PP -> P[prep='with'] NP CHARLIST

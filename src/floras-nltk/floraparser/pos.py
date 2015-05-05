@@ -124,7 +124,7 @@ class FlTagger():
         # for sy in synsets:
         # pass
 
-        return flword, 'UNK', [FeatStructNonterminal(features={TYPE: 'A', 'category': 'UNK', 'orth': word})], (word,)
+        return flword, 'UNK', [FeatStructNonterminal(features={TYPE: 'UNK', 'orth': word})], (word,)
 
         # def tag(self, blob):
         # return [self.tag_word(word) for word in blob.words]

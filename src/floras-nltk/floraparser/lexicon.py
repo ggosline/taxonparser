@@ -70,10 +70,10 @@ def pickle_lexicon():
     for char in PUNCTUATION:
         addlexentry(char, 'PUNC', punc=char)
     addlexicon([','], 'COMMA')
-    PRONOUN = 'it|one|ones|form|forms|parts'.split('|')
+    PRONOUN = 'it|one|ones|form|forms|part|parts'.split('|')
     addlexicon(PRONOUN, 'PRO')
     PREPOSITION = 'across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
-                  'during|for|from|in|inside|into|near|of|off|on|onto|out|outside|over|per|through|throughout|toward|' \
+                  'during|for|from|in|inside|into|near|off|on|onto|out|outside|over|per|through|throughout|toward|' \
                   'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|' \
                   'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
@@ -91,7 +91,7 @@ def pickle_lexicon():
     addlexicon(UNITS, 'UNIT')
     DIMENSION = "high|tall|long|wide|diam.|diameter|diam|".split('|')
     addlexicon(DIMENSION, 'DIM')
-    RANGE = 'up_to|at_least'.split('|')
+    RANGE = 'up_to|at_least|to'.split('|')
     addlexicon(RANGE, 'ADV')
     POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between|' \
                 'at_the_base|near_the_base|at_the_apex|outside|inside'.split('|')
@@ -128,6 +128,7 @@ def pickle_lexicon():
     addlexicon(['that'], 'COMP')
     addlexicon(['times'], 'TIMES')
     addlexicon(['NUM'], 'NUM')
+    addlexicon(['of'], 'OF')
     readcpglossary()
     # for wlist in multiwords.values():
     # wlist = sorted(wlist, key=len)
