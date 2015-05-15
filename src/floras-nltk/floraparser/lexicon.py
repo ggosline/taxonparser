@@ -96,7 +96,7 @@ def pickle_lexicon():
     POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between|' \
                 'at_the_base|near_the_base|at_the_apex|outside|inside'.split('|')
     addlexicon(POSITIONA, 'A', position=True, category='position')
-    POSITION = 'top|bottom|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
+    POSITION = 'top|bottom|underside|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly".split('|')
     addlexicon(ACCURACY, 'ADV', accuracy=True, timing=False)

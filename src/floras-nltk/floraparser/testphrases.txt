@@ -1,12 +1,12 @@
-Fail:    Large tree to 30 m. high
-No. of trees: 0
+Success: Large tree to 30 m. high
+No. of trees: 1
 Success: young branches densely stellate-hairy, somewhat glabrescent
 No. of trees: 6
 Fail:    Petiole 2–3 cm. long, stout, usually scabrid, jointed at base of leaf-blade
-No. of trees: 3
+No. of trees: 4
 Success: leaf-blade elliptic to oblong-lanceolate, 12–21 cm. long, 5–10 cm. wide, acuminate, ± rounded at the base, almost glabrous and shiny above at maturity, ± stellate-pubescent beneath
 No. of trees: 305
-Fail:    young leaves prominently stellate-pubescent towards petiole on underside
+Success: young leaves prominently stellate-pubescent towards petiole on underside
 No. of trees: 1
 Success: secondary veins prominent beneath, impressed above
 No. of trees: 4
@@ -15,7 +15,7 @@ No. of trees: 6
 Success: Male inflorescence unknown
 No. of trees: 1
 Fail:    Female inflorescence an axillary spike, 3–5-flowered
-No. of trees: 0
+No. of trees: 1
 Success: flowers sessile, yellowish-brown
 No. of trees: 1
 Success: sepals rudimentary (see note above)
@@ -29,51 +29,11 @@ No. of trees: 1
 Success: filaments short, spathulate, up to 1.5 mm. long
 No. of trees: 1
 Fail:    ovary 3-locular, with 1 ovule per locule pendulous from the apex of a free central placenta
-No. of trees: 2
-Success: stigma radiate, 3–5-lobed
-No. of trees: 8
-Fail:    Fruit oblong, ellipsoidal, up to 1.5 cm. long, 0.8 cm. wide in immature state, stellate-pubescent, with the perianth-segments persistent, single-seeded
-No. of trees: 4
-Success: Seed with characteristic longitudinal furrows
-No. of trees: 6
-Fail:    Fig. 6
-No. of trees: 0
-Fail:    Large tree to 30 m. high
-No. of trees: 0
-Success: young branches densely stellate-hairy, somewhat glabrescent
-No. of trees: 6
-Fail:    Petiole 2–3 cm. long, stout, usually scabrid, jointed at base of leaf-blade
 No. of trees: 3
-Success: leaf-blade elliptic to oblong-lanceolate, 12–21 cm. long, 5–10 cm. wide, acuminate, ± rounded at the base, almost glabrous and shiny above at maturity, ± stellate-pubescent beneath
-No. of trees: 305
-Fail:    young leaves prominently stellate-pubescent towards petiole on underside
-No. of trees: 1
-Success: secondary veins prominent beneath, impressed above
-No. of trees: 4
-Success: tertiary veins reticulate, ± prominent on both surfaces
-No. of trees: 6
-Success: Male inflorescence unknown
-No. of trees: 1
-Fail:    Female inflorescence an axillary spike, 3–5-flowered
-No. of trees: 0
-Success: flowers sessile, yellowish-brown
-No. of trees: 1
-Success: sepals rudimentary (see note above)
-No. of trees: 2
-Fail:    petals 5, free, ± narrowly ovate to almost deltoid, up to 3.5 mm. high and 2.3 mm. wide, borne on the upper margin of the receptacle, glabrous within, stellate-pubescent without
-No. of trees: 4
-Fail:    staminodes 5, opposite and basally attached to petals
-No. of trees: 2
-Success: anthers absent
-No. of trees: 1
-Success: filaments short, spathulate, up to 1.5 mm. long
-No. of trees: 1
-Fail:    ovary 3-locular, with 1 ovule per locule pendulous from the apex of a free central placenta
-No. of trees: 2
 Success: stigma radiate, 3–5-lobed
 No. of trees: 8
 Fail:    Fruit oblong, ellipsoidal, up to 1.5 cm. long, 0.8 cm. wide in immature state, stellate-pubescent, with the perianth-segments persistent, single-seeded
-No. of trees: 4
+No. of trees: 5
 Success: Seed with characteristic longitudinal furrows
 No. of trees: 6
 Fail:    Fig. 6

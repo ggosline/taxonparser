@@ -7,12 +7,12 @@ from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
 
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
 from nltk.parse import FeatureBottomUpChartParser, FeatureBottomUpLeftCornerChartParser
-from floraparser.FGParser import FGParser, cleanparsetree
+from floraparser.FGParser import FGParser, cleanparsetree, FindNode
 from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Petiole 2–3 cm. long, stout, usually scabrid, jointed at base'
+description = 'Petiole 2–3 cm. long, stout, usually scabrid, jointed at base of leaf-blade'
 
 trec['description'] = description
 trdr = [trec]
@@ -21,7 +21,7 @@ ttaxa = AbstractFloraCorpusReader(reader=trdr)
 ttrace = 3
 of = sys.stdout
 if __name__ == '__main__':
-    if False:
+    if True:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Octoknema' and species = 'orientalis';", )
@@ -39,6 +39,7 @@ if __name__ == '__main__':
                             cleanparsetree(treex)
                             treex.draw()
                             print(treex)
+                    print(FindNode('SUBJECT', trees[0]))
                 else:
                     print('Fail:    ' + phrase.text, file=of)
                     trees = parser.partialparses()
@@ -47,6 +48,7 @@ if __name__ == '__main__':
                         for treex in trees[0:40]:
                             # cleanparsetree(treex)
                             treex.draw()
-
+                    if trees:
+                        print(FindNode('SUBJECT', trees[0]))
     of.close()
 

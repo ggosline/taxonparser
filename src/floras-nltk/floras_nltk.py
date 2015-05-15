@@ -159,7 +159,7 @@ if __name__ == "__main__":
             for w in sorted(wordset):
                 print(w, file=wf)
 
-    if True:
+    if False:
         with open('../resources/specificnames.txt', 'r', encoding='utf-8') as namesf:
             namesset = {word.rstrip() for word in namesf}
         with open('../resources/KewGlossary.txt', 'r') as kf:

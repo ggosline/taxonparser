@@ -111,6 +111,12 @@ class FGParser():
         '''
 
         trees = []
+
+        charedges = list(self.simple_select(is_complete=True, lhs='SUBJECT'))
+        for charedge in charedges:
+            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+                trees.append((tree, charedge.start(), charedge.end()))
+
         charedges = list(self.simple_select(is_complete=True, lhs='CHR'))
 
         for charedge in charedges:
@@ -226,7 +232,7 @@ def purgenodes(tree, typelist):
                 purgenodes(child, typelist)
 
 
-def flattentree(tree, listnodetype):
+def flattentree(tree: Tree, listnodetype):
     # Traverse the tree-depth first keeping a pointer to the parent for modification purposes.
     nodeList = [(tree, [])]
     while nodeList != []:
@@ -254,3 +260,10 @@ def flattentree(tree, listnodetype):
             for child in node:
                 nodeList.append((child, node))
 
+
+def FindNode(lab:str, tree:Tree) -> Tree:
+    if tree.label()[TYPE] == lab:
+        return tree
+    for t in tree:
+        if isinstance(t, Tree):
+            return FindNode(lab, t)
