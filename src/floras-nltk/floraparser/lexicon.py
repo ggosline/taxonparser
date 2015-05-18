@@ -72,12 +72,16 @@ def pickle_lexicon():
     addlexicon([','], 'COMMA')
     PRONOUN = 'it|one|ones|form|forms|part|parts'.split('|')
     addlexicon(PRONOUN, 'PRO')
-    PREPOSITION = 'across|after|along|among|amongst|around|as|at|before|behind|below|beneath|between|beyond|by|' \
+    PREPOSITION = 'among|amongst|around|as|below|beneath|between|beyond|by|' \
                   'during|for|from|in|inside|into|near|off|on|onto|out|outside|over|per|through|throughout|toward|' \
                   'towards|up|upward|with|within|without|when|owing_to|due_to|according_to|on_account_of|' \
                   'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
-        addlexentry(word, 'P', prep=word)
+        addlexentry(word, 'P', prep=word, position=False)
+    POSITIONP = 'at|near|outside|inside|above|below|beneath|outside|inside|between|' \
+                'before|after|behind|across|along|around'.split('|')
+    for word in POSITIONP:
+        addlexentry(word, 'P', prep=word, position=True)
     GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
              "pairs|pair|row|rows|number|numbers|colonies".split('|')
     addlexicon(GROUPS, 'N', group=True)
@@ -93,9 +97,10 @@ def pickle_lexicon():
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least|to'.split('|')
     addlexicon(RANGE, 'ADV')
-    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|between|' \
-                'at_the_base|near_the_base|at_the_apex|outside|inside'.split('|')
+    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|' \
+                'outside|inside'.split('|')
     addlexicon(POSITIONA, 'A', position=True, category='position')
+
     POSITION = 'top|bottom|underside|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly".split('|')

@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Petiole 2–3 cm. long, stout, usually scabrid, jointed at base of leaf-blade'
+description = 'secondary veins prominent beneath, impressed above'
 
 trec['description'] = description
 trdr = [trec]
@@ -21,7 +21,7 @@ ttaxa = AbstractFloraCorpusReader(reader=trdr)
 ttrace = 3
 of = sys.stdout
 if __name__ == '__main__':
-    if True:
+    if False:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Octoknema' and species = 'orientalis';", )
@@ -30,13 +30,13 @@ if __name__ == '__main__':
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
-                trees = parser.parse(phrase.tokens)
+                trees = parser.parse(phrase.tokens, cleantree=False)
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
-                        for treex in trees:
-                            cleanparsetree(treex)
+                        for i, treex in enumerate(trees):
+                            # cleanparsetree(treex)
                             treex.draw()
                             print(treex)
                     print(FindNode('SUBJECT', trees[0]))

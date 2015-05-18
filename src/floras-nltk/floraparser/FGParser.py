@@ -75,7 +75,7 @@ class FGParser():
         self._parser = parser(self._grammar, trace=trace)
         self._chart = None
 
-    def parse(self, tokens):
+    def parse(self, tokens, cleantree=True):
         '''
         :type tokens: builtins.generator
         :return:
@@ -100,6 +100,8 @@ class FGParser():
         for i, tree in enumerate(treegen):
             if i > 1000:
                 break
+            if cleantree:
+                cleanparsetree(tree)
             if tree not in trees:
                 trees.append(tree)
         return trees
