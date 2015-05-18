@@ -1,40 +1,44 @@
 (Start[]
   (DESCRIPTION[]
-    (SUBJECT[] (N[category='structure'] Leaves))
-    (CDELIM[] )
-    (CHARLIST[]
-      (CHAR[category='arrangement']
-        (CHR[category='arrangement']
-          (AP[category='arrangement']
-            (ABAR[category='arrangement']
-              (ABAR[category='arrangement']
-                (A[category='arrangement'] opposite))
-              (TO[] to)
-              (ABAR[category='arrangement']
-                (ABAR[category='arrangement']
-                  (A[category='arrangement'] subopposite))
-                (PPAREXP[]
-                  (PUNC[punc='('] ()
-                  (AP[category='arrangement']
-                    (ABAR[category='arrangement']
-                      (A[category='arrangement'] alternate))
-                    (PP[]
-                      (P[prep='on'] on)
-                      (NP[category='structure']
-                        (NBAR[category='structure']
-                          (AP[category='habit']
-                            (ABAR[category='habit']
-                              (A[appliesto='plant, axis', category='habit']
-                                climbing)))
-                          (NBAR[category='structure']
-                            (N[category='structure'] shoots))))))
-                  (PUNC[punc=')'] )))))))
-        (CTERMINATOR[] (COMMA[] ,)))
-      (CHARLIST[]
-        (CHAR[category='architecture']
-          (CHR[category='architecture']
-            (AP[category='architecture']
-              (ABAR[category='architecture']
-                (A[appliesto='leaf', category='architecture']
-                  petiolate))))
-          (CTERMINATOR[] EOPHRASE))))))
+    (SUBJECT[] (N[category='structure', orth='ovary'] ovary))
+    (CHAR[category='architecture']
+      (NUM[orth='NUM'] 3)
+      (A[appliesto='anther, ovary, fruit', category='architecture', orth='_locular']
+        -locular))
+    (CHAR[category='prep']
+      (P[orth='with', prep='with'] with)
+      (NP[category='structure']
+        (NBAR[category='structure']
+          (AP[category='count'] (NUM[orth='NUM'] 1))
+          (NBAR[category='structure']
+            (N[category='structure', orth='ovule'] ovule)))
+        (AP[category='feature', +position]
+          (PLOC[] (P[orth='per', prep='per'] per))
+          (NP[category='feature']
+            (NBAR[category='feature']
+              (NBAR[category='feature']
+                (NBAR[category='feature']
+                  (N[category='feature', orth='locule'] locule))
+                (AP[category='orientation']
+                  (A[appliesto='stalked structure', category='orientation', orth='pendulous']
+                    pendulous)))
+              (AP[category='prep']
+                (P[orth='from', prep='from'] from)
+                (NP[category='position']
+                  (ART[orth='the'] the)
+                  (NBAR[category='position']
+                    (N[category='position', orth='apex', +position]
+                      apex)))))
+            (OFP[category='structure']
+              (OF[orth='of'] of)
+              (NP[category='structure']
+                (ART[orth='a'] a)
+                (NBAR[category='structure']
+                  (AP[category='fusion']
+                    (AP[category='fusion']
+                      (A[appliesto='dissimilar structure(s)', category='fusion', orth='free']
+                        free))
+                    (A[category='insertion', orth='central'] central))
+                  (NBAR[category='structure']
+                    (N[category='structure', orth='placenta']
+                      placenta)))))))))))

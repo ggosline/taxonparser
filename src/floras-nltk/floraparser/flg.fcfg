@@ -51,7 +51,7 @@ COUNT[category=count] -> NUM | NUM P[prep='per'] NBAR
 
 ABAR[category=?c] -> NUM A[category=?c]
 ABAR[category=?c] -> ABAR[category=?c] TO ABAR[category=?c]
-ABAR[category=?c] -> ABAR[category=?c] PPAREXP
+AP[category=?c] -> AP[category=?c] PPAREXP
 
 CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
 #ADVP ->  ADVP ADV | ADV | PAREXP
@@ -59,7 +59,7 @@ ADVB -> ADV
 ADVB -> ADV CONJUNCTION ADVB
 ADVB[+comp] -> A[+makecomp] ADV
 
-ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
+#ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c] -> A[category=?c] | ADVB ABAR[category=?c]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 A[category=?c] -> UNK

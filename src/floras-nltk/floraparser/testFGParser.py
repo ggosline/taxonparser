@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'secondary veins prominent beneath, impressed above'
+description = 'ovary 3-locular, with 1 ovule per locule pendulous from the apex of a free central placenta'
 
 trec['description'] = description
 trdr = [trec]
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
-                trees = parser.parse(phrase.tokens, cleantree=False)
+                trees = parser.parse(phrase.tokens, cleantree=True, maxtrees=100)
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)

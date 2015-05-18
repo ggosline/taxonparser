@@ -75,7 +75,7 @@ class FGParser():
         self._parser = parser(self._grammar, trace=trace)
         self._chart = None
 
-    def parse(self, tokens, cleantree=True):
+    def parse(self, tokens, cleantree=True, maxtrees=200):
         '''
         :type tokens: builtins.generator
         :return:
@@ -98,7 +98,7 @@ class FGParser():
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
         trees = []
         for i, tree in enumerate(treegen):
-            if i > 1000:
+            if i >= maxtrees:
                 break
             if cleantree:
                 cleanparsetree(tree)

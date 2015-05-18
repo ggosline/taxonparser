@@ -9,7 +9,7 @@ No. of trees: 7
 Success: young leaves prominently stellate-pubescent towards petiole on underside
 No. of trees: 2
 Success: secondary veins prominent beneath, impressed above
-No. of trees: 4
+No. of trees: 1
 Success: tertiary veins reticulate, ± prominent on both surfaces
 No. of trees: 3
 Success: Male inflorescence unknown
@@ -19,7 +19,7 @@ No. of trees: 1
 Success: flowers sessile, yellowish-brown
 No. of trees: 1
 Success: sepals rudimentary (see note above)
-No. of trees: 2
+No. of trees: 1
 Fail:    petals 5, free, ± narrowly ovate to almost deltoid, up to 3.5 mm. high and 2.3 mm. wide, borne on the upper margin of the receptacle, glabrous within, stellate-pubescent without
 No. of trees: 5
 Fail:    staminodes 5, opposite and basally attached to petals
@@ -35,7 +35,7 @@ No. of trees: 8
 Fail:    Fruit oblong, ellipsoidal, up to 1.5 cm. long, 0.8 cm. wide in immature state, stellate-pubescent, with the perianth-segments persistent, single-seeded
 No. of trees: 5
 Success: Seed with characteristic longitudinal furrows
-No. of trees: 12
+No. of trees: 8
 Fail:    Fig. 6
 No. of trees: 0
 Success: Large tree to 30 m. high
@@ -49,7 +49,7 @@ No. of trees: 7
 Success: young leaves prominently stellate-pubescent towards petiole on underside
 No. of trees: 2
 Success: secondary veins prominent beneath, impressed above
-No. of trees: 4
+No. of trees: 1
 Success: tertiary veins reticulate, ± prominent on both surfaces
 No. of trees: 3
 Success: Male inflorescence unknown
@@ -59,7 +59,7 @@ No. of trees: 1
 Success: flowers sessile, yellowish-brown
 No. of trees: 1
 Success: sepals rudimentary (see note above)
-No. of trees: 2
+No. of trees: 1
 Fail:    petals 5, free, ± narrowly ovate to almost deltoid, up to 3.5 mm. high and 2.3 mm. wide, borne on the upper margin of the receptacle, glabrous within, stellate-pubescent without
 No. of trees: 5
 Fail:    staminodes 5, opposite and basally attached to petals
@@ -75,6 +75,6 @@ No. of trees: 8
 Fail:    Fruit oblong, ellipsoidal, up to 1.5 cm. long, 0.8 cm. wide in immature state, stellate-pubescent, with the perianth-segments persistent, single-seeded
 No. of trees: 5
 Success: Seed with characteristic longitudinal furrows
-No. of trees: 12
+No. of trees: 8
 Fail:    Fig. 6
 No. of trees: 0

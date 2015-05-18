@@ -79,7 +79,7 @@ def pickle_lexicon():
     for word in PREPOSITION:
         addlexentry(word, 'P', prep=word, position=False)
     POSITIONP = 'at|near|outside|inside|above|below|beneath|outside|inside|between|' \
-                'before|after|behind|across|along|around'.split('|')
+                'before|after|behind|across|along|around|from'.split('|')
     for word in POSITIONP:
         addlexentry(word, 'P', prep=word, position=True)
     GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
