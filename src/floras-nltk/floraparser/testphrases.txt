@@ -1,80 +1,80 @@
-Success: Large tree to 30 m. high
-No. of trees: 1
-Success: young branches densely stellate-hairy, somewhat glabrescent
-No. of trees: 1
-Success: Petiole 2–3 cm. long, stout, usually scabrid, jointed at base of leaf-blade
-No. of trees: 2
-Fail:    leaf-blade elliptic to oblong-lanceolate, 12–21 cm. long, 5–10 cm. wide, acuminate, ± rounded at the base, almost glabrous and shiny above at maturity, ± stellate-pubescent beneath
+Fail:    Glabrous shrub or liane to 15 m. in height
 No. of trees: 7
-Success: young leaves prominently stellate-pubescent towards petiole on underside
-No. of trees: 2
-Success: secondary veins prominent beneath, impressed above
+Fail:    Latex threads absent
 No. of trees: 1
-Success: tertiary veins reticulate, ± prominent on both surfaces
-No. of trees: 3
-Success: Male inflorescence unknown
-No. of trees: 1
-Fail:    Female inflorescence an axillary spike, 3–5-flowered
-No. of trees: 1
-Success: flowers sessile, yellowish-brown
-No. of trees: 1
-Success: sepals rudimentary (see note above)
-No. of trees: 1
-Fail:    petals 5, free, ± narrowly ovate to almost deltoid, up to 3.5 mm. high and 2.3 mm. wide, borne on the upper margin of the receptacle, glabrous within, stellate-pubescent without
-No. of trees: 5
-Fail:    staminodes 5, opposite and basally attached to petals
-No. of trees: 3
-Success: anthers absent
-No. of trees: 1
-Success: filaments short, spathulate, up to 1.5 mm. long
-No. of trees: 1
-Success: ovary 3-locular, with 1 ovule per locule pendulous from the apex of a free central placenta
-No. of trees: 1001
-Success: stigma radiate, 3–5-lobed
-No. of trees: 8
-Fail:    Fruit oblong, ellipsoidal, up to 1.5 cm. long, 0.8 cm. wide in immature state, stellate-pubescent, with the perianth-segments persistent, single-seeded
-No. of trees: 5
-Success: Seed with characteristic longitudinal furrows
-No. of trees: 8
-Fail:    Fig. 6
-No. of trees: 0
-Success: Large tree to 30 m. high
-No. of trees: 1
-Success: young branches densely stellate-hairy, somewhat glabrescent
-No. of trees: 1
-Success: Petiole 2–3 cm. long, stout, usually scabrid, jointed at base of leaf-blade
-No. of trees: 2
-Fail:    leaf-blade elliptic to oblong-lanceolate, 12–21 cm. long, 5–10 cm. wide, acuminate, ± rounded at the base, almost glabrous and shiny above at maturity, ± stellate-pubescent beneath
+Fail:    Stems 4-angled or with paired ridges, green or purplish, becoming terete, dark purplish grey, smooth, or rough with conspicuous raised lenticels
 No. of trees: 7
-Success: young leaves prominently stellate-pubescent towards petiole on underside
+Success: Leaves opposite, subopposite or alternate, petiolate
+No. of trees: 1
+Fail:    petiole 3–6 mm. long with conspicuously undulate margins
+No. of trees: 1
+Success: blade papery or subcoriaceous, usually glossy dark green above, paler beneath, usually elliptic, sometimes lanceolate, (2.5–)3.5–11(–15) cm. long, 1.7–4.5(–9) cm. wide, usually bluntly acuminate, rarely obtuse or retuse, cuneate to almost rounded at the base, with fine slightly prominent reticulate veins beneath
+No. of trees: 100
+Success: margin serrate to subentire
 No. of trees: 2
-Success: secondary veins prominent beneath, impressed above
+Fail:    Inflorescence glabrous, consisting of few-flowered sessile or shortly pedunculate axillary fascicles
+No. of trees: 18
+Success: bracts ovate, ± 0.5–1 mm. long, fimbriate
 No. of trees: 1
-Success: tertiary veins reticulate, ± prominent on both surfaces
+Fail:    pedicels 4–8(–10) mm. long at anthesis, articulated at the base
+No. of trees: 2
+Success: Buds ovoid or conical, 2–3 mm. long
+No. of trees: 1
+Fail:    Flowers greenish yellow (? sometimes orange), ± 7–9 mm. in diameter, sepals free or very shortly joined at the base, unequal, ovate to semicircular, 0.5–1 mm. long, rounded, fimbriate
+No. of trees: 10
+Success: Petals oblong, 3–4 mm. long, rounded, entire
+No. of trees: 1
+Fail:    Disc a fleshy convex pad ± 2–2.5 mm. in diameter
+No. of trees: 4
+Success: Stamens with slender flattened filaments 1.5–2 mm. long, widened at the base
 No. of trees: 3
-Success: Male inflorescence unknown
+Success: Ovary trigonous or 3-lobed, with a conical style ± 0.5 mm. long
+No. of trees: 2
+Success: stigma punctiform
 No. of trees: 1
-Fail:    Female inflorescence an axillary spike, 3–5-flowered
+Success: ovules (2–)4–6 per locule
+No. of trees: 2
+Success: Fruit orange, ± globose or oblong at maturity, often apiculate, 1–2.5(–3) cm. in diameter, smooth or sometimes warted, especially towards the apex
+No. of trees: 2
+Fail:    Fig. 8/4, p. 35
+No. of trees: 4
+Fail:    Glabrous shrub or liane to 15 m. in height
+No. of trees: 7
+Fail:    Latex threads absent
 No. of trees: 1
-Success: flowers sessile, yellowish-brown
+Fail:    Stems 4-angled or with paired ridges, green or purplish, becoming terete, dark purplish grey, smooth, or rough with conspicuous raised lenticels
+No. of trees: 7
+Success: Leaves opposite, subopposite or alternate, petiolate
 No. of trees: 1
-Success: sepals rudimentary (see note above)
+Fail:    petiole 3–6 mm. long with conspicuously undulate margins
 No. of trees: 1
-Fail:    petals 5, free, ± narrowly ovate to almost deltoid, up to 3.5 mm. high and 2.3 mm. wide, borne on the upper margin of the receptacle, glabrous within, stellate-pubescent without
-No. of trees: 5
-Fail:    staminodes 5, opposite and basally attached to petals
+Success: blade papery or subcoriaceous, usually glossy dark green above, paler beneath, usually elliptic, sometimes lanceolate, (2.5–)3.5–11(–15) cm. long, 1.7–4.5(–9) cm. wide, usually bluntly acuminate, rarely obtuse or retuse, cuneate to almost rounded at the base, with fine slightly prominent reticulate veins beneath
+No. of trees: 100
+Success: margin serrate to subentire
+No. of trees: 2
+Fail:    Inflorescence glabrous, consisting of few-flowered sessile or shortly pedunculate axillary fascicles
+No. of trees: 18
+Success: bracts ovate, ± 0.5–1 mm. long, fimbriate
+No. of trees: 1
+Fail:    pedicels 4–8(–10) mm. long at anthesis, articulated at the base
+No. of trees: 2
+Success: Buds ovoid or conical, 2–3 mm. long
+No. of trees: 1
+Fail:    Flowers greenish yellow (? sometimes orange), ± 7–9 mm. in diameter, sepals free or very shortly joined at the base, unequal, ovate to semicircular, 0.5–1 mm. long, rounded, fimbriate
+No. of trees: 10
+Success: Petals oblong, 3–4 mm. long, rounded, entire
+No. of trees: 1
+Fail:    Disc a fleshy convex pad ± 2–2.5 mm. in diameter
+No. of trees: 4
+Success: Stamens with slender flattened filaments 1.5–2 mm. long, widened at the base
 No. of trees: 3
-Success: anthers absent
+Success: Ovary trigonous or 3-lobed, with a conical style ± 0.5 mm. long
+No. of trees: 2
+Success: stigma punctiform
 No. of trees: 1
-Success: filaments short, spathulate, up to 1.5 mm. long
-No. of trees: 1
-Success: ovary 3-locular, with 1 ovule per locule pendulous from the apex of a free central placenta
-No. of trees: 1001
-Success: stigma radiate, 3–5-lobed
-No. of trees: 8
-Fail:    Fruit oblong, ellipsoidal, up to 1.5 cm. long, 0.8 cm. wide in immature state, stellate-pubescent, with the perianth-segments persistent, single-seeded
-No. of trees: 5
-Success: Seed with characteristic longitudinal furrows
-No. of trees: 8
-Fail:    Fig. 6
-No. of trees: 0
+Success: ovules (2–)4–6 per locule
+No. of trees: 2
+Success: Fruit orange, ± globose or oblong at maturity, often apiculate, 1–2.5(–3) cm. in diameter, smooth or sometimes warted, especially towards the apex
+No. of trees: 2
+Fail:    Fig. 8/4, p. 35
+No. of trees: 4

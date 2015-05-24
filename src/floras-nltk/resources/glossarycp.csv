@@ -238,7 +238,7 @@
 "256","basal","insertion",,"At or very near the developmental origin (base) of a structure.","insertion",
 "257","basal","position",,"At or very near the developmental origin (base) of a structure.","position",
 "258","basal_cell","structure",,"Any of the ring of cells forming the lowermost (proximal) portion of an antheridial wall.","STRUCTURE",
-"259","base","structure",,"Configuration of the lowermost or proximal portion of a structure, its extent determined somewhat subjectively in relation to the shape of the structure as a whole.  The concept of base varies from one descriptive context to another, since the base is not","CHARACTER",
+"#","base","structure",,"Configuration of the lowermost or proximal portion of a structure, its extent determined somewhat subjectively in relation to the shape of the structure as a whole.  The concept of base varies from one descriptive context to another, since the base is not","CHARACTER",
 "260","basicauliramous","architecture","plant","Having the stem(s) branching at or near the base.  See also basiramous.","architecture",
 "261","basicaulous","insertion",,"At or very near the stem base.","insertion",
 "262","basicaulous","position",,"At or very near the stem base.","position",
@@ -827,7 +827,7 @@
 "878","eleven_","prefix",,"Indicating presence of or constitution by eleven entities of the type denoted by the term's stem; as in eleven-carpelled, eleven-leafleted, eleven-stamened.","prefix",
 "879","ellipsoid","shape",,"Elliptic in any median longitudinal section; elongate, transversely circular, broadest at the middle, and symmetrically convex-attenuate to rounded ends.  See also oblong.","shape",
 "880","ellipsoidal","shape",,"Elliptic in any median longitudinal section; elongate, transversely circular, broadest at the middle, and symmetrically convex-attenuate to rounded ends.  See also oblong.","shape",
-"881","elliptic","arrangement","bundle scars","Forming an ellipse","shape",
+"#","elliptic","arrangement","bundle scars","Forming an ellipse","shape",
 "882","elliptical","arrangement","bundle scars","Forming an ellipse","arrangement",
 "883","elliptic","shape",,"Elongate, widest at the middle, and symmetrically convex-attenuate to rounded ends.  See also oblong.","shape",
 "884","elliptical","shape",,"Elongate, widest at the middle, and symmetrically convex-attenuate to rounded ends.  See also oblong.","shape",
@@ -3347,7 +3347,7 @@
 "3552","anthesis","maturation",,"time of fertilisation of the flower; time of receptivity of stigma or distribution of pollen; used more loosely for the time when the flower opens",,"KG"
 "3553","appearing",,,,,"KG"
 "3556","point_of_attachment","structure",,,,"KG"
-"3557","bases","structure",,,,"KG"
+"#","bases","structure",,,,"KG"
 "3558","bearing",,,,,"KG"
 "3560","bicornute","shape",,"with two horns",,"KG"
 "3561","borne","architecture",,"carried",,"KG"
@@ -3461,3 +3461,4 @@
 3748,nucleus,structure,seed,,,
 3749,free_central,architecture,placentation,,,
 3750,free_basal,architecture,placentation,,,
+3751,segment,structure,,,,

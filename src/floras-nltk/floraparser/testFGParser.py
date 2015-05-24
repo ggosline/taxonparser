@@ -12,11 +12,12 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'ovary 3-locular, with 1 ovule per locule pendulous from the apex of a free central placenta'
+description = 'petiole 3–6 mm. long with conspicuously undulate margins'
 
 trec['description'] = description
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
+tfilebase = r'E:\GitHub\taxonparser\temp\tree'
 
 ttrace = 3
 of = sys.stdout
@@ -24,9 +25,9 @@ if __name__ == '__main__':
     if False:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Octoknema' and species = 'orientalis';", )
+                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureEarleyChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
@@ -38,7 +39,11 @@ if __name__ == '__main__':
                         for i, treex in enumerate(trees):
                             # cleanparsetree(treex)
                             treex.draw()
-                            print(treex)
+                            if True:
+                                tfilename = tfilebase + str(i)
+                                tfile = open(tfilename, mode='w', encoding='utf-8')
+                                print(treex, file=tfile)
+                                tfile.close
                     print(FindNode('SUBJECT', trees[0]))
                 else:
                     print('Fail:    ' + phrase.text, file=of)
