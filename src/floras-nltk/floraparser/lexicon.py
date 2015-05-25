@@ -96,7 +96,7 @@ def pickle_lexicon():
     addlexicon(ORDNUMBERS, 'NUM', ordinal=True)
     UNITS = "mm.|cm.|dm.|m.|km.".split('|')
     addlexicon(UNITS, 'UNIT')
-    DIMENSION = "high|tall|long|wide|diam.|diameter|diam|".split('|')
+    DIMENSION = "high|tall|long|wide|diam.|diameter|diam|in_height|in_width|in_diameter".split('|')
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least|to'.split('|')
     addlexicon(RANGE, 'RANGE')
@@ -108,7 +108,7 @@ def pickle_lexicon():
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly|almost".split('|')
     addlexicon(ACCURACY, 'DEG', accuracy=True, timing=False)
-    FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|soon|also|even".split(
+    FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|soon|also|even|?".split(
         '|')
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
     DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
@@ -123,10 +123,12 @@ def pickle_lexicon():
     addlexicon(TIMING, 'A', timing=True, position=False)
     PRESENCE = "present|absent".split('|')
     addlexicon(PRESENCE, 'A', category='presence')
+    ISA = "is|consisting_of".split('|')
+    addlexicon(ISA, 'IS', category='ISA')
     GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing_by|dividing|" \
-             "ending|varying_in|arranged_in".split(
-        '|')
+             "ending|varying_in|arranged_in".split('|')
     addlexicon(GERUND, 'P', verb=True)
+
     addlexicon(['to'], 'TO')
     addlexicon(['not'], 'NOT')
     addlexicon(['in'], 'IN')
@@ -137,6 +139,7 @@ def pickle_lexicon():
     addlexicon(['times'], 'TIMES')
     addlexicon(['NUM'], 'NUM')
     addlexicon(['of'], 'OF')
+
     readcpglossary()
     # for wlist in multiwords.values():
     # wlist = sorted(wlist, key=len)

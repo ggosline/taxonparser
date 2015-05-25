@@ -1,23 +1,24 @@
 (Start[]
   (DESCRIPTION[]
     (SUBJECT[]
-      (AP[category='reproduction']
-        (A[appliesto='', category='reproduction', orth='female', -position, -timing]
-          Female))
-      (N[appliesto='', category='structure', orth='inflorescence']
-        inflorescence))
-    (CHAR[category='prep']
-      (P[orth='in', -position, prep='in'] in)
+      (N[appliesto='', category='structure', orth='disc'] Disc))
+    (CHAR[category='structure']
+      (ISA[] )
       (NP[category='structure']
-        (ART[orth='an'] an)
+        (ART[orth='a'] a)
         (NBAR[category='structure']
-          (AP[category='insertion']
-            (A[appliesto='', category='insertion', orth='axillary', -position, -timing]
-              axillary))
+          (AP[category='texture']
+            (A[appliesto='', category='texture', orth='fleshy', -position, -timing]
+              fleshy))
           (NBAR[category='structure']
-            (N[appliesto='inflorescence', category='structure', orth='spike']
-              spike)))))
-    (CHAR[category='architecture']
-      (NUM[orth='NUM'] 3–5)
-      (A[appliesto='inflorescence', category='architecture', orth='_flowered', -position, -timing]
-        -flowered))))
+            (AP[category='shape']
+              (A[appliesto='', category='shape', orth='convex', -position, -timing]
+                convex))
+            (NBAR[category='structure']
+              (N[appliesto='', category='structure', orth='pad'] pad))))))
+    (CHAR[category='size']
+      (DEG[+accuracy, orth='±', -timing] ±)
+      (SIZEB[]
+        (NUM[orth='NUM'] 2–2.5)
+        (UNIT[orth='mm.'] mm.)
+        (DIMEN[] (DIM[orth='in_diameter'] in diameter))))))

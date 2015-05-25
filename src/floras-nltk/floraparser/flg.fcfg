@@ -36,11 +36,15 @@ CHR[category=?c] ->  CHR[category=?c] STAGE
 CHR[category=?c] ->  CHR[category=?c] POSITION
 
 CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c]
+CHR[category=?c] -> ISA NP[category=?c]
+ISA -> IS |
 
 # CHR[category=?c] ->  NP[category=?c] AP
 CHR[category=size] ->  SIZE
 CHR[category=count] ->  COUNT
 CHRL -> CHR CHRL | CHR
+
+CHAR -> STAGE CHARLIST
 
 #CHAR[category=inflorescence] -> IN NP
 
@@ -66,6 +70,7 @@ ADVB[+comp] -> A[+makecomp] ADV
 
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c] -> A[category=?c] | ADVB ABAR[category=?c]
+ABAR[category=(?c+?d)] -> A[category=?c]  ABAR[category=?d]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 A[category=?c] -> UNK
 
@@ -102,7 +107,8 @@ AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+tim
 
 AP[category=?c, +position] -> PLOC NP[category=?c, +position]
 
-WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHRL | NP[category=?c] CHRL
+WITHP[category=?c] -> P[prep='with'] NP[category=?c] CHRL
+# WITHP[category=?c] -> NP[category=?c] CHRL
 OFP[category=?c] -> OF NP[category=?c]
 
 PP[prep=?p, category=?c, position=?pos] -> P[prep=?p, position=?pos] NP[category=?c]
@@ -118,6 +124,7 @@ PLOC -> P[+position]
 AND -> CONJ[conj=and]
 
 STAGE[+timing] -> 'in' A[category='life-stage'] 'state'
+STAGE[+timing] -> 'at' A[category='life-stage']
 STAGE[+timing] -> A[+timing]
 
 POSITION -> P[prep=?p, +position] | PP[+position]

@@ -1,0 +1,105 @@
+(Start[]
+  (DESCRIPTION[]
+    (SUBJECT[]
+      (N[appliesto='', category='structure', orth='blade'] blade))
+    (CHAR[category='texture']
+      (APL[category='texture']
+        (A[appliesto='', category='texture', orth='papery', -position, -timing]
+          papery))
+      (CDELIM[] )
+      (CONJ[conj='or', +coord, orth='or'] or)
+      (AP[category='texture']
+        (A[appliesto='', category='texture', orth='coriaceous', -position, -timing]
+          subcoriaceous)))
+    (CHAR[category=(reflectance, coloration)]
+      (CHR[category=(reflectance, coloration)]
+        (DEG[+frequency, orth='usually', -timing] usually)
+        (ABAR[category=(reflectance, coloration)]
+          (A[appliesto='', category='reflectance', orth='glossy', -position, -timing]
+            glossy)
+          (ABAR[category='coloration']
+            (ADVB[] (ADV[orth='dark', -timing] dark))
+            (ABAR[category='coloration']
+              (A[appliesto='', category='coloration', orth='green', -position, -timing]
+                green)))))
+      (POSITION[] (P[orth='above', +position, prep='above'] above)))
+    (CHAR[]
+      (STAGE[+timing]
+        (A[category='compar', +compar, orth='paler'] paler))
+      (CHAR[category='position']
+        (A[category='position', orth='beneath', +position, -timing]
+          beneath))
+      (CHAR[category='shape']
+        (DEG[+frequency, orth='usually', -timing] usually)
+        (ABAR[category='shape']
+          (A[appliesto='', category='shape', orth='elliptic', -position, -timing]
+            elliptic)))
+      (CHAR[category='shape']
+        (DEG[+frequency, orth='sometimes', -timing] sometimes)
+        (ABAR[category='shape']
+          (A[appliesto='', category='shape', orth='lanceolate', -position, -timing]
+            lanceolate)))
+      (CHAR[category='size']
+        (SIZEB[]
+          (NUM[orth='NUM'] (2.5–)3.5–11(–15))
+          (UNIT[orth='cm.'] cm.)
+          (DIMEN[] (DIM[orth='long'] long)))
+        (COMMA[orth=','] ,)
+        (SIZEB[]
+          (NUM[orth='NUM'] 1.7–4.5(–9))
+          (UNIT[orth='cm.'] cm.)
+          (DIMEN[] (DIM[orth='wide'] wide))))
+      (CHAR[category='shape']
+        (ADVB[]
+          (DEG[+frequency, orth='usually', -timing] usually)
+          (ADVB[] (ADV[-timing] bluntly)))
+        (ABAR[category='shape']
+          (A[appliesto='', category='shape', orth='acuminate', -position, -timing]
+            acuminate)))
+      (CHAR[category='shape']
+        (APL[category='shape']
+          (DEG[+frequency, orth='rarely', -timing] rarely)
+          (ABAR[category='shape']
+            (A[appliesto='', category='shape', orth='obtuse', -position, -timing]
+              obtuse)))
+        (CDELIM[] )
+        (CONJ[conj='or', +coord, orth='or'] or)
+        (AP[category='shape']
+          (A[appliesto='', category='shape', orth='retuse', -position, -timing]
+            retuse)))
+      (CHAR[category='shape']
+        (AP[category='shape']
+          (AP[category='shape']
+            (A[appliesto='', category='shape', orth='cuneate', -position, -timing]
+              cuneate))
+          (TO[orth='to'] to)
+          (AP[category='shape']
+            (DEG[+accuracy, orth='almost', -timing] almost)
+            (ABAR[category='shape']
+              (A[appliesto='', category='shape', orth='rounded', -position, -timing]
+                rounded))))
+        (PP[category='position', +position, prep='at']
+          (P[orth='at', +position, prep='at'] at)
+          (NP[category='position']
+            (ART[orth='the'] the)
+            (NBAR[category='position']
+              (N[category='position', orth='base', +position] base))))))
+    (CHAR[category='structure']
+      (P[orth='with', -position, prep='with'] with)
+      (NP[category='structure']
+        (AP[category=(texture, prominence, coloration)]
+          (A[appliesto='', category='texture', orth='fine', -position, -timing]
+            fine)
+          (ABAR[category=(prominence, coloration)]
+            (ADVB[] (ADV[orth='slightly', -timing] slightly))
+            (ABAR[category=(prominence, coloration)]
+              (A[appliesto='', category='prominence', orth='prominent', -position, -timing]
+                prominent)
+              (ABAR[category='coloration']
+                (A[appliesto='', category='coloration', orth='reticulate', -position, -timing]
+                  reticulate)))))
+        (NBAR[category='structure']
+          (N[appliesto='', category='structure', orth='vein'] veins)))
+      (CHRL[]
+        (A[category='position', orth='beneath', +position, -timing]
+          beneath)))))

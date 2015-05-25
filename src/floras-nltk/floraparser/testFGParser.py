@@ -12,7 +12,8 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'petiole 3–6 mm. long with conspicuously undulate margins'
+description = 'Disc a fleshy convex pad, ± 2–2.5 mm. in diameter'
+
 
 trec['description'] = description
 trdr = [trec]
@@ -39,7 +40,7 @@ if __name__ == '__main__':
                         for i, treex in enumerate(trees):
                             # cleanparsetree(treex)
                             treex.draw()
-                            if True:
+                            if True and i <= 20:
                                 tfilename = tfilebase + str(i)
                                 tfile = open(tfilename, mode='w', encoding='utf-8')
                                 print(treex, file=tfile)
@@ -51,7 +52,7 @@ if __name__ == '__main__':
                     print('No. of trees: %d' % len(trees), file=of)
                     if ttrace:
                         for treex in trees[0:40]:
-                            # cleanparsetree(treex)
+                            cleanparsetree(treex)
                             treex.draw()
                     if trees:
                         print(FindNode('SUBJECT', trees[0]))

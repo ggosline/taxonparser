@@ -1313,7 +1313,7 @@
 "1384","inferior","position","ovary","Wholly enclosed by a floral tube casing, the distal portions of the perianth and/or androecium thus arising from its apex.","position","q"
 "1385","inflated","shape",,"Relatively thin-walled with an essentially empty interior largely enclosed by the walls, which are convex overall and appear taut, as though from internal pressure.  See also swollen (turgid, tumid), which is not clearly distinct in its application.","shape",
 "1386","inflexed","orientation",,"Bent adaxially at some point along its length.","orientation",
-"1387","inflorescence","architecture",,"Mode or progressive pattern of bearing flowers; most appropriately described using adjectival terms.","architecture",
+#,"inflorescence","architecture",,"Mode or progressive pattern of bearing flowers; most appropriately described using adjectival terms.","architecture",
 "1388","inflorescence","structure",,"The basic architectural unit of the flower-producing portion of a plant; comprising one or more flowers, their associated supporting axes (peduncles, main axes, branches and pedicels), if any, and the appendages thereto (bracts, bractlets or bracteoles or","STRUCTURE",
 "1389","infrabracteal","insertion",,"Upon the axis directly below a bract insertion.","position","q"
 "1390","infrabracteal","position",,"Upon the axis directly below a bract insertion.","position","q"
@@ -3344,7 +3344,7 @@
 "3545","accessory","insertion","buds, branches, fruits","<b> 1. </b>(of buds) additional to axillary buds, and assuming their function; <b>2. </b>(of branches) secondary branches; <b>3. </b>(of fruits) false fruits, conspicuous but without function other than attraction; <b>4.</b> a fruit (or group of fruits) c",,"KG"
 "3548","acumen","structure",,"a rather abruptly tapering point from an otherwise rounded or obtuse apex",,"KG"
 "3551","angles","structure",,,,"KG"
-"3552","anthesis","maturation",,"time of fertilisation of the flower; time of receptivity of stigma or distribution of pollen; used more loosely for the time when the flower opens",,"KG"
+"3552","anthesis","life-stage",,"time of fertilisation of the flower; time of receptivity of stigma or distribution of pollen; used more loosely for the time when the flower opens",,"KG"
 "3553","appearing",,,,,"KG"
 "3556","point_of_attachment","structure",,,,"KG"
 "#","bases","structure",,,,"KG"
@@ -3462,3 +3462,4 @@
 3749,free_central,architecture,placentation,,,
 3750,free_basal,architecture,placentation,,,
 3751,segment,structure,,,,
+3752,pad,structure,,,,
