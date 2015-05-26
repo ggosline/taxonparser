@@ -57,20 +57,21 @@ DIMEN -> P[prep='in'] DIM
 DIMEN -> DIM
 COUNT[category=count] -> NUM | NUM P[prep='per'] NBAR
 
-ABAR[category=?c] -> NUM A[category=?c]
 AP[category=?c] -> AP[category=?c] TO AP[category=?c]
 AP[category=?c] -> AP[category=?c] PPAREXP
 
 CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
+
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
 ADVB -> ADV CONJUNCTION ADVB
 ADVB -> DEG ADVB
 ADVB[+comp] -> A[+makecomp] ADV
 
+ABAR[category=?c] -> NUM A[category=?c]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c] -> A[category=?c] | ADVB ABAR[category=?c]
-ABAR[category=(?c+?d)] -> A[category=?c]  ABAR[category=?d]
+ABAR[category=(?c+?d), H=?h] -> A[category=?c, H=?h]  ABAR[category=?d]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 A[category=?c] -> UNK
 
@@ -84,7 +85,7 @@ ABAR[category=?c] -> ABAR[category=?c] CONJ[conj='or'] PP
 ABAR[category=?c] -> PP CONJ[conj='or'] ABAR[category=?c]
 ABAR -> NUM TIMES A[+compar] NP
 
-AP[category=?c] -> DEG ABAR[category=?c] | ABAR[category=?c]
+AP[category=?c, H=[category=?c]] -> DEG ABAR[category=?c] | ABAR[category=?c]
 AP[category=presence] -> CONJ[conj='or'] ABAR[category=presence]
 
 #AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]

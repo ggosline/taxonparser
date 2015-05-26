@@ -18,7 +18,7 @@ description = 'Disc a fleshy convex pad, ± 2–2.5 mm. in diameter'
 trec['description'] = description
 trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
-tfilebase = r'E:\GitHub\taxonparser\temp\tree'
+tfilebase = r'..\..\..\temp\tree'
 
 ttrace = 3
 of = sys.stdout

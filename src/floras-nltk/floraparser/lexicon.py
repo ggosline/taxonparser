@@ -5,9 +5,11 @@ __author__ = 'gg12kg'
 import csv
 import pickle
 import os
+from nltk.featstruct import Feature, FeatStruct
 
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 
+H = FeatStructNonterminal('[-position, -timing]')
 lexicon = {}
 
 multiwords = {}
@@ -34,7 +36,7 @@ def pickle_lexicon():
             else:
                 multiwords[firstword] = [tuple(ws)]
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        features = {TYPE: POS, 'orth': word}
+        features = {TYPE: POS, 'orth': word, 'H': H}
         for item in morefeatures.items():  # avoid null values
             # if item[1]:
             features[item[0]] = item[1]

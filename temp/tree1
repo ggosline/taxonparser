@@ -1,24 +1,28 @@
 (Start[]
   (DESCRIPTION[]
     (SUBJECT[]
-      (N[appliesto='', category='structure', orth='disc'] Disc))
+      (N[H=[-position, -timing], appliesto='', category='structure', orth='disc']
+        Disc))
     (CHAR[category='structure']
       (ISA[] )
       (NP[category='structure']
-        (ART[orth='a'] a)
+        (ART[H=[-position, -timing], orth='a'] a)
         (NBAR[category='structure']
-          (AP[category='texture']
-            (A[appliesto='', category='texture', orth='fleshy', -position, -timing]
+          (AP[H=[category='texture'], category='texture']
+            (A[H=[-position, -timing], appliesto='', category='texture', orth='fleshy', -position, -timing]
               fleshy))
           (NBAR[category='structure']
-            (AP[category='shape']
-              (A[appliesto='', category='shape', orth='convex', -position, -timing]
+            (AP[H=[category='shape'], category='shape']
+              (A[H=[-position, -timing], appliesto='', category='shape', orth='convex', -position, -timing]
                 convex))
             (NBAR[category='structure']
-              (N[appliesto='', category='structure', orth='pad'] pad))))))
+              (N[H=[-position, -timing], appliesto='', category='structure', orth='pad']
+                pad))))))
     (CHAR[category='size']
-      (DEG[+accuracy, orth='±', -timing] ±)
+      (DEG[H=[-position, -timing], +accuracy, orth='±', -timing] ±)
       (SIZEB[]
-        (NUM[orth='NUM'] 2–2.5)
-        (UNIT[orth='mm.'] mm.)
-        (DIMEN[] (DIM[orth='in_diameter'] in diameter))))))
+        (NUM[H=[-position, -timing], orth='NUM'] 2–2.5)
+        (UNIT[H=[-position, -timing], orth='mm.'] mm.)
+        (DIMEN[]
+          (DIM[H=[-position, -timing], orth='in_diameter']
+            in diameter))))))

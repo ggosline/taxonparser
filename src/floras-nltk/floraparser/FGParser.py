@@ -5,9 +5,12 @@ import nltk
 from nltk import grammar, parse
 from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader, read_grammar, SLASH, TYPE, Production
 from nltk.parse.featurechart import FeatureChart
+from nltk.featstruct import FeatStruct, Feature
 from floraparser import lexicon
 from floraparser.fltoken import FlToken
 from nltk import Tree, ImmutableTree
+
+H = Feature('H', default=FeatStruct('[category=?c, -position, -timing]'))
 
 class FGGrammar(FeatureGrammar):
     def __init__(self, start, productions):
@@ -37,7 +40,7 @@ class FGGrammar(FeatureGrammar):
         (only if features and logic_parser is None)
         """
         if features is None:
-            features = (TYPE, SLASH)
+            features = (TYPE, SLASH, H)
 
         if fstruct_reader is None:
             fstruct_reader = FeatStructReader(features, FeatStructNonterminal,
