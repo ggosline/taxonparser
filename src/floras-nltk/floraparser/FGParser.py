@@ -3,14 +3,13 @@ import sys
 
 import nltk
 from nltk import grammar, parse
-from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader, read_grammar, SLASH, TYPE, Production
+from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader, read_grammar, SLASH, TYPE, Production, \
+    Nonterminal
 from nltk.parse.featurechart import FeatureChart
-from nltk.featstruct import FeatStruct, Feature
+from nltk.featstruct import FeatStruct, Feature, FeatList
 from floraparser import lexicon
 from floraparser.fltoken import FlToken
 from nltk import Tree, ImmutableTree
-
-H = Feature('H', default=FeatStruct('[category=?c, -position, -timing]'))
 
 class FGGrammar(FeatureGrammar):
     def __init__(self, start, productions):
@@ -40,10 +39,10 @@ class FGGrammar(FeatureGrammar):
         (only if features and logic_parser is None)
         """
         if features is None:
-            features = (TYPE, SLASH, H)
+            features = (TYPE, SLASH)
 
         if fstruct_reader is None:
-            fstruct_reader = FeatStructReader(features, FeatStructNonterminal,
+            fstruct_reader = FeatStructReader(features, FeatStructNonterminal, FeatListNonterminal,
                                               logic_parser=logic_parser)
         elif logic_parser is not None:
             raise Exception('\'logic_parser\' and \'fstruct_reader\' must '
@@ -272,3 +271,15 @@ def FindNode(lab:str, tree:Tree) -> Tree:
     for t in tree:
         if isinstance(t, Tree):
             return FindNode(lab, t)
+
+
+class FeatListNonterminal(FeatList, Nonterminal):
+    """A feature structure that's also a nonterminal.  It acts as its
+    own symbol, and automatically freezes itself when hashed."""
+
+    def __hash__(self):
+        self.freeze()
+        return FeatStruct.__hash__(self)
+
+    def symbol(self):
+        return self

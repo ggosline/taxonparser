@@ -9,7 +9,6 @@ from nltk.featstruct import Feature, FeatStruct
 
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 
-H = FeatStructNonterminal('[-position, -timing]')
 lexicon = {}
 
 multiwords = {}
@@ -36,7 +35,7 @@ def pickle_lexicon():
             else:
                 multiwords[firstword] = [tuple(ws)]
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        features = {TYPE: POS, 'orth': word, 'H': H}
+        features = {TYPE: POS, 'H': FeatStructNonterminal({'orth': word})}
         for item in morefeatures.items():  # avoid null values
             # if item[1]:
             features[item[0]] = item[1]

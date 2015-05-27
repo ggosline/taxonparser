@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Disc a fleshy convex pad, ± 2–2.5 mm. in diameter'
+description = 'Disc a fleshy convex pad'
 
 
 trec['description'] = description
@@ -28,7 +28,7 @@ if __name__ == '__main__':
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureBottomUpLeftCornerChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
