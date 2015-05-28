@@ -4,44 +4,50 @@ Start -> DESCRIPTION
 
 #XP[category=?c] -> PP[category=?c] | AP[category=?c] | NP[category=?c]
 CDELIM -> COMMA |
+# COMMA ->
 
-DESCRIPTION[subject=?s, clist=?clist] -> SUBJECT[H=?s] CHARLIST[clist=?clist]
+DESCRIPTION -> SUBJECT CHARLIST
 
-SUBJECT[H=?h, mod=?m] -> N[category=structure, H=?h] | AP[H=?m] N[category=structure, H=?h] | N[category=structure, H=?h] OFP
-SUBJECT[H=?h] -> NP[category='life-form', H=?h]
+SUBJECT -> N[category=structure] | AP N[category=structure] | N[category=structure] OFP
+SUBJECT -> NP[category='life-form']
 
-NBAR[category=?c, H=?h, mod=?m] -> N[category=?c, H=?h] | AP[H=?m] NBAR[category=?c, H=?h]
-NBAR[category=?c, H=?h, mod=?m] -> NBAR[category=?c, H=?h] AP[H=?m] | NBAR[category=?c, H=?h] OFP
+NBAR[category=?c] -> N[category=?c] | AP NBAR[category=?c]
+NBAR[category=?c] -> NBAR[category=?c] AP | NBAR[category=?c] OFP
 
-NBAR[category=?c, H=?h] -> NBAR[category=?c, H=?h] PAREXP
+NBAR[category=?c] -> NBAR[category=?c] PAREXP
+
+NP[category=?c] -> DET NBAR[category=?c] | ART NBAR[category=?c]
 NBAR[category=pro] -> PRO
-
-NP[category=?c, H=?h] -> DET NBAR[category=?c, H=?h] | ART NBAR[category=?c, H=?h] | NBAR[category=?c, H=?h]
-
 NP -> NAME
 NP -> A[+compar] NBAR THAN S
 NP -> A[+compar] NBAR THAN S/NBAR
+NP[category=?c] -> NBAR[category=?c]
+#NP/NP ->
 
-NP/NP ->
+#R -> S/NP
+#R -> RCOMP S/NP
+# NP -> NP R
 
 CTERMINATOR -> COMMA | '$'
 # CTERMINATOR ->
-CHAR[category=?c, H=?h] -> CHR[category=?c, H=?h] CTERMINATOR
-CHARLIST[clist=(?h1+?h2)] -> CHAR[H=?h1] CHARLIST[clist=?h2]
-CHARLIST[clist=?h] -> CHAR[H=?h]
-CHR[category=?c, H=?h] ->  CHR[category=?c, H=?h] STAGE
-CHR[category=?c, H=?h] ->  CHR[category=?c, H=?h] POSITION
+CHAR[category=?c] -> CHR[category=?c] CTERMINATOR
+CHARLIST -> CHAR CHARLIST | CHAR
+CHR[category=?c] ->  CHR[category=?c] STAGE
+CHR[category=?c] ->  CHR[category=?c] POSITION
 
-CHR[category=?c, H=?h] ->  AP[category=?c, H=?h] |  WITHP[category=?c, H=?h]
-
-CHR[category=?c, H=?h] -> ISA NP[category=?c, H=?h]
+CHR[category=?c] ->  AP[category=?c] |  WITHP[category=?c]
+CHR[category=?c] -> ISA NP[category=?c]
 ISA -> IS |
 
+# CHR[category=?c] ->  NP[category=?c] AP
 CHR[category=size] ->  SIZE
 CHR[category=count] ->  COUNT
 CHRL -> CHR CHRL | CHR
 
 CHAR -> STAGE CHARLIST
+
+#CHAR[category=inflorescence] -> IN NP
+
 
 SIZEB -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
 SIZEB -> SIZEB AND SIZEB
@@ -51,8 +57,8 @@ DIMEN -> P[prep='in'] DIM
 DIMEN -> DIM
 COUNT[category=count] -> NUM | NUM P[prep='per'] NBAR
 
-AP[category=?c, H=(?h1+'to'+?h2)] -> AP[category=?c, H=?h1] TO AP[category=?c, H=?h2]
-AP[category=?c, H=?h] -> AP[category=?c, H=?h] PPAREXP
+AP[category=?c] -> AP[category=?c] TO AP[category=?c]
+AP[category=?c] -> AP[category=?c] PPAREXP
 
 CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
 
@@ -65,7 +71,7 @@ ADVB[+comp] -> A[+makecomp] ADV
 ABAR[category=?c] -> NUM A[category=?c]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c, H=?h] -> A[category=?c, H=?h] | ADVB ABAR[category=?c, H=?h]
-ABAR[category=[?c,?d], H=(?h1+?h2)] -> A[category=?c, H=?h1]  ABAR[category=?d, H=?h2]
+ABAR[category=[?c,?d], H=?h] -> A[category=?c, H=?h]  ABAR[category=?d]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 A[category=?c] -> UNK
 

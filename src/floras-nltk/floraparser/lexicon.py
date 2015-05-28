@@ -35,7 +35,10 @@ def pickle_lexicon():
             else:
                 multiwords[firstword] = [tuple(ws)]
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        features = {TYPE: POS, 'H': FeatStructNonterminal({'orth': word})}
+        head = FeatStructNonterminal({'orth': word})
+        if 'category' in morefeatures:
+            head['category'] = morefeatures['category']
+        features = {TYPE: POS, 'H': head}
         for item in morefeatures.items():  # avoid null values
             # if item[1]:
             features[item[0]] = item[1]
@@ -88,7 +91,7 @@ def pickle_lexicon():
         addlexentry(word, 'P', prep=word, position=True)
     GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
              "pairs|pair|row|rows|number|numbers|colonies".split('|')
-    addlexicon(GROUPS, 'N', group=True)
+    addlexicon(GROUPS, 'N', group=True, category='grouping')
     LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
                  "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
                  "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5|2/5".split('|')

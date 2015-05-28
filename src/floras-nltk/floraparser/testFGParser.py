@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Disc a fleshy convex pad'
+description = 'Inflorescence glabrous, consisting of few-flowered sessile or shortly pedunculate axillary fascicles'
 
 
 trec['description'] = description
