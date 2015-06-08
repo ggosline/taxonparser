@@ -20,11 +20,13 @@ class wordreader(object):
         else:
             self.doc = self.wordApp.Documents.Add()
             self.filename = ""
-        paras = [[p.Range, p.Range.Start, p.Range.End, p.Range.Text, p.Style.NameLocal] for p in self.doc.Paragraphs]
+        paras = [[p.Range, p.Range.Start, p.Range.End, p.Range.Text, '' if p.Style is None else p.Style.NameLocal] for p
+                 in self.doc.Paragraphs]
 
     @property
     def paras(self):
-        return [[p.Range, p.Range.Start, p.Range.End, p.Range.Text, p.Style.NameLocal] for p in self.doc.Paragraphs]
+        return [[p.Range, p.Range.Start, p.Range.End, p.Range.Text, '' if p.Style is None else p.Style.NameLocal] for p
+                in self.doc.Paragraphs]
 
     @property
     def words (self):

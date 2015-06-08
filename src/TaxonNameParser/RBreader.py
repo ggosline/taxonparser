@@ -5,10 +5,9 @@ from XMLTreeBuilder import XMLFromRecord
 import wordreader
 import os
 import SISDump
+import csv
 
 from getBits import *
-
-working_directory = 'T:\\Cameroon\\GGosline\\Cameroon Red Data Book\\'
 
 def red_list_family(faname):
 
@@ -20,6 +19,7 @@ def red_list_family(faname):
     # taxonstack = []
     taxonNo = 1000
     assessedBy = None
+    famassessedBy = None
 
     wp = wordreader.wordreader("{0}{1}.doc".format(working_directory,faname))
 
@@ -55,8 +55,10 @@ def red_list_family(faname):
                 txel = XMLFromRecord(taxonel, tparsed, "TaxonName")
             if " assessed by " in tname:
                 assessedBy = tname.split(" assessed by ")[1].strip()
-            else:
+            elif famassessedBy:
                 assessedBy = famassessedBy
+            else:
+                pass
 
             # current p is the assessment
             if p.startswith('DD'):
@@ -108,14 +110,36 @@ def red_list_family(faname):
                     txel = XMLFromRecord(taxonel, np, "Description")
     return root
 
-def processFamily(faname):
+
+def writeassessments(mytree, csvwriter):
+    root = mytree.getroot()
+    for taxon in root.findall('.//Taxon'):
+        print(taxon.find('TaxonName/family').text, taxon.find('TaxonName/genus').text,
+              taxon.find('TaxonName/species').text,
+              taxon.find('RLCategory').text, taxon.find('RLCriteria').text)
+        csvwriter.writerow([taxon.find('TaxonName/family').text, taxon.find('TaxonName/genus').text,
+                            taxon.find('TaxonName/species').text,
+                            taxon.find('RLCategory').text, taxon.find('RLCriteria').text])
+    pass
+
+
+def processFamily(faname, csvwriter):
     treatment = red_list_family(faname)
     mytree = etree.ElementTree(treatment)
-    mytree.write("{0}.xml".format(faname), encoding="utf-8")
-    SISDump.SIS_dump(mytree, faname)
+    #  mytree.write("{0}.xml".format(faname), encoding="utf-8")
+    writeassessments(mytree, csvwriter)
+
+    # SISDump.SIS_dump(mytree, faname)
     # print(etree.tostring(treatment, encoding = str, pretty_print=True))
 
-if __name__ == "__main__":
-    faname = 'Gramineae'
-    processFamily(faname)
 
+working_directory = 'T:\\Cameroon\\GGosline\\Cameroon Red Data Book\\Families\\'
+if __name__ == "__main__":
+
+    os.chdir(working_directory)
+    famlist = [os.path.splitext(f)[0] for f in os.listdir() if f.endswith('.doc')]
+
+    with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
+        csvwriter = csv.writer(csvf)
+        for fam in famlist:
+            processFamily(fam, csvwriter)
