@@ -60,12 +60,12 @@ CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
 ADVB -> ADV
 ADVB -> ADV CONJUNCTION ADVB
 ADVB -> DEG ADVB
-ADVB[+comp] -> A[+makecomp] ADV
+#ADVB[+comp] -> A[+makecomp] ADV
 
-ABAR[category=?c] -> NUM A[category=?c]
+ABAR[category=?c] -> NUM A[category=?c, -position]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
-ABAR[category=?c, H=?h] -> A[category=?c, H=?h] | ADVB ABAR[category=?c, H=?h]
-ABAR[category=[?c,?d], H=(?h1+?h2)] -> A[category=?c, H=?h1]  ABAR[category=?d, H=?h2]
+ABAR[category=?c, H=?h] -> A[category=?c, H=?h, -position] | ADVB ABAR[category=?c, H=?h, -position]
+ABAR[category=(?c+?d), H=(?h1+?h2)] -> A[category=?c, H=?h1, -position]  ABAR[category=?d, H=?h2]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 A[category=?c] -> UNK
 
@@ -123,3 +123,4 @@ STAGE[+timing] -> 'at' A[category='life-stage']
 STAGE[+timing] -> A[+timing]
 
 POSITION -> P[prep=?p, +position] | PP[+position]
+POSITION -> A[+position]

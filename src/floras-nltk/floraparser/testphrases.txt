@@ -7,13 +7,13 @@ No. of trees: 32
 Success: Leaves opposite, subopposite or alternate, petiolate
 No. of trees: 1
 Fail:    petiole 3–6 mm. long with conspicuously undulate margins
-No. of trees: 4
+No. of trees: 3
 Success: blade papery or subcoriaceous, usually glossy dark green above, paler beneath, usually elliptic, sometimes lanceolate, (2.5–)3.5–11(–15) cm. long, 1.7–4.5(–9) cm. wide, usually bluntly acuminate, rarely obtuse or retuse, cuneate to almost rounded at the base, with fine slightly prominent reticulate veins beneath
 No. of trees: 100
 Success: margin serrate to subentire
 No. of trees: 2
 Success: Inflorescence glabrous, consisting of few-flowered sessile or shortly pedunculate axillary fascicles
-No. of trees: 2
+No. of trees: 1
 Success: bracts ovate, ± 0.5–1 mm. long, fimbriate
 No. of trees: 1
 Success: pedicels 4–8(–10) mm. long at anthesis, articulated at the base
@@ -47,13 +47,13 @@ No. of trees: 32
 Success: Leaves opposite, subopposite or alternate, petiolate
 No. of trees: 1
 Fail:    petiole 3–6 mm. long with conspicuously undulate margins
-No. of trees: 4
+No. of trees: 3
 Success: blade papery or subcoriaceous, usually glossy dark green above, paler beneath, usually elliptic, sometimes lanceolate, (2.5–)3.5–11(–15) cm. long, 1.7–4.5(–9) cm. wide, usually bluntly acuminate, rarely obtuse or retuse, cuneate to almost rounded at the base, with fine slightly prominent reticulate veins beneath
 No. of trees: 100
 Success: margin serrate to subentire
 No. of trees: 2
 Success: Inflorescence glabrous, consisting of few-flowered sessile or shortly pedunculate axillary fascicles
-No. of trees: 2
+No. of trees: 1
 Success: bracts ovate, ± 0.5–1 mm. long, fimbriate
 No. of trees: 1
 Success: pedicels 4–8(–10) mm. long at anthesis, articulated at the base

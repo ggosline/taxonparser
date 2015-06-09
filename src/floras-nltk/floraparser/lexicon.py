@@ -104,8 +104,7 @@ def pickle_lexicon():
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least|to'.split('|')
     addlexicon(RANGE, 'RANGE')
-    POSITIONA = 'below|above|upper|lower|uppermost|lowermost|various|beneath|above_and_beneath|' \
-                'outside|inside'.split('|')
+    POSITIONA = 'upper|lower|uppermost|lowermost|various|above_and_beneath'.split('|')
     addlexicon(POSITIONA, 'A', position=True, timing=False, category='position')
 
     POSITION = 'top|bottom|underside|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
@@ -117,10 +116,10 @@ def pickle_lexicon():
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
     DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
     addlexicon(DEGREE, 'ADV', timing=False)
-    COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|shorter|" \
+    COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from".split('|')
-    addlexicon(COMPARISON, 'A', compar=True, category='compar')
+    # addlexicon(COMPARISON, 'A', compar=True, category='compar')
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length".split('|')
