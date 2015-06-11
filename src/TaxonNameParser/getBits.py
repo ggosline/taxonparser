@@ -3,15 +3,26 @@ __author__ = 'gg12kg'
 import re
 from recordtype import recordtype
 
-countrylist = dict(Cameroon="Cameroon",
-                   Nigeria="Nigeria",
-                   Gabon="Gabon",
-                   Angola="Angola",
-                   Brazzaville="Congo-Brazzaville",
-                   Kinshasa="Congo-Kinshasa",
-                   Equatorial="Equatorial Guinea",
-                   Ghana="Ghana"
+countrylist = dict(Cameroon="Cm",
+                   Nigeria="Ng",
+                   Gabon="Ga",
+                   Angola="Ao",
+                   Brazzaville="Cg",
+                   Kinshasa="Cd",
+                   DRC="Cd",
+                   Equatorial="Gq",
+                   Ghana="Gh"
                    )
+
+# countrylist = dict(Cameroon="Cameroon",
+#                    Nigeria="Nigeria",
+#                    Gabon="Gabon",
+#                    Angola="Angola",
+#                    Brazzaville="Congo-Brazzaville",
+#                    Kinshasa="Congo-Kinshasa",
+#                    Equatorial="Equatorial Guinea",
+#                    Ghana="Ghana"
+#                    )
 
 digits = dict(one = '1',
               two = '2',

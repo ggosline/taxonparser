@@ -6,7 +6,7 @@ import csv
 from lxml import etree
 import os
 
-Allfields = r"Internal_taxon_id	LocationsNumber.range	MapStatus.status	BiogeographicRealm.realm	System.value	" \
+Allfields = r"internal_taxon_id	LocationsNumber.range	MapStatus.status	BiogeographicRealm.realm	System.value	" \
             r"ElevationLower.limit	ElevationUpper.limit	PopulationTrend.value	PopulationSize.range	" \
             r"MaxSubpopulationSize.range	SubpopulationNumber.range	SubpopulationSingle.value	" \
             r"GenerationLength.range	PopulationDocumentation.narrative	RangeDocumentation.narrative	" \
@@ -36,34 +36,44 @@ Allfields = r"Internal_taxon_id	LocationsNumber.range	MapStatus.status	Biogeogra
             r"PopulationDeclineGenerations2.qualifier	PopulationDeclineGenerations3.range	" \
             r"PopulationDeclineGenerations3.qualifier	PopulationDeclineGenerations3.qualifier"
 
-Taxonomy = r"Internal_taxon_id	Kingdom	Phylum	Class	Order	Family	Genus	Species	Authority	Infra_rank	Infra_name	infra_authority	TaxonomicNotes.value"
+Assessment = "internal_taxon_id" \
+             "RangeDocumentation.narrative MapStatus.status BiogeographicRealm.realm PopulationDocumentation.narrative PopulationTrend.value " \
+             "HabitatDocumentation.narrative System.value UseTradeDocumentation.value ThreatsDocumentation.value ConservationActionsDocumentation.narrative " \
+             "RedListCriteria.critVersion RedListCriteria.isManual RedListCriteria.manualCategory RedListCriteria.manualCriteria RedListCriteria.possiblyExtinct " \
+             "RedListCriteria.possiblyExtinctCandidate RedListCriteria.yearLastSeen RedListCriteria.dataDeficientReason RedListAssessmentDate.value " \
+             "RedListRationale.value RangeDocumentation.narrative MapStatus.status BiogeographicRealm.realm PopulationDocumentation.narrative " \
+             "PopulationTrend.value HabitatDocumentation.narrative System.value UseTradeDocumentation.value ThreatsDocumentation.value " \
+             "ConservationActionsDocumentation.narrative RedListCriteria.critVersion RedListCriteria.isManual RedListCriteria.manualCategory " \
+             "RedListCriteria.manualCriteria RedListCriteria.possiblyExtinct RedListCriteria.possiblyExtinctCandidate RedListCriteria.yearLastSeen " \
+             "RedListCriteria.dataDeficientReason RedListAssessmentDate.value RedListRationale.value"
 
-Threats = r"Internal_taxon_id	Threats.ThreatsLookup	Threats.timing	Threats.scope	Threats.severity	Threats.stress"
+Taxonomy = r"internal_taxon_id	kingdom	phylum	classname	ordername	family	genus	species	taxonomicAuthority	infraType	infra_name	infra_authority	TaxonomicNotes.value"
 
-ConservationNeededFieldList = ("Internal_taxon_id",
+Threats = r"internal_taxon_id	Threats.ThreatsLookup	Threats.timing	Threats.scope	Threats.severity	Threats.stress"
+
+ConservationNeededFieldList = ("internal_taxon_id",
                                "ConservationActions.ConservationActionsLookup", "ConservationActions.Note")
 
-HabitatsFieldList = ("Internal_taxon_id",
+HabitatsFieldList = ("internal_taxon_id",
                      "GeneralHabitats.GeneralHabitatsLookup", "GeneralHabitats.suitability",
                      "GeneralHabitats.majorImportance")
 
-CountryFieldList = ("Internal_taxon_id","CountryOccurrence.CountryOccurrenceLookup","CountryOccurrence.presence","CountryOccurrence.origin","CountryOccurrence.seasonality")
+CountryFieldList = ("internal_taxon_id", "CountryOccurrence.CountryOccurrenceSubfield.CountryOccurrenceLookup",
+                    "CountryOccurrence..CountryOccurrenceSubfield.presence",
+                    "CountryOccurrence..CountryOccurrenceSubfield.origin")
+
 
 AllfieldsList = (s.strip() for s in Allfields.split())
+AssessmentFieldsList = (s.strip() for s in Assessment.split())
 TaxonomyFieldList = (s.strip() for s in Taxonomy.split())
 ThreatsFieldList = (s.strip() for s in Threats.split())
 
-OurAllfields = OrderedDict([
-    ('TaxonID', 'Internal_taxon_id',),
+OurAssessmentFields = OrderedDict([
+    ('TaxonID', 'internal_taxon_id'),
     ('RangeText', 'RangeDocumentation.narrative'),
-    ('AOO', 'AOO.range',),
-    ('EOO', 'EOO.range'),
-    ('ElevFrom', 'ElevationLower.limit'),
-    ('ElevTo', 'ElevationUpper.limit'),
     ('Population', 'PopulationDocumentation.narrative'),
     ('Habitat', 'HabitatDocumentation.narrative'),
     ('System', 'System.value'),
-    ('GrowthForm', 'PlantGrowthForms.PlantGrowthFormsLookup'),
     ('Threats', 'ThreatsDocumentation.value'),
     ('Management', 'ConservationActionsDocumentation.narrative'),
     ('RLCategory', 'RedListCriteria.manualCategory'),
@@ -74,20 +84,30 @@ OurAllfields = OrderedDict([
     ('Assessment_text', 'RedListRationale.value'),
     ('Realm', 'BiogeographicRealm.realm')
 ])
+OurAllfields = OrderedDict([
+    ('TaxonID', 'internal_taxon_id'),
+    ('AOO', 'AOO.range',),
+    ('EOO', 'EOO.range'),
+    ('ElevFrom', 'ElevationLower.limit'),
+    ('ElevTo', 'ElevationUpper.limit'),
+    ('GrowthForm', 'PlantGrowthForms.PlantGrowthFormsLookup'),
+    ('AssessmentVersion', 'RedListCriteriaVersion.criteriaVersion'),
+    ('Assessors', 'RedListAssessors.text')
+])
 
 OurTaxonomyFields = OrderedDict([
-    ('TaxonID', 'Internal_taxon_id'),
+    ('TaxonID', 'internal_taxon_id'),
     ('family', 'family'),
     ('genus', 'genus'),
     ('species', 'species'),
-    ('rank', 'infra_rank'),
+    ('rank', 'infraType'),
     ('infraepi', 'infra_name'),
     ('author', 'authority'),
     ('infraauth', 'infra_authority')
 ])
 
 OurCountryFields = OrderedDict([
-    ("TaxonID","Internal_taxon_id"),
+    ("TaxonID", "internal_taxon_id"),
     ("Country","CountryOccurrence.CountryOccurrenceLookup"),
     ("Extant","CountryOccurrence.presence"),
     ("Native","CountryOccurrence.origin"),
@@ -115,6 +135,18 @@ def SIS_dump(taxonxml, faname):
                     print(OurAllfields[fn], el.text)
             awcsw.writerow(allfdict)
 
+    with open(faname + '\\Assessment.csv', 'w', newline='', encoding="utf-8") as txcsv:
+        txcsw = csv.DictWriter(txcsv, OurAssessmentFields.values(), restval="")
+        txcsw.writeheader()
+        for tx in taxonxml.findall('Taxon'):
+            txdict = {}
+            for fn in OurAssessmentFields.keys():
+                el = tx.find('.//' + fn)
+                if el is not None:
+                    txdict[OurAssessmentFields[fn]] = el.text
+                    print(OurAssessmentFields[fn], el.text)
+            txcsw.writerow(txdict)
+
     with open(faname + '\\Taxonomy.csv','w', newline='', encoding="utf-8") as txcsv:
         txcsw = csv.DictWriter(txcsv, OurTaxonomyFields.values(), restval="")
         txcsw.writeheader()
@@ -133,7 +165,7 @@ def SIS_dump(taxonxml, faname):
         for tx in taxonxml.findall('Taxon'):
             cntrydict = {}
             txid = tx.find('TaxonID')
-            cntrydict["Internal_taxon_id"] = txid.text
+            cntrydict["internal_taxon_id"] = txid.text
             for cntry in tx.findall('.//Country'):
                 cntrydict["CountryOccurrence.CountryOccurrenceLookup"] = cntry.text
                 cntrydict["CountryOccurrence.presence"] = 'Extant'

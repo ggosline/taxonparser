@@ -1,7 +1,7 @@
 from lxml import etree
 
 import RBParaClassifier
-from XMLTreeBuilder import XMLFromRecord
+from   XMLTreeBuilder import XMLFromRecord
 import wordreader
 import os
 import SISDump
@@ -66,6 +66,7 @@ def red_list_family(faname):
                 rlcriteria = None
             else:
                 rlcategory, rlcriteria = p.split(None ,1)
+                rlcriteria = rlcriteria.strip()
 
             XMLFromRecord(taxonel, assessedBy, "Assessors")
             XMLFromRecord(taxonel, rlcategory, "RLCategory")  # Add the assessment
@@ -126,10 +127,10 @@ def writeassessments(mytree, csvwriter):
 def processFamily(faname, csvwriter):
     treatment = red_list_family(faname)
     mytree = etree.ElementTree(treatment)
-    #  mytree.write("{0}.xml".format(faname), encoding="utf-8")
-    writeassessments(mytree, csvwriter)
+    mytree.write("{0}.xml".format(faname), encoding="utf-8")
+    # writeassessments(mytree, csvwriter)
 
-    # SISDump.SIS_dump(mytree, faname)
+    SISDump.SIS_dump(mytree, faname)
     # print(etree.tostring(treatment, encoding = str, pretty_print=True))
 
 
@@ -137,8 +138,8 @@ working_directory = 'T:\\Cameroon\\GGosline\\Cameroon Red Data Book\\Families\\'
 if __name__ == "__main__":
 
     os.chdir(working_directory)
-    famlist = [os.path.splitext(f)[0] for f in os.listdir() if f.endswith('.doc')]
-
+    # famlist = [os.path.splitext(f)[0] for f in os.listdir() if f.endswith('.doc')]
+    famlist = ('VOCHYSIACEAE',)
     with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
         csvwriter = csv.writer(csvf)
         for fam in famlist:
