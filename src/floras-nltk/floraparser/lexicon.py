@@ -5,7 +5,7 @@ __author__ = 'gg12kg'
 import csv
 import pickle
 import os
-from nltk.featstruct import Feature, FeatStruct
+from nltk.featstruct import Feature, FeatStruct, FeatStructReader
 
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 
@@ -22,6 +22,8 @@ def pickle_lexicon():
     # self.wordlist = wordlist
     #         self.category = category
     #         self.appliesto = appliesto
+    featurereader = FeatStructReader(fdict_class=FeatStructNonterminal)
+
     def addlexicon(words, POS, **morefeatures):
         for word in words:
             addlexentry(word, POS, **morefeatures)
@@ -34,15 +36,24 @@ def pickle_lexicon():
                 multiwords[firstword] += [tuple(ws)]
             else:
                 multiwords[firstword] = [tuple(ws)]
+        if 'category' not in morefeatures:
+            category = ""
+        else:
+            category = morefeatures['category']
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        head = FeatStructNonterminal({'orth': word})
-        if 'category' in morefeatures:
-            head['category'] = morefeatures['category']
-        features = {TYPE: POS, 'H': head}
-        for item in morefeatures.items():  # avoid null values
-            # if item[1]:
-            features[item[0]] = item[1]
-        lexicon.setdefault(tuple(ws), []).append(FeatStructNonterminal(features=features))
+        # We are trying a reentrant structure here  -- but not joy!
+        featstring = POS + "[ category= '" + category + "', orth='" + word + "'] "
+        newfeature = featurereader.fromstring(featstring)
+        newfeature.update(morefeatures)
+
+        # head = FeatStructNonterminal({'orth': word})
+        # if 'category' in morefeatures:
+        #     head['category'] = morefeatures['category']
+        # features = {TYPE: POS, 'H': head}
+        # for item in morefeatures.items():  # avoid null values
+        #     # if item[1]:
+        #     features[item[0]] = item[1]
+        lexicon.setdefault(tuple(ws), []).append(newfeature)
 
     def readcpglossary(gfile=r'..\resources\glossarycp.csv'):
         with open(gfile) as csvfile:
@@ -60,7 +71,8 @@ def pickle_lexicon():
                 else:
                     POS = 'UNK'
                 if gid != '#':
-                    addlexentry(term, POS, category=category, appliesto=appliesto, **morefeatures)
+                    # addlexentry(term, POS, category=category, appliesto=appliesto, **morefeatures)
+                    addlexentry(term, POS, category=category, **morefeatures)
 
     COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|but|except|except_for|×'.split('|')
     for word in COORDCONJUNCTION:
