@@ -83,9 +83,9 @@ ABAR[category='prep', prep=?p] -> DET PP[prep=?p] | PP[prep=?p]
 ABAR[+compar] -> A[+compar] THAN NP
 ABAR[category=count] -> NUM
 
-ABAR[category=?c] -> ABAR[category=?c] PP
-ABAR[category=?c] -> ABAR[category=?c] CONJ[conj='or'] PP
-ABAR[category=?c] -> PP CONJ[conj='or'] ABAR[category=?c]
+ABAR[category=?c, H=?h] -> ABAR[category=?c, H=?h] PP[-position]
+ABAR[category=?c, H=?h] -> ABAR[category=?c, H=?h] CONJ[conj='or'] PP
+ABAR[category=?c, H=?h] -> PP CONJ[conj='or'] ABAR[category=?c, H=?h]
 ABAR -> NUM TIMES A[+compar] NP
 
 AP[category=?c, H=?h] -> DEG ABARL[category=?c, H=?h]
@@ -99,7 +99,7 @@ NPL[category=?c] -> NP[category=?c] COMMA NPL[category=?c] | NP[category=?c, +OR
 NP[category=?c, +OR] -> NPL[category=?c] CDELIM OR NP[category=?c]
 
 APL[category=?c, +OR, H=(?h1+?h2+[+OR])] -> AP[category=?c, H=?h1] COMMA APL[category=?c, +OR, H=?h2]
-APL[category=?c, H=?h] -> AP[category=?c, H=?h]
+APL[category=?c, H=?h, -OR] -> AP[category=?c, H=?h]
 APL[category=?c, +OR, -timing, H=(?h1+?h2+[+OR])] -> APL[category=?c, H=?h1, -timing] CDELIM OR AP[category=?c, H=?h2]
 
 #APAND[category=(?b + ?c)] -> AP[category=?b] COMMA APAND[category=?c]
@@ -107,7 +107,7 @@ APL[category=?c, +OR, -timing, H=(?h1+?h2+[+OR])] -> APL[category=?c, H=?h1, -ti
 #APAND[category=(?b + ?c)] -> APAND[category=?b] CDELIM CONJUNCTION AP[category=?c]
 
 AP[category=(?c+?d)] -> AP[category=?c] CONJ[conj=and] AP[category=?d]
-AP[category=?c] -> AP[category=?c]  PP[+position]
+AP[category=?c, H=?h] -> AP[category=?c, H=?h] POSITION
 AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
 AP[category=?c, +position] -> PLOC NP[category=?c, +position]
@@ -116,7 +116,7 @@ WITHP[category=?c, H=[+presence, category=?c]] -> P[prep='with'] NP[category=?c]
 # WITHP[category=?c] -> NP[category=?c] CHRL
 OFP[category=?c] -> OF NP[category=?c]
 
-PP[prep=?p, category=?c, position=?pos] -> P[prep=?p, position=?pos] NP[category=?c]
+PP[prep=?prep, category=?c, position=?p] -> P[prep=?prep, position=?p] NP[category=?c]
 # PP[+position, prep=?p] -> P[prep=?p, +position]
 # PP/?x -> P/NP
 

@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'blade papery or subcoriaceous, usually glossy dark green above, paler beneath, usually elliptic, sometimes lanceolate, (2.5–)3.5–11(–15) cm. long, 1.7–4.5(–9) cm. wide, with fine slightly prominent reticulate veins beneath'
+description = 'sepals free or very shortly joined at the base, unequal, ovate to semicircular, 0.5–1 mm. long, rounded, fimbriate'
 
 
 trec['description'] = description
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     if False:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select TOP 1 * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
+                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=FeatureBottomUpChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
