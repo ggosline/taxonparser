@@ -145,6 +145,7 @@ def SIS_dump(taxonxml, faname):
                 if el is not None:
                     txdict[OurAssessmentFields[fn]] = el.text
                     print(OurAssessmentFields[fn], el.text)
+            txdict['System.value'] = 'Terrestrial'
             txcsw.writerow(txdict)
 
     with open(faname + '\\Taxonomy.csv','w', newline='', encoding="utf-8") as txcsv:
