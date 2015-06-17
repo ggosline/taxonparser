@@ -7,7 +7,7 @@ CDELIM -> COMMA |
 
 DESCRIPTION[subject=?s, clist=?clist] -> SUBJECT[H=?s] CHARLIST[clist=?clist]
 
-SUBJECT[H=?h, mod=?m] ->  AP[H=?m] NPL[category=structure, H=?h]
+SUBJECT[H=?h, mod=?m] -> AP[H=?m] NPL[category=structure, H=?h]
 SUBJECT[H=?h] -> NPL[category=structure, H=?h] | NPL[category=structure, H=?h] OFP
 SUBJECT[H=?h] -> NPL[category='life-form', H=?h]
 
@@ -46,8 +46,9 @@ CHR[category=?c, H=?h, posit=?p] ->  POSITION[posit=?p] CHR[category=?c, H=?h]
 CHR[category=?c, H=?h] ->  AP[category=?c, H=?h]
 CHR[category=?c, H=?h] ->  WITHP[category=?c, H=?h]
 
-CHR[category=?c, H=?h] -> ISA NP[category=?c, H=?h]
-ISA -> IS |
+CHR[category=?c, H=?h] -> ISA NPL[category=?c, H=?h]
+ISA -> IS
+#ISA ->
 
 CHR[category=size] ->  SIZEB
 CHR[category=count] ->  COUNT
@@ -124,11 +125,11 @@ AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+tim
 AP[category=?c, +position] -> PLOC NP[category=?c, +position]
 
 WITHP[category=?c, H=[+presence, category=?c]] -> P[prep='with'] NP[category=?c] CHRL
-# WITHP[category=?c] -> NP[category=?c] CHRL
+
 OFP[category=?c] -> OF NP[category=?c]
 
 PP[H=(?prep+?h), position=?p] -> P[prep=?prep, position=?p] NP[H=?h]
-# PP[+position, prep=?p] -> P[prep=?p, +position]
+
 # PP/?x -> P/NP
 
 # PP -> P[prep='with'] NP CHARLIST
@@ -136,14 +137,13 @@ PP[H=(?prep+?h), position=?p] -> P[prep=?prep, position=?p] NP[H=?h]
 PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
 #PAREXP -> COMMA AP COMMA | PPAREXP
 
-PLOC -> P[+position]
 AND -> CONJ[conj=and]
 OR  -> CONJ[conj=or]
 
-STAGE[+timing] -> 'in' A[category='life-stage'] 'state'
-STAGE[+timing] -> 'at' A[category='life-stage']
-STAGE[+timing] -> A[+timing]
+STAGE[+timing, orth=?o] -> 'in' A[category='life-stage', orth=?o] 'state'
+STAGE[+timing, orth=?o] -> 'at' A[category='life-stage', orth=?o]
+STAGE[+timing, orth=?o] -> A[+timing, orth=?o]
 
-POSITION[posit=?h] -> P[prep=?p, orth=?o, +position] | PP[H=?h, +position]
+POSITION[posit=?h, orth=?o] -> P[prep=?p, orth=?o, +position]
 POSITION[posit=?h] -> PP[H=?h, +position]
 POSITION[posit=?o] -> A[+position, orth=?o]
