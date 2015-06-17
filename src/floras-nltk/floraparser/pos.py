@@ -4,7 +4,7 @@ __author__ = 'George'
 import re
 import copy
 
-from textblob import Word
+from floraparser.inflect import singularize
 
 from floraparser.lexicon import lexicon, multiwords
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
@@ -47,7 +47,7 @@ class FlTagger():
         :param word: str
         """
         if PLENDINGS.search(word):
-            return Word(word).singularize()
+            return singularize(word)
 
     def multiwordtokenize(self, flword, word):
         sent = flword.sentence

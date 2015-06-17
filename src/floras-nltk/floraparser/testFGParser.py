@@ -12,8 +12,9 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'sepals free or very shortly joined at the base, unequal, ovate to semicircular, 0.5–1 mm. long, rounded, fimbriate'
+description = 'Stamens 3, with filaments broadened at the base'
 
+fromDB = False
 
 trec['description'] = description
 trdr = [trec]
@@ -23,12 +24,12 @@ tfilebase = r'..\..\..\temp\tree'
 ttrace = 3
 of = sys.stdout
 if __name__ == '__main__':
-    if False:
+    if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Salacia' and species = 'kraussii';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureBottomUpChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
