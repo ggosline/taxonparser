@@ -41,7 +41,6 @@ def pickle_lexicon():
         else:
             category = morefeatures['category']
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
-        # We are trying a reentrant structure here  -- but not joy!
         featstring = POS + "[ category= '" + category + "', orth='" + word + "'] "
         newfeature = featurereader.fromstring(featstring)
         newfeature.update(morefeatures)
@@ -116,15 +115,15 @@ def pickle_lexicon():
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least|to'.split('|')
     addlexicon(RANGE, 'RANGE')
-    POSITIONA = 'upper|lower|uppermost|lowermost|various|above_and_beneath'.split('|')
+    POSITIONA = 'upper|lower|uppermost|lowermost|outer|inner|outermost|innermost|various|above_and_beneath'.split('|')
     addlexicon(POSITIONA, 'A', position=True, timing=False, category='position')
 
     POSITION = 'top|bottom|underside|base|apex|front|back|both_sides|both_surfaces|each_side|section|rest_of'.split('|')
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly|almost".split('|')
     addlexicon(ACCURACY, 'DEG', accuracy=True, timing=False)
-    FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|soon|also|even|?".split(
-        '|')
+    FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|" \
+                "soon|also|even|especially|?".split('|')
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
     DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
     addlexicon(DEGREE, 'ADV', timing=False)

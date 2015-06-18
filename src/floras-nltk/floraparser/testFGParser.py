@@ -12,8 +12,9 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'sepals free or very shortly joined at the base, unequal, ovate to semicircular, 0.5–1 mm. long, rounded, fimbriate'
+description = 'lamina dark green, paler below, glossy or  rarely rather dull on both surfaces, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong to obovate, acuminate at the apex with acumen long to short, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded at the base, chartaceous to softly coriaceous, with (6)7–10 lateral nerves and ± densely reticulate venation varying in prominence'
 
+fromDB = False
 
 trec['description'] = description
 trdr = [trec]
@@ -23,12 +24,12 @@ tfilebase = r'..\..\..\temp\tree'
 ttrace = 3
 of = sys.stdout
 if __name__ == '__main__':
-    if False:
+    if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FTEA' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Salacia' and species = 'erecta';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
-    parser = FGParser(parser=FeatureBottomUpChartParser, trace=ttrace)
+    parser = FGParser(parser=FeatureIncrementalBottomUpLeftCornerChartParser, trace=ttrace)
     for taxon in ttaxa.taxa:
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):

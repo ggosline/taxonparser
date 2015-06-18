@@ -6,8 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/floras-nltk/Debug" />
       <excludeFolder url="file://$MODULE_DIR$/src/floras-nltk/Release" />
-      <excludeFolder url="file://$MODULE_DIR$/src/floras-nltk/link_grammar" />
       <excludeFolder url="file://$MODULE_DIR$/src/floras-nltk/six863" />
+      <excludeFolder url="file://$MODULE_DIR$/src/floras-nltk/wordlists" />
       <excludeFolder url="file://$MODULE_DIR$/src/six863" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.3.5 (C:\Python33\python.exe)" jdkType="Python SDK" />
