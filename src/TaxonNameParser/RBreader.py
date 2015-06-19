@@ -124,10 +124,11 @@ def writeassessments(mytree, csvwriter):
     pass
 
 
-def processFamily(faname, csvwriter):
+def processFamily(faname, csvwriter=None):
     treatment = red_list_family(faname)
     mytree = etree.ElementTree(treatment)
-    mytree.write("{0}.xml".format(faname), encoding="utf-8")
+    mytree.write("XML/{0}.xml".format(faname), encoding="utf-8")
+    print(fam, ' xml generated')
     # writeassessments(mytree, csvwriter)
 
     SISDump.SIS_dump(mytree, faname)
@@ -139,8 +140,11 @@ if __name__ == "__main__":
 
     os.chdir(working_directory)
     # famlist = [os.path.splitext(f)[0] for f in os.listdir() if f.endswith('.doc')]
-    famlist = ('VOCHYSIACEAE',)
-    with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
-        csvwriter = csv.writer(csvf)
-        for fam in famlist:
-            processFamily(fam, csvwriter)
+    famlist = ('GUTTIFERAE',)
+    for fam in famlist:
+        processFamily(fam)
+
+        # with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
+        #     csvwriter = csv.writer(csvf)
+        #     for fam in famlist:
+        #         processFamily(fam, csvwriter)

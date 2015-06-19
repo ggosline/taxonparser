@@ -5,7 +5,9 @@ import string
 from Snobol import *
 from recordtype import recordtype
 
-taxonRec = recordtype("taxonRec", "txid status rank family genus species infrarank infraepi author infraauth par litref type", default="")
+taxonRec = recordtype("taxonRec",
+                      "txid status rank family genus species infrarank infraepi author infraauth par litref type synonym",
+                      default="")
 
 class paraDescMatcher: 
     
@@ -36,7 +38,8 @@ class paraDescMatcher:
     infrataxonP = infrataxonnameP + ws + txauthP + ws + litrefP | \
                     infrataxonnameP
 
-    alltaxaP = speciesP | genusP | infrataxonP
+    # alltaxaP = infrataxonP | speciesP | genusP
+    alltaxaP = speciesP | genusP
 
     synspnameP = "<i>" + genameP . genus + ws + snameP . species + "</i>"
     #syninfrataxonnameP = "<i>" + genameP . genus + ws + snameP . species + "</i>" + (LIT("subsp.") | LIT("var.")) . infrarank + ws + "<i>" + snameP . infraepi + "</i>"

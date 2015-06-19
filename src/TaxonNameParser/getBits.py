@@ -11,7 +11,8 @@ countrylist = dict(Cameroon="Cm",
                    Kinshasa="Cd",
                    DRC="Cd",
                    Equatorial="Gq",
-                   Ghana="Gh"
+                   Ghana="Gh",
+                   CAR="Cf"
                    )
 
 # countrylist = dict(Cameroon="Cameroon",
