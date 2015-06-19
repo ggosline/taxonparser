@@ -133,10 +133,10 @@ OurTaxonomyFields = OrderedDict([
 
 OurCountryFields = OrderedDict([
     ("TaxonID", "internal_taxon_id"),
-    ("Country","CountryOccurrence.CountryOccurrenceLookup"),
-    ("Extant","CountryOccurrence.presence"),
-    ("Native","CountryOccurrence.origin"),
-    ("Resident","CountryOccurrence.seasonality")
+    ("Country", "CountryOccurrence.CountryOccurrenceSubfield.CountryOccurrenceLookup"),
+    ("Extant", "CountryOccurrence.CountryOccurrenceSubfield.presence"),
+    ("Native", "CountryOccurrence.CountryOccurrenceSubfield.origin"),
+    ("Resident", "CountryOccurrence.CountryOccurrenceSubfield.seasonality")
 ])
 
 
@@ -205,10 +205,10 @@ def SIS_dump(taxonxml, faname):
             txid = tx.find('TaxonID')
             cntrydict["internal_taxon_id"] = faname + ' ' + txid.text
             for cntry in tx.findall('.//Country'):
-                cntrydict["CountryOccurrence.CountryOccurrenceLookup"] = cntry.text
-                cntrydict["CountryOccurrence.presence"] = 'Extant'
-                cntrydict["CountryOccurrence.origin"] = 'Native'
-                cntrydict["CountryOccurrence.seasonality"] = 'Resident'
+                cntrydict["CountryOccurrence.CountryOccurrenceSubfield.CountryOccurrenceLookup"] = cntry.text
+                cntrydict["CountryOccurrence.CountryOccurrenceSubfield.presence"] = 'Extant'
+                cntrydict["CountryOccurrence.CountryOccurrenceSubfield.origin"] = 'Native'
+                cntrydict["CountryOccurrence.CountryOccurrenceSubfield.seasonality"] = 'Resident'
                 cntrycsw.writerow(cntrydict)
 
     with open(faname + '\\credits.csv', 'w', newline='') as creditscsv:
@@ -229,8 +229,8 @@ def SIS_dump(taxonxml, faname):
         for tx in taxonxml.findall('Taxon'):
             referencesdict = {}
             txid = tx.find('TaxonID')
-            referencesdict["internal_taxon_id"] = faname + ' ' + txid.text
             referencesdict.update(ReferencesRB)
+            referencesdict["internal_taxon_id"] = faname + ' ' + txid.text
             filecsw.writerow(referencesdict)
 
     pass

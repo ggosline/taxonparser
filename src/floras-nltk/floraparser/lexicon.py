@@ -95,7 +95,7 @@ def pickle_lexicon():
                   'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
         addlexentry(word, 'P', prep=word, position=False)
-    POSITIONP = 'at|near|outside|inside|above|below|beneath|outside|inside|between|' \
+    POSITIONP = 'on|at|near|outside|inside|above|below|beneath|outside|inside|between|' \
                 'before|after|behind|across|along|around|from|within|without|' \
                 'attached_to'.split('|')
     for word in POSITIONP:
@@ -122,15 +122,15 @@ def pickle_lexicon():
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly|almost".split('|')
     addlexicon(ACCURACY, 'DEG', accuracy=True, timing=False)
-    FREQUENCY = "very|a_little|not_much|all|rather|sometimes|often|usually|rarely|generally|never|always|" \
+    FREQUENCY = "very|a_little|not_much|all|sometimes|often|usually|rarely|generally|never|always|" \
                 "soon|also|even|especially|?".split('|')
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
-    DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|shallowly|much|dark|light".split('|')
+    DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|rather|shallowly|much|dark|light".split('|')
     addlexicon(DEGREE, 'ADV', timing=False)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from".split('|')
-    # addlexicon(COMPARISON, 'A', compar=True, category='compar')
+    addlexicon(COMPARISON, 'A', compar=True, category='compar')
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length".split('|')
