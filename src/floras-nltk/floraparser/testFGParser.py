@@ -12,8 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina dark green, paler below, glossy or  rarely rather dull on both surfaces, (3·3)4·4–10·8(15) × (1·2)2·1–4·5 cm., oblong or elliptic-oblong to obovate, acuminate at the apex, with acumen long to short, obtuse or retuse, with margin shallowly rounded-denticulate, rarely subentire, cuneate to rounded at the base, chartaceous to softly coriaceous, with (6)7–10 lateral nerves'  # and ± densely reticulate venation'# varying in prominence'
-
+description = 'Fruit orange, ovoid-3-gonous and acute when young, becoming 3-crested and eventually globose, 1·3–3 cm. in diam., smooth or with a few tubercles, 1–3-seeded'
 fromDB = False
 
 trec['description'] = description
@@ -21,7 +20,7 @@ trdr = [trec]
 ttaxa = AbstractFloraCorpusReader(reader=trdr)
 tfilebase = r'..\..\..\temp\tree'
 
-parser = FeatureIncrementalBottomUpLeftCornerChartParser
+parser = FeatureEarleyChartParser
 # parser = FeatureEarleyChartParser
 
 ttrace = 3

@@ -12,8 +12,34 @@ SUBJECT[H=?h] -> NPL[category=structure, H=?h] | NPL[category=structure, H=?h] O
 SUBJECT[H=?h] -> NPL[category='life-form', H=?h]
 
 CHARLIST[clist=(?h1+?h2)] -> CHAR[H=?h1] CHARLIST[clist=?h2]
-CHARLIST[clist=?h1] -> P[prep='with'] CHARLIST[clist=?h1]
+# CHARLIST[clist=?h1] -> WITH CHARLIST[clist=?h1]
 CHARLIST[clist=?h] -> CHAR[H=?h]
+
+CHAR[category=?c, H=?h] -> CHRL[category=?c, H=?h] CTERMINATOR
+# CHAR[category=?c, H=?h] -> WITHP[category=?c, H=?h]
+# CHAR[category=?c, H=?h] -> CTERMINATOR WITHP[category=?c, H=?h]
+
+CTERMINATOR -> COMMA | '$'
+# CTERMINATOR ->
+
+
+CHR[category=?c, H=?h, stage=?st] ->  CHR[category=?c, H=?h] STAGE[stage=?st]
+CHR[category=?c, H=?h, posit=?p] ->  CHR[category=?c, H=?h] POSITION[posit=?p]
+CHR[category=?c, H=?h, posit=?p] ->  POSITION[posit=?p] CHR[category=?c, H=?h]
+
+CHR[category=?c, H=?h] ->  AP[category=?c, H=?h]
+CHR[category=?c, H=?h] ->  WITHP[category=?c, H=?h]
+
+CHR[category=?c, H=?h] -> ISA NPL[category=?c, H=?h]
+ISA -> IS
+#ISA ->
+
+CHR[category=size] ->  SIZEB
+CHR[category=count] ->  COUNT
+CHRL[clist=(?h,?cl)] -> CHR[H=?h] CHRL[cl=?cl]
+CHRL[clist=?h] -> CHR[H=?h] CHRL[cl=?cl] | CHR[H=?h]
+
+CHAR -> STAGE CHARLIST
 
 NL[category={?c+?d}, H=?h] -> N[category=?d, H=?h] NL[category=?c, orth=?o, H=?h]
 NL[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> N[category=?c, orth=?o]
@@ -34,28 +60,7 @@ NP -> A[+compar] NBAR THAN S/NBAR
 
 NP/NP ->
 
-CTERMINATOR -> COMMA | '$'
-# CTERMINATOR ->
 
-CHAR[category=?c, H=?h] -> CHR[category=?c, H=?h] CTERMINATOR
-
-CHR[category=?c, H=?h, stage=?st] ->  CHR[category=?c, H=?h] STAGE[stage=?st]
-CHR[category=?c, H=?h, posit=?p] ->  CHR[category=?c, H=?h] POSITION[posit=?p]
-CHR[category=?c, H=?h, posit=?p] ->  POSITION[posit=?p] CHR[category=?c, H=?h]
-
-CHR[category=?c, H=?h] ->  AP[category=?c, H=?h]
-CHR[category=?c, H=?h] ->  WITHP[category=?c, H=?h]
-
-CHR[category=?c, H=?h] -> ISA NPL[category=?c, H=?h]
-ISA -> IS
-#ISA ->
-
-CHR[category=size] ->  SIZEB
-CHR[category=count] ->  COUNT
-CHRL[clist=(?h,?cl)] -> CHR[H=?h] CHRL[cl=?cl]
-CHRL[clist=?h] -> CHR[H=?h] CHRL[cl=?cl] | CHR[H=?h]
-
-CHAR -> STAGE CHARLIST
 
 SIZE  -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
 SIZEB -> SIZE  AND SIZE
@@ -83,6 +88,7 @@ ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> A[category=?c, orth=?o, -posi
 ABARL[category=(?c+?d), H=([cat=?c, orth=?o]+?h2)] ->  ABAR[category=?d, H=?h2] ABARL[category=?c, orth=?o, -position]
 ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h]
 ABAR[category=?c, +OR, H=(?h1+?h2+[+OR])] -> ABAR[category=?c, H=?h1] OR ABAR[category=?c, H=?h2]
+ABAR[category=?c, +OR, H=(?h1+?h2+[+OR])] -> ABAR[category=?c, H=?h1] OR WITHP[H=?h2]
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 
 A[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> UNK[category=?c, orth=?o]
@@ -100,7 +106,7 @@ ABAR -> NUM TIMES A[+compar] NP
 
 AP[category=?c, H=?h] -> DEG ABARL[category=?c, H=?h]
 AP[category=?c, H=?h] -> ABARL[category=?c, H=?h]
-AP[category=?c, H=?h] -> P[prep='with'] ABARL[category=?c, H=?h]
+#AP[category=?c, H=?h] -> WITH ABARL[category=?c, H=?h]
 
 #AP[category=presence] -> CONJ[conj='or'] ABAR[category=presence]
 
@@ -125,9 +131,10 @@ AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+tim
 
 AP[category=?c, +position] -> PLOC NP[category=?c, +position]
 
-WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> P[prep='with'] NP[category=?c, H=?h] CHRL[clist=?cl]
+WITHP[category=?c, H=[+presence, obj=?h]] -> WITH NP[category=?c, H=?h]
+WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]
 
-WITHP[category=?c, H=[+presence, obj=(?h1+?h2)]] -> P[prep='with'] NP[category=?c, H=?h1] AND  NP[category=?c, H=?h2]
+WITHP[category=?c, H=[+presence, obj=(?h1+?h2)]] -> WITH NP[category=?c, H=?h1] AND  NP[category=?c, H=?h2]
 
 OFP[category=?c, H=[prep=OF, obj=?h]] -> OF NP[category=?c, H=?h]
 
@@ -135,7 +142,7 @@ PP[H=[prep=?prep, obj=?n], position=?p] -> P[prep=?prep, position=?p] NP[H=?n]
 
 # PP/?x -> P/NP
 
-# PP -> P[prep='with'] NP CHARLIST
+# PP -> WITH NP CHARLIST
 
 PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
 #PAREXP -> COMMA AP COMMA | PPAREXP

@@ -91,10 +91,14 @@ def pickle_lexicon():
     addlexicon(PRONOUN, 'PRO')
     PREPOSITION = 'among|amongst|around|as|below|beneath|between|beyond|by|' \
                   'during|for|from|in|inside|into|near|off|on|onto|out|outside|over|per|through|throughout|toward|' \
-                  'towards|up|upward|with|without|when|owing_to|due_to|according_to|on_account_of|' \
+                  'towards|up|upward|when|owing_to|due_to|according_to|on_account_of|' \
                   'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
         addlexentry(word, 'P', prep=word, position=False)
+
+    WITH = 'with|without'.split('|')
+    for word in WITH:
+        addlexentry(word, 'WITH', position=False, presence=True)
     POSITIONP = 'on|at|near|outside|inside|above|below|beneath|outside|inside|between|' \
                 'before|after|behind|across|along|around|from|within|without|' \
                 'attached_to'.split('|')
@@ -133,7 +137,7 @@ def pickle_lexicon():
     addlexicon(COMPARISON, 'A', compar=True, category='compar')
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
-    TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length".split('|')
+    TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length|eventually".split('|')
     addlexicon(TIMING, 'A', timing=True, position=False)
     PRESENCE = "present|absent".split('|')
     addlexicon(PRESENCE, 'A', category='presence')
