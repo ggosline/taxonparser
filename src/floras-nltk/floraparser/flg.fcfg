@@ -5,14 +5,14 @@ Start -> DESCRIPTION
 #XP[category=?c] -> PP[category=?c] | AP[category=?c] | NP[category=?c]
 CDELIM -> COMMA |
 
-DESCRIPTION[subject=?s, clist=?clist] -> SUBJECT[H=?s] CHARLIST[clist=?clist]
+DESCRIPTION[subject=?s, clist=?clist] -> SUBJECT[H=?s] CDELIM CHARLIST[clist=?clist]
 
 SUBJECT[H=?h, mod=?m] -> AP[H=?m] NPL[category=structure, H=?h]
 SUBJECT[H=?h] -> NPL[category=structure, H=?h] | NPL[category=structure, H=?h] OFP
 SUBJECT[H=?h] -> NPL[category='life-form', H=?h]
+SUBJECT[H=[cat=?c, orth=?o]] -> UNK[category=?c, orth=?o]
 
 CHARLIST[clist=(?h1+?h2)] -> CHAR[H=?h1] CHARLIST[clist=?h2]
-# CHARLIST[clist=?h1] -> WITH CHARLIST[clist=?h1]
 CHARLIST[clist=?h] -> CHAR[H=?h]
 
 CHAR[category=?c, H=?h] -> CHRL[category=?c, H=?h] CTERMINATOR
@@ -27,11 +27,12 @@ CHR[category=?c, H=?h, stage=?st] ->  CHR[category=?c, H=?h] STAGE[stage=?st]
 CHR[category=?c, H=?h, posit=?p] ->  CHR[category=?c, H=?h] POSITION[posit=?p]
 CHR[category=?c, H=?h, posit=?p] ->  POSITION[posit=?p] CHR[category=?c, H=?h]
 
-CHR[category=?c, H=?h] ->  AP[category=?c, H=?h]
+CHR[category=?c, H=?h] ->  APL[category=?c, H=?h]
 CHR[category=?c, H=?h] ->  WITHP[category=?c, H=?h]
 
 CHR[category=?c, H=?h] -> ISA NPL[category=?c, H=?h]
 ISA -> IS
+
 #ISA ->
 
 CHR[category=size] ->  SIZEB
@@ -44,9 +45,9 @@ CHAR -> STAGE CHARLIST
 NL[category={?c+?d}, H=?h] -> N[category=?d, H=?h] NL[category=?c, orth=?o, H=?h]
 NL[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> N[category=?c, orth=?o]
 
-NBAR[category=?c, H=?h, mod=?m] -> AP[H=?m] NL[category=?c, H=?h]
-NBAR[category=?c, H=?h, mod=?m] -> NL[category=?c, H=?h]
-NBAR[category=?c, H=?h] -> NBAR[category=?c, H=?h] OFP
+NBAR[category=?c, H=[obj=?h, mod=?m]] -> AP[H=?m] NL[category=?c, H=?h]
+NBAR[category=?c, H=[obj=?h, mod=?m]] -> NL[category=?c, H=?h]
+NBAR[category=?c, H=[obj=?h]] -> NBAR[category=?c, H=?h] OFP
 #NBAR[category=?c, H=?h, mod=?m] -> NBAR[category=?c, H=?h] AP[H=?m]
 
 NBAR[category=?c, H=?h] -> NBAR[category=?c, H=?h] PAREXP
@@ -60,9 +61,7 @@ NP -> A[+compar] NBAR THAN S/NBAR
 
 NP/NP ->
 
-
-
-SIZE  -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT
+SIZE  -> PR NUM UNIT DIMEN | NUM UNIT DIMEN | NUM CONJ[conj='×'] NUM UNIT | NUM 'x' NUM UNIT
 SIZEB -> SIZE  AND SIZE
 SIZEB -> SIZE  COMMA SIZE
 SIZEB -> DEG SIZE  |  SIZE  | RANGE SIZE
@@ -83,7 +82,9 @@ ADVB -> DEG ADVB
 
 ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o, num=?num]] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
-ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> A[category=?c, orth=?o, -position] | ADVB A[category=?c, orth=?o, -position]
+ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> A[category=?c, orth=?o, -position]
+ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> ADVB A[category=?c, orth=?o, -position]
+ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> DEG A[category=?c, orth=?o, -position]
 
 ABARL[category=(?c+?d), H=([cat=?c, orth=?o]+?h2)] ->  ABAR[category=?d, H=?h2] ABARL[category=?c, orth=?o, -position]
 ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h]
@@ -118,18 +119,16 @@ NPL[category=?c] -> NP[category=?c, +OR]
 NPL[category=?c, +OR] -> NPL[category=?c] CDELIM OR NP[category=?c]
 
 APL[category=?c, +OR, H=(?h1+?h2+[+OR])] -> AP[category=?c, H=?h1] COMMA APL[category=?c, +OR, H=?h2]
-APL[category=?c, H=?h, -OR] -> AP[category=?c, H=?h]
+APL[category=?c, H=?h] -> AP[category=?c, H=?h]
 APL[category=?c, +OR, -timing, H=(?h1+?h2+[+OR])] -> APL[category=?c, H=?h1, -timing] CDELIM OR AP[category=?c, H=?h2]
 
 #APAND[category=(?b + ?c)] -> AP[category=?b] COMMA APAND[category=?c]
 #APAND[category=?b] -> AP[category=?b]
 #APAND[category=(?b + ?c)] -> APAND[category=?b] CDELIM CONJUNCTION AP[category=?c]
 
-AP[category=(?c+?d)] -> AP[category=?c] CONJ[conj=and] AP[category=?d]
+AP[category=(?c+?d)] -> AP[category=?c] AND AP[category=?d]
 AP[category=?c, H=?h] -> AP[category=?c, H=?h] POSITION
-AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
-
-AP[category=?c, +position] -> PLOC NP[category=?c, +position]
+#AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
 WITHP[category=?c, H=[+presence, obj=?h]] -> WITH NP[category=?c, H=?h]
 WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]

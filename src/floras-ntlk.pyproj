@@ -33,6 +33,7 @@
     <Compile Include="floraparser\lexicon.py" />
     <Compile Include="floraparser\pos.py" />
     <Compile Include="floraparser\splitter.py" />
+    <Compile Include="floraparser\testFGParser.py" />
     <Compile Include="floraparser\testfloraparse.py" />
     <Compile Include="floraparser\testnltk3.py" />
     <Compile Include="floraparser\__init__.py" />

@@ -331,7 +331,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 357,bushy,habit,plant,"Having or developing the character of a bush.  See also arboreous, arborescent, subshrubby, suffrutescent, suffruticose, tree-like, woody-clumping.",habit,
 358,butterfly-like,architecture,corolla,"Having a relatively large, erect adaxial (upper) petal (the standard, banner or vexillum), two smaller lateral petals (the wings or alae), and two individually smaller but connate or coherent abaxial (lower) petals that together form a carinate structure",architecture,
 359,caducous,duration,structure,"Deciduous upon or immediately after emergence, with little or no evident senescence beforehand.",duration,
-360,caesious,coating,,"Greenish pruinose; covered with a thin, opaque, greenish deposit (bloom) of macroscopically indistinguishable waxy particles that rubs off easily.  See also glaucescent, glaucous.",coating,
+360,caesious,coloration,,"Greenish pruinose; covered with a thin, opaque, greenish deposit (bloom) of macroscopically indistinguishable waxy particles that rubs off easily.  See also glaucescent, glaucous.",coating,
 361,caespitose,habit,,See cespitose.,habit,
 362,calcarate,shape,,Having a relatively slender protrusion resembling a spur.,shape,
 363,calceolate,shape,,Relatively thin-walled with an essentially hollow interior that is open on one side at the broader end.,shape,
@@ -610,7 +610,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 654,_faced,shape,,"Having relatively large, flat or shallowly curved portions of the external surface that are bounded by more or less distinct angular discontinuities in that surface, of the number indicated by the prefix; as in three-faced.",shape,
 655,faceted,shape,,"Having numerous, relatively small, flat or shallowly curved portions of the external surface that are bounded by more or less distinct angular discontinuities in that surface.",shape,
 657,falcate,shape,,"Elongate, strongly compressed, and arcuate in the plane of compression, the two faces more or less plane and parallel, the degree of curvature decreasing distally or not; like a sickle blade.",shape,
-658,,derivation,indusium,Constituting a marginal fold of the lamina as a whole and not a distinct enation from the epidermis.,derivation,
+#,true,derivation,indusium,Constituting a marginal fold of the lamina as a whole and not a distinct enation from the epidermis.,derivation,
 659,fan-shaped,shape,,"Strongly compressed, broadest near the apex and attenuate to a narrow base, plaited longitudinally, the alternating folds radiating from the base, the whole basically triangular in broad aspect; like a partially expanded folding fan.",shape,
 660,farina,SUBSTANCE,,"A dry, meal- or flour-like covering.",SUBSTANCE,
 661,farinae,SUBSTANCE,,"A dry, meal- or flour-like covering.",SUBSTANCE,
@@ -1060,8 +1060,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1122,glandular,exudation,,Anatomically distinct and producing and exuding a particular substance.,architecture,q
 1123,glans,structure,fruit,"A nut subtended by a persistent, hard, cap-like involucre of numerous, coherent, imbricate bracts; esp. in Fagaceae.",nominative,
 1124,glandes,structure,fruit,"A nut subtended by a persistent, hard, cap-like involucre of numerous, coherent, imbricate bracts; esp. in Fagaceae.",nominative,
-1125,glaucescent,coating,,Becoming glaucous with age.  See also caesious.,coating,
-1126,glaucous,coating,,"Whitish pruinose; covered with a thin, opaque, whitish deposit (bloom) of macroscopically indistinguishable waxy particles that rubs off easily.  See also caesious, glaucescent.",coating,
+1125,glaucescent,coloration,,Becoming glaucous with age.  See also caesious.,coating,
+1126,glaucous,coloration,,"Whitish pruinose; covered with a thin, opaque, whitish deposit (bloom) of macroscopically indistinguishable waxy particles that rubs off easily.  See also caesious, glaucescent.",coating,
 1127,glittering,reflectance,,"Interruptedly glossy (laevigate, lustrous, polished, shining, shiny, and thus sparkling when viewed from changing angles.",reflectance,
 1128,globose,shape,,"Uniformly convex, circular in any median section and in outline when viewed from any angle; like a globe or sphere.",shape,
 1129,globular,shape,,"Uniformly convex, circular in any median section and in outline when viewed from any angle; like a globe or sphere.",shape,
@@ -2628,7 +2628,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2755,trochlear,shape,,Discoid (disciform) but with the circumferential surface concave between faces.,shape,
 2756,trophophyll,structure,,A frond that does not bear sporangia; in Polypodiophyta.  See also fertile frond.,STRUCTURE,
 2757,trowel-shaped,shape,,"Broadest below the middle, more or less straightly attenuate to either end, the sides angled at the level of greatest width; like the blade of a mason's trowel.  See also obtrullate, obtrulliform.",shape,
-2758,,derivation,indusium,"Constituting a distinct enation from the epidermis, not simply a marginal fold of the lamina as a whole.",derivation,
+#,false,derivation,indusium,"Constituting a distinct enation from the epidermis, not simply a marginal fold of the lamina as a whole.",derivation,
 2759,trullate,shape,,"Broadest below the middle, more or less straightly attenuate to either end, the sides angled at the level of greatest width; like the blade of a mason's trowel.  See also obtrullate, obtrulliform.",shape,
 2760,trulliform,shape,,"Broadest below the middle, more or less straightly attenuate to either end, the sides angled at the level of greatest width; like the blade of a mason's trowel.  See also obtrullate, obtrulliform.",shape,
 2761,trulloid,shape,,"Elongate, basically square in transverse section, broadest below the middle, regularly attenuate to angular ends, all faces essentially plane.  See also obtrulloid.",shape,
@@ -3347,7 +3347,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3552,anthesis,life-stage,,time of fertilisation of the flower; time of receptivity of stigma or distribution of pollen; used more loosely for the time when the flower opens,,KG
 3553,appearing,,,,,KG
 3556,point_of_attachment,structure,,,,KG
-#,bases,structure,,,,KG
+3557,bases,structure,,,,KG
 3558,bearing,,,,,KG
 3560,bicornute,shape,,with two horns,,KG
 3561,borne,architecture,,carried,,KG
@@ -3464,3 +3464,4 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3751,segment,structure,,,,
 3752,pad,structure,,,,
 3753,latex_threads,structure,Celastraceae,,,
+3754,connective-prolongation,structure,Annonaceae,,,
