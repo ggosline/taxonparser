@@ -23,7 +23,8 @@ class FlTaxon():
         self.infrarank = trec['infrarank']
         self.infraepi = trec['infraepi']
         self.description = trec['description']
-        # self.description = 'plant is ' + self.description
+        if self.rank != None:
+            self.description = 'Plant is ' + self.description
         self.sentences = [FlSentence(self, sl[0], sl[1]) for sl in
                           sentence_tokenizer(self.description)] if self.description else []
 

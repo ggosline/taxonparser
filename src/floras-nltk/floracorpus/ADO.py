@@ -37,15 +37,16 @@ class ADOdb(object):
         self.fldlist = fldlist
         self.reccount = self.rs.RecordCount
         self.rs.AbsolutePosition = 1
+        return ({ky: rec[ky] for ky in self.fldlist} for rec in self.NextRec())
 
     def NextRec(self):
         if not self.rs.EOF:
             flds = {fld : self.rs.Fields(fld).Value if self.rs.Fields(fld).Value is not None else '' for fld  in self.fldlist}
             # flds = list([self.rs.Fields(fld).Value if self.rs.Fields(fld).Value is not None else '' for fld in self.fldlist])
             self.rs.MoveNext()
-            return flds
-        else:
-            return(None)
+            yield flds
+            # else:
+            #    return(None)
 
     def MoveTo(self, absoluterec):
         self.rs.AbsolutePosition = absoluterec + 1 

@@ -1,79 +1,39 @@
-Fail:    Shrub or small tree, 1.5–8 (10) m. high
-No. of trees: 6
+Success: Plant is Shrub or small tree, 1.5–8 (10) m. high
+No. of trees: 1
 Success: Branches cylindric or with opposite pairs of raised lines decurrent from the leaf-bases
-No. of trees: 45
+No. of trees: 48
 Fail:    ± densely brown- to yellow– or greyish-tomentose at first, eventually glabrous
-No. of trees: 3
+No. of trees: 2
 Success: Leaves petiolate
 No. of trees: 1
 Fail:    lamina 6–18.5 (30) x 3–11.5 (21) cm., oblong to ovate or elliptic, obtuse or apiculate to rounded or slightly emarginate at the apex, cordate to truncate or cuneate at the base, chartaceous to coriaceous (more rarely membranous), yellowish-or glaucous-green and ± sparsely puberulous or more rarely glabrous above, paler or glaucous and densely sericeous-tomentose to glabrescent below, with green to reddish-purple nerves and densely reticulate venation prominent below
-No. of trees: 14
-Fail:    petiole (5) 10–20 (25) mm. long, densely tomentose to glabrous
-No. of trees: 5
-Fail:    Flowers solitary or rarely 2–4-fasciculate, extra-axillary, erect or ± deflexed
-No. of trees: 5
+No. of trees: 12
+Success: petiole (5) 10–20 (25) mm. long, densely tomentose to glabrous
+No. of trees: 1
+Success: Flowers solitary or rarely 2–4-fasciculate, extra-axillary, erect or ± deflexed
+No. of trees: 2
 Success: pedicels 10–20 mm. long, shortly tomentose
 No. of trees: 1
 Success: bracteoles 0–1 (2), small
 No. of trees: 1
 Success: Sepals 3–4 mm. long, ovate-triangular, obtuse to acute, pubescent or tomentose outside, glabrous within
-No. of trees: 4
-Fail:    Petals greenish outside, yellow to cream within, fleshy, the outer ones 8–12 (15) mm. long, broadly ovate, concave, obtuse, shortly and densely greyish- or yellowish-appressed-pubescent outside, glabrous, or minutely papillose within, the inner ones somewhat shorter, narrowly oblong, almost triquetrous
-No. of trees: 16
-Success: Stamens 1.75–2.5 mm. long, linear, with thecae equal or unequal at the base
-No. of trees: 100
-Fail:    connective-prolongation obliquely capitate and minutely papillose
-No. of trees: 1
-Success: filament ± cuneate
 No. of trees: 2
+Success: Petals greenish outside, yellow to cream within, fleshy, the outer ones 8–12 (15) mm. long, broadly ovate, concave, obtuse, shortly and densely greyish- or yellowish-appressed-pubescent outside, glabrous, or minutely papillose within, the inner ones somewhat shorter, narrowly oblong, almost triquetrous
+No. of trees: 30
+Success: Stamens 1.75–2.5 mm. long, linear, with thecae equal or unequal at the base
+No. of trees: 44
+Success: connective-prolongation obliquely capitate and minutely papillose
+No. of trees: 2
+Success: filament ± cuneate
+No. of trees: 1
 Success: Carpels c. 1–1.5 mm. long, cylindric, glabrescent
 No. of trees: 1
 Success: stigmas subclavate
 No. of trees: 1
 Success: Fruit on a pedicel 15–30 mm. long, erector spreading
-No. of trees: 25
-Fail:    syncarp 2.5–5 x 2.5–3 cm., ovoid or globose, obtusely squamose, glabrescent, orange or yellow
-No. of trees: 6
-Success: Seeds numerous, c. 10 mm. long, cylindric or ± flattened, orange-brown
+No. of trees: 20
+Success: syncarp 2.5–5 x 2.5–3 cm., ovoid or globose, obtusely squamose, glabrescent, orange or yellow
 No. of trees: 1
-Success: aril pectinate
-No. of trees: 1
-Fail:    Shrub or small tree, 1.5–8 (10) m. high
-No. of trees: 6
-Success: Branches cylindric or with opposite pairs of raised lines decurrent from the leaf-bases
-No. of trees: 45
-Fail:    ± densely brown- to yellow– or greyish-tomentose at first, eventually glabrous
-No. of trees: 3
-Success: Leaves petiolate
-No. of trees: 1
-Fail:    lamina 6–18.5 (30) x 3–11.5 (21) cm., oblong to ovate or elliptic, obtuse or apiculate to rounded or slightly emarginate at the apex, cordate to truncate or cuneate at the base, chartaceous to coriaceous (more rarely membranous), yellowish-or glaucous-green and ± sparsely puberulous or more rarely glabrous above, paler or glaucous and densely sericeous-tomentose to glabrescent below, with green to reddish-purple nerves and densely reticulate venation prominent below
-No. of trees: 14
-Fail:    petiole (5) 10–20 (25) mm. long, densely tomentose to glabrous
-No. of trees: 5
-Fail:    Flowers solitary or rarely 2–4-fasciculate, extra-axillary, erect or ± deflexed
-No. of trees: 5
-Success: pedicels 10–20 mm. long, shortly tomentose
-No. of trees: 1
-Success: bracteoles 0–1 (2), small
-No. of trees: 1
-Success: Sepals 3–4 mm. long, ovate-triangular, obtuse to acute, pubescent or tomentose outside, glabrous within
-No. of trees: 4
-Fail:    Petals greenish outside, yellow to cream within, fleshy, the outer ones 8–12 (15) mm. long, broadly ovate, concave, obtuse, shortly and densely greyish- or yellowish-appressed-pubescent outside, glabrous, or minutely papillose within, the inner ones somewhat shorter, narrowly oblong, almost triquetrous
-No. of trees: 16
-Success: Stamens 1.75–2.5 mm. long, linear, with thecae equal or unequal at the base
-No. of trees: 100
-Fail:    connective-prolongation obliquely capitate and minutely papillose
-No. of trees: 1
-Success: filament ± cuneate
-No. of trees: 2
-Success: Carpels c. 1–1.5 mm. long, cylindric, glabrescent
-No. of trees: 1
-Success: stigmas subclavate
-No. of trees: 1
-Success: Fruit on a pedicel 15–30 mm. long, erector spreading
-No. of trees: 25
-Fail:    syncarp 2.5–5 x 2.5–3 cm., ovoid or globose, obtusely squamose, glabrescent, orange or yellow
-No. of trees: 6
 Success: Seeds numerous, c. 10 mm. long, cylindric or ± flattened, orange-brown
 No. of trees: 1
 Success: aril pectinate

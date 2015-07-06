@@ -7,10 +7,11 @@ CDELIM -> COMMA |
 
 DESCRIPTION[subject=?s, clist=?clist] -> SUBJECT[H=?s] CDELIM CHARLIST[clist=?clist]
 
-SUBJECT[H=?h, mod=?m] -> AP[H=?m] NPL[category=structure, H=?h]
-SUBJECT[H=?h] -> NPL[category=structure, H=?h] | NPL[category=structure, H=?h] OFP
-SUBJECT[H=?h] -> NPL[category='life-form', H=?h]
-SUBJECT[H=[cat=?c, orth=?o]] -> UNK[category=?c, orth=?o]
+SUBJECT[H=[orth=?o], mod=?m] -> AP[H=?m] N[category=structure, orth=?o]
+SUBJECT[H=[orth=?o]] ->N[category=structure, orth=?o]
+SUBJECT[H=[orth=?o]] ->N[category=structure, orth=?o] OFP
+SUBJECT[H=[orth=?o]] -> N[category='life-form', orth=?o]
+SUBJECT[H=[category=structure, orth=?o]] -> UNK[orth=?o]
 
 CHARLIST[clist=(?h1+?h2)] -> CHAR[H=?h1] CHARLIST[clist=?h2]
 CHARLIST[clist=?h] -> CHAR[H=?h]
@@ -27,8 +28,11 @@ CHR[category=?c, H=?h, stage=?st] ->  CHR[category=?c, H=?h] STAGE[stage=?st]
 CHR[category=?c, H=?h, posit=?p] ->  CHR[category=?c, H=?h] POSITION[posit=?p]
 CHR[category=?c, H=?h, posit=?p] ->  POSITION[posit=?p] CHR[category=?c, H=?h]
 
-CHR[category=?c, H=?h] ->  APL[category=?c, H=?h]
+#CHR[category=?c, H=?h] ->  APL[category=?c, H=?h]
+CHR[category=?c, H=?h] ->  AP[category=?c, H=?h]
 CHR[category=?c, H=?h] ->  WITHP[category=?c, H=?h]
+
+CHR[+anaph, category=?c, H=?h] -> ANAPH[category=?c] CHARLIST[H=?h]
 
 CHR[category=?c, H=?h] -> ISA NPL[category=?c, H=?h]
 ISA -> IS
@@ -58,6 +62,11 @@ NP[category=?c, H=?h] -> DET NBAR[category=?c, H=?h] | ART NBAR[category=?c, H=?
 NP -> NAME
 NP -> A[+compar] NBAR THAN S
 NP -> A[+compar] NBAR THAN S/NBAR
+NP[category=?c, H=[obj=?h, clist=?cl]] -> NP[category=?c, H=?h] CHRL[clist=?cl]
+
+NPL[category=?c] -> NP[category=?c] COMMA NPL[category=?c]
+NPL[category=?c] -> NP[category=?c, +OR]
+NPL[category=?c, +OR] -> NPL[category=?c] CDELIM OR NP[category=?c]
 
 NP/NP ->
 
@@ -69,18 +78,16 @@ DIMEN -> P[prep='in'] DIM
 DIMEN -> DIM
 COUNT[category=count] -> NUM | NUM P[prep='per'] NBAR
 
-AP[category=?c, H=(?h1+'TO'+?h2)] -> AP[category=?c, H=?h1] TO AP[category=?c, H=?h2]
-AP[category=?c, H=?h] -> AP[category=?c, H=?h] PAREXP
 
-CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
 
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
 ADVB -> ADV CONJUNCTION ADVB
 ADVB -> DEG ADVB
+DEG -> COMPADJ DEG
 #ADVB[+comp] -> A[+makecomp] ADV
 
-ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o, num=?num]] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
+A[category=?c, orth=?o, H=[cat=?c, orth=?o, num=?num]] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> A[category=?c, orth=?o, -position]
 ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> ADVB A[category=?c, orth=?o, -position]
@@ -88,8 +95,10 @@ ABAR[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> DEG A[category=?c, orth=?o, -
 
 ABARL[category=(?c+?d), H=([cat=?c, orth=?o]+?h2)] ->  ABAR[category=?d, H=?h2] ABARL[category=?c, orth=?o, -position]
 ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h]
-ABAR[category=?c, +OR, H=(?h1+?h2+[+OR])] -> ABAR[category=?c, H=?h1] OR ABAR[category=?c, H=?h2]
+ABAR[category=?c, +OR, H=(?h1+?h2+[+OR])] -> ABAR[category=?c, H=?h1] CDELIM OR ABAR[category=?c, H=?h2]
 ABAR[category=?c, +OR, H=(?h1+?h2+[+OR])] -> ABAR[category=?c, H=?h1] OR WITHP[H=?h2]
+ABAR[category=?c, H=(?h1+'TO'+?h2)] -> ABAR[category=?c, H=?h1] TO ABAR[category=?c, H=?h2]
+
 #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 
 A[category=?c, orth=?o, H=[cat=?c, orth=?o]] -> UNK[category=?c, orth=?o]
@@ -105,8 +114,12 @@ ABAR[category=?c, H=?h] -> PP CONJ[conj='or'] ABAR[category=?c, H=?h]
 
 ABAR -> NUM TIMES A[+compar] NP
 
-AP[category=?c, H=?h] -> DEG ABARL[category=?c, H=?h]
+#AP[category=?c, H=?h] -> DEG ABARL[category=?c, H=?h]
 AP[category=?c, H=?h] -> ABARL[category=?c, H=?h]
+
+AP[category=?c, H=?h] -> AP[category=?c, H=?h] PAREXP
+AP[category=(?c+?d), H=(?h1+?h2+[+AND])] -> AP[category=?c, H=?H1] AND AP[category=?d, H=?H2]
+
 #AP[category=?c, H=?h] -> WITH ABARL[category=?c, H=?h]
 
 #AP[category=presence] -> CONJ[conj='or'] ABAR[category=presence]
@@ -114,24 +127,21 @@ AP[category=?c, H=?h] -> ABARL[category=?c, H=?h]
 #AP[category=?c] -> AP[-compar] A[-compar, category=?c] | A[-compar, category=?c]
 #AP[category=?c] -> SPEC AP
 
-NPL[category=?c] -> NP[category=?c] COMMA NPL[category=?c]
-NPL[category=?c] -> NP[category=?c, +OR]
-NPL[category=?c, +OR] -> NPL[category=?c] CDELIM OR NP[category=?c]
 
-APL[category=?c, +OR, H=(?h1+?h2+[+OR])] -> AP[category=?c, H=?h1] COMMA APL[category=?c, +OR, H=?h2]
-APL[category=?c, H=?h] -> AP[category=?c, H=?h]
-APL[category=?c, +OR, -timing, H=(?h1+?h2+[+OR])] -> APL[category=?c, H=?h1, -timing] CDELIM OR AP[category=?c, H=?h2]
+#APL[category=?c, +OR, H=(?h1+?h2+[+OR])] -> AP[category=?c, H=?h1] COMMA APL[category=?c, +OR, H=?h2]
+#APL[category=?c, H=?h] -> AP[category=?c, H=?h]
+#APL[category=?c, +OR, -timing, H=(?h1+?h2+[+OR])] -> APL[category=?c, H=?h1, -timing] CDELIM OR AP[category=?c, H=?h2]
 
 #APAND[category=(?b + ?c)] -> AP[category=?b] COMMA APAND[category=?c]
 #APAND[category=?b] -> AP[category=?b]
 #APAND[category=(?b + ?c)] -> APAND[category=?b] CDELIM CONJUNCTION AP[category=?c]
 
-AP[category=(?c+?d)] -> AP[category=?c] AND AP[category=?d]
-AP[category=?c, H=?h] -> AP[category=?c, H=?h] POSITION
+
+#AP[category=?c, H=?h] -> AP[category=?c, H=?h] POSITION
 #AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
 WITHP[category=?c, H=[+presence, obj=?h]] -> WITH NP[category=?c, H=?h]
-WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]
+#WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]
 
 WITHP[category=?c, H=[+presence, obj=(?h1+?h2)]] -> WITH NP[category=?c, H=?h1] AND  NP[category=?c, H=?h2]
 
@@ -148,6 +158,7 @@ PAREXP -> PUNC[punc='('] AP PUNC[punc=')']
 
 AND -> CONJ[conj=and]
 OR  -> CONJ[conj=or]
+CONJUNCTION -> CONJ[conj='and'] | CONJ[conj='but']
 
 STAGE[stage=?o] -> 'in' A[category='life-stage', orth=?o] 'state'
 STAGE[stage=?o] -> 'at' A[category='life-stage', orth=?o]
@@ -156,3 +167,5 @@ STAGE[stage=?o] -> A[+timing, orth=?o]
 POSITION[posit=?o] -> P[prep=?p, orth=?o, +position]
 POSITION[posit=?h] -> PP[H=?h, +position]
 POSITION[posit=?o] -> A[+position, orth=?o]
+
+ANAPH[category=?o] -> 'the' A[+position, orth=?o] 'ones'
