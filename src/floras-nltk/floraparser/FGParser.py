@@ -94,6 +94,7 @@ class FGParser():
         if newprod:
             self._grammar.__init__(self._grammar._start, self._grammar._productions)
 
+        # Add a terminal token to end of pharase
         tokens = tokens + [FGTerminal('$')]
 
         self._chart = self._parser.chart_parse([tk for tk in tokens])

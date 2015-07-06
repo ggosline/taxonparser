@@ -90,8 +90,9 @@ class FlTagger():
 
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
-            return flword, 'NUM', [FeatStructNonterminal(features={TYPE: 'NUM', 'numeric': True, 'value': word})], (
-            'NUM',)
+            return flword, 'NUM', [
+                FeatStructNonterminal(features={TYPE: 'NUM', 'numeric': True, 'orth': word})], (
+                       word,)
 
         ws = FlTagger.singularize(self, word)
         if ws:
@@ -117,7 +118,9 @@ class FlTagger():
                 return root, le[TYPE], [le], ('_' + root[0],)
 
         if word.endswith('ly'):
-            return flword, 'ADV', [FeatStructNonterminal(features={TYPE: 'ADV', 'timing': False})], (word,)
+            return flword, 'ADV', [
+                FeatStructNonterminal(features={TYPE: 'ADV', 'timing': False, 'orth': flword})], (
+                   word,)
 
         # Didn't find in fnaglossary; try WordNet
         # synsets = word.synsets
