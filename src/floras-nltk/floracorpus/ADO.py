@@ -33,7 +33,7 @@ class ADOdb(object):
         
         self.rs = Dispatch("ADODB.Recordset")
         self.rs.CursorLocation = constants.adUseClient
-        self.rs.Open(selectstmt, connection, constants.adOpenStatic, constants.adLockOptimistic)
+        self.rs.Open(selectstmt, connection, constants.adOpenDynamic, constants.adLockOptimistic)
         self.fldlist = fldlist
         self.reccount = self.rs.RecordCount
         self.rs.AbsolutePosition = 1

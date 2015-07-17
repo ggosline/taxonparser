@@ -3,7 +3,6 @@ from TaxonNameParser import txMatcher
 from pythonwin import win32ui
 from recordtype import recordtype
 
-
 taxonName = recordtype("taxonName", "genus species author infrarank infraepi par", default="")
 
 def txParseName(nm):

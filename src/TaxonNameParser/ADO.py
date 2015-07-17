@@ -1,14 +1,16 @@
-import win32com.client
-win32com.client.gencache.is_readonly = False
+import string
 
 from win32com.client import Dispatch, constants
+import win32com.client
+
+win32com.client.gencache.is_readonly = False
 
 class ADOdb(object):
 
     # provider = "Provider=Microsoft.Jet.OLEDB.4.0;"
     # dsource  = "Data Source=MDB; User ID=Admin; Password=;"
     provider = "Provider=Microsoft.Ace.OLEDB.12.0;"
-    dsource = dsource = "Provider=Microsoft.Ace.OLEDB.12.0; Data Source=%s; User ID=Admin; Password=;"
+    dsource =  "Provider=Microsoft.Ace.OLEDB.12.0; Data Source=%s; User ID=Admin; Password=;"
     
 
     def __init__(self, databasename):
@@ -23,6 +25,9 @@ class ADOdb(object):
     def __del__(self):
         connection.Close
 
+    def Close(self):
+        connection.Close
+
     def printerrs(self):
         for err in connection.Errors:
             print (err.Number, err.Description, err.Source)
@@ -31,19 +36,21 @@ class ADOdb(object):
         
         self.rs = Dispatch("ADODB.Recordset")
         self.rs.CursorLocation = constants.adUseClient
-        self.rs.Open(selectstmt, connection, constants.adOpenStatic, constants.adLockOptimistic)
+        self.rs.Open(selectstmt, connection, constants.adOpenDynamic, constants.adLockOptimistic)
         self.fldlist = fldlist
         self.reccount = self.rs.RecordCount
         self.rs.AbsolutePosition = 1
+        # return ({ky: rec[ky] for ky in self.fldlist} for rec in self.NextRec())
+        return self.rs
 
     def NextRec(self):
         if not self.rs.EOF:
-            # flds = {fld : self.rs.Fields(fld).Value if self.rs.Fields(fld).Value is not None else '' for fld  in self.fldlist}
-            flds = ' '.join([self.rs.Fields(fld).Value if self.rs.Fields(fld).Value is not None else '' for fld in self.fldlist])
+            flds = {fld : self.rs.Fields(fld).Value if self.rs.Fields(fld).Value is not None else '' for fld  in self.fldlist}
+            # flds = list([self.rs.Fields(fld).Value if self.rs.Fields(fld).Value is not None else '' for fld in self.fldlist])
             self.rs.MoveNext()
-            return flds
-        else:
-            return(None)
+            # yield flds
+            # else:
+            #    return(None)
 
     def MoveTo(self, absoluterec):
         self.rs.AbsolutePosition = absoluterec + 1 
@@ -51,13 +58,14 @@ class ADOdb(object):
     def RecordCount(self):
         return self.reccount
 
-parserflds = ['taxonkey', 'rank', 'genus', 'species', 'author', 'infrarank', 'infraepi', 'par']
+parserflds = ('taxonNo', 'rank', 'genus', 'species')
   
 if __name__ == "__main__":
 
-    myds = ADOdb(r'"T:\Cameroon\FWTA\APD.accdb"')
-    myds.OpenTable("SELECT APD.* FROM [APD] WHERE (((APD.[family])='agavaceae'));", parserflds)
+    myds = ADOdb(r'"..\resources\efloras.accdb"')
+    myds.OpenTable("SELECT * from Taxa WHERE Taxa.family ='Moraceae';", parserflds)
     print (myds.RecordCount())
     print (myds.NextRec())
 
     del myds
+
