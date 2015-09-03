@@ -12,11 +12,10 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina 6–18.5 (30) x 3–11.5 (21) cm., oblong to ovate or elliptic, obtuse or apiculate to rounded at the apex, cordate to truncate or cuneate at the base, chartaceous to coriaceous (more rarely membranous), yellowish- or glaucous-green and ± sparsely puberulous or more rarely glabrous above, paler or glaucous and densely sericeous-tomentose to glabrescent below, with green to reddish-purple nerves and densely reticulate venation prominent below'
-
-fromDB = True
+description = 'lamina elliptic to oblong, ovate, subobovate, lanceolate, or sometimes linear, 3–23 x 1.5–12 cm., usually ± asymmetrical, chartaceous to subcoriaceous, apex acuminate to caudate, acute or sometimes obtuse, base cuneate or rounded, margin dentate to irregularly pinnately lobed or divided, sometimes subentire'
+fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
-parser = FeatureEarleyChartParser
+# parser = FeatureEarleyChartParser
 cleantree = True
 ttrace = 3
 
@@ -30,7 +29,7 @@ if __name__ == '__main__':
     if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Annona' and species = 'senegalensis';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Ficus' and species = 'asperifolia';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=parser, trace=ttrace)
     for taxon in ttaxa.taxa:
