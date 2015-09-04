@@ -157,6 +157,7 @@ def pickle_lexicon():
     addlexicon(['times'], 'TIMES')
     addlexicon(['NUM'], 'NUM')
     addlexicon(['of'], 'OF')
+    addlexicon(['in_outline'], 'NULL')
 
     readcpglossary()
     # for wlist in multiwords.values():

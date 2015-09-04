@@ -12,11 +12,10 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina 6–18.5 (30) x 3–11.5 (21) cm., oblong to ovate or elliptic, obtuse or apiculate to rounded at the apex, cordate to truncate or cuneate at the base, chartaceous to coriaceous (more rarely membranous), yellowish- or glaucous-green and ± sparsely puberulous or more rarely glabrous above, paler or glaucous and densely sericeous-tomentose to glabrescent below, with green to reddish-purple nerves and densely reticulate venation prominent below'
-
-fromDB = True
+description = 'Leaf-lamina 5–20 × 3·5–19 cm., ovate or narrowly ovate in outline, cordate, ± hairy (especially on the veins beneath), becoming scabrid-punctate, usually deeply palmately 3–5-lobed, with the lobes elliptic in outline, shallowly to usually deeply ± pinnately lobulate, subentire or obscurely sinuate-denticulate, rounded to subacute, apiculate, with the central one much the largest.'
+fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
-parser = FeatureEarleyChartParser
+# parser = FeatureEarleyChartParser
 cleantree = True
 ttrace = 3
 

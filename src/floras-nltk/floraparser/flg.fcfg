@@ -84,10 +84,11 @@ COUNT[category=count, H=[+per, val=?num, obj=?h]] -> NUM[orth=?num] | NUM[orth=?
 
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
+ADVB -> ADV ADVB
 ADVB -> ADV CONJUNCTION ADVB
 ADVB -> DEG ADVB
 DEG -> COMPADJ DEG
-#ADVB[+comp] -> A[+makecomp] ADV
+ADVB[+comp] -> A[+makecomp] ADV
 
 A[category=?c, orth=?o, H=[category=?c, orth=?o, num=?num], -position] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
@@ -145,7 +146,7 @@ AP[category=(?c+?d), H=(?h1+?h2+[+AND])] -> AP[category=?c, H=?H1] AND AP[catego
         #AP[category=?c, +timing] -> APAND[category=?c, -timing]  ADV[+timing] | ADV[+timing] APAND[category=?c, -timing]
 
 WITHP[category=?c, H=[+presence, obj=?h]] -> WITH NP[category=?c, H=?h]
-#WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]
+WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]
 
 WITHP[category=?c, H=[+presence, obj=(?h1+?h2)]] -> WITH NP[category=?c, H=?h1] AND  NP[category=?c, H=?h2]
 
@@ -174,3 +175,5 @@ POSITION[posit=?o] -> A[+position, orth=?o]
 
 ANAPH[category=?o, +position] -> 'the' A[+position, orth=?o] 'ones'
 ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'ones'
+
+NULL ->
