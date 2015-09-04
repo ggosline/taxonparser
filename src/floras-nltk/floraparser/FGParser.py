@@ -97,7 +97,7 @@ class FGParser():
         # Add a terminal token to end of pharase
         tokens = tokens + [FGTerminal('$')]
 
-        self._chart = self._parser.chart_parse([tk for tk in tokens])
+        self._chart = self._parser.chart_parse([tk for tk in tokens if tk.POS != 'NULL'])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
         trees = []
         for i, tree in enumerate(treegen):
@@ -171,6 +171,7 @@ class FGParser():
 class FGTerminal(FlToken):
     def __init__(self, char):
         self.lexword = char
+        self.POS = 'EOP'
 
     @property
     def text(self):

@@ -64,6 +64,7 @@ NP -> NAME
 NP -> A[+compar] NBAR THAN S
 NP -> A[+compar] NBAR THAN S/NBAR
 NP[category=?c, H=[obj=?h, clist=?cl]] -> NP[category=?c, H=?h] CHRL[clist=?cl]
+NP -> ANAPH
 
 NPL[category=?c] -> NP[category=?c] COMMA NPL[category=?c]
 NPL[category=?c] -> NP[category=?c, +OR]
@@ -80,13 +81,12 @@ DIMEN -> DIM
 COUNT[category=count, H=[+count, val=?num]] -> NUM[orth=?num]
 COUNT[category=count, H=[+per, val=?num, obj=?h]] -> NUM[orth=?num] | NUM[orth=?num] P[prep='per'] NBAR[H=?h]
 
-
-
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
 ADVB -> ADV ADVB
 ADVB -> ADV CONJUNCTION ADVB
 ADVB -> DEG ADVB
+ADVB -> ADVB TO ADVB
 DEG -> COMPADJ DEG
 ADVB[+comp] -> A[+makecomp] ADV
 
@@ -154,6 +154,7 @@ WITHP[category=?c, H=[+presence, obj=(?h1+?h2)]] -> WITH NP[category=?c, H=?h1] 
 OFP[category=?c, H=[prep=OF, obj=?h]] -> OF NP[category=?c, H=?h]
 
 PP[H=[prep=?prep, obj=?n], position=?p] -> P[prep=?prep, position=?p] NP[H=?n]
+PP[H=?h] -> DEG PP[H=?h]
 
 # PP/?x -> P/NP
 
@@ -174,7 +175,7 @@ POSITION[posit=?o] -> P[prep=?p, orth=?o, +position]
 POSITION[posit=?h] -> PP[H=?h, +position]
 POSITION[posit=?o] -> A[+position, orth=?o]
 
-ANAPH[category=?o, +position] -> 'the' A[+position, orth=?o] 'ones'
-ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'ones'
-ANAPH[category=?o, +position] -> 'the' A[+position, orth=?o] 'one'
-ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'one'
+ANAPH[category=?o] -> 'the' A[orth=?o] 'ones'
+#ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'ones'
+ANAPH[category=?o] -> 'the' A[orth=?o] 'one'
+#ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'one'
