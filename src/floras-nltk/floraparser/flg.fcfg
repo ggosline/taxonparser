@@ -147,6 +147,7 @@ AP[category=(?c+?d), H=(?h1+?h2+[+AND])] -> AP[category=?c, H=?H1] AND AP[catego
 
 WITHP[category=?c, H=[+presence, obj=?h]] -> WITH NP[category=?c, H=?h]
 WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> WITH NP[category=?c, H=?h] CHRL[clist=?cl]
+WITHP[category=?c, H=[+presence, obj=?h, clist=?cl]] -> NP[category=?c, H=?h] CHRL[clist=?cl]
 
 WITHP[category=?c, H=[+presence, obj=(?h1+?h2)]] -> WITH NP[category=?c, H=?h1] AND  NP[category=?c, H=?h2]
 
@@ -175,5 +176,5 @@ POSITION[posit=?o] -> A[+position, orth=?o]
 
 ANAPH[category=?o, +position] -> 'the' A[+position, orth=?o] 'ones'
 ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'ones'
-
-NULL ->
+ANAPH[category=?o, +position] -> 'the' A[+position, orth=?o] 'one'
+ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'one'

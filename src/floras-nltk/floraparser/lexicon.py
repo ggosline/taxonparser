@@ -115,7 +115,8 @@ def pickle_lexicon():
     addlexicon(ORDNUMBERS, 'NUM', ordinal=True)
     UNITS = "mm.|cm.|dm.|m.|km.".split('|')
     addlexicon(UNITS, 'UNIT')
-    DIMENSION = "high|tall|long|wide|diam.|diameter|diam|in_height|in_width|in_diameter".split('|')
+    DIMENSION = "high|tall|long|wide|thick|diam.|diameter|diam|in_height|in_width|in_diameter".split(
+        '|')
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least|to'.split('|')
     addlexicon(RANGE, 'RANGE')

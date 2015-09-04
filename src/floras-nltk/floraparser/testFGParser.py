@@ -29,7 +29,7 @@ if __name__ == '__main__':
     if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Annona' and species = 'senegalensis';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Ficus' and species = 'asperifolia';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=parser, trace=ttrace)
     for taxon in ttaxa.taxa:
