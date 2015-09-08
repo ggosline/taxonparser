@@ -48,7 +48,7 @@ CHRL[H=?h] ->  CHR[H=?h]
 
 CHAR -> STAGE CHARLIST
 
-NL[category={?c+?d}, H=(?h1+?h2), orth=(?o+?ol)] -> N[category=?d, H=?h1, orth = ?o] NL[category=?c, orth=?ol, H=?h2]
+NL[category={?c+?d}, H=(1)[orth=(?o+?ol)], orth=(1)] -> N[category=?d, orth = ?o] NL[category=?c, orth=?ol, H=?h2]
 NL[category=?c, orth=?o, H=[orth=?o]] -> N[category=?c, orth=?o]
 
 NBAR[category=?c, H=[orth=?h, mod=?m]] -> AP[H=?m] NL[category=?c, H=?h]
@@ -74,7 +74,7 @@ NPL[H=(?h1+'OR'+?h2), category=?c, +OR] -> NPL[H=?h1, category=?c] CDELIM OR NP[
 NP/NP ->
 
 BYX -> CONJ[conj='×'] | 'x'
-SIZE[category=size, H=[category=size, num=?num, unit=?unit, dim=?dim]]  -> PR NUM[orth=?num] UNIT[orth=?unit] DIMEN[dim=?dim]
+#SIZE[category=size, H=[category=size, num=?num, unit=?unit, dim=?dim]]  -> PR NUM[orth=?num] UNIT[orth=?unit] DIMEN[dim=?dim]
 SIZE[category=size, H=[category=size, num=?num, unit=?unit, dim=?dim]]  -> NUM[orth=?num] UNIT[orth=?unit] DIMEN[dim=?dim]
 SIZE[category=size, H=[category=size, length=?num1, width=?num2, unit=?unit]]  -> NUM[orth=?num1] BYX NUM[orth=?num2] UNIT[orth=?unit]
 
@@ -85,7 +85,9 @@ SIZEB[category=size, H=?h1] -> DEG SIZE[H=?h1]  |  SIZE[H=?h1]  | RANGE SIZE[H=?
 DIMEN[dim=?dim] -> P[prep='in'] DIM[orth=?dim]
 DIMEN[dim=?dim] -> DIM[orth=?dim]
 COUNT[category=count, H=[+count, val=?num]] -> NUM[orth=?num]
-COUNT[category=count, H=[+per, val=?num, obj=?h]] -> NUM[orth=?num] | NUM[orth=?num] P[prep='per'] NBAR[H=?h]
+COUNT[category=count, H=[+per, val=?num, obj=?h]] ->  NUM[orth=?num] P[prep='per'] NBAR[H=?h]
+COUNT[category=count, H=[val=?num, group=?h]] -> NUM[orth=?num] N[+group, orth=?h]
+COUNT[H=?h] -> DEG[orth=?deg] COUNT[H=?h]
 
 #ADVP ->  ADVP ADV | ADV | PAREXP
 ADVB -> ADV
@@ -96,8 +98,9 @@ ADVB -> ADVB TO ADVB
 DEG -> COMPADJ DEG
 ADVB[+comp] -> A[+makecomp] ADV
 
-A[category=?c, H=[orth=?o, num=?num], -position] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
+#A[category=?c, H=[orth=?o, num=?num], -position] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
+
 ABAR[category=?c, H=[orth=?o, category=?c], bar=3] -> A[category=?c, orth=?o, -position]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv], bar=3] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg], bar=3] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]

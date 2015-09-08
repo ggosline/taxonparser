@@ -61,7 +61,7 @@ if __name__ == "__main__":
     myds = ADOdb(r'"..\resources\efloras.accdb"')
     myds.OpenTable("SELECT * from Taxa WHERE Taxa.family ='Moraceae';", parserflds)
     print (myds.RecordCount())
-    print (myds.NextRec())
+    print([rec for rec in myds.NextRec()])
 
     del myds
 

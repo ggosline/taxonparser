@@ -12,13 +12,13 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'stipules 3–6 mm. long, puberulous to almost glabrous, caducous'
+description = 'tree branch'
 fromDB = True
-# fromDB = False
+fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
-# parser = FeatureEarleyChartParser
+parser = FeatureEarleyChartParser
 cleantree = False
-cleantree = True
+# cleantree = True
 ttrace = 3
 
 trec['description'] = description
