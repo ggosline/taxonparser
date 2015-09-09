@@ -12,13 +12,13 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'tree branch'
+description = 'Leafy twigs 1–5 mm. thick, hirtellous, hispidulous, ± strigillose or almost glabrous'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
-parser = FeatureEarleyChartParser
+# parser = FeatureEarleyChartParser
 cleantree = False
-# cleantree = True
+cleantree = True
 ttrace = 3
 
 trec['description'] = description
