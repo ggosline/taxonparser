@@ -102,30 +102,30 @@ ADVB[+comp] -> A[+makecomp] ADV
 #A[category=?c, H=[orth=?o, num=?num], -position] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
 #ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 
-#ABAR[category=?c, H=[orth=?o, category=?c]] -> A[category=?c, orth=?o, -position]
-#ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
-#ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
+ABAR[category=?c, H=[orth=?o, category=?c]] -> A[category=?c, orth=?o, -position]
+ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
+ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
 
 ABARL[category=?c, H=[orth=(?o1+?o2)], +OR, bar=2] ->  ABAR[category=?c, H=[orth=?o1], bar=2] COMMA ABARL[category=?c, +OR, H=[orth=?o2], -position]
-#ABARL[category=(?c+?d), H=(?h1+?h2)] ->  ABAR[category=?d, H=?h1] ABARL[category=?c, H=?h2, -position]
-#ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h]
+ABARL[category=(?c+?d), H=(?h1+?h2)] ->  ABAR[category=?d, H=?h1] ABARL[category=?c, H=?h2, -position]
+ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h]
 
-#ABARL[category=?c, H=[category=?c, +OR, orth=(?o1+'OR'+?o2)]] -> ABAR[category=?c, H=[orth=?o1]] CDELIM OR ABAR[category=?c, H=[orth=?o2]]
+ABARL[category=?c, H=[category=?c, +OR, orth=(?o1+'OR'+?o2)]] -> ABAR[category=?c, H=[orth=?o1]] CDELIM OR ABAR[category=?c, H=[orth=?o2]]
 
-#ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)]] -> ABAR[category=?c, H=[orth=?o1]] OR WITHP[H=?h2]
-#ABAR[category=?c, H=[category=?c, orth=(?o1+'TO'+?o2)]] -> ABAR[category=?c, H=[orth=?o1]] TO ABAR[category=?c, H=[orth=?o2]]
+ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)]] -> ABAR[category=?c, H=[orth=?o1]] OR WITHP[H=?h2]
+ABAR[category=?c, H=[category=?c, orth=(?o1+'TO'+?o2)]] -> ABAR[category=?c, H=[orth=?o1]] TO ABAR[category=?c, H=[orth=?o2]]
 
-        ABAR[category=?c, H=[orth=?o, category=?c], bar=3] -> A[category=?c, orth=?o, -position]
-        ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv], bar=3] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
-        ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg], bar=3] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
+        #ABAR[category=?c, H=[orth=?o, category=?c], bar=3] -> A[category=?c, orth=?o, -position]
+        #ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv], bar=3] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
+        #ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg], bar=3] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
 
-        ABARL[category=(?c+?d), H=(?h1+?h2)] ->  ABAR[category=?d, H=?h1, bar=2] ABARL[category=?c, H=?h2, -position]
-        ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h, bar=2]
-        ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?o2)], bar=2] -> ABAR[category=?c, H=[orth=?o1], bar=3] CDELIM OR ABAR[category=?c, H=[orth=?o2], bar=3]
-        ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)], bar=2] -> ABAR[category=?c, H=[orth=?o1], bar=3] OR WITHP[H=?h2]
-        ABAR[category=?c, H=[category=?c, orth=(?o1+'TO'+?o2)], bar=3] -> ABAR[category=?c, H=[orth=?o1], bar=3] TO ABAR[category=?c, H=[orth=?o2], bar=3]
+        #ABARL[category=(?c+?d), H=(?h1+?h2)] ->  ABAR[category=?d, H=?h1, bar=2] ABARL[category=?c, H=?h2, -position]
+        #ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h, bar=2]
+        #ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?o2)], bar=2] -> ABAR[category=?c, H=[orth=?o1], bar=3] CDELIM OR ABAR[category=?c, H=[orth=?o2], bar=3]
+        #ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)], bar=2] -> ABAR[category=?c, H=[orth=?o1], bar=3] OR WITHP[H=?h2]
+        #ABAR[category=?c, H=[category=?c, orth=(?o1+'TO'+?o2)], bar=3] -> ABAR[category=?c, H=[orth=?o1], bar=3] TO ABAR[category=?c, H=[orth=?o2], bar=3]
 
-        ABAR[category=?c, H=?h1, bar=2] -> ABAR[category=?c, H=?h1, bar=3]
+        #ABAR[category=?c, H=?h1, bar=2] -> ABAR[category=?c, H=?h1, bar=3]
 
         #ABAR[category=?c] ->  ABAR[category=?c] ADVB
 
