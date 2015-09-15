@@ -21,12 +21,14 @@ CHARLIST[H=?h] -> CHAR[H=?h]
 CHAR[H=?h] -> CHRL[H=?h] CTERMINATOR
 # CHAR[category=?c, H=?h] -> WITHP[category=?c, H=?h]
 # CHAR[category=?c, H=?h] -> CTERMINATOR WITHP[category=?c, H=?h]
+CHAR -> STAGE CHARLIST
 
 CTERMINATOR -> COMMA | '$'
 # CTERMINATOR ->
 
 
 CHR[category=?c, H=?h, stage=?st] ->  CHR[category=?c, H=?h] STAGE[stage=?st]
+CHR[category=?c, H=?h, stage=?st] ->  CHR[category=?c, H=?h] SUBSET[stage=?st]
 CHR[category=?c, H=?h, posit=?p] ->  CHR[category=?c, H=?h] POSITION[posit=?p]
 CHR[category=?c, H=?h, posit=?p] ->  POSITION[posit=?p] CHR[category=?c, H=?h]
 
@@ -46,8 +48,8 @@ CHR[H=?h, category=count] ->  COUNT[H=?h]
 
 CHRL[H=(?h+?cl), category = ?c] -> CHR[H=?h, category=?c] CHRL[H=?cl, category=?d]
 CHRL[H=?h, category=?c] ->  CHR[H=?h, category=?c]
-
-CHAR -> STAGE CHARLIST
+CHRL[H=(?h+?h1), category=?c] ->  CHR[H=?h, category=?c] COMMA CHRL[H=?h1, category=?c]
+CHRL[H=(?h+?h1), category=?c] ->  CHR[H=?h, category=?c] COMMA OR CHRL[H=?h1, category=?c]
 
 NL[category={?c+?d}, H=(1)[orth=(?o+?ol)], orth=(1)] -> N[category=?d, orth = ?o] NL[category=?c, orth=?ol, H=?h2]
 NL[category=?c, orth=?o, H=[orth=?o]] -> N[category=?c, orth=?o]
@@ -88,10 +90,10 @@ DIMEN[dim=?dim] -> DIM[orth=?dim]
 COUNT[category=count, H=[+count, val=?num]] -> NUM[orth=?num]
 COUNT[category=count, H=[+per, val=?num, obj=?h]] ->  NUM[orth=?num] P[prep='per'] NBAR[H=?h]
 COUNT[category=count, H=[val=?num, group=?h]] -> NUM[orth=?num] N[+group, orth=?h]
-COUNT[H=?h] -> DEG[orth=?deg] COUNT[H=?h]
+COUNT[H=?h] -> DEG[orth=?deg] COUNT[H=?h] | RANGE[orth=?deg] COUNT[H=?h]
 
 #ADVP ->  ADVP ADV | ADV | PAREXP
-ADVB -> ADV
+ADVB -> ADV | DEG
 ADVB -> ADV ADVB
 ADVB -> ADV CONJUNCTION ADVB
 ADVB -> DEG ADVB
@@ -100,11 +102,11 @@ DEG -> COMPADJ DEG
 ADVB[+comp] -> A[+makecomp] ADV
 
 #A[category=?c, H=[orth=?o, num=?num], -position] -> NUM[orth=?num] A[category=?c, orth=?o, -position]
-#ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
+ABAR[+comp, category=?c] -> A[+makecomp] A[category=?c]
 
 ABAR[category=?c, H=[orth=?o, category=?c]] -> A[category=?c, orth=?o, -position]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
-ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
+#ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
 
 ABARL[category=?c, H=[orth=(?o1+?o2)], +OR, bar=2] ->  ABAR[category=?c, H=[orth=?o1], bar=2] COMMA ABARL[category=?c, +OR, H=[orth=?o2], -position]
 ABARL[category=(?c+?d), H=(?h1+?h2)] ->  ABAR[category=?d, H=?h1] ABARL[category=?c, H=?h2, -position]
@@ -197,6 +199,8 @@ STAGE[stage=?o] -> A[+timing, orth=?o]
 POSITION[posit=?o] -> P[prep=?p, orth=?o, +position]
 POSITION[posit=?h] -> PP[H=?h, +position]
 POSITION[posit=?o] -> A[+position, orth=?o]
+
+SUBSET[stage=(?a+?n)] -> 'in' ABARL[orth=?a] N[orth=?n]
 
 ANAPH[category=?o] -> 'the' A[orth=?o] 'ones'
 #ANAPH[category=?o, +timing] -> 'the' A[+timing, orth=?o] 'ones'

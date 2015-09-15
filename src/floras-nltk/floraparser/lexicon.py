@@ -118,7 +118,7 @@ def pickle_lexicon():
     DIMENSION = "high|tall|long|wide|thick|diam.|diameter|diam|in_height|in_width|in_diameter".split(
         '|')
     addlexicon(DIMENSION, 'DIM')
-    RANGE = 'up_to|at_least|to'.split('|')
+    RANGE = 'up_to|at_least|to|more_than|less_than'.split('|')
     addlexicon(RANGE, 'RANGE')
     POSITIONA = 'upper|lower|uppermost|lowermost|superior|inferior|outer|inner|outermost|innermost|various|above_and_beneath'.split(
         '|')
@@ -135,11 +135,12 @@ def pickle_lexicon():
     addlexicon(DEGREE, 'ADV', timing=False)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|" \
                  "older|younger|" \
-                 "exceeding|equalling|as_long_as|indistinguishable_from".split('|')
+                 "exceeding|equalling|as_long_as|indistinguishable_from|similar".split('|')
     addlexicon(COMPARISON, 'A', compar=True, category='compar')
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
-    TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length|eventually".split('|')
+    TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length|eventually|when_fresh|when_dry".split(
+        '|')
     addlexicon(TIMING, 'A', timing=True, position=False)
     PRESENCE = "present|absent".split('|')
     addlexicon(PRESENCE, 'A', category='presence')

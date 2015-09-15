@@ -12,11 +12,11 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Leafy twigs 1–5 mm. thick, hirtellous, hispidulous, ± strigillose or almost glabrous'
+description = 'lamina elliptic to oblong, ovate, subobovate, lanceolate or sometimes linear, 3–23 x 1.5–12 cm., usually ± asymmetrical, chartaceous to subcoriaceous, apex acuminate to caudate, acute or sometimes obtuse, base cuneate or rounded, margin dentate to irregularly pinnately lobed or divided, sometimes subentire'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
-# parser = FeatureEarleyChartParser
+parser = FeatureEarleyChartParser
 cleantree = False
 cleantree = True
 ttrace = 3
@@ -44,7 +44,7 @@ if __name__ == '__main__':
                     if ttrace:
                         for i, treex in enumerate(trees):
                             # cleanparsetree(treex)
-                            treex.draw()
+                            # treex.draw()
                             if True and i <= 20:
                                 tfilename = tfilebase + str(i)
                                 tfile = open(tfilename, mode='w', encoding='utf-8')

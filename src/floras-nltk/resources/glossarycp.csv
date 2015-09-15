@@ -607,7 +607,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 651,crested,shape,,"Having a laterally elongate, relatively thin, irregular or notched protrusion.",shape,
 652,crispate,shape,,"Having closely and irregularly spaced, irregularly shaped, often compound convexities that curve irregularly through three dimensions.",shape,
 653,face,FEATURE,,"A relatively large, flat or shallowly curved portion of the external surface of a three-dimensional structure,  bounded by more or less distinct topological discontinuities.",FEATURE,
-654,_faced,shape,,"Having relatively large, flat or shallowly curved portions of the external surface that are bounded by more or less distinct angular discontinuities in that surface, of the number indicated by the prefix; as in three-faced.",shape,
+#,_faced,shape,,"Having relatively large, flat or shallowly curved portions of the external surface that are bounded by more or less distinct angular discontinuities in that surface, of the number indicated by the prefix; as in three-faced.",shape,
 655,faceted,shape,,"Having numerous, relatively small, flat or shallowly curved portions of the external surface that are bounded by more or less distinct angular discontinuities in that surface.",shape,
 657,falcate,shape,,"Elongate, strongly compressed, and arcuate in the plane of compression, the two faces more or less plane and parallel, the degree of curvature decreasing distally or not; like a sickle blade.",shape,
 #,true,derivation,indusium,Constituting a marginal fold of the lamina as a whole and not a distinct enation from the epidermis.,derivation,
@@ -677,7 +677,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 723,cyathia,structure,inflorescence,"Resembling a single flower, the unbranched axis very short with a terminal pistillate flower and several lateral staminate flowers, the whole subtended and to some degree enclosed by a cupulate envelope of bracts, the flowers diminutive and presumed to be",nominative,
 724,cycle,structure,,A set of three or more lateral structures that are inserted around an axis at the same level.,STRUCTURE,
 725,cyclic,arrangement,,"Disposed along the axis in groups of three or more, the members of each group (cycle, series, verticil, whorl) inserted around the axis at the same level.",arrangement,
-726,_cyclic,arrangement,,"Disposed in the number of cycles (series, verticils, whorls) indicated by the prefix; as in monocyclic, 3-cyclic.",arrangement,
+#,_cyclic,arrangement,,"Disposed in the number of cycles (series, verticils, whorls) indicated by the prefix; as in monocyclic, 3-cyclic.",arrangement,
 727,cylindric,shape,,"Solid and transversely round with a more or less uniform diameter, the ends blunt.",shape,
 728,cylindrical,shape,,"Solid and transversely round with a more or less uniform diameter, the ends blunt.",shape,
 729,cymbiform,shape,,"Like the generalized form of a boat hull, the walls relatively thin to moderately thick, the interior essentially empty and open along one side.",shape,
@@ -711,7 +711,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 757,dens,structure,,"One of a series of regularly spaced, angular, marginal convexities oriented more or less perpendicular to the generalized perimeter of a laminar structure.  See also  crena (scallop), crenule (scalloplet), sawtooth, sawtoothlet, toothlet.",STRUCTURE,
 758,dentes,structure,,"One of a series of regularly spaced, angular, marginal convexities oriented more or less perpendicular to the generalized perimeter of a laminar structure.  See also  crena (scallop), crenule (scalloplet), sawtooth, sawtoothlet, toothlet.",STRUCTURE,
 759,dentate,shape,,"Having regularly spaced, angular convexities oriented more or less perpendicular to the generalized perimeter.  See also  crenate (scalloped), crenulate (small-scalloped), denticulate (small-toothed), serrate (sawtoothed), serrulate (small-sawtoothed).",shape,
-761,_dentate,shape,,"Having the number of orders of dentes (teeth) indicated by the prefix, one upon another; as in twice-dentate.  See also ...crenate (...-scalloped), ...serrate (...-sawtoothed).",shape,
+#,_dentate,shape,,"Having the number of orders of dentes (teeth) indicated by the prefix, one upon another; as in twice-dentate.  See also ...crenate (...-scalloped), ...serrate (...-sawtoothed).",shape,
 762,denticulate,shape,,"Finely dentate (toothed).  See also crenate (scalloped), crenulate (small-scalloped), serrate (sawtoothed), serrulate (small-sawtoothed).",shape,
 763,depressed,shape,,"Flattened distally, perpendicular to the longitudinal axis, as though pressed from the top, the external surface otherwise basically convex.  Often used in combination with some other term that describes the overall shape exclusive of ('before') flattenin",shape,
 764,derivation,CHARACTER,,Ontogenetic origin.,CHARACTER,
@@ -743,7 +743,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 790,diffuse-rooted,architecture,plant,"Having a dense system of adventitious, slender roots that arise from the base of the main stem and functionally replace an evanescent primary root.  See also taprooted.",architecture,
 791,digamous,reproduction,inflorescence,Bearing flowers of two differing sexual constitutions; esp. in Asteraceae (Compositae).,reproduction,
 792,digitate,architecture,foliaceous structure,"Compound with one order of leaflets all inserted at a common point and diverging from one another; or lobed (cleft, divided, parted, segmented), incised or ribbed in a similar hand-like pattern.  Unless qualified to indicate otherwise, this term usually i",architecture,
-793,_digitate,architecture,foliaceous structure,"Compound with the number of orders of leaflets indicated by the prefix, each order digitate; as in tridigitate.",architecture,
+#,_digitate,architecture,foliaceous structure,"Compound with the number of orders of leaflets indicated by the prefix, each order digitate; as in tridigitate.",architecture,
 794,dilate,shape,elongate structure,"Narrow at one end and broadening toward the other; esp. when essentially terete at the narrow proximal end and seemingly flattened distally, as some anther filaments.",shape,
 795,dilated,shape,elongate structure,"Narrow at one end and broadening toward the other; esp. when essentially terete at the narrow proximal end and seemingly flattened distally, as some anther filaments.",shape,
 796,dimidiate,shape,,"Halved, figuratively; bilaterally asymmetric, nearly or wholly lacking one side as implicitly compared with some corresponding bilaterally symmetric structure, real or imagined.",shape,
@@ -925,7 +925,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 978,fibrous,texture,,"Having tough, woody or sclerotic strands distributed through a softer matrix.",texture,
 979,fibrous_root,structure,,A diffuse root that includes a significant component of woody or sclerotic strands and is consequently tough and often wiry.,STRUCTURE,
 980,fibrous-rooted,architecture,plant,Diffuse-rooted with fibrous roots.  See also taprooted.,architecture,
-982,_fid,shape,,"Having the number of lobes, divisions or segments indicated by the prefix; as in bifid, quadrifid.",shape,
+#,_fid,shape,,"Having the number of lobes, divisions or segments indicated by the prefix; as in bifid, quadrifid.",shape,
 983,fiddle-shaped,shape,,"Basically obovate but with deep, rounded sinuses opposite one another in the proximal half; like the frontal outline of an inverted fiddle body.",shape,
 984,fiddlehead,structure,,"A circinate leaf (frond) prior to full expansion, while still wholly or distally coiled; esp. in Polypodiophyta.",STRUCTURE,
 985,fig,structure,fruit,"Compound and derived from a many-flowered inflorescence borne on the deeply invaginated, thus interior, surface of an enlarged, fleshy, enclosing, wall-like structure of accessory stem tissue that has a distal aperture (ostiole); the individual fruits tin",nominative,
@@ -968,7 +968,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1024,floating,habit,plant,"Buoyant and growing entirely at or near the surface of water, not rooted in any substrate.",habit,q
 1025,floating,location,,At or upon the surface of water.,habit,q
 1026,floccose,pubescence,,"Bearing tufts of soft, fine, capillate trichomes that rub off easily.",pubescence,
-1027,_floral,architecture,inflorescence,"Having the number of flowers indicated by the prefix; as in bifloral, multifloral, oligofloral, unifloral.",position,q
+#,_floral,architecture,inflorescence,"Having the number of flowers indicated by the prefix; as in bifloral, multifloral, oligofloral, unifloral.",position,q
 #,floral,insertion,,"Upon, within, or associated with the flowers.",position,q
 1029,floral,position,,"Upon, within, or associated with the flowers.",position,q
 1031,floral_cup,structure,,"A marginal protrusion from or enlargement of the receptacle (torus) of a flower, encircling and wholly, partly or not at all adnate to the gynoecium, bearing the perianth and androecium.",STRUCTURE,
@@ -1054,7 +1054,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1116,glabrate,pubescence,,"Nearly glabrous, with only a very sparse covering of trichomes.",pubescence,
 1117,glabrescent,pubescence,,"Becoming glabrous (bald, psilate) with age.",pubescence,
 1118,glabrous,pubescence,,Lacking trichomes.,pubescence,
-1118,glabrous,relief,,Lacking trichomes.,pubescence,
+#,glabrous,relief,,Lacking trichomes.,pubescence,
 1119,gland,structure,,"An anatomically distinct multicellular structure that produces and exudes a particular substance, or resembles those that do.",STRUCTURE,
 1120,glandless,architecture,,Lacking glands.,architecture,
 1121,glandular,architecture,,Having one or more glands.,architecture,q
@@ -1483,10 +1483,10 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1561,lip_cell,structure,,"Either of a pair of adjacent, narrow, transversely oriented, thick-walled cells bordering the pore (stomium) of a sporangium.",STRUCTURE,
 1562,lipped,architecture,"perianth, calyx, corolla",Strongly zygomorphic with connate and/or coherent members some or all of whose distal portions form one or two lip-like structures.,architecture,
 1563,lobate,shape,,Having one or more component sectors or peripheral protrusions that is/are delimited by concavities in the surface or margin and that is/are not proximally distinct from the remainder of the whole.  The meanings of this term and its approximate synonyms s,shape,
-1564,_lobate,shape,,Having the number of lobes indicated by the prefix; as in bilobate.,shape,
+#,_lobate,shape,,Having the number of lobes indicated by the prefix; as in bilobate.,shape,
 1567,lobe,structure,,"Any generally convex, major peripheral protrusion or component sector that is delimited by concavities in the surface or margin and that is not proximally distinct from the remainder of the whole.",STRUCTURE,
 1568,lobed,shape,,Having one or more component sectors or peripheral protrusions that is/are delimited by concavities in the surface or margin and that is/are not proximally distinct from the remainder of the whole.  The meanings of this term and its approximate synonyms s,shape,
-1569,_lobed,shape,,Having the number of lobes indicated by the prefix; as in five-lobed.,shape,
+#,_lobed,shape,,Having the number of lobes indicated by the prefix; as in five-lobed.,shape,
 1572,location,CHARACTER,,Position with respect to aspects of environmental context.,CHARACTER,
 1573,_locular,architecture,"anther, ovary, fruit","Having the number of locules indicated by the prefix; as in plurilocular, trilocular, unilocular.",architecture,
 1574,locule,FEATURE,,"Any structurally distinct compartment within an anther, ovary, fruit, sporangium or other organ; not necessarily having any evolutionary integrity.",FEATURE,
