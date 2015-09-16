@@ -131,12 +131,13 @@ def pickle_lexicon():
     FREQUENCY = "very|a_little|not_much|all|sometimes|often|usually|rarely|generally|never|always|" \
                 "soon|also|even|especially|?".split('|')
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
-    DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|rather|shallowly|much|dark|light".split('|')
+    DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|rather|shallowly|scarcely|much|dark|light|not".split(
+        '|')
     addlexicon(DEGREE, 'ADV', timing=False)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from|similar".split('|')
-    addlexicon(COMPARISON, 'A', compar=True, category='compar')
+    addlexicon(COMPARISON, 'A', compar=True, category='compar', position=False, timing=False)
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length|eventually|when_fresh|when_dry".split(

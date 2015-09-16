@@ -450,6 +450,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 483,circinate,shape,,Terete and rolled downward from the apex in a tight coil.,shape,
 484,circinate,vernation,,"Having each leaf (frond) rolled adaxially from the sides and downward from the apex, forming a tight, flat coil; esp. in Polypodiophyta.",vernation,
 485,circular,arrangement,bundle scars,Forming a circle.,shape,
+486,circular,shape,,Forming a circle.,,
 #,circumcaulous,insertion,,Upon and surrounding the stem.,insertion,
 487,circumcaulous,position,,Upon and surrounding the stem.,position,
 488,circumscissile,dehiscence,,"Splitting transversely through the exterior wall about its entire circumference, the resulting upper cap-like portion falling away.",dehiscence,
@@ -2846,7 +2847,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2974,capitular,arrangement,,,,
 2975,castaneous,coloration,,,,
 2976,chestnut,coloration,,,,
-2977,ciliolate,pubescence,,,,
+2977,ciliolate,shape,margin,,,
 2978,closing,architecture,,,,
 2979,cluster,arrangement,,,,
 2980,coarse,texture,,,,
@@ -2953,7 +2954,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3081,lacking,presence,,,,
 3082,lanose,pubescence,,,,
 3083,large,size,,,,
-3084,larger,size,,,,
+#,larger,size,,,,
 3085,largest,size,,,,
 3086,lavender,coloration,,,,
 3087,leaflike,architecture,,,,
@@ -2965,7 +2966,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3093,lobing,shape,,,,
 3094,lobulate,shape,,,,
 3095,long,size,,,,
-3096,longer,size,,,,
+#,longer,size,,,,
 3097,longest,size,,,,
 3098,low,location,,,,
 3099,many,count,,,,
@@ -3052,13 +3053,13 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3180,several,count,,,,
 3181,shallow,depth,,,,
 3182,short,size,,,,
-3183,shorter,size,,,,
+#,shorter,size,,,,
 3184,silvery,coloration,,,,
 3185,singly,arrangement,,,,
 3186,slatey,coloration,,,,
 3187,slender,size,,,,
 3188,small,size,,,,
-3189,smaller,size,,,,
+#,smaller,size,,,,
 3190,smallest,size,,,,
 3191,smelling,odor,,,,
 3192,sordid,coloration,,,,
@@ -3110,7 +3111,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3238,surrounded,architecture,,,,
 3239,surrounding,architecture,,,,
 3240,tall,size,,,,
-3241,taller,size,,,,
+#,taller,size,,,,
 3242,tan,coloration,,,,
 3243,tapering,shape,,,,
 3244,tawny,coloration,,,,
@@ -3156,7 +3157,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3284,whitish,coloration,,,,
 3285,wide,size,,,,
 3286,widened,size,,,,
-3287,wider,size,,,,
+#,wider,size,,,,
 3288,widest,size,,,,
 3289,widths,size,,,,
 3290,winter,duration,,,,
@@ -3364,7 +3365,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3576,colour,,,,,KG
 3577,coloured,,,,,KG
 3578,covered,,,,,KG
-3579,covering,,,,,KG
+#,covering,,,,,KG
 3580,crown,structure,,"<b> 1. </b>in trees, the cluster of branches and leaves borne at the top of the trunk, or the shape formed by the uppermost and outermost leaves; <b>2.</b> (in cycads) the apex of the trunk or stem, usually covered with protective bracts [not recommended]",,KG
 3581,current,,,,,KG
 3582,cusp,structure,,"sharp, rigid point",,KG

@@ -12,14 +12,14 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina elliptic to oblong, ovate, subobovate, lanceolate or sometimes linear, 3–23 x 1.5–12 cm., usually ± asymmetrical, chartaceous to subcoriaceous, apex acuminate to caudate, acute or sometimes obtuse, base cuneate or rounded, margin dentate to irregularly pinnately lobed or divided, sometimes subentire'
+description = 'Seeds 1–3(4), reddish-brown, glossy, with a thin yellowish aril obliquely covering the lower part'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
 parser = FeatureEarleyChartParser
 cleantree = False
 cleantree = True
-ttrace = 3
+ttrace = 2
 
 trec['description'] = description
 trdr = [trec]
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FZ' and rank = 'species' and genus = 'Ficus' and species = 'asperifolia';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and genus = 'Celastrus' and species = 'polyanthemos';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=parser, trace=ttrace)
     for taxon in ttaxa.taxa:
@@ -44,7 +44,7 @@ if __name__ == '__main__':
                     if ttrace:
                         for i, treex in enumerate(trees):
                             # cleanparsetree(treex)
-                            # treex.draw()
+                            treex.draw()
                             if True and i <= 20:
                                 tfilename = tfilebase + str(i)
                                 tfile = open(tfilename, mode='w', encoding='utf-8')
