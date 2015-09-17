@@ -98,14 +98,13 @@ class FlTagger():
         if ws:
             ws = (ws,)
             if ws in lexicon:
-                lexent = copy.deepcopy(lexicon[ws])
-                for gc in lexent:
+                lexent = []
+                for gc in lexicon[ws]:
                     if gc[TYPE] == 'N':
-                        gc['plural'] = True
-                        POS = 'NP'
-                else:
-                    POS = lexent[0][TYPE]
-                return flword, POS, lexent, ws
+                        # gc['plural'] = True
+                        lexent.append(gc)
+                if lexent:
+                    return flword, 'NP', lexent, ws
 
         # Try taking the word apart at dashes
         root = self.rootword(word)

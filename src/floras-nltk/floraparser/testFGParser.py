@@ -12,7 +12,7 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Seeds 1–3(4), reddish-brown, glossy, with a thin yellowish aril obliquely covering the lower part'
+description = 'lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FZ' and genus = 'Celastrus' and species = 'polyanthemos';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and genus = 'Salacia' and species = 'senegalensis';", )
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=parser, trace=ttrace)
     for taxon in ttaxa.taxa:

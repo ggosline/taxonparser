@@ -53,11 +53,11 @@ class FGGrammar(FeatureGrammar):
 
         # Add the whole lexicon
 
-        for wordtuple, featlist in lexicon.lexicon.items():
-            for lexent in featlist:
-                lexlhs = lexent
-                newprod = Production(lexlhs, ['_'.join(wordtuple)])
-                productions.append(newprod)
+        # for wordtuple, featlist in lexicon.lexicon.items():
+        #     for lexent in featlist:
+        #         lexlhs = lexent
+        #         newprod = Production(lexlhs, ['_'.join(wordtuple)])
+        #         productions.append(newprod)
 
         return FGGrammar(start, productions)
 
@@ -85,7 +85,7 @@ class FGParser():
         # check for tokens added by the POS processor -- e.g. ADV
         newprod = False
         for fltoken in tokens:
-            if not self._grammar._lexical_index.get(fltoken.lexword):
+            if True:  # not self._grammar._lexical_index.get(fltoken.lexword):
                 newprod = True
                 for lexent in fltoken.lexentry:
                     lexrhs = fltoken.lexword

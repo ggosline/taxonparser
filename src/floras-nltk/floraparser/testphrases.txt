@@ -1,38 +1,38 @@
-Fail:    Plant is Shrub or tree, often spreading or straggling, or more rarely a shrublet, (0·3)1–7(9) m. high, unarmed or with green to brown spines up to 24 cm. long, axillary or terminating short axillary branches, glabrous or very rarely with young shoots and leaves puberulous (var. puberula), without latex
-No. of trees: 14
-Fail:    branches lined or angular or rarely subterete, pale green or rarely reddish-purple or glaucous at first, becoming terete (or rarely remaining angular), grey-brown or dark grey to purplish-brown or whitish, usually without visible lenticels
-No. of trees: 10
-Fail:    Leaves fasciculate or not, petiolate
-No. of trees: 2
-Fail:    lamina pale to deep green or rarely ± glaucous above, concolorous or often grey-green below, often with pale midrib, rarely mottled when dry, 1–9·5 × 0·4–5 cm., ovate or oblong-ovate or elliptic or circular (on long shoots) to obovate or oblanceolate or linear-oblanceolate or often spathulate (on fasciculate shoots), subacute or obtuse to rounded or emarginate and often shortly apiculate at the apex, with margin acutely or rarely obtusely shallowly and often irregularly serrulate (especially towards the apex) to entire, cuneate or rarely rounded to angustate at the base, membranous to coriaceous, with lateral nerves and reticulation varying in prominence and density
-No. of trees: 18
-Success: petiole 1–10 mm. long
-No. of trees: 1
-Fail:    Cymes dichasial, solitary and axillary or 1–7 on short axillary shoots, or rarely in axillary panicles, with peduncle 1–30 mm. long or occasionally absent
-No. of trees: 5
-Fail:    pedicels 1–7 mm. long, articulated at or near the base
+Fail:    Plant is Shrub or liane up to 9 m. high or higher, with latex, glabrous
 No. of trees: 3
-Fail:    flowers 2–24 or more in each cyme or very rarely solitary, 2–5 mm. in diam., always (?) dioecious, unscented or sometimes apparently malodorous
-No. of trees: 6
-Fail:    Sepals 5(6), equal, 0·3–1(1·5) mm., circular to triangular-lanceolate, rounded to acute, with margin ciliolate
-No. of trees: 6
-Fail:    Petals 5(6), white, 1–3·5 mm. long, elliptic-oblong to oblong-spathulate, with margin finely ciliolate to entire
-No. of trees: 6
-Success: Male flowers with stamens 5(6), shorter or longer than petals, with filaments 1–2·5 mm. long, slender, arising below disk
-No. of trees: 100
-Success: disk relatively narrow, ± concave, 5(6)-lobed
-No. of trees: 1
-Success: pistillode small, globose, with short style without spreading stigmas
-No. of trees: 5
-Success: Female flowers smaller than the male flowers, with staminodes 5 shorter than ovary
-No. of trees: 24
-Fail:    disk as in the male flowers
+Success: stems with paired lines, green, smooth and ± flattened at first, becoming terete or subangular, purple or reddish-purple and verruculose with numerous prominent lenticels
+No. of trees: 96
+Fail:    Leaves opposite or subopposite (alternate on climbing shoots), petiolate
 No. of trees: 2
-Fail:    ovary 2–3(4)-locular, 0·3–0·5 mm. long, globose, not or scarcely immersed in the disk
+Fail:    lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation equally prominent on both sides
+No. of trees: 7
+Success: petiole 4–8(10) mm. long, with margins straight
 No. of trees: 4
-Fail:    style 0·2–0·5 mm. long, shorter than or equalling the ovary, shorter than or exceeding the petals, with 2–3(4) spreading stigmas
-No. of trees: 10
-Fail:    Capsule yellow or yellow-tinged-red or red, 3–10 mm. long, obovoid or subpyriform to 3-gonous or subglobose, thinly to thickly coriaceous or slightly succulent, smooth or rugulose
-No. of trees: 8
-Fail:    Seeds 1–3(4), reddish-brown, glossy, with a thin yellowish aril obliquely covering the lower 1/2–2/3
+Success: stipules small, broad, irregularly denticulate, deciduous
 No. of trees: 6
+Success: Flowers co, bisexual, in axillary pedunculate fascicles
+No. of trees: 6
+Success: buds 3–5 mm. long, cylindric to narrowly obovoid
+No. of trees: 2
+Fail:    primary peduncle 1–10 mm. long, lenticellate-verruculose, sometimes dividing to form 2–4 secondary peduncles
+No. of trees: 0
+Success: pedicels 10–15 mm. long, smooth, articulated at the base
+No. of trees: 4
+Success: Sepals c. 1 mm. long, subequal, free, triangular-ovate, obtuse, with margin entire or rarely ciliolate-denticulate
+No. of trees: 48
+Success: Petals white or greenish-white, 3–5(7·5) mm. long, oblong, sessile, rounded, entire or subentire, spreading at anthesis
+No. of trees: 48
+Fail:    Disk deeply sub-cylindric, broadened at the base and usually at the apex, fluted, with 5-lobed lower and upper margins, partially surrounding the ovary
+No. of trees: 4
+Success: Stamens 3, with filaments slender, not broadened at the base
+No. of trees: 4
+Success: anthers dehiscing by 2 vertical clefts not confluent at the apex
+No. of trees: 48
+Success: Ovary narrowly ovoid-3-gonous, on a short gynophore, with style 1–1·5(2) mm. long, conic, 3-lobed in section
+No. of trees: 10
+Success: stigma entire, punctiform
+No. of trees: 3
+Success: ovules 6–8 per loculus
+No. of trees: 2
+Fail:    Fruit orange, 3–8·5 cm. long, ellipsoid to globose with a 3-radiate apical crest, sometimes narrowed at the base to form a carpophore, smooth or with a few pointed tubercles, c. 12–20-seeded
+No. of trees: 4

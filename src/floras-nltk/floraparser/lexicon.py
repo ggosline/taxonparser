@@ -29,7 +29,9 @@ def pickle_lexicon():
             addlexentry(word, POS, **morefeatures)
 
     def addlexentry(word, POS, **morefeatures):
-        ws = word.strip('_').split('_')
+        if word.startswith('_'):
+            word = word.replace('_', '-', 1)
+        ws = word.split('_')
         if len(ws) > 1:
             firstword = ws[0]
             if firstword in multiwords:
@@ -112,7 +114,7 @@ def pickle_lexicon():
                  "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5|2/5".split('|')
     addlexicon(LITNUMBERS, 'NUM', literal=True)
     ORDNUMBERS = "principal|primary|secondary|tertiary|1st|2nd|3rd".split('|')
-    addlexicon(ORDNUMBERS, 'NUM', ordinal=True)
+    addlexicon(ORDNUMBERS, 'A', ordinal=True)
     UNITS = "mm.|cm.|dm.|m.|km.".split('|')
     addlexicon(UNITS, 'UNIT')
     DIMENSION = "high|tall|long|wide|thick|diam.|diameter|diam|in_height|in_width|in_diameter".split(
