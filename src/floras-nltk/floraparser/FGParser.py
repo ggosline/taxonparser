@@ -10,6 +10,13 @@ from nltk.featstruct import FeatStruct, Feature, FeatList
 from floraparser import lexicon
 from floraparser.fltoken import FlToken
 from nltk import Tree, ImmutableTree
+from nltk.parse.earleychart import FeatureIncrementalChart
+
+
+class FGChart(FeatureChart):
+    def pretty_format_edge(self, edge, width=None):
+        line = FeatureIncrementalChart.pretty_format_edge(self, edge)
+        return line[0:120]
 
 class FGGrammar(FeatureGrammar):
     def __init__(self, start, productions):
@@ -74,7 +81,7 @@ class FGParser():
         with open(grammarfile, 'r', encoding='utf-8') as gf:
             gs = gf.read()
         self._grammar = FGGrammar.fromstring(gs)
-        self._parser = parser(self._grammar, trace=trace)
+        self._parser = parser(self._grammar, trace=trace, chart_class=FGChart)
         self._chart = None
 
     def parse(self, tokens, cleantree=True, maxtrees=200):
@@ -122,7 +129,42 @@ class FGParser():
             for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
                 trees.append((tree, charedge.start(), charedge.end()))
 
-        charedges = list(self.simple_select(is_complete=True, lhs='CHR'))
+        charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
+
+        for charedge in charedges:
+            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+                newtree = False
+                if not trees:
+                    trees.append((tree, charedge.start(), charedge.end()))
+                else:
+                    for (t, tstart, tend) in trees[:]:
+                        if charedge.start() <= tstart and charedge.end() >= tend:  # subsumes
+                            trees.remove((t, tstart, tend))
+                        elif (charedge.start() >= tstart and charedge.end() < tend) \
+                                or (
+                                        charedge.start() > tstart and charedge.end() <= tend):  # subsumed
+                            newtree = False
+                            continue
+                        newtree = True
+                    if newtree:
+                        trees.append((tree, charedge.start(), charedge.end()))
+
+        return [t for t, _, _ in trees]
+
+    def listCHARs(self):
+        '''
+        In a failed parse check for candidate trees labelled with CHAR
+        parse must have been called first! to generate the chart
+        '''
+
+        trees = []
+
+        charedges = list(self.simple_select(is_complete=True, lhs='SUBJECT'))
+        for charedge in charedges:
+            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+                trees.append((tree, charedge.start(), charedge.end()))
+
+        charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
 
         for charedge in charedges:
             for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):

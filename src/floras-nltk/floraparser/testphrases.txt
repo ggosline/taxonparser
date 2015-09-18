@@ -1,38 +1,38 @@
 Fail:    Plant is Shrub or liane up to 9 m. high or higher, with latex, glabrous
-No. of trees: 3
-Success: stems with paired lines, green, smooth and ± flattened at first, becoming terete or subangular, purple or reddish-purple and verruculose with numerous prominent lenticels
-No. of trees: 96
-Fail:    Leaves opposite or subopposite (alternate on climbing shoots), petiolate
-No. of trees: 2
-Fail:    lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation equally prominent on both sides
-No. of trees: 7
+No. of trees: 1
+Fail:    stems with paired lines, green, smooth and ± flattened at first, becoming terete or subangular, purple or reddish-purple and verruculose with numerous prominent lenticels
+No. of trees: 5
+Success: Leaves opposite or subopposite (alternate on climbing shoots), petiolate
+No. of trees: 1
+Success: lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation equally prominent on both sides
+No. of trees: 88
 Success: petiole 4–8(10) mm. long, with margins straight
-No. of trees: 4
+No. of trees: 2
 Success: stipules small, broad, irregularly denticulate, deciduous
-No. of trees: 6
+No. of trees: 4
 Success: Flowers co, bisexual, in axillary pedunculate fascicles
-No. of trees: 6
+No. of trees: 2
 Success: buds 3–5 mm. long, cylindric to narrowly obovoid
-No. of trees: 2
+No. of trees: 1
 Fail:    primary peduncle 1–10 mm. long, lenticellate-verruculose, sometimes dividing to form 2–4 secondary peduncles
-No. of trees: 0
-Success: pedicels 10–15 mm. long, smooth, articulated at the base
-No. of trees: 4
-Success: Sepals c. 1 mm. long, subequal, free, triangular-ovate, obtuse, with margin entire or rarely ciliolate-denticulate
-No. of trees: 48
-Success: Petals white or greenish-white, 3–5(7·5) mm. long, oblong, sessile, rounded, entire or subentire, spreading at anthesis
-No. of trees: 48
-Fail:    Disk deeply sub-cylindric, broadened at the base and usually at the apex, fluted, with 5-lobed lower and upper margins, partially surrounding the ovary
-No. of trees: 4
-Success: Stamens 3, with filaments slender, not broadened at the base
-No. of trees: 4
-Success: anthers dehiscing by 2 vertical clefts not confluent at the apex
-No. of trees: 48
-Success: Ovary narrowly ovoid-3-gonous, on a short gynophore, with style 1–1·5(2) mm. long, conic, 3-lobed in section
-No. of trees: 10
-Success: stigma entire, punctiform
 No. of trees: 3
-Success: ovules 6–8 per loculus
-No. of trees: 2
-Fail:    Fruit orange, 3–8·5 cm. long, ellipsoid to globose with a 3-radiate apical crest, sometimes narrowed at the base to form a carpophore, smooth or with a few pointed tubercles, c. 12–20-seeded
+Success: pedicels 10–15 mm. long, smooth, articulated at the base
+No. of trees: 1
+Success: Sepals c. 1 mm. long, subequal, free, triangular-ovate, obtuse, with margin entire or rarely ciliolate-denticulate
 No. of trees: 4
+Success: Petals white or greenish-white, 3–5(7·5) mm. long, oblong, sessile, rounded, entire or subentire, spreading at anthesis
+No. of trees: 2
+Fail:    Disk deeply sub-cylindric, broadened at the base and usually at the apex, fluted, with 5-lobed lower and upper margins, partially surrounding the ovary
+No. of trees: 2
+Success: Stamens 3, with filaments slender, not broadened at the base
+No. of trees: 3
+Success: anthers dehiscing by 2 vertical clefts not confluent at the apex
+No. of trees: 10
+Fail:    Ovary narrowly ovoid-3-gonous, on a short gynophore, with style 1–1·5(2) mm. long, conic, 3-lobed in section
+No. of trees: 4
+Success: stigma entire, punctiform
+No. of trees: 2
+Success: ovules 6–8 per loculus
+No. of trees: 1
+Fail:    Fruit orange, 3–8·5 cm. long, ellipsoid to globose with a 3-radiate apical crest, sometimes narrowed at the base to form a carpophore, smooth or with a few pointed tubercles, c. 12–20-seeded
+No. of trees: 3

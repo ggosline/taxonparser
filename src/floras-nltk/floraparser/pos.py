@@ -100,7 +100,7 @@ class FlTagger():
             if ws in lexicon:
                 lexent = []
                 for gc in lexicon[ws]:
-                    if gc[TYPE] == 'N':
+                    if gc[TYPE] == 'N':  # plurals must be nouns
                         # gc['plural'] = True
                         lexent.append(gc)
                 if lexent:
@@ -109,16 +109,16 @@ class FlTagger():
         # Try taking the word apart at dashes
         root = self.rootword(word)
         if root:
-            if (root[0],) in lexicon:
+            if (root[0],) in lexicon:  # xxx not handling synonym entries here !
                 le = lexicon[(root[0],)][0]
                 return root, le[TYPE], [le], (root[0],)
-            if ('_' + root[0],) in lexicon:  # suffix
-                le = lexicon[('_' + root[0],)][0]
-                return root, le[TYPE], [le], ('_' + root[0],)
+            if ('-' + root[0],) in lexicon:  # suffix
+                le = lexicon[('-' + root[0],)][0]
+                return root, le[TYPE], [le], ('-' + root[0],)
 
         if word.endswith('ly'):
             return flword, 'ADV', [
-                FeatStructNonterminal(features={TYPE: 'ADV', 'timing': False, 'orth': flword})], (
+                FeatStructNonterminal(features={TYPE: 'ADV', 'timing': False, 'orth': word})], (
                    word,)
 
         # Didn't find in fnaglossary; try WordNet

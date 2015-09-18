@@ -2926,7 +2926,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3042,fascicles,arrangement,,,,
 3043,featherlike,shape,,,,
 3044,feltlike,texture,,,,
-3045,few,count,,,,
+3045,a_few,count,,,,
 3046,fewer,count,,,,
 3047,fine,texture,,,,
 3048,finer,texture,,,,
@@ -3149,6 +3149,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3265,unpigmented,coloration,,,,
 3266,unwinged,architecture,,,,
 3267,upper,position,,,,
+3267,lower,position,,,,
 3268,uppermost,position,,,,
 3269,vacant,occupancy,,,,
 3270,variable,variability,,,,
@@ -3385,7 +3386,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3585,denticles,,,,,KG
 3586,depressions,,,,,KG
 3587,diam,,,,,KG
-3588,dividing,,,,,KG
+3588,dividing,architecture,,,,KG
 3589,down,orientation,,soft thin hairs,,KG
 3592,emergences,structure,,multicellular projections from a surface,,KG
 3593,enclosing,,,,,KG

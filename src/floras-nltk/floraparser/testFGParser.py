@@ -12,14 +12,14 @@ from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation'
+description = 'Disk deeply sub-cylindric, broadened at the base, fluted, with 5-lobed upper and lower margins'  # , partially surrounding the ovary'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
-parser = FeatureEarleyChartParser
+#parser = FeatureEarleyChartParser
 cleantree = False
 cleantree = True
-ttrace = 2
+ttrace = 1
 
 trec['description'] = description
 trdr = [trec]
@@ -38,6 +38,7 @@ if __name__ == '__main__':
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
                 trees = parser.parse(phrase.tokens, cleantree=cleantree, maxtrees=100)
+                parser.listCHARs()
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
