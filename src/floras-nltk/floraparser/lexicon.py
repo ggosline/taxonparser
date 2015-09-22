@@ -133,9 +133,9 @@ def pickle_lexicon():
     FREQUENCY = "very|a_little|not_much|all|sometimes|often|usually|rarely|generally|never|always|" \
                 "soon|also|even|especially|?".split('|')
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
-    DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|rather|shallowly|scarcely|much|dark|light|not".split(
-        '|')
-    addlexicon(DEGREE, 'ADV', timing=False)
+    DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|rather|shallowly|scarcely|partly|partially|much|" \
+             "dark|light|not".split('|')
+    addlexicon(DEGREE, 'DEG', timing=False)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|" \
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from|similar".split('|')

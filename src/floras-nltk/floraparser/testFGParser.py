@@ -8,13 +8,12 @@ from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
 from nltk.parse import FeatureBottomUpChartParser, FeatureBottomUpLeftCornerChartParser
 from floraparser.FGParser import FGParser, cleanparsetree, FindNode
-from floraparser.fltoken import FlToken
 
 trec = defaultdict(lambda: None)
 
-description = 'Disk deeply sub-cylindric, broadened at the base, fluted, with 5-lobed upper and lower margins'  # , partially surrounding the ovary'
+description = 'lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation equally prominent on both sides'
 fromDB = True
-fromDB = False
+# fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
 #parser = FeatureEarleyChartParser
 cleantree = False
@@ -31,14 +30,16 @@ if __name__ == '__main__':
     if fromDB:
         ttrace = 0
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
-                                  query="Select * from AllTaxa where flora_name = 'FZ' and genus = 'Salacia' and species = 'senegalensis';", )
+                                  query="Select * from AllTaxa where flora_name = 'FZ' and genus = 'Salacia';", )  # and species = 'senegalensis
         of = open('testphrases.txt', 'w', encoding='utf-8')
     parser = FGParser(parser=parser, trace=ttrace)
     for taxon in ttaxa.taxa:
+        print(taxon.genus, taxon.species)
+        print(taxon.genus, taxon.species, file=of)
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
                 trees = parser.parse(phrase.tokens, cleantree=cleantree, maxtrees=100)
-                parser.listCHARs()
+                #parser.listCHARs()
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
