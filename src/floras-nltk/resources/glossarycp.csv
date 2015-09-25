@@ -99,6 +99,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 104,angled,shape,,Having sides that meet at acute or obtuse angles.,shape,
 105,_angled,shape,,"Elongate with the number of longitudinal angles indicated by the prefix, the intervening sides transversely flat or curved; as in four-angled.  See also ...angular (...gonal), deltoid, obdeltoid, triquetrous.",shape,
 106,angular,shape,,Having sides that meet at acute or obtuse angles.,shape,
+107,angular,relief,,,shape,
 #,_angular,arrangement,bundle scars,Forming a figure with the number of sides indicated by the prefix.,shape,
 108,_angular,shape,,"Having distinct, flat or curved sides of the number indicated by the prefix; as in hexangular, triangular.  See also ...angled (...gonous), deltate.",shape,
 109,anisocytic,architecture,stomate,"Having three subsidiary cells, one distinctly smaller than the others.",architecture,

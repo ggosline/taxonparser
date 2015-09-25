@@ -11,18 +11,18 @@ from floraparser.FGParser import FGParser, cleanparsetree, FindNode
 
 trec = defaultdict(lambda: None)
 
-description = 'lamina ± glossy above, paler below, (5)6·5–16·5 × 2·5–7 cm., oblong or elliptic-oblong to obovate, acuminate to caudate at the apex, with margin ± densely shallowly rounded-denticulate, cuneate to rounded at the base, chartaceous to subcoriaceous, with 8–10(12) lateral nerves and densely reticulate venation equally prominent on both sides'
+description = 'stems purple-red, ridged and flattened at first, becoming striate or angular, eventually terete, greyish, with numerous lenticels slightly prominent on older shoots'
 fromDB = True
-# fromDB = False
+fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
 #parser = FeatureEarleyChartParser
 cleantree = False
 cleantree = True
-ttrace = 1
+ttrace = 2
 
 trec['description'] = description
 trdr = [trec]
-ttaxa = AbstractFloraCorpusReader(reader=trdr)
+
 tfilebase = r'..\..\..\temp\tree'
 
 of = sys.stdout
@@ -32,6 +32,9 @@ if __name__ == '__main__':
         ttaxa = FloraCorpusReader(db=r'..\resources\efloras.db3',
                                   query="Select * from AllTaxa where flora_name = 'FZ' and genus = 'Salacia';", )  # and species = 'senegalensis
         of = open('testphrases.txt', 'w', encoding='utf-8')
+    else:
+        ttaxa = AbstractFloraCorpusReader(reader=trdr)
+
     parser = FGParser(parser=parser, trace=ttrace)
     for taxon in ttaxa.taxa:
         print(taxon.genus, taxon.species)
@@ -39,7 +42,9 @@ if __name__ == '__main__':
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
                 trees = parser.parse(phrase.tokens, cleantree=cleantree, maxtrees=100)
-                #parser.listCHARs()
+                for t in parser.listCHARs():
+                    t.draw()
+                    print(t, file=of)
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)

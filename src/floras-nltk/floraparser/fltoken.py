@@ -64,7 +64,7 @@ class FlSentence():
         if not self._tokens:
             self._tokens = [FlToken(self, word) for word in self.words]
             # eliminate null tokens
-            self._tokens = [tk for tk in self._tokens if tk.slice != slice(0, 0)]
+            self._tokens = [tk for tk in self._tokens if tk.slice.start != tk.slice.stop]
         return self._tokens
 
     @property

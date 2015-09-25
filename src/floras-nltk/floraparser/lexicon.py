@@ -140,6 +140,10 @@ def pickle_lexicon():
                  "older|younger|" \
                  "exceeding|equalling|as_long_as|indistinguishable_from|similar".split('|')
     addlexicon(COMPARISON, 'A', compar=True, category='compar', position=False, timing=False)
+    COLOURCOMP = "paler|darker|lighter|duller|shinier".split('|')
+    addlexicon(COLOURCOMP, 'A', compar=True, category='color', position=False, timing=False)
+    SIZECOMP = "shorter|longer|wider|narrower|bigger|smaller|higher|as_long".split('|')
+    addlexicon(SIZECOMP, 'A', compar=True, category='size', position=False, timing=False)
     COMPADJ = "more|less|most|least".split('|')
     addlexicon(COMPADJ, 'A', makecomp=True)
     TIMING = "at_first|when_young|becoming|remaining|turning|in_age|at_maturity|later|at_length|eventually|when_fresh|when_dry".split(
@@ -151,7 +155,7 @@ def pickle_lexicon():
     addlexicon(ISA, 'IS', category='ISA')
     GERUND = "covering|closing|enveloping|surrounding|forming|terminating|dehiscing_by|dividing|" \
              "ending|varying_in|arranged_in".split('|')
-    addlexicon(GERUND, 'P', verb=True)
+    addlexicon(GERUND, 'P', verb=True, position=False)
 
     addlexicon(['to'], 'TO')
     addlexicon(['not'], 'NOT')

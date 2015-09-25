@@ -16,7 +16,7 @@ from nltk.parse.earleychart import FeatureIncrementalChart
 class FGChart(FeatureChart):
     def pretty_format_edge(self, edge, width=None):
         line = FeatureIncrementalChart.pretty_format_edge(self, edge)
-        return line[0:120]
+        return line[0:400]
 
 class FGGrammar(FeatureGrammar):
     def __init__(self, start, productions):
@@ -101,8 +101,8 @@ class FGParser():
         if newprod:
             self._grammar.__init__(self._grammar._start, self._grammar._productions)
 
-        # Add a terminal token to end of pharase
-        tokens = tokens + [FGTerminal('$')]
+        # Add a terminal token to beginning and end of pharase
+        tokens = [FGTerminal('¢')] + tokens + [FGTerminal('$')]
 
         self._chart = self._parser.chart_parse([tk for tk in tokens if tk.POS != 'NULL'])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
@@ -163,8 +163,9 @@ class FGParser():
         for charedge in charedges:
             for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
                 trees.append((tree, charedge.start(), charedge.end()))
+                subjend = charedge.end()
 
-        charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
+        charedges = [edge for edge in self.simple_select(is_complete=True, lhs='CHAR') if edge.start() >= subjend]
 
         for charedge in charedges:
             for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):

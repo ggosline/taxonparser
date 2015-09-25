@@ -20,15 +20,10 @@ class AbstractFloraCorpusReader(object):
         # self._sent_tokenize = PunktSentenceTokenizer(punkt_param).tokenize
         self._sent_tokenize = sent_tokenizer.span_tokenize
         PunktLanguageVars.sent_end_chars = ('.',)  # don't break on question marks !
-        self._taxa = [FlTaxon(f, sentence_tokenizer=self._sent_tokenize) for f in self._reader]
+        self._taxa = list(FlTaxon(f, sentence_tokenizer=self._sent_tokenize) for f in self._reader)
 
     @property
     def taxa(self, taxonids=None):
-        """
-        :return: the given file(s) as a single string.
-        :rtype: str
-        """
-
         return self._taxa
 
 
@@ -41,7 +36,8 @@ class FloraCorpusReader(AbstractFloraCorpusReader):
                         'description', ]
         # self.dbr = SQLitedb(db)
         self.dbr = ADOdb(Accessdbname)
-        self.rdr = self.dbr.OpenTable(query, fieldlst)
+        self.dbr.OpenTable(query, fieldlst)
+        self.rdr = self.dbr.NextRec()
         super().__init__(reader=self.rdr, **kwargs)
 
 
