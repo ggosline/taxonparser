@@ -102,15 +102,15 @@ ADVB[category=?c, orth=(?o1,OR,?o2)] -> ADVB[category=?c, orth=?o1] OR ADVB[cate
 DEG -> COMPADJ DEG
 ADVB[+comp, category=adv, orth=?o] -> A[+makecomp] ADV[category=adv, orth=?o]
 
-ABAR[category=?c, H=[orth=?o, category=?c]] -> A[category=?c, orth=?o, -position]
+ABAR[category=?c, H=[orth=?o, category=?c], sem=?sem] -> A[category=?c, orth=?o, -position, sem=?sem]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> ADVB[orth=?adv] A[category=?c, orth=?o, -position]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> A[orth=?adv] A[category=?c, orth=?o, -position]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> COUNT[orth=?adv] A[category=?c, orth=?o, -position]
 #ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
 
 ORDELIM -> COMMA | OR | COMMA OR
-ABARL[category=?c, H=(?h1+'OR'+?h2)] ->  ABAR[category=?c, H=?h1] ORDELIM ABARL[category=?c, H=?h2, -position]
-ABARL[category=?c, H=?h] ->  ABAR[category=?c, H=?h]
+ABARL[category=?c, H=(?h1+'OR'+?h2), sem=<?s1 | ?s2>] ->  ABAR[category=?c, H=?h1, sem=?s1] ORDELIM ABARL[category=?c, H=?h2, sem=?s2, -position]
+ABARL[category=?c, H=?h, sem=?sem] ->  ABAR[category=?c, H=?h, sem=?sem]
 
 ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)]] -> ABAR[category=?c, H=[orth=?o1]] OR WITHP[H=?h2]
 ABAR[category=?c, H=[category=?c, orth=(?o1+'TO'+?o2)]] -> ABAR[category=?c, H=[orth=?o1]] TO ABAR[category=?c, H=[orth=?o2]]

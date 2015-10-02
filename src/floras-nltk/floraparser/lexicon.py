@@ -6,8 +6,10 @@ import csv
 import pickle
 import os
 from nltk.featstruct import Feature, FeatStruct, FeatStructReader
-
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
+from nltk.sem import Expression
+
+read_expr = Expression.fromstring
 
 lexicon = {}
 
@@ -60,20 +62,24 @@ def pickle_lexicon():
         with open(gfile) as csvfile:
             mydictreader = csv.DictReader(csvfile)
             for gentry in mydictreader:
+                if gentry['ID'] == '#':
+                    continue
                 morefeatures = {}
                 gid, term, category, appliesto = gentry['ID'], gentry['term'], gentry['category'].lower(), gentry[
                     'appliesTo'].lower()
+                semterm = term.replace('-', '_').strip('.')
                 if category in ('structure', 'feature', 'character',
                                 'substance', 'life-form', 'plant', 'taxonomy', 'en', 'process'):
                     POS = 'N'
+                    semexpr = read_expr(semterm)
                 elif category != '':
                     POS = 'A'
+                    semexpr = read_expr(category.replace('-', '_') + '(' + semterm + ')')
                     morefeatures = {'position': False, 'timing': False}
                 else:
                     POS = 'UNK'
-                if gid != '#':
-                    # addlexentry(term, POS, category=category, appliesto=appliesto, **morefeatures)
-                    addlexentry(term, POS, category=category, **morefeatures)
+                    semexpr = None
+                addlexentry(term, POS, category=category, sem=semexpr, **morefeatures)
 
     COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|but|except|except_for|×'.split('|')
     for word in COORDCONJUNCTION:

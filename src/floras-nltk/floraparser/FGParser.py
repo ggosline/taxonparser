@@ -193,7 +193,9 @@ class FGParser():
         ``restrictions`` on the edges.
         """
         # If there are no restrictions, then return all edges.
-        if restrictions == {}: return self._chart.edges()
+        if restrictions == {}:
+            yield self._chart.edges()
+            return
 
         # Make sure it's a valid index.
         # for key in restrictions.keys():

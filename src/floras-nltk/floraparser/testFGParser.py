@@ -3,19 +3,20 @@ __author__ = 'Geoge'
 import sys
 
 from collections import defaultdict
-from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
+from floracorpus.reader import AbstractFloraCorpusReader  # , FloraCorpusReader
 
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
-from nltk.parse import FeatureBottomUpChartParser, FeatureBottomUpLeftCornerChartParser
+from nltk.parse import FeatureBottomUpChartParser, FeatureBottomUpLeftCornerChartParser, FeatureTopDownChartParser
 from floraparser.FGParser import FGParser, cleanparsetree, FindNode
 
 trec = defaultdict(lambda: None)
 
-description = 'stems purple-red, ridged and flattened at first, becoming striate or angular, eventually terete, greyish, with numerous lenticels slightly prominent on older shoots'
+description = 'leaves red, white, or blue'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
 #parser = FeatureEarleyChartParser
+#parser = FeatureTopDownChartParser
 cleantree = False
 cleantree = True
 ttrace = 2
