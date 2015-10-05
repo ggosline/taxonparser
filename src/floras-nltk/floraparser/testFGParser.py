@@ -11,14 +11,14 @@ from floraparser.FGParser import FGParser, cleanparsetree, FindNode
 
 trec = defaultdict(lambda: None)
 
-description = 'leaves red, white, or blue'
+description = 'Stamens 3 rows, with filaments broadened at the base'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
 #parser = FeatureEarleyChartParser
 #parser = FeatureTopDownChartParser
 cleantree = False
-cleantree = True
+# cleantree = True
 ttrace = 2
 
 trec['description'] = description
@@ -43,9 +43,9 @@ if __name__ == '__main__':
         for sent in taxon.sentences:
             for i, phrase in enumerate(sent.phrases):
                 trees = parser.parse(phrase.tokens, cleantree=cleantree, maxtrees=100)
-                for t in parser.listCHARs():
-                    t.draw()
-                    print(t, file=of)
+                # for t in parser.listCHARs():
+                #     t.draw()
+                #     print(t, file=of)
                 if trees:
                     print('Success: ' + phrase.text, file=of)
                     print('No. of trees: %d' % len(trees), file=of)
