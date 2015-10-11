@@ -8,6 +8,9 @@ from floraparser.inflect import singularize
 
 from floraparser.lexicon import lexicon, multiwords
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
+from nltk.sem import Expression
+
+read_expr = Expression.fromstring
 
 PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
@@ -91,7 +94,7 @@ class FlTagger():
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
             return flword, 'NUM', [
-                FeatStructNonterminal(features={TYPE: 'NUM', 'numeric': True, 'orth': word})], (
+                FeatStructNonterminal(features={TYPE: 'NUM', 'numeric': True, 'orth': word, 'sem': read_expr(word)})], (
                        word,)
 
         ws = FlTagger.singularize(self, word)
@@ -118,7 +121,7 @@ class FlTagger():
 
         if word.endswith('ly'):
             return flword, 'ADV', [
-                FeatStructNonterminal(features={TYPE: 'ADV', 'timing': False, 'orth': word})], (
+                FeatStructNonterminal(features={TYPE: 'ADV', 'timing': False, 'orth': word, 'sem': read_expr(word)})], (
                    word,)
 
         # Didn't find in fnaglossary; try WordNet

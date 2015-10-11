@@ -44,6 +44,8 @@ def pickle_lexicon():
             category = ""
         else:
             category = morefeatures['category']
+        if 'sem' not in morefeatures:
+            morefeatures['sem'] = read_expr(word.replace('.', ''))
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
         featstring = POS + "[ category= '" + category + "', orth='" + word + "'] "
         newfeature = featurereader.fromstring(featstring)
@@ -83,18 +85,18 @@ def pickle_lexicon():
 
     COORDCONJUNCTION = 'and|or|and/or|neither|nor|otherwise|but|except|except_for|×'.split('|')
     for word in COORDCONJUNCTION:
-        addlexentry(word, 'CONJ', conj=word, coord=True)
+        addlexentry(word, 'CONJ', conj=word, coord=True, sem=None)
     SUBCONJUNCTION = 'but|for|yet|so|although|because|since|unless|if'.split('|')
     for word in SUBCONJUNCTION:
         addlexentry(word, 'CONJ', conj=word, coord=False)
     ARTICLE = 'the|a|an'.split('|')
     addlexicon(ARTICLE, 'ART')
     DETERMINER = 'each|every|some|all|other|both|their'.split('|')
-    addlexicon(DETERMINER, 'DET')
-    PUNCTUATION = ';|(|)'.split('|')
+    addlexicon(DETERMINER, 'DET', sem=None)
+    PUNCTUATION = [';', '(', ')']
     for char in PUNCTUATION:
-        addlexentry(char, 'PUNC', punc=char)
-    addlexicon([','], 'COMMA')
+        addlexentry(char, 'PUNC', punc=char, sem=None)
+    addlexicon([','], 'COMMA', sem=None)
     PRONOUN = 'it|one|ones|form|forms|part|parts'.split('|')
     addlexicon(PRONOUN, 'PRO')
     PREPOSITION = 'among|amongst|around|as|below|beneath|between|beyond|by|' \
@@ -102,7 +104,7 @@ def pickle_lexicon():
                   'towards|up|upward|when|owing_to|due_to|according_to|on_account_of|' \
                   'tipped_by|to_form'.split('|')
     for word in PREPOSITION:
-        addlexentry(word, 'P', prep=word, position=False)
+        addlexentry(word, 'P', prep=word, position=False, sem=read_expr(r'\x.' + word + '(x)'))
 
     WITH = 'with|without'.split('|')
     for word in WITH:
@@ -111,15 +113,16 @@ def pickle_lexicon():
                 'before|after|behind|across|along|around|from|within|without|' \
                 'attached_to'.split('|')
     for word in POSITIONP:
-        addlexentry(word, 'P', prep=word, position=True)
+        addlexentry(word, 'P', prep=word, position=True, sem=read_expr(r'\x.' + word + '(x)'))
     GROUPS = "group|groups|clusters|cluster|arrays|array|series|fascicles|fascicle|" \
              "pairs|pair|row|rows|number|numbers|colonies".split('|')
     addlexicon(GROUPS, 'N', group=True, category='grouping')
-    LITNUMBERS = "zero|one|ones|first|two|second|half|three|third|thirds|four|fourth|fourths|quarter|" \
-                 "five|fifth|fifths|six|sixth|sixths|seven|seventh|sevenths|eight|eighths|eighth|" \
-                 "nine|ninths|ninth|tenths|tenth|1/2|1/3|2/3|1/4|1/5|2/5".split('|')
+    LITNUMBERS = "zero|one|ones|two|half|three|thirds|four|fourths|quarter|" \
+                 "five|fifths|six|sixths|seven|sevenths|eight|eighths|" \
+                 "nine|ninths|tenths|1/2|1/3|2/3|1/4|1/5|2/5".split('|')
     addlexicon(LITNUMBERS, 'NUM', literal=True)
-    ORDNUMBERS = "principal|primary|secondary|tertiary|1st|2nd|3rd".split('|')
+    ORDNUMBERS = "principal|primary|secondary|tertiary|1st|2nd|3rd|first|second|third|fourth|fifth|sixth|seventh|eigth|ninth|tenth".split(
+        '|')
     addlexicon(ORDNUMBERS, 'A', ordinal=True)
     UNITS = "mm.|cm.|dm.|m.|km.".split('|')
     addlexicon(UNITS, 'UNIT')
@@ -136,11 +139,11 @@ def pickle_lexicon():
     addlexicon(POSITION, 'N', position=True, category='position')
     ACCURACY = "c.|about|more_or_less|±|exactly|almost".split('|')
     addlexicon(ACCURACY, 'DEG', accuracy=True, timing=False)
-    FREQUENCY = "very|a_little|not_much|all|sometimes|often|usually|rarely|generally|never|always|" \
+    FREQUENCY = "very|a_little|not_much|sometimes|often|usually|rarely|generally|never|always|" \
                 "soon|also|even|especially|?".split('|')
     addlexicon(FREQUENCY, 'DEG', frequency=True, timing=False)
     DEGREE = "sparsely|densely|slightly|narrowly|widely|markedly|somewhat|rather|shallowly|scarcely|partly|partially|much|" \
-             "dark|light|not".split('|')
+             "dark|light".split('|')
     addlexicon(DEGREE, 'DEG', timing=False)
     COMPARISON = "paler|darker|lighter|shorter|longer|wider|narrower|bigger|smaller|duller|shinier|higher|" \
                  "older|younger|" \
@@ -164,7 +167,7 @@ def pickle_lexicon():
     addlexicon(GERUND, 'P', verb=True, position=False)
 
     addlexicon(['to'], 'TO')
-    addlexicon(['not'], 'NOT')
+    addlexicon(['not'], 'NOT', sem=None)
     addlexicon(['in'], 'IN')
     addlexicon(['than'], 'THAN')
     addlexicon(['for'], 'FOR')
