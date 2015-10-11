@@ -9,7 +9,9 @@ from parse.category import GrammarFile
 from floraparser import lexicon
 from floraparser.fltoken import FlSentence
 from floracorpus.reader import AbstractFloraCorpusReader, FloraCorpusReader
-# myds = FloraCorpusReader(db=r'..\resources\efloras.db3',
+
+
+# myds = FloraCorpusReader(db=r'..\resources\efloras.sqlite',
 # query="Select * from Taxa where family = 'Celastraceae';", )
 
 

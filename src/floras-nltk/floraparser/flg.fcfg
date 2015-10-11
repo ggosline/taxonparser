@@ -59,7 +59,7 @@ NBAR[category=?c, H=?h, mod=?m] -> NBAR[category=?c, H=?h] PP[H=?m]
 NBAR[category=?c, H=?h] -> NBAR[category=?c, H=?h] PAREXP
 NBAR[category=pro] -> PRO
 
-NP[category=?c, H=?h] -> DET NBAR[category=?c, H=?h] | ART NBAR[category=?c, H=?h] | NBAR[category=?c, H=?h]
+NP[category=?c, H=[]] -> DET NBAR[category=?c, H=?h, +HD] | ART NBAR[category=?c, H=?h, +HD] | NBAR[category=?c, H=?h, +HD]
 
 NP -> NAME
 NP -> A[+compar] NBAR THAN S
@@ -109,7 +109,7 @@ ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> COUNT[orth=?adv] A[cate
 #ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
 
 ORDELIM -> COMMA | OR | COMMA OR
-ABARL[category=?c, H=(?h1+'OR'+?h2), sem=<?s1 | ?s2>] ->  ABAR[category=?c, H=?h1, sem=?s1] ORDELIM ABARL[category=?c, H=?h2, sem=?s2, -position]
+ABARL[category=?c, H=(OR,?h1,?h2), sem=<?s1 | ?s2>] ->  ABAR[category=?c, H=?h1, sem=?s1] ORDELIM ABARL[category=?c, H=?h2, sem=?s2, -position]
 ABARL[category=?c, H=?h, sem=?sem] ->  ABAR[category=?c, H=?h, sem=?sem]
 
 ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)]] -> ABAR[category=?c, H=[orth=?o1]] OR WITHP[H=?h2]
