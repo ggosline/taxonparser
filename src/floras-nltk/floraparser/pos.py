@@ -11,6 +11,7 @@ from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 from nltk.sem import Expression
 
 read_expr = Expression.fromstring
+Expression._logic_parser.quote_chars = [('"', '"', r'\\', True)]
 
 PREFIX = re.compile(r'\b(?P<prefix>ab|ad|bi|deca|dis|dodeca|hemi|hetero|hexa|homo|infra|inter|'
                     r'macro|mega|meso|micro|'
@@ -94,7 +95,8 @@ class FlTagger():
         # lexicon matches punctuation, including single parentheses; so do before numbers
         if NUMBERS.match(word):
             return flword, 'NUM', [
-                FeatStructNonterminal(features={TYPE: 'NUM', 'numeric': True, 'orth': word, 'sem': read_expr(word)})], (
+                FeatStructNonterminal(
+                    features={TYPE: 'NUM', 'numeric': True, 'orth': word, 'sem': read_expr('num("' + word + '")')})], (
                        word,)
 
         ws = FlTagger.singularize(self, word)

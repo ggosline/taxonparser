@@ -21,10 +21,10 @@ class FGChart(FeatureChart):
         self._instantiated = set()
         FeatureChart.initialize(self)
 
-    def insert(self, edge, child_pointer_list):
+    def insert(self, edge, *child_pointer_list):
         if edge in self._instantiated: return False
         self.unify_heads(edge)
-        return FeatureChart.insert(self, edge, child_pointer_list)
+        return FeatureChart.insert(self, edge, *child_pointer_list)
 
     def unify_heads(self, edge):
         """
