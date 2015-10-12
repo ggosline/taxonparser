@@ -5,7 +5,7 @@ import nltk
 from nltk import grammar, parse
 from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader, read_grammar, SLASH, TYPE, Production, \
     Nonterminal
-from nltk.parse.featurechart import FeatureChart
+from nltk.parse.featurechart import FeatureChart, FeatureTreeEdge
 from nltk.featstruct import FeatStruct, Feature, FeatList
 from floraparser import lexicon
 from floraparser.fltoken import FlToken
@@ -14,6 +14,46 @@ from nltk.parse.earleychart import FeatureIncrementalChart
 
 
 class FGChart(FeatureChart):
+    def __init__(self, tokens):
+        FeatureChart.__init__(self, tokens)
+
+    def initialize(self):
+        self._instantiated = set()
+        FeatureChart.initialize(self)
+
+    def insert(self, edge, child_pointer_list):
+        if edge in self._instantiated: return False
+        self.unify_heads(edge)
+        return FeatureChart.insert(self, edge, child_pointer_list)
+
+    def unify_heads(self, edge):
+        """
+        If the edge is a ``FeatureTreeEdge``, and it is complete,
+        then unify the head feature on the LHS with the head feature
+        in the head daughter on the RHS.
+        Head daughter marked with feature +HD.
+        Head feature is H.
+
+        Note that instantiation is done in-place, since the
+        parsing algorithms might already hold a reference to
+        the edge for future use.
+        """
+        # If the edge is a leaf, or is not complete, or is
+        # already in the chart, then just return it as-is.
+        if not isinstance(edge, FeatureTreeEdge): return
+        if not edge.is_complete(): return
+        if edge in self._edge_to_cpls: return
+
+        # Get a list of variables that need to be instantiated.
+        # If there are none, then return as-is.
+        head_prod = [prod for prod in edge.rhs() if isinstance(prod, FeatStruct) and prod.has_key("HD")]
+
+        if not head_prod: return
+        edge._lhs = edge._lhs.copy()
+        edge._lhs['H'] = edge.lhs()['H'].unify(head_prod[0]['H'], trace=2)
+        # Instantiate the edge!
+        self._instantiated.add(edge)
+
     def pretty_format_edge(self, edge, width=None):
         line = FeatureIncrementalChart.pretty_format_edge(self, edge)
         return line[0:400]
