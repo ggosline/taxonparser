@@ -145,6 +145,7 @@ class FGParser():
         tokens = [FGTerminal('¢')] + tokens + [FGTerminal('$')]
 
         self._chart = self._parser.chart_parse([tk for tk in tokens if tk.POS != 'NULL'])
+        # self._chart = self._parser.chart_parse([FGLeaf(tk) for tk in tokens if tk.POS != 'NULL'])
         treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
         trees = []
         for i, tree in enumerate(treegen):
@@ -253,10 +254,20 @@ class FGParser():
                 yield edge
 
 
+class FGLeaf():
+    def __init__(self, token):
+        self.text = token.text
+        self.slice = token.slice
+
+    def __repr__(self):
+        return self.text
+
+
 class FGTerminal(FlToken):
     def __init__(self, char):
         self.lexword = char
         self.POS = 'EOP'
+        self.slice = slice(None)
 
     @property
     def text(self):
