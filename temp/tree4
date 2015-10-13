@@ -1,0 +1,102 @@
+(Start[]
+  (DESCRIPTION[chars=([ category = 'coloration' ]
+[ orth     = 'purple-red' ], [ category = 'shape'  ]
+[ orth     = 'ridged' ], AND, [ category = ''          ]
+[ mod      = 'flattened' ]
+[ orth     = 'at_first'  ], [ category = 'relief'  ]
+[ orth     = 'striate' ], OR, [ category = 'relief'  ]
+[ orth     = 'angular' ], [ category = 'shape'  ]
+[ orth     = 'terete' ], [ category = 'coloration' ]
+[ orth     = 'greyish'    ], [            [ mod  = [ category = 'count'    ] ] ]
+[ obj      = [        [ orth     = 'numerous' ] ] ]
+[            [                                  ] ]
+[            [ orth = [ orth = 'lenticel' ]     ] ]
+[                                                 ]
+[ presence = True                                 ], [ category = 'prominence' ]
+[ mod      = 'slightly'   ]
+[ orth     = 'prominent'  ]), subject=[orth='stem']]
+    (SUBJECT[H=[orth='stem']]
+      (CBEGINNER[] EOPHRASE)
+      (N[category='structure', orth='stem'] stems))
+    (CDELIM[] )
+    (CHAR[H=[category='coloration', orth='purple-red']]
+      (A[category='coloration', orth='purple-red', -position, -timing]
+        purple-red))
+    (CHAR[H=([ category = 'shape'  ]
+[ orth     = 'ridged' ], AND, [ category = ''          ]
+[ mod      = 'flattened' ]
+[ orth     = 'at_first'  ])]
+      (AP[H=[category='shape', orth='ridged'], category='shape']
+        (A[category='shape', orth='ridged', -position, -timing]
+          ridged))
+      (AND[] (CONJ[category='', conj='and', +coord, orth='and'] and))
+      (AP[H=[category='', mod='flattened', orth='at_first'], category='']
+        (A[category='shape', orth='flattened', -position, -timing]
+          flattened)
+        (A[category='', orth='at_first', -position, +timing]
+          at first)))
+    (CHAR[H=([ category = 'relief'  ]
+[ orth     = 'striate' ], OR, [ category = 'relief'  ]
+[ orth     = 'angular' ], [ category = 'shape'  ]
+[ orth     = 'terete' ], [ category = 'coloration' ]
+[ orth     = 'greyish'    ], [            [ mod  = [ category = 'count'    ] ] ]
+[ obj      = [        [ orth     = 'numerous' ] ] ]
+[            [                                  ] ]
+[            [ orth = [ orth = 'lenticel' ]     ] ]
+[                                                 ]
+[ presence = True                                 ], [ category = 'prominence' ]
+[ mod      = 'slightly'   ]
+[ orth     = 'prominent'  ]), stage='becoming']
+      (STAGE[stage='becoming']
+        (A[category='', orth='becoming', -position, +timing]
+          becoming))
+      (CHAR[H=([ category = 'relief'  ]
+[ orth     = 'striate' ], OR, [ category = 'relief'  ]
+[ orth     = 'angular' ])]
+        (ABAR[H=[category='relief', orth='striate'], category='relief']
+          (A[category='relief', orth='striate', -position, -timing]
+            striate))
+        (ORDELIM[]
+          (CONJ[category='', conj='or', +coord, orth='or'] or))
+        (ABARL[H=[category='relief', orth='angular'], category='relief']
+          (A[category='relief', orth='angular', -position, -timing]
+            angular)))
+      (CHAR[H=([ category = 'shape'  ]
+[ orth     = 'terete' ], [ category = 'coloration' ]
+[ orth     = 'greyish'    ], [            [ mod  = [ category = 'count'    ] ] ]
+[ obj      = [        [ orth     = 'numerous' ] ] ]
+[            [                                  ] ]
+[            [ orth = [ orth = 'lenticel' ]     ] ]
+[                                                 ]
+[ presence = True                                 ]), stage='eventually']
+        (STAGE[stage='eventually']
+          (A[category='', orth='eventually', -position, +timing]
+            eventually))
+        (CHAR[H=[category='shape', orth='terete']]
+          (A[category='shape', orth='terete', -position, -timing]
+            terete))
+        (CHAR[H=[category='coloration', orth='greyish']]
+          (A[category='coloration', orth='greyish', -position, -timing]
+            greyish))
+        (CHAR[H=[obj=[mod=[category='count', orth='numerous'], orth=[orth='lenticel']], +presence], category='structure']
+          (WITH[category='', orth='with', -position, +presence] with)
+          (NP[H=[mod=[category='count', orth='numerous'], orth=[orth='lenticel']], category='structure']
+            (AP[H=[category='count', orth='numerous'], category='count']
+              (A[category='count', orth='numerous', -position, -timing]
+                numerous))
+            (NL[H=[orth='lenticel'], category='structure', orth='lenticel']
+              (N[category='structure', orth='lenticel'] lenticels)))))
+      (CHAR[H=[category='prominence', mod='slightly', orth='prominent']]
+        (CHR[H=[category='prominence', mod='slightly', orth='prominent'], category='prominence']
+          (ADVB[category='degree', orth='slightly']
+            (DEG[category='', orth='slightly', -timing] slightly))
+          (A[category='prominence', orth='prominent', -position, -timing]
+            prominent))
+        (POSITION[posit=?h]
+          (P[category='', orth='on', +position, prep='on'] on)
+          (NP[H=[mod=[category='compar', orth='older'], orth=[orth='shoot']], category='structure']
+            (AP[H=[category='compar', orth='older'], category='compar']
+              (A[category='compar', +compar, orth='older', -position, -timing]
+                older))
+            (NL[H=[orth='shoot'], category='structure', orth='shoot']
+              (N[category='structure', orth='shoot'] shoots))))))))

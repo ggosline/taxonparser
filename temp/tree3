@@ -1,0 +1,63 @@
+(Start[]
+  (DESCRIPTION[chars=([ group = 'rows' ]
+[ val   = '3'    ], [ category = 'withph'                   ]
+[                                       ]
+[            [ category = 'shape'     ] ]
+[ clist    = [ orth     = 'broadened' ] ]
+[            [ posit    = ?p2         ] ]
+[                                       ]
+[ obj      = [ orth = 'filament' ]      ]
+[                                       ]
+[ presence = True                       ]), subject=<stamen>]
+    (SUBJECT[H=[orth='stamen'], sem=<stamen>]
+      (CBEGINNER[] EOPHRASE)
+      (N[category='structure', orth='stamen', sem=<stamen>] Stamens))
+    (CDELIM[] )
+    (CHARLIST[H=([ group = 'rows' ]
+[ val   = '3'    ], [ category = 'withph'                   ]
+[                                       ]
+[            [ category = 'shape'     ] ]
+[ clist    = [ orth     = 'broadened' ] ]
+[            [ posit    = ?p3         ] ]
+[                                       ]
+[ obj      = [ orth = 'filament' ]      ]
+[                                       ]
+[ presence = True                       ]), sem=<(count(3,group(rows)) & with(?sem2))>]
+      (CHAR[H=[group='rows', val='3'], sem=<count(3,group(rows))>]
+        (CHRL[H=[group='rows', val='3'], category='count', sem=<count(3,group(rows))>]
+          (CHR[H=[group='rows', val='3'], category='count', sem=<count(3,group(rows))>]
+            (COUNT[H=[group='rows', val='3'], category='count', sem=<count(3,group(rows))>]
+              (NUM[+numeric, orth='3', sem=<3>] 3)
+              (N[category='grouping', +group, orth='rows', sem=<rows>]
+                rows))))
+        (CTERMINATOR[] (COMMA[category='', orth=',', sem=None] ,)))
+      (CHARLIST[H=[category='withph', clist=[category='shape', orth='broadened', posit=?p2], obj=[orth='filament'], +presence], sem=<with(?sem3)>]
+        (CHAR[H=[category='withph', clist=[category='shape', orth='broadened', posit=?p2], obj=[orth='filament'], +presence], sem=<with(?sem)>]
+          (WITHP[H=[clist=[category='shape', orth='broadened', posit=?p3], obj=[orth='filament'], +presence], category='structure']
+            (WITH[category='', orth='with', -position, +presence, sem=<with>]
+              with)
+            (NP[H=[orth='filament'], category='structure']
+              (NBAR[H=[orth='filament'], category='structure']
+                (NL[H=[orth='filament'], category='structure', orth='filament']
+                  (N[category='structure', orth='filament', sem=<filament>]
+                    filaments))))
+            (CHARLIST[H=[category='shape', orth='broadened', posit=?p2], sem=?s1]
+              (CHAR[H=[category='shape', orth='broadened', posit=?p2], sem=?s]
+                (CHRL[H=[category='shape', orth='broadened', posit=?p3], category='shape', sem=?s]
+                  (CHR[H=[category='shape', orth='broadened', posit=?p], category='shape']
+                    (CHR[H=[category='shape', orth='broadened'], category='shape', sem=<shape(broadened)>]
+                      (AP[H=[category='shape', orth='broadened'], category='shape', sem=<shape(broadened)>]
+                        (ABARL[H=[category='shape', orth='broadened'], category='shape', sem=<shape(broadened)>]
+                          (ABAR[H=[category='shape', orth='broadened'], category='shape', sem=<shape(broadened)>]
+                            (A[category='shape', orth='broadened', -position, sem=<shape(broadened)>, -timing]
+                              broadened)))))
+                    (POSITION[posit=?h]
+                      (P[category='', orth='at', +position, prep='at', sem=<\x.at(x)>]
+                        at)
+                      (NP[H=[orth='base'], category='position']
+                        (ART[category='', orth='the', sem=<the>] the)
+                        (NBAR[H=[orth='base'], category='position']
+                          (NL[H=[orth='base'], category='position', orth='base']
+                            (N[category='position', orth='base', +position, sem=<base>]
+                              base)))))))
+                (CTERMINATOR[] EOPHRASE)))))))))

@@ -1,0 +1,71 @@
+(Start[]
+  (DESCRIPTION[chars=([ count = True      ]
+[ val   = '(4)5(6)' ], [ OR = ([ category = 'coloration' ]
+[ mod      = ?adv3        ]
+[ orth     = 'green'      ], [ category = 'coloration' ]
+[ mod      = ?adv4        ]
+[ orth     = 'white'      ]) ], [ category = 'coloration' ]
+[ mod      = ?adv6        ]
+[ orth     = 'yellow'     ], [ category = 'coloration' ]
+[ mod      = ?adv7        ]
+[ orth     = 'orange'     ], [ OR = ([ category = 'coloration' ]
+[ mod      = ?adv8        ]
+[ orth     = 'brownish'   ], [ category = 'coloration' ]
+[ mod      = ?adv10       ]
+[ orth     = 'red'        ]) ], [ category = 'arrangement' ]
+[ mod      = ?adv11        ]
+[ orth     = 'imbricate'   ]
+[ stage    = 'bud'         ]), subject=<petal>]
+    (SUBJECT[H=[orth='petal'], sem=<petal>]
+      (CBEGINNER[] EOPHRASE)
+      (N[category='structure', orth='petal', sem=<petal>] Petals))
+    (CDELIM[] )
+    (CHAR[H=[+count, val='(4)5(6)'], sem=<count(num("(4)5(6)"))>]
+      (NUM[+numeric, orth='(4)5(6)', sem=<num("(4)5(6)")>] (4)5(6)))
+    (CHAR[H=[OR=([ category = 'coloration' ]
+[ mod      = ?adv2        ]
+[ orth     = 'green'      ], [ category = 'coloration' ]
+[ mod      = ?adv5        ]
+[ orth     = 'white'      ])], sem=<(?s4 | ?s3)>]
+      (ABAR[H=[category='coloration', mod=?adv, orth='green'], category='coloration']
+        (MOD[orth=?adv] )
+        (A[category='coloration', orth='green', -position, sem=<coloration(green)>, -timing]
+          green))
+      (ORDELIM[] (COMMA[category='', orth=',', sem=None] ,))
+      (ABARL[H=[category='coloration', mod=?adv2, orth='white'], category='coloration', sem=?sem]
+        (MOD[orth=?adv] )
+        (A[category='coloration', orth='white', -position, sem=<coloration(white)>, -timing]
+          white)))
+    (CHAR[H=[category='coloration', mod=?adv3, orth='yellow'], sem=?s]
+      (MOD[orth=?adv] )
+      (A[category='coloration', orth='yellow', -position, sem=<coloration(yellow)>, -timing]
+        yellow))
+    (CHAR[H=[category='coloration', mod=?adv3, orth='orange'], sem=?s]
+      (MOD[orth=?adv] )
+      (A[category='coloration', orth='orange', -position, sem=<coloration(orange)>, -timing]
+        orange))
+    (CHAR[H=[OR=([ category = 'coloration' ]
+[ mod      = ?adv2        ]
+[ orth     = 'brownish'   ], [ category = 'coloration' ]
+[ mod      = ?adv5        ]
+[ orth     = 'red'        ])], sem=<(?s4 | ?s3)>]
+      (ABAR[H=[category='coloration', mod=?adv, orth='brownish'], category='coloration']
+        (MOD[orth=?adv] )
+        (A[category='coloration', orth='brownish', -position, sem=<coloration(brownish)>, -timing]
+          brownish))
+      (ORDELIM[]
+        (CONJ[category='', conj='or', +coord, orth='or', sem=None]
+          or))
+      (ABARL[H=[category='coloration', mod=?adv2, orth='red'], category='coloration', sem=?sem]
+        (MOD[orth=?adv] )
+        (A[category='coloration', orth='red', -position, sem=<coloration(red)>, -timing]
+          red)))
+    (CHAR[H=[category='arrangement', mod=?adv2, orth='imbricate', stage='bud'], sem=?s]
+      (CHR[H=[category='arrangement', mod=?adv2, orth='imbricate'], category='arrangement', sem=?s]
+        (MOD[orth=?adv] )
+        (A[category='arrangement', orth='imbricate', -position, sem=<arrangement(imbricate)>, -timing]
+          imbricate))
+      (STAGE[stage='bud']
+        in
+        (A[category='life-stage', orth='bud', -position, sem=<life_stage(bud)>, -timing]
+          bud)))))
