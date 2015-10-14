@@ -110,8 +110,8 @@ ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> COUNT[H=?adv] A[categor
 #ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
 
 ORDELIM -> COMMA | OR | COMMA OR
-ABARL[category=?c, H=[OR=(?h1,?h2)], sem=<?s1 | ?s2>] ->  ABAR[category=?c, H=?h1, sem=?s1] ORDELIM ABARL[category=?c, H=?h2, sem=?s2, -position]
-ABARL[category=?c, H=?h, sem=?sem] ->  ABAR[category=?c, H=?h, sem=?sem]
+ABARL[category=?c, H=[], sem=<?s1 | ?s2>] ->  ABAR[category=?c, H=?h1, sem=?s1] ORDELIM[H=[category=?c, OR=(?h1,?h2)], +HD] ABARL[category=?c, H=[OR=?h2], sem=?s2, -position]
+ABARL[category=?c, H=[OR=?h], sem=?sem] ->  ABAR[category=?c, H=?h, sem=?sem]
 
 ABAR[category=?c, H=[category=?c, orth=(?o1+'OR'+?h2)]] -> ABAR[category=?c, H=[orth=?o1]] OR WITHP[H=?h2]
 ABAR[category=?c, H=[]] -> ABAR[category=?c, H=?h1] TO[H=[category=?c, TO=(?h1+?h2)], +HD] ABAR[category=?c, H=?h2]

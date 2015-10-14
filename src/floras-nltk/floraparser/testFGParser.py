@@ -11,7 +11,7 @@ from floraparser.FGParser import FGParser, cleanparsetree, FindNode
 
 trec = defaultdict(lambda: None)
 
-description = 'Plant is Shrubs, much branched, or shrublets with erect annual shoots from a woody ± creeping rootstock, 0·2–1 m. high or higher and arborescent, sometimes forming colonies, without latex, glabrous'
+description = 'Leaves red, green, or brown'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser

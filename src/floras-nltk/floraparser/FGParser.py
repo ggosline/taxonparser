@@ -8,10 +8,12 @@ from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader
 from nltk.parse.featurechart import FeatureChart, FeatureTreeEdge
 from nltk.featstruct import FeatStruct, Feature, FeatList
 from floraparser import lexicon
+from flfeatureclass import SpanFeature
 from floraparser.fltoken import FlToken
 from nltk import Tree, ImmutableTree
 from nltk.parse.earleychart import FeatureIncrementalChart
 
+SPAN = Feature('span')
 
 class FGChart(FeatureChart):
     def __init__(self, tokens):
@@ -120,7 +122,7 @@ class FGParser():
     def __init__(self, grammarfile='flg.fcfg', trace=1, parser=parse.FeatureEarleyChartParser):
         with open(grammarfile, 'r', encoding='utf-8') as gf:
             gs = gf.read()
-        self._grammar = FGGrammar.fromstring(gs)
+        self._grammar = FGGrammar.fromstring(gs, features=(TYPE, SPAN))
         self._parser = parser(self._grammar, trace=trace, chart_class=FGChart)
         self._chart = None
 
@@ -132,7 +134,7 @@ class FGParser():
         # check for tokens added by the POS processor -- e.g. ADV
         newprod = False
         for fltoken in tokens:
-            if True:  # not self._grammar._lexical_index.get(fltoken.lexword):
+            if not self._grammar._lexical_index.get(fltoken.lexword):
                 newprod = True
                 for lexent in fltoken.lexentry:
                     lexrhs = fltoken.lexword
@@ -194,7 +196,8 @@ class FGParser():
 
     def listCHARs(self):
         '''
-        In a failed parse check for candidate trees labelled with CHAR
+        List all trees labelled with CHAR
+        Choose the longest edges!
         parse must have been called first! to generate the chart
         '''
 
@@ -252,15 +255,6 @@ class FGParser():
                     break
             if matched:
                 yield edge
-
-
-class FGLeaf():
-    def __init__(self, token):
-        self.text = token.text
-        self.slice = token.slice
-
-    def __repr__(self):
-        return self.text
 
 
 class FGTerminal(FlToken):

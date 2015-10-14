@@ -6,6 +6,7 @@ import csv
 import pickle
 import os
 from nltk.featstruct import Feature, FeatStruct, FeatStructReader
+from flfeatureclass import SpanFeature
 from nltk.grammar import FeatStructNonterminal, TYPE, SLASH
 from nltk.sem import Expression
 
@@ -47,9 +48,11 @@ def pickle_lexicon():
         if 'sem' not in morefeatures:
             morefeatures['sem'] = read_expr(word.replace('.', ''))
         # lexicon[tuple(ws)] = LexEntry(POS, tuple(ws), category, appliesto)
+
         featstring = POS + "[ category= '" + category + "', orth='" + word + "'] "
         newfeature = featurereader.fromstring(featstring)
         newfeature.update(morefeatures)
+        newfeature.update({'*span*': SpanFeature(0, 0)})
 
         # head = FeatStructNonterminal({'orth': word})
         # if 'category' in morefeatures:
