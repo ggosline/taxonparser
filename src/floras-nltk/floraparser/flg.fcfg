@@ -44,11 +44,12 @@ ISA -> IS
 
 CHR[H=?h, category=size, sem=?s] ->  SIZEB[H=?h, sem=?s]
 CHR[H=?h, category=count, sem=?s] ->  COUNT[H=?h, sem=?s]
+CHR[H=[], category=group, sem=?s] -> 'in' NP[H=[+group], +HD]
 
 CHRL[H=?h, category=?c, sem=?s] ->  CHR[H=?h, category=?c, sem=?s]
 
 NL[category={?c+?d}, H=(1)[orth=(?o+?ol)], orth=(1)] -> N[category=?d, orth = ?o] NL[category=?c, orth=?ol, H=?h2]
-NL[category=?c, orth=?o, H=[orth=?o]] -> N[category=?c, orth=?o]
+NL[category=?c, orth=?o, H=[orth=?o], group=?g] -> N[category=?c, orth=?o, group=?g]
 
 NBAR[category=?c, H=[orth=?h, mod=?m]] -> AP[H=?m] NL[category=?c, H=?h]
 NBAR[category=?c, H=[orth=?h, count=?count]] -> COUNT[H=[val=?count]] NBAR[category=?c, H=?h]
@@ -72,6 +73,8 @@ NP[H=(?h1,'AND',?h2)] -> NP[H=?h1] AND NP[H=?h2]
 NPL[H=(?h1+'OR'+?h2), category=?c] -> NP[H=?h1, category=?c] ORDELIM NPL[H=?h2, category=?c]
 NPL[H=?h1, category=?c] -> NP[H=?h1, category=?c]
 #NPL[H=(?h1+'OR'+?h2), category=?c, +OR] -> NPL[H=?h1, category=?c] CDELIM OR NP[H=?h2, category=?c]
+
+N[+group, category='structure-infl', orth = ?o] -> N[category='structure-infl', orth = ?o]
 
 BYX -> CONJ[conj='×'] | 'x'
 SIZE[category=size, H=[category=size, num=?num, unit=?unit, dim=?dim], sem=<size(?snum,?unit,?dim)>]  -> NUM[orth=?num, sem=?snum] UNIT[sem=?unit] DIMEN[sem=?dim]
@@ -102,9 +105,10 @@ ADVB[H=[OR=(?o1,?o2)]] -> ADVB[H=?o1] OR ADVB[H=?o2]
 DEG -> COMPADJ DEG
 ADVB[+comp, category=adv, orth=?o] -> A[+makecomp] ADV[orth=?o]
 
-MOD[orth=?adv] -> ADVB[orth=?adv] |  A[orth=?adv] | DEG[orth=?deg] |
+MOD[orth=?adv] -> ADVB[orth=?adv] |  A[orth=?adv] | DEG[orth=?deg]
 #ABAR[category=?c, H=[orth=?o, category=?c], sem=?sem] -> A[category=?c, orth=?o, -position, sem=?sem]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> MOD[orth=?adv] A[category=?c, orth=?o, -position]
+ABAR[category=?c, H=[orth=?o, category=?c]] ->  A[category=?c, orth=?o, -position]
 #ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> A[orth=?adv] A[category=?c, orth=?o, -position]
 ABAR[category=?c, H=[orth=?o, category=?c, mod=?adv]] -> COUNT[H=?adv] A[category=?c, orth=?o, -position]
 #ABAR[category=?c, H=[orth=?o, category=?c, mod=?deg]] -> DEG[orth=?deg] A[category=?c, orth=?o, -position]
@@ -131,7 +135,7 @@ ABAR[category=?c, H=[]] -> ABAR[category=?c, H=?h, +HD] PAREXP
 AP[category=?c, H=[], sem=?s1] -> ABARL[category=?c, H=?h, sem=?s1, +HD]
 
 # AP[category=?c, H=?h] -> AP[category=?c, H=?h] PAREXP
-AP[category=(?c+?d), H=(?h1+'AND'+?h2), sem=<?s1 & ?s2>] -> AP[category=?c, H=?h1, sem=?s1] AND AP[category=?d, H=?h2, sem=?s2]
+# AP[category=(?c+?d), H=(?h1+'AND'+?h2), sem=<?s1 & ?s2>] -> AP[category=?c, H=?h1, sem=?s1] AND AP[category=?d, H=?h2, sem=?s2]
 
 WITHP[category=?c, H=[+withph]] -> WITH NP[category=?c, H=?h]
 WITHP[category=?c, H=[+withph, clist=?cl]] -> WITH NP[category=?c, H=?h, +HD] CHARLIST[H=?cl]
@@ -142,7 +146,7 @@ WITHP[category=?c, H=[]] -> WITH NP[category=?c, H=?h1] AND[H=[AND=(?h1+?h2)], +
 
 OFP[category=?c, H=[prep=OF, obj=?h]] -> OF NP[category=?c, H=?h]
 
-PP[H=[prep=?prep, obj=?n]] -> P[orth=?prep, -position] NP[H=?n]
+PP[H=[prep=?prep, obj=?n]] -> P[orth=?prep, -position] NP[H=?n, +HD]
 PP[H=?h, mod=?deg] -> DEG[orth=?deg] PP[H=?h]
 
 P[orth=?p] -> A[category=fusion, orth=?p] TO

@@ -1,19 +1,14 @@
 __author__ = 'gg12kg'
 import sys
 
-import nltk
 from nltk import grammar, parse
 from nltk.grammar import FeatureGrammar, FeatStructNonterminal, FeatStructReader, read_grammar, SLASH, TYPE, Production, \
     Nonterminal
 from nltk.parse.featurechart import FeatureChart, FeatureTreeEdge
 from nltk.featstruct import FeatStruct, Feature, FeatList
-from floraparser import lexicon
-from flfeatureclass import SpanFeature
 from floraparser.fltoken import FlToken
 from nltk import Tree, ImmutableTree
 from nltk.parse.earleychart import FeatureIncrementalChart
-
-SPAN = Feature('span')
 
 class FGChart(FeatureChart):
     def __init__(self, tokens):
@@ -45,13 +40,16 @@ class FGChart(FeatureChart):
         if not isinstance(edge, FeatureTreeEdge): return
         if not edge.is_complete(): return
         if edge in self._edge_to_cpls: return
+        # Save the text span of the edge
+        edge._lhs = edge._lhs.copy()
+        if edge.span()[0] != edge.span()[1]:
+            edge._lhs.update(span=((self._tokens[edge.start()].slice.start), self._tokens[edge.end() - 1].slice.stop))
 
         # Get a list of variables that need to be instantiated.
         # If there are none, then return as-is.
         head_prod = [prod for prod in edge.rhs() if isinstance(prod, FeatStruct) and prod.has_key("HD")]
 
         if not head_prod: return
-        edge._lhs = edge._lhs.copy()
         edge._lhs['H'] = edge.lhs()['H'].unify(head_prod[0]['H'], trace=2)
         # Instantiate the edge!
         self._instantiated.add(edge)
@@ -122,7 +120,7 @@ class FGParser():
     def __init__(self, grammarfile='flg.fcfg', trace=1, parser=parse.FeatureEarleyChartParser):
         with open(grammarfile, 'r', encoding='utf-8') as gf:
             gs = gf.read()
-        self._grammar = FGGrammar.fromstring(gs, features=(TYPE, SPAN))
+        self._grammar = FGGrammar.fromstring(gs)
         self._parser = parser(self._grammar, trace=trace, chart_class=FGChart)
         self._chart = None
 
@@ -144,11 +142,11 @@ class FGParser():
             self._grammar.__init__(self._grammar._start, self._grammar._productions)
 
         # Add a terminal token to beginning and end of pharase
-        tokens = [FGTerminal('¢')] + tokens + [FGTerminal('$')]
+        tokens = [FGTerminal('¢', 0)] + tokens + [FGTerminal('$', tokens[-1].slice.stop)]
 
         self._chart = self._parser.chart_parse([tk for tk in tokens if tk.POS != 'NULL'])
         # self._chart = self._parser.chart_parse([FGLeaf(tk) for tk in tokens if tk.POS != 'NULL'])
-        treegen = self._chart.parses(self._grammar.start(), tree_class=nltk.Tree)
+        treegen = self._chart.parses(self._grammar.start(), tree_class=Tree)
         trees = []
         for i, tree in enumerate(treegen):
             if i >= maxtrees:
@@ -169,13 +167,13 @@ class FGParser():
 
         charedges = list(self.simple_select(is_complete=True, lhs='SUBJECT'))
         for charedge in charedges:
-            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+            for tree in self._chart.trees(charedge, complete=True, tree_class=Tree):
                 trees.append((tree, charedge.start(), charedge.end()))
 
         charedges = list(self.simple_select(is_complete=True, lhs='CHAR'))
 
         for charedge in charedges:
-            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+            for tree in self._chart.trees(charedge, complete=True, tree_class=Tree):
                 newtree = False
                 if not trees:
                     trees.append((tree, charedge.start(), charedge.end()))
@@ -205,14 +203,14 @@ class FGParser():
 
         charedges = list(self.simple_select(is_complete=True, lhs='SUBJECT'))
         for charedge in charedges:
-            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+            for tree in self._chart.trees(charedge, complete=True, tree_class=Tree):
                 trees.append((tree, charedge.start(), charedge.end()))
                 subjend = charedge.end()
 
         charedges = [edge for edge in self.simple_select(is_complete=True, lhs='CHAR') if edge.start() >= subjend]
 
         for charedge in charedges:
-            for tree in self._chart.trees(charedge, complete=True, tree_class=nltk.Tree):
+            for tree in self._chart.trees(charedge, complete=True, tree_class=Tree):
                 newtree = False
                 if not trees:
                     trees.append((tree, charedge.start(), charedge.end()))
@@ -258,10 +256,10 @@ class FGParser():
 
 
 class FGTerminal(FlToken):
-    def __init__(self, char):
+    def __init__(self, char, position):
         self.lexword = char
         self.POS = 'EOP'
-        self.slice = slice(None)
+        self.slice = slice(position, position)
 
     @property
     def text(self):

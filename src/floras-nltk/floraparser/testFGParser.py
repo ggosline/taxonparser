@@ -4,19 +4,19 @@ import sys
 
 from collections import defaultdict
 from floracorpus.reader import AbstractFloraCorpusReader  # , FloraCorpusReader
-
+from nltk.tree import Tree
 from nltk.parse import FeatureEarleyChartParser, FeatureIncrementalBottomUpLeftCornerChartParser, FeatureChartParser
 from nltk.parse import FeatureBottomUpChartParser, FeatureBottomUpLeftCornerChartParser, FeatureTopDownChartParser
 from floraparser.FGParser import FGParser, cleanparsetree, FindNode
 
 trec = defaultdict(lambda: None)
 
-description = 'Leaves red, green, or brown'
+description = 'Flowers (1–2)3–15, in cymes, bisexual, 12–15 mm. in diam.'
 fromDB = True
 fromDB = False
 parser = FeatureBottomUpLeftCornerChartParser
 #parser = FeatureEarleyChartParser
-#parser = FeatureTopDownChartParser
+parser = FeatureTopDownChartParser
 cleantree = False
 cleantree = True
 ttrace = 2
@@ -45,6 +45,7 @@ if __name__ == '__main__':
                 trees = parser.parse(phrase.tokens, cleantree=cleantree, maxtrees=100)
                 for t in parser.listCHARs():
                     cleanparsetree(t)
+                    print(taxon.gettext(t[()].label()['span']))
                     print(t[()].label()['H'], '\n')
                     t.draw()
                 #     print(t, file=of)

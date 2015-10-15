@@ -1,7 +1,6 @@
 from nltk.compat import total_ordering
 from nltk.featstruct import CustomFeatureValue, UnificationFailure
 
-
 @total_ordering
 class SpanFeature(CustomFeatureValue):
     def __init__(self, low, high):
@@ -9,6 +8,7 @@ class SpanFeature(CustomFeatureValue):
         self.low = low
         self.high = high
         self._hash = hash((low, high))
+        self._default = (0, 0)
 
     def unify(self, other):
         if not isinstance(other, SpanFeature):

@@ -52,7 +52,6 @@ def pickle_lexicon():
         featstring = POS + "[ category= '" + category + "', orth='" + word + "'] "
         newfeature = featurereader.fromstring(featstring)
         newfeature.update(morefeatures)
-        newfeature.update({'*span*': SpanFeature(0, 0)})
 
         # head = FeatStructNonterminal({'orth': word})
         # if 'category' in morefeatures:
@@ -73,7 +72,7 @@ def pickle_lexicon():
                 gid, term, category, appliesto = gentry['ID'], gentry['term'], gentry['category'].lower(), gentry[
                     'appliesTo'].lower()
                 semterm = term.replace('-', '_').strip('.')
-                if category in ('structure', 'feature', 'character',
+                if category in ('structure', 'feature', 'character', 'structure-infl',
                                 'substance', 'life-form', 'plant', 'taxonomy', 'en', 'process'):
                     POS = 'N'
                     semexpr = read_expr(semterm)
@@ -129,7 +128,7 @@ def pickle_lexicon():
     addlexicon(ORDNUMBERS, 'A', ordinal=True)
     UNITS = "mm.|cm.|dm.|m.|km.".split('|')
     addlexicon(UNITS, 'UNIT')
-    DIMENSION = "high|tall|long|wide|thick|diam.|diameter|diam|in_height|in_width|in_diameter".split(
+    DIMENSION = "high|tall|long|wide|thick|diam.|diameter|diam|in_height|in_width|in_diameter|in_diam".split(
         '|')
     addlexicon(DIMENSION, 'DIM')
     RANGE = 'up_to|at_least|to|more_than|less_than'.split('|')

@@ -33,8 +33,8 @@ class FlTaxon():
             [f for f in (self.flora, self.rank, self.family, self.genus, self.species, self.infrarank, self.infraepi) if
              f])
 
-    def gettext(self, slice):
-        return self.description[slice]
+    def gettext(self, span):
+        return self.description[span[0]:span[1]]
 
 class FlSentence():
     def __init__(self, taxon, fromchar, tochar):

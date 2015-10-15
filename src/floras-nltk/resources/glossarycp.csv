@@ -64,7 +64,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 67,almondy,odor,,"Pungently fruity like almonds, due to the presence of hydrocyanin or a closely related compound.",odor,
 68,alternate,arrangement,,"Inserted singly along the axis, each at a different level and each diverging on a different radius than the ones next above and below.",arrangement,
 70,alveolate,relief,,"Having generally uniform, regularly and closely disposed, transversely polygonal depressions overall, the pattern resembling the external aspect of a honeycomb.",relief,
-71,ament,structure,inflorescence,"Elongate, more or less flexible and spike-like, often unisexual, the central axis bearing numerous diminutive flowers inserted either singly or in cymules, the pedicels or secondary axes subtended by small, paleaceous bracts or scales, the whole often dec",nominative,
+71,ament,structure-infl,inflorescence,"Elongate, more or less flexible and spike-like, often unisexual, the central axis bearing numerous diminutive flowers inserted either singly or in cymules, the pedicels or secondary axes subtended by small, paleaceous bracts or scales, the whole often dec",nominative,
 72,amentate,architecture,inflorescence,Comprising one or more aments.,architecture,
 73,amphibious,habit,plant,"Able to live in either aquatic or terrestrial habitats; e.g., adapted to periodic inundation on floodplains.",arrangement,
 74,amphicarpic,architecture,plant,Producing two morphologically or phenologically different types of fruit.,arrangement,
@@ -113,8 +113,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 119,annulus,structure,,"A row of protruding specialized sporangial wall cells that extends upward from the base of the sporangium and over its apex, thus forming an incomplete circumferential ring; esp. in Polypodiophyta.  The inner and radial walls of the annular cells are mark",STRUCTURE,
 120,annuli,structure,,"A row of protruding specialized sporangial wall cells that extends upward from the base of the sporangium and over its apex, thus forming an incomplete circumferential ring; esp. in Polypodiophyta.  The inner and radial walls of the annular cells are mark",STRUCTURE,
 121,anomocytic,architecture,stomate,Lacking subsidiary cells.,architecture,
-122,anthela,structure,inflorescence,"A cyme with the main axis markedly shorter than the lateral axes, appearing generally paniculate when compound; esp. in Juncaceae.",nominative,
-123,anthelae,structure,inflorescence,"A cyme with the main axis markedly shorter than the lateral axes, appearing generally paniculate when compound; esp. in Juncaceae.",nominative,
+122,anthela,structure-infl,inflorescence,"A cyme with the main axis markedly shorter than the lateral axes, appearing generally paniculate when compound; esp. in Juncaceae.",nominative,
+123,anthelae,structure-infl,inflorescence,"A cyme with the main axis markedly shorter than the lateral axes, appearing generally paniculate when compound; esp. in Juncaceae.",nominative,
 124,anthelate,architecture,inflorescence,Comprising one or more anthelae; esp. in Juncaceae.,architecture,
 125,anther,structure,,"The fertile, loculate, pollen-bearing portion of a stamen, containing one, two, or four thecae (pollen sacs), when that portion is differentiated from and borne at the summit of a narrower supporting stalk (filament), or when such differentiation is deeme",STRUCTURE,
 126,anther-bearing,architecture,floral structure,Bearing anthers.,architecture,
@@ -286,8 +286,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 305,bole,structure,,"The relatively stout, columnar, main stem of a distinct aboveground portion of a tree.",STRUCTURE,
 306,bony,texture,,"Very hard and rather brittle, like bone.",texture,
 307,bossed,shape,,Having an umbo.,shape,
-308,bostryx,structure,inflorescence,"A cyme in which each axial segment branches to only one side, and all branch to the same side, the whole thus appearing to have an elongate main axis that curves or coils toward its unbranched side.  See also scorpioid cyme.",nominative,
-309,bostryches,structure,inflorescence,"A cyme in which each axial segment branches to only one side, and all branch to the same side, the whole thus appearing to have an elongate main axis that curves or coils toward its unbranched side.  See also scorpioid cyme.",nominative,
+308,bostryx,structure-infl,inflorescence,"A cyme in which each axial segment branches to only one side, and all branch to the same side, the whole thus appearing to have an elongate main axis that curves or coils toward its unbranched side.  See also scorpioid cyme.",nominative,
+309,bostryches,structure-infl,inflorescence,"A cyme in which each axial segment branches to only one side, and all branch to the same side, the whole thus appearing to have an elongate main axis that curves or coils toward its unbranched side.  See also scorpioid cyme.",nominative,
 310,bottom-rooted,habit,plant,Aquatic and rooted in the substrate beneath the water.,habit,
 311,botuliform,shape,,Arcuately cylindric with rounded ends.,shape,
 312,brachiate,architecture,axis,"Having alternate, divaricate branches.",architecture,
@@ -327,7 +327,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 348,bullae,FEATURE,,"A relatively coarse, rounded protrusion or convexity.  See also papilla.",FEATURE,
 349,bullate,relief,,"Having relatively coarse, irregularly disposed, rounded protrusions or convexities resembling blisters.  See also papillate (papillose).",relief,
 350,bulliform,shape,,"Resembling a blister; broad, relatively thin at the periphery, the lower surface approximately flat, the upper shallowly to strongly convex.",shape,
-351,bundle,structure,inflorescence,"A cluster of pedicellate flowers that are inserted very close together and little if at all divergent from one another, the whole sessile or subsessile.",nominative,
+351,bundle,structure-infl,inflorescence,"A cluster of pedicellate flowers that are inserted very close together and little if at all divergent from one another, the whole sessile or subsessile.",nominative,
 352,bundle_scar,FEATURE,,A smaller scar within the bounds of a leaf scar at the point where a vascular bundle traversed the abscission layer between stem and leaf.,FEATURE,
 353,bundled,architecture,inflorescence,Comprising one or more fascicles.,architecture,
 354,bundled,arrangement,,"Disposed in one or more fascicles, the members of each inserted close together and only slightly if at all divergent from one another.",arrangement,
@@ -372,8 +372,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 396,capitate,shape,,"Abruptly enlarged distally to a relatively short, terminal portion that is basically round in transverse section.",shape,
 398,capitiform,shape,,Basically globose and resembling a head in the context of occurrence.,shape,
 399,capitulescence,architecture,,Mode or progressive pattern of bearing capitula (heads); most appropriately described using adjectival terms; esp. in Asteraceae (Compositae).,architecture,
-400,capitulum,structure,inflorescence,"Having crowded, sessile or subsessile, small flowers (florets) borne upon an expanded, distally plane or convex, sometimes paleate, compound receptacle (torus), often with a surrounding involucre, and sometimes a subtending calyculus; characteristic of As",nominative,
-401,capitula,structure,inflorescence,"Having crowded, sessile or subsessile, small flowers (florets) borne upon an expanded, distally plane or convex, sometimes paleate, compound receptacle (torus), often with a surrounding involucre, and sometimes a subtending calyculus; characteristic of As",nominative,
+400,capitulum,structure-infl,inflorescence,"Having crowded, sessile or subsessile, small flowers (florets) borne upon an expanded, distally plane or convex, sometimes paleate, compound receptacle (torus), often with a surrounding involucre, and sometimes a subtending calyculus; characteristic of As",nominative,
+401,capitula,structure-infl,inflorescence,"Having crowded, sessile or subsessile, small flowers (florets) borne upon an expanded, distally plane or convex, sometimes paleate, compound receptacle (torus), often with a surrounding involucre, and sometimes a subtending calyculus; characteristic of As",nominative,
 402,capsular,architecture,fruit,Having the structure and texture of a capsule.,architecture,
 403,capsule,structure,fruit,"Dry, longitudinally or poricidally dehiscent, and derived from a compound ovary with one or more locules; containing one or more seeds.  See also pyxis.",nominative,
 404,carina,structure,,"An elongate, median longitudinal ridge that is basically triangular in transverse section and resembles the keel of a boat; esp. in leaf blades and sheaths, glumes, lemmata, paleae, sepals, petals.",STRUCTURE,
@@ -399,7 +399,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 425,caryopsides,structure,fruit,"The achene of a grass [Poaceae (Gramineae)].  Although in traditional use caryopsis (or grain) has been treated as a type separate from achene, they do not differ in basic morphology.",nominative,
 426,casing,structure,,"The portion (if any) of a floral tube that is adnate to the gynoecium.  See also collar, neck.",STRUCTURE,
 427,catadromous,venation,,"Having the first lateral vein in each pinna or primary segment of the frond arise from its midvein on the side toward the base of the frond, the pinnule or secondary segment that it leads to often disproportionately larger than the next distal ones.",venation,
-428,catkin,structure,inflorescence,"Elongate, more or less flexible and spike-like, often unisexual, the central axis bearing numerous diminutive flowers inserted either singly or in cymules, the pedicels or secondary axes subtended by small, paleaceous bracts or scales, the whole often dec",nominative,
+428,catkin,structure-infl,inflorescence,"Elongate, more or less flexible and spike-like, often unisexual, the central axis bearing numerous diminutive flowers inserted either singly or in cymules, the pedicels or secondary axes subtended by small, paleaceous bracts or scales, the whole often dec",nominative,
 429,catkinate,architecture,inflorescence,Comprising one or more catkins.,architecture,
 430,caudate,shape-apex,laminar structure,"Terminating in a relatively long, flexible, narrowly acuminate tip composed of laminar tissue.",shape,
 #,caudate,shape,,"With one or more relatively slender, retrorse basal enations or appendages.",shape,
@@ -450,8 +450,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 476,cilium,structure,,A hair-like trichome or other surficial process.,STRUCTURE,
 477,cilia,structure,,A hair-like trichome or other surficial process.,STRUCTURE,
 480,cincinnate,architecture,inflorescence,Comprising one or more cincinni.,architecture,
-481,cincinnus,structure,inflorescence,A tightly coiled helicoid cyme (bostryx) with the nodes approximate to congested and the pedicels very short or the flowers sessile.,nominative,
-482,cincinni,structure,inflorescence,A tightly coiled helicoid cyme (bostryx) with the nodes approximate to congested and the pedicels very short or the flowers sessile.,nominative,
+481,cincinnus,structure-infl,inflorescence,A tightly coiled helicoid cyme (bostryx) with the nodes approximate to congested and the pedicels very short or the flowers sessile.,nominative,
+482,cincinni,structure-infl,inflorescence,A tightly coiled helicoid cyme (bostryx) with the nodes approximate to congested and the pedicels very short or the flowers sessile.,nominative,
 483,circinate,shape,,Terete and rolled downward from the apex in a tight coil.,shape,
 484,circinate,vernation,,"Having each leaf (frond) rolled adaxially from the sides and downward from the apex, forming a tight, flat coil; esp. in Polypodiophyta.",vernation,
 485,circular,arrangement,bundle scars,Forming a circle.,shape,
@@ -581,7 +581,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 618,corrugate,aestivation,,"Having members tightly and irregularly folded, the whole appearing as though wadded upon emergence.",aestivation,q
 619,corrugate,relief,,"Having irregular, narrow ridges or creases, the intervening areas flat or only slightly concave or convex, appearing overall as though crumpled and then spread out.  See also rugulose.",aestivation,q
 620,corticate,texture,,"Having a hard exterior layer and a distinct, softer interior.",texture,
-621,corymb,structure,inflorescence,"An indeterminate, more or less condensed raceme with the pedicels progressively shorter toward the distal end, the flowers all borne at approximately the same level, the whole generally plane or convex at the top, the flowers maturing from the edge inward",nominative,
+621,corymb,structure-infl,inflorescence,"An indeterminate, more or less condensed raceme with the pedicels progressively shorter toward the distal end, the flowers all borne at approximately the same level, the whole generally plane or convex at the top, the flowers maturing from the edge inward",nominative,
 622,corymb-like,architecture,"capitulescence, inflorescence","Resembling a corymb, but not strictly such.",architecture,
 623,corymbiform,architecture,"capitulescence, inflorescence","Resembling a corymb, but not strictly such.",architecture,
 624,corymbose,architecture,inflorescence,Comprising one or more corymbs.,architecture,
@@ -626,7 +626,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 665,farinose,pubescence,,"Bearing minute, relatively stout trichomes, collectively meal- or flour-like (farinaceous) and easily detached.  See also farinaceous.",pubescence,
 666,fasciate,fusion,equivalent structures,"Abnormally proliferated in size and/or number and more or less connate, the result often monstrous.",fusion,
 667,fasciated,fusion,equivalent structures,"Abnormally proliferated in size and/or number and more or less connate, the result often monstrous.",fusion,
-668,fascicle,structure,inflorescence,"A cluster of pedicellate flowers that are inserted very close together and little if at all divergent from one another, the whole sessile or subsessile.",nominative,
+668,fascicle,structure-infl,inflorescence,"A cluster of pedicellate flowers that are inserted very close together and little if at all divergent from one another, the whole sessile or subsessile.",nominative,
 669,fascicled,architecture,inflorescence,Comprising one or more fascicles.,architecture,q
 670,fascicled,arrangement,,"Disposed in one or more fascicles, the members of each inserted close together and only slightly if at all divergent from one another.",architecture,q
 671,fasciculate,architecture,inflorescence,Comprising one or more fascicles.,architecture,q
@@ -679,19 +679,19 @@ ID,term,category,appliesTo,definition,category2,dataSource
 719,cut,shape,,"Having straight to irregular lines of separation extending inward from the margin.  See also cleft (dissected, divided, lobate, lobed, parted, partite, segmented).",shape,
 720,cyathiate,architecture,inflorescence,Comprising one or more cyathia.,architecture,
 721,cyathiform,shape,"perianth, calyx, corolla, pappus","Having a cupulate tube and an indistinct, erect limb.  See also cotyliform, urceolate (urn-shaped).",shape,
-722,cyathium,structure,inflorescence,"Resembling a single flower, the unbranched axis very short with a terminal pistillate flower and several lateral staminate flowers, the whole subtended and to some degree enclosed by a cupulate envelope of bracts, the flowers diminutive and presumed to be",nominative,
-723,cyathia,structure,inflorescence,"Resembling a single flower, the unbranched axis very short with a terminal pistillate flower and several lateral staminate flowers, the whole subtended and to some degree enclosed by a cupulate envelope of bracts, the flowers diminutive and presumed to be",nominative,
+722,cyathium,structure-infl,inflorescence,"Resembling a single flower, the unbranched axis very short with a terminal pistillate flower and several lateral staminate flowers, the whole subtended and to some degree enclosed by a cupulate envelope of bracts, the flowers diminutive and presumed to be",nominative,
+723,cyathia,structure-infl,inflorescence,"Resembling a single flower, the unbranched axis very short with a terminal pistillate flower and several lateral staminate flowers, the whole subtended and to some degree enclosed by a cupulate envelope of bracts, the flowers diminutive and presumed to be",nominative,
 724,cycle,structure,,A set of three or more lateral structures that are inserted around an axis at the same level.,STRUCTURE,
 725,cyclic,arrangement,,"Disposed along the axis in groups of three or more, the members of each group (cycle, series, verticil, whorl) inserted around the axis at the same level.",arrangement,
 #,_cyclic,arrangement,,"Disposed in the number of cycles (series, verticils, whorls) indicated by the prefix; as in monocyclic, 3-cyclic.",arrangement,
 727,cylindric,shape,,"Solid and transversely round with a more or less uniform diameter, the ends blunt.",shape,
 728,cylindrical,shape,,"Solid and transversely round with a more or less uniform diameter, the ends blunt.",shape,
 729,cymbiform,shape,,"Like the generalized form of a boat hull, the walls relatively thin to moderately thick, the interior essentially empty and open along one side.",shape,
-730,cyme,structure,inflorescence,"Determinate and constituting a compound dichasium or monochasium, the flowers maturing from the center outward (i.e., the distal or inner flowers maturing first); often more or less flat-topped.  See also cymule, dichasium, helicoid cyme, monochasium, rhi",nominative,
+730,cyme,structure-infl,inflorescence,"Determinate and constituting a compound dichasium or monochasium, the flowers maturing from the center outward (i.e., the distal or inner flowers maturing first); often more or less flat-topped.  See also cymule, dichasium, helicoid cyme, monochasium, rhi",nominative,
 731,cyme-like,architecture,"capitulescence, inflorescence","Resembling a cyme, but not strictly such.",architecture,
 732,cymiform,architecture,"capitulescence, inflorescence","Resembling a cyme, but not strictly such.",architecture,
 733,cymose,architecture,inflorescence,"Comprising one or more simple or compound cymes.  See also cincinnate, cymulose, dichasiate, helicoid-cymose, monochasiate, rhipidiate, scorpioid-cymose.",shape,
-734,cymule,structure,inflorescence,"A diminutive cyme, with few flowers, few or no branches, and short axes.",nominative,
+734,cymule,structure-infl,inflorescence,"A diminutive cyme, with few flowers, few or no branches, and short axes.",nominative,
 735,cymulose,architecture,inflorescence,Comprising one or more cymules.,architecture,
 736,cypsela,structure,fruit,"Like an achene but derived from an inferior, bicarpellate ovary and with accessory perianth tissue adnate to the pericarp; esp. in Asteraceae (Compositae).",nominative,
 737,cypselae,structure,fruit,"Like an achene but derived from an inferior, bicarpellate ovary and with accessory perianth tissue adnate to the pericarp; esp. in Asteraceae (Compositae).",nominative,
@@ -733,8 +733,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 774,diaphragmed,architecture,pith,"Uninterrupted by cavities but heterogeneous in texture at axis maturity, with sectors of spongy tissue separated by relatively thin transverse plates of denser tissue that occur at the nodes or are otherwise regularly spaced along the axis.",architecture,
 775,dichasiate,architecture,inflorescence,"Comprising one or more simple or compound dichasia.  See also cincinnate, cymose, cymulose, helicoid-cymose, monochasiate, scorpioid-cymose.",architecture,
 776,dichasiiform,architecture,"capitulescence, inflorescence","Resembling a dichasium, but not strictly such.",architecture,
-777,dichasium,structure,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a sessile terminal flower and either a pair of opposite pedicellate lateral flowers or a pair of opposite lateral branches.  See also cincinnus, cyme, cymule, helicoid cyme, monochasium,",nominative,
-778,dichasia,structure,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a sessile terminal flower and either a pair of opposite pedicellate lateral flowers or a pair of opposite lateral branches.  See also cincinnus, cyme, cymule, helicoid cyme, monochasium,",nominative,
+777,dichasium,structure-infl,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a sessile terminal flower and either a pair of opposite pedicellate lateral flowers or a pair of opposite lateral branches.  See also cincinnus, cyme, cymule, helicoid cyme, monochasium,",nominative,
+778,dichasia,structure-infl,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a sessile terminal flower and either a pair of opposite pedicellate lateral flowers or a pair of opposite lateral branches.  See also cincinnus, cyme, cymule, helicoid cyme, monochasium,",nominative,
 779,dichasium-like,architecture,"capitulescence, inflorescence","Resembling a dichasium, but not strictly such.",architecture,
 780,dichlamydeous,architecture,flower,Having a perianth differentiated into a distinct calyx (sepals) and corolla (petals).,architecture,
 781,dichogamous,maturation,bisexual flower,Having the androecium and gynoecium becoming functionally mature at different times.,maturation,
@@ -1076,10 +1076,10 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1131,glochidiate,pubescence,,Bearing glochids (glochidia).,pubescence,
 1132,glochidium,structure,,A capillus (hair) or bristle (seta) that bears one or more barbs; esp. in Cactaceae.,STRUCTURE,
 1133,glochidia,structure,,A capillus (hair) or bristle (seta) that bears one or more barbs; esp. in Cactaceae.,STRUCTURE,
-1134,glome,structure,inflorescence,"A rounded cluster of sessile or subsessile flowers that are inserted very close together and oriented divergently, the whole more or less hemispheric and sessile or subsessile.",nominative,
+1134,glome,structure-infl,inflorescence,"A rounded cluster of sessile or subsessile flowers that are inserted very close together and oriented divergently, the whole more or less hemispheric and sessile or subsessile.",nominative,
 1135,glomerate,architecture,inflorescence,Comprising one or more glomes.,architecture,
 1136,glomerulate,architecture,inflorescence,Comprising one or more glomerules; esp. in Asteraceae (Compositae).,architecture,
-1137,glomerule,structure,inflorescence,"A compact cluster of capitula (heads), sometimes subtended by an involucre; thus, a compound capitulum (head); esp. in Asteraceae (Compositae).",nominative,
+1137,glomerule,structure-infl,inflorescence,"A compact cluster of capitula (heads), sometimes subtended by an involucre; thus, a compound capitulum (head); esp. in Asteraceae (Compositae).",nominative,
 1138,glossy,reflectance,,Uniformly reflecting a high proportion of incident light at all angles.,reflectance,
 1139,glutinous,coating,,Of a sticky or slimy substance.,coating,q
 1140,glutinous,texture,,Sticky or slimy.,coating,q
@@ -1141,7 +1141,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1198,hastulas,structure,,"An outgrowth or enation from the petiole apex at its junction with the adaxial surface of a palmate leaf blade; often woody in texture; variously shaped, its adaxial outline usually resembling an inverted V or U, or a semicircle with the opening proximal;",STRUCTURE,
 1199,haustorium,structure,,"An absorbing and anchoring organ, often root-like, excrescent from a vegetative part of a parasitic or hemiparasitic plant, by which the plant communicates intimately with and derives sustenance and support from its host plant, into whose tissues the haus",STRUCTURE,
 1200,haustoria,structure,,"An absorbing and anchoring organ, often root-like, excrescent from a vegetative part of a parasitic or hemiparasitic plant, by which the plant communicates intimately with and derives sustenance and support from its host plant, into whose tissues the haus",STRUCTURE,
-1201,head,structure,inflorescence,"Having crowded, sessile or subsessile, small flowers (florets) borne upon an expanded, distally plane or convex, sometimes paleate, compound receptacle (torus), often with a surrounding involucre, and sometimes a subtending calyculus; characteristic of As",nominative,
+1201,head,structure-infl,inflorescence,"Having crowded, sessile or subsessile, small flowers (florets) borne upon an expanded, distally plane or convex, sometimes paleate, compound receptacle (torus), often with a surrounding involucre, and sometimes a subtending calyculus; characteristic of As",nominative,
 1202,head-shaped,shape,,Basically globose and resembling a head in the context of occurrence.,shape,
 1203,_headed,architecture,"capitulescence, inflorescence","Having the number of heads (capitula) indicated by the prefix; as in three-headed, few-headed, 6-headed.",architecture,
 1204,headed,architecture,inflorescence,Comprising one or more capitula.,architecture,
@@ -1152,7 +1152,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1211,heartwood,structure,,"The senescent inner or central portion of the wood (xylem) of an older stem or root, its cells no longer living, in which conduction has ceased and primary reserve materials are no longer stored; often containing terminal metabolic products; usually darke",STRUCTURE,
 1212,helical,arrangement,,"Disposed helically about and along the axis, each on a different radius than the one(s) vertically adjacent.",course,q
 1214,helical,course,,Curving with constant or regularly increasing radius from one end to the other through three dimensions.,course,q
-1215,helicoid_cyme,structure,inflorescence,"A cyme in which each axial segment branches to only one side, and all branch to the same side, the whole thus appearing to have an elongate main axis that curves or coils toward its unbranched side.  See also scorpioid cyme.",nominative,
+1215,helicoid_cyme,structure-infl,inflorescence,"A cyme in which each axial segment branches to only one side, and all branch to the same side, the whole thus appearing to have an elongate main axis that curves or coils toward its unbranched side.  See also scorpioid cyme.",nominative,
 1216,helicoid-cymose,architecture,inflorescence,Comprising one or more helicoid cymes.  See also scorpioid-cymose.,architecture,
 1217,helmet-shaped,shape,,"Convex overall with a more or less smoothly curved apex, relatively thin-walled and essentially hollow with the interior open to one side below the distal portion; resembling a helmet.  See also hood-shaped (cucullate, cuculliform), which overlaps concept",shape,
 1218,hemianatropous,orientation,ovule,"Having the funiculus adnate to the proximal portion of the (straight) ovule, the latter lying and the micropyle facing parallel to the ovary wall (placenta).",orientation,
@@ -1543,8 +1543,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1615,monocarpic,reproduction,plant,"Normally reproducing sexually only once, then promptly senescent.",reproduction,
 1616,monochasiate,architecture,inflorescence,"Comprising one or more simple or compound monochasia.  See also cincinnate, cymose, cymulose, dichasiate, helicoid-cymose, scorpioid-cymose.",architecture,
 1617,monochasiform,architecture,"capitulescence, inflorescence","Resembling a monochasium, but not strictly such.",architecture,
-1618,monochasium,structure,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a single, sessile terminal flower; presumably derived from a dichasium by loss of the lateral flowers.  See also cincinnus, cyme, cymule, dichasium, helicoid cyme, scorpioid cyme.",nominative,
-1619,monochasia,structure,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a single, sessile terminal flower; presumably derived from a dichasium by loss of the lateral flowers.  See also cincinnus, cyme, cymule, dichasium, helicoid cyme, scorpioid cyme.",nominative,
+1618,monochasium,structure-infl,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a single, sessile terminal flower; presumably derived from a dichasium by loss of the lateral flowers.  See also cincinnus, cyme, cymule, dichasium, helicoid cyme, scorpioid cyme.",nominative,
+1619,monochasia,structure-infl,inflorescence,"Determinate and falsely dichotomous with each axial segment bearing a single, sessile terminal flower; presumably derived from a dichasium by loss of the lateral flowers.  See also cincinnus, cyme, cymule, dichasium, helicoid cyme, scorpioid cyme.",nominative,
 1620,monochasium-like,architecture,"capitulescence, inflorescence","Resembling a monochasium, but not strictly such.",architecture,
 1621,monochlamydeous,architecture,flower,Having a monocyclic perianth.,architecture,
 1622,monoclinous,reproduction,taxon,Having all flowers functionally bisexual; this condition is implied by default if no other is specified.  See also diclinous.,reproduction,
@@ -1716,7 +1716,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 1793,palmatifid,shape,,Palmately lobate; having three or more lobes whose longitudinal axes radiate from a common point.,shape,
 1795,palmatipinnate,architecture,foliaceous structure,"Compound with two orders of leaflets, the first order palmate, the second pinnate.",architecture,
 1796,pandurate,shape,,"Basically obovate but with deep, rounded sinuses opposite one another in the proximal half; like the frontal outline of an inverted fiddle body.",shape,
-1797,panicle,structure,inflorescence,"A compound (branched) raceme, the elongate main axis either determinate or indeterminate, its lateral branches racemose.",nominative,
+1797,panicle,structure-infl,inflorescence,"A compound (branched) raceme, the elongate main axis either determinate or indeterminate, its lateral branches racemose.",nominative,
 1798,panicle-like,architecture,"capitulescence, inflorescence","Resembling a panicle, but not strictly such.",architecture,
 1799,paniculate,architecture,inflorescence,Comprising one or more panicles.,architecture,
 1800,paniculiform,architecture,"capitulescence, inflorescence","Resembling a panicle, but not strictly such.",architecture,
@@ -1995,7 +1995,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2081,quadr_,prefix,,"Indicating presence of or constitution by four entities of the type denoted by the term's stem; as in  quadrangular, quadrilocular.",prefix,
 2082,quadri_,prefix,,"Indicating presence of or constitution by four entities of the type denoted by the term's stem; as in  quadrangular, quadrilocular.",prefix,
 2083,quincunx,aestivation,,"Imbricate in one whorl of five members, two wholly exterior, two wholly interior, and one partially exterior and partially interior.",aestivation,
-2084,raceme,structure,inflorescence,"An elongate, unbranched main axis bearing pedicellate flowers inserted singly along it.",nominative,
+2084,raceme,structure-infl,inflorescence,"An elongate, unbranched main axis bearing pedicellate flowers inserted singly along it.",nominative,
 2085,raceme-like,architecture,"capitulescence, inflorescence","Resembling a raceme, but not strictly such.",architecture,
 2086,racemiform,architecture,"capitulescence, inflorescence","Resembling a raceme, but not strictly such.",architecture,
 2087,racemose,architecture,inflorescence,Comprising one or more racemes.,architecture,
@@ -2070,8 +2070,8 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2160,rhachilla,structure,,See rachilla.,STRUCTURE,
 2161,rhachis,structure,,See rachis.,STRUCTURE,
 2162,rhipidiate,architecture,inflorescence,Comprising one or more rhipidia.,architecture,
-2163,rhipidium,structure,inflorescence,"A cyme with the branches alternate and disposed in two opposite ranks along the main axis, the whole fan-like.",nominative,
-2164,rhipidia,structure,inflorescence,"A cyme with the branches alternate and disposed in two opposite ranks along the main axis, the whole fan-like.",nominative,
+2163,rhipidium,structure-infl,inflorescence,"A cyme with the branches alternate and disposed in two opposite ranks along the main axis, the whole fan-like.",nominative,
+2164,rhipidia,structure-infl,inflorescence,"A cyme with the branches alternate and disposed in two opposite ranks along the main axis, the whole fan-like.",nominative,
 2165,rhizoid,structure,,"Any structure that is similar to a root in appearance and function but that is not a true root ontogenetically and anatomically, especially one produced from a gametophyte thallus.",STRUCTURE,
 2166,rhizomatous,architecture,plant,Having rhizomes.,architecture,
 2167,rhizome,structure,,"An underground, usually horizontal stem, often superficially resembling a root but easily distinguished by the presence of nodes, from which it branches exogenously to produce the aboveground portion(s) of the shoot.",STRUCTURE,
@@ -2157,7 +2157,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2247,schizocarp,structure,fruit,"Dry, dehiscent and with two or more locules; derived from a single, superior or inferior, compound ovary; with or without accessory tissue; splitting between locules to yield separate, individually indehiscent, usually one-seeded segments (cocci or merica",nominative,
 2248,scimitar-shaped,shape,,"Thin and moderately arcuate with two opposite, plane, broad faces, the degree of curvature increasing distally, thinnest at the convex edge, thicker toward the concave; like a scimitar blade.",shape,
 2249,sclerocaulous,texture,plant,"Having hard, relatively dry, but essentially herbaceous main stems that contain a significant proportion of sclerotic tissue or fibers.",texture,
-2250,scorpioid_cyme,structure,inflorescence,"A cyme in which each axial segment branches to only one side, the successive segments branching alternately to either side, the whole appearing to have a continuous, elongate, straight to zig-zag main axis.  See also cincinnus, helicoid cyme (bostryx).",nominative,
+2250,scorpioid_cyme,structure-infl,inflorescence,"A cyme in which each axial segment branches to only one side, the successive segments branching alternately to either side, the whole appearing to have a continuous, elongate, straight to zig-zag main axis.  See also cincinnus, helicoid cyme (bostryx).",nominative,
 2251,scorpioid-cymose,architecture,inflorescence,"Comprising one or more scorpioid cymes.  See also cincinnate, helicoid-cymose.",architecture,
 2252,scrobiculate,relief,,Finely pitted (foveate).,relief,
 2253,scrobis,FEATURE,,"A small, rounded depression.",FEATURE,
@@ -2302,9 +2302,9 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2398,spiculate,relief,,"Having small, fine, stiff, acute protrusions that resemble little spikes.  See also scabridulous (scabrellate, scabrellous, which is not clearly distinct in its application.",relief,
 2399,spicule,structure,,"A small, fine, stiff, acute protrusion that resembles a little spike.",STRUCTURE,
 2400,spicy,odor,,"Pleasantly pungent, reminiscent of spices.",odor,
-2401,spike,structure,inflorescence,"An elongate, determinate or usually indeterminate axis bearing sessile flowers inserted singly along it, unbranched or sometimes bearing lateral branches of the same nature.",nominative,
+2401,spike,structure-infl,inflorescence,"An elongate, determinate or usually indeterminate axis bearing sessile flowers inserted singly along it, unbranched or sometimes bearing lateral branches of the same nature.",nominative,
 2402,spike-like,architecture,"capitulescence, inflorescence","Resembling a spike, but not strictly such.",architecture,
-2403,spikelet,structure,inflorescence,"A compound structure belonging to the penultimate subdivisional order of a sedge or grass inflorescence; consisting of one or more florets (each a diminutive flower subtended by specialized bractlets (bracteoles) called scales or glumes in sedges, lemma a",nominative,
+2403,spikelet,structure-infl,inflorescence,"A compound structure belonging to the penultimate subdivisional order of a sedge or grass inflorescence; consisting of one or more florets (each a diminutive flower subtended by specialized bractlets (bracteoles) called scales or glumes in sedges, lemma a",nominative,
 2404,spikeleted,architecture,inflorescence,Having the penultimate subdivisional order consisting of spikelets.,architecture,
 2405,spindle-shaped,shape,,"Elongate, transversely round, broadest at the middle and regularly attenuate to either end.",shape,
 2406,spine,structure,,"Any sharp, stiff, simple or branched, woody appendage having vascular tissues confluent with those of the bearing structure.  'Spine' is often preferred when the appendage is homologous with a leaf or stipule, and 'thorn' when it is homologous with a bran",STRUCTURE,
@@ -2383,7 +2383,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2481,stemmed,architecture,plant,"Having at maturity an evident, elongate, aboveground stem or stems from which branches, leaves, and/or reproductive axes arise at one or more levels along its length.",architecture,
 2482,umbel-like,architecture,"capitulescence, inflorescence","Resembling an umbel, but not strictly such.",architecture,
 2483,umbellate,architecture,inflorescence,Comprising one or more umbels.,shape,
-2484,umbellet,structure,inflorescence,A single set of pedicellate flowers in a compound umbel.,nominative,
+2484,umbellet,structure-infl,inflorescence,A single set of pedicellate flowers in a compound umbel.,nominative,
 2485,umbelliform,architecture,"capitulescence, inflorescence","Resembling an umbel, but not strictly such.",architecture,
 2486,umbilicate,shape,,"Having a relatively small, transversely round, central depression in an essentially round broad face.",shape,
 2487,umbo,FEATURE,,"A relatively small, rounded or conical, central protrusion upon an essentially round, broad face.",FEATURE,
@@ -2596,7 +2596,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2701,thrice_,prefix,,Indicating presence of three hierarchical orders of the type of entity or pattern denoted by the term's stem; as in thrice-pinnate.  See also three-... (tri...).,prefix,
 2702,throat,structure,,"The far distal portion of a perianth, calyx, or corolla tube, or of a leaf sheath, surrounding the orifice of the tube or sheath, sometimes constricted relative to the diameter of the main body of the tube or sheath; except in disc florets of Asteraceae (",STRUCTURE,
 2704,thyrsate,architecture,inflorescence,Comprising one or more thyrses.,architecture,
-2705,thyrse,structure,inflorescence,"An elongate, indeterminate main axis bearing numerous lateral branches, each the principal axis of a cymose subdivision.",nominative,
+2705,thyrse,structure-infl,inflorescence,"An elongate, indeterminate main axis bearing numerous lateral branches, each the principal axis of a cymose subdivision.",nominative,
 2706,thyrse-like,architecture,"capitulescence, inflorescence","Resembling a thyrse, but not strictly such.",architecture,
 2707,thyrsiform,architecture,"capitulescence, inflorescence","Resembling a thyrse, but not strictly such.",architecture,
 2708,tiered,arrangement,,In two or more rows that are arrayed one above another.,arrangement,
@@ -2682,7 +2682,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 2792,two_,prefix,,"Indicating presence of or constitution by two entities of the type denoted by the term's stem; as in two-cleft, two-flowered, two-loculed.  See also individual entries for terms with this prefix whose meanings, at least in some applications, are more spec",prefix,
 2793,two-lipped,architecture,"perianth, calyx, corolla","Strongly zygomorphic with connate and/or coherent members whose distal portions form two unequal, opposing, lip-like structures, one adaxial, one abaxial.  See also gaping (personate, ringent).",architecture,
 2794,U-form,arrangement,bundle scars,"Disposed in a truncated elliptical pattern, like the letter U.",arrangement,
-2795,umbel,structure,inflorescence,"Pedunculate, determinate or indeterminate, simple or compound and apparently polychotomous, with one or more pedicellate flowers terminating each ultimate axis, the pedicels of each such floral set and the branches (rays) arising from each axial subdivisi",nominative,
+2795,umbel,structure-infl,inflorescence,"Pedunculate, determinate or indeterminate, simple or compound and apparently polychotomous, with one or more pedicellate flowers terminating each ultimate axis, the pedicels of each such floral set and the branches (rays) arising from each axial subdivisi",nominative,
 2796,unbranched,architecture,laminar veinlet,Not branching within the areole.,architecture,
 2797,unciform,shape,,"Very slenderly elongate with a more or less straight proximal portion and a recurved terminal portion, the whole resembling a hook.",shape,
 2798,uncinate,shape,,Having a recurved terminal portion that resembles a hook.,shape,
@@ -3406,7 +3406,7 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3612,hermaphrodite,reproduction,taxon,bisexual plant with stamens and pistil in the same flower,,KG
 3613,heterophylla,EN,,,,KG
 3616,immature,life-stage,,,,KG
-3618,inflorescence-branches,structure,inflorescence,,,KG
+3618,inflorescence-branches,structure-infl,inflorescence,,,KG
 3619,inrolled,vernation,margin,(of leaves or petals) with the margins rolled inwards; = <b>involute</b>,,KG
 3620,inserted,location,,placed in,,KG
 3622,intramarginal,position,,within or near the margin,,KG
@@ -3434,9 +3434,9 @@ ID,term,category,appliesTo,definition,category2,dataSource
 3667,processes,FEATURE,,,,KG
 3668,protuberances,FEATURE,,,,KG
 3669,protuberant,prominence,,bulging out,,KG
-3670,pseudocymes,structure,inflorescence,,,KG
+3670,pseudocymes,structure-infl,inflorescence,,,KG
 3671,pseudumbellate,architecture,inflorescence,,,KG
-3672,pseudumbels,structure,inflorescence,,,KG
+3672,pseudumbels,structure-infl,inflorescence,,,KG
 3674,pulp,structure,fruit,"juicy or fleshy tissue of a fruit [imprecise, not recommended]",,KG
 3678,reticulation,FEATURE,venation,network,,KG
 3679,ridge-like,shape,,,,KG
