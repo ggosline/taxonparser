@@ -1,5 +1,5 @@
 from lxml import etree
-
+import xml.etree.ElementTree as ET
 import RBParaClassifier
 from   XMLTreeBuilder import XMLFromRecord
 import wordreader
@@ -115,36 +115,50 @@ def red_list_family(faname):
 def writeassessments(mytree, csvwriter):
     root = mytree.getroot()
     for taxon in root.findall('.//Taxon'):
-        print(taxon.find('TaxonName/family').text, taxon.find('TaxonName/genus').text,
-              taxon.find('TaxonName/species').text,
-              taxon.find('RLCategory').text, taxon.find('RLCriteria').text)
-        csvwriter.writerow([taxon.find('TaxonName/family').text, taxon.find('TaxonName/genus').text,
-                            taxon.find('TaxonName/species').text,
-                            taxon.find('RLCategory').text, taxon.find('RLCriteria').text])
-    pass
+        print(taxon.findtext('TaxonName/family'), taxon.findtext('TaxonName/genus'),
+              taxon.findtext('TaxonName/species'),
+              taxon.findtext('RLCategory'), taxon.findtext('RLCriteria'),
+              taxon.findtext('AOO'), taxon.findtext('EOO'), sep='\t')
 
+        if csvwriter:
+            csvwriter.writerow([taxon.findtext('TaxonName/family'), taxon.findtext('TaxonName/genus'),
+                                taxon.findtext('TaxonName/species'),
+                                taxon.findtext('RLCategory'), taxon.findtext('RLCriteria'),
+                                taxon.findtext('AOO', default=''), taxon.findtext('EOO', default='')])
 
 def processFamily(faname, csvwriter=None):
     treatment = red_list_family(faname)
     mytree = etree.ElementTree(treatment)
     mytree.write("XML/{0}.xml".format(faname), encoding="utf-8")
     print(fam, ' xml generated')
-    # writeassessments(mytree, csvwriter)
+    writeassessments(mytree, csvwriter)
 
-    SISDump.SIS_dump(mytree, faname)
+    # SISDump.SIS_dump(mytree, faname)
     # print(etree.tostring(treatment, encoding = str, pretty_print=True))
 
 
-working_directory = 'T:\\Cameroon\\GGosline\\Cameroon Red Data Book\\Families\\'
+def printFamilyXML(faname, csvwriter=None):
+    mytree = ET.parse(faname + ".xml")
+    # mytree.write("XML/{0}.xml".format(faname), encoding="utf-8")
+    print(fam, ' xml read')
+    writeassessments(mytree, csvwriter)
+
+    # SISDump.SIS_dump(mytree, faname)
+    # print(etree.tostring(treatment, encoding = str, pretty_print=True))
+
+
+# working_directory = 'T:\\Cameroon\\GGosline\\Cameroon Red Data Book\\Families\\'
+working_directory = 'T:\\Cameroon\\GGosline\\Cameroon Red Data Book\\Families\\XML\\'
 if __name__ == "__main__":
 
     os.chdir(working_directory)
-    # famlist = [os.path.splitext(f)[0] for f in os.listdir() if f.endswith('.doc')]
-    famlist = ('GUTTIFERAE',)
+    famlist = [os.path.splitext(f)[0] for f in os.listdir() if f.endswith('.xml')]
+    #famlist = ('GUTTIFERAE',)
     for fam in famlist:
-        processFamily(fam)
-
-        # with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
-        #     csvwriter = csv.writer(csvf)
-        #     for fam in famlist:
-        #         processFamily(fam, csvwriter)
+        # processFamily(fam)
+        with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
+            csvwriter = csv.writer(csvf, delimiter='\t')
+            csvwriter.writerow(['Family', 'Genus', 'species', 'IUCN', 'Criteria', 'AOO', 'EOO'])
+            for fam in famlist:
+                # processFamily(fam, csvwriter)
+                printFamilyXML(fam, csvwriter)
