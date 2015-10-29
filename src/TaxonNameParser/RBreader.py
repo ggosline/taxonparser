@@ -116,13 +116,13 @@ def writeassessments(mytree, csvwriter):
     root = mytree.getroot()
     for taxon in root.findall('.//Taxon'):
         print(taxon.findtext('TaxonName/family'), taxon.findtext('TaxonName/genus'),
-              taxon.findtext('TaxonName/species'),
+              taxon.findtext('TaxonName/species'), taxon.findtext('TaxonName/infraepi'),
               taxon.findtext('RLCategory'), taxon.findtext('RLCriteria'),
               taxon.findtext('AOO'), taxon.findtext('EOO'), sep='\t')
 
         if csvwriter:
             csvwriter.writerow([taxon.findtext('TaxonName/family'), taxon.findtext('TaxonName/genus'),
-                                taxon.findtext('TaxonName/species'),
+                                taxon.findtext('TaxonName/species'), taxon.findtext('TaxonName/infraepi', default=''),
                                 taxon.findtext('RLCategory'), taxon.findtext('RLCriteria'),
                                 taxon.findtext('AOO', default=''), taxon.findtext('EOO', default='')])
 
@@ -157,8 +157,8 @@ if __name__ == "__main__":
     for fam in famlist:
         # processFamily(fam)
         with open('CameroonRDRatings.csv', 'w', encoding='utf-8') as csvf:
-            csvwriter = csv.writer(csvf, delimiter='\t')
-            csvwriter.writerow(['Family', 'Genus', 'species', 'IUCN', 'Criteria', 'AOO', 'EOO'])
+            csvwriter = csv.writer(csvf, delimiter='\t', lineterminator='\r')
+            csvwriter.writerow(['Faname', 'Gename', 'spname1', 'spname2', 'IUCN', 'Criteria', 'AOO', 'EOO'])
             for fam in famlist:
                 # processFamily(fam, csvwriter)
                 printFamilyXML(fam, csvwriter)
